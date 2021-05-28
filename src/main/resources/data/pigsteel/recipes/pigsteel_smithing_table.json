@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "ii",
+        "OO",
+        "OO"
+    ],
+    "key": {
+        "i": {
+            "tag": "pigsteel:irons"
+        },
+        "O": {
+            "tag": "minecraft:planks"
+        }
+    },
+    "result": {
+        "item": "minecraft:smithing_table",
+        "count": 1
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "i",
+        "/",
+        "/"
+    ],
+    "key": {
+        "i": {
+            "tag": "pigsteel:irons"
+        },
+        "/": {
+            "item": "minecraft:stick"
+        }
+    },
+    "result": {
+        "item": "minecraft:iron_shovel",
+        "count": 1
+    },
+    "group": "pigsteel_tools"
+}

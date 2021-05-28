@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#",
+        "i",
+        "#"
+    ],
+    "key": {
+        "#": {
+            "tag": "pigsteel:iron_nuggets"
+        },
+        "i": {
+            "tag": "pigsteel:irons"
+        }
+    },
+    "result": {
+        "item": "minecraft:chain",
+        "count": 1
+    }
+}

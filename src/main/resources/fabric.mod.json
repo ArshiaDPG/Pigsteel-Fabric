@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "pigsteel",
+  "version": "1.4.0",
+
+  "name": "Pigsteel Mod",
+  "description": "A mod that adds a nether counterpart to iron.",
+  "authors": [
+    "DigitalPear",
+    "PeterGamesGR"
+  ],
+  "contact": {
+    "homepage": "https://www.curseforge.com/members/digitalpear_11/projects",
+    "sources": ""
+  },
+
+  "license": "Apache License Version 2.0",
+  "icon": "assets/pigsteel/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.digitalpear.pigsteel.PigsteelMod"
+    ]
+  },
+  "mixins": [
+    "pigsteel.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.11.3",
+    "fabric": "*",
+    "minecraft": "1.16.x"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}

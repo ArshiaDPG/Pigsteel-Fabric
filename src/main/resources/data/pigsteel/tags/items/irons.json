@@ -1,0 +1,7 @@
+{
+    "replace": true,
+    "values": [
+      "pigsteel:pigsteel_ingot",
+      "minecraft:iron_ingot"
+    ]
+}
