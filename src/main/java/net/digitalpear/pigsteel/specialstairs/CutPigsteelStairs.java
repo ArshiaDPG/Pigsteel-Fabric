@@ -23,7 +23,7 @@ public class CutPigsteelStairs extends StairsBlock{
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (!world.isClient) {
             if (world.getDimension().isBedWorking()) {
-                world.setBlockState(pos, PigsteelMod.ZOMBIFIED_CUT_PIGSTEEL_STAIRS.getDefaultState());
+                world.setBlockState(pos, PigsteelMod.ZOMBIFIED_CUT_PIGSTEEL_STAIRS.clone(world.BlockState));
             }
 
         }
