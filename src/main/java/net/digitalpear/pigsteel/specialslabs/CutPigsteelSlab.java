@@ -5,8 +5,6 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.SlabBlock;
-import net.minecraft.block.enums.BlockHalf;
-import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.block.enums.SlabType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Items;

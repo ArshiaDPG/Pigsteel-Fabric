@@ -1,6 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
-  "group": "cut_pigsteel_stairs",
+  "group": "pigsteel_stairs",
   "pattern": [
     "#  ",
     "## ",
@@ -8,7 +8,7 @@
   ],
   "key": {
     "#": {
-      "item": "pigsteel:corrupted_cut_pigsteel"
+      "item": "minecraft:corrupted_cut_pigsteel"
     }
   },
   "result": {
