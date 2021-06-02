@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "pigsteel",
-  "version": "1.4.1",
+  "version": "1.5.0",
 
   "name": "Pigsteel Mod",
   "description": "A mod that adds a nether counterpart to iron.",
