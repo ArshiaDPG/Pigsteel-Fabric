@@ -4,7 +4,6 @@ import net.digitalpear.pigsteel.specialblocks.*;
 import net.digitalpear.pigsteel.specialstairs.*;
 import net.digitalpear.pigsteel.specialslabs.*;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.biome.v1.BiomeModification; //DO NOT DELETE
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications; //DO NOT DELETE
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors; //DO NOT DELETE
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -22,8 +21,6 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.YOffset;
-import net.minecraft.world.gen.decorator.Decorator;
-import net.minecraft.world.gen.decorator.RangeDecoratorConfig;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.OreFeatureConfig;
