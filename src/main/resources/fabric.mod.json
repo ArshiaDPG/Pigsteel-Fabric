@@ -23,14 +23,11 @@
       "net.digitalpear.pigsteel.PigsteelMod"
     ]
   },
-  "mixins": [
-    "pigsteel.mixins.json"
-  ],
 
   "depends": {
     "fabricloader": ">=0.11.3",
     "fabric": "*",
-    "minecraft": "1.16.x"
+    "minecraft": "1.17"
   },
   "suggests": {
     "another-mod": "*"
