@@ -1,0 +1,8 @@
+{
+    "replace": true,
+    "values": [
+      "pigsteel:pigsteel_ore",
+      "pigsteel:stone_pigsteel_ore",
+      "pigsteel:deepslate_pigsteel_ore"
+    ]
+  }

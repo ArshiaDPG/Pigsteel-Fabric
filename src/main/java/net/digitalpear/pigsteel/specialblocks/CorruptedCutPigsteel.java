@@ -1,14 +1,11 @@
 package net.digitalpear.pigsteel.specialblocks;
 
 import net.digitalpear.pigsteel.PigsteelMod;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Items;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
@@ -22,7 +19,7 @@ import java.util.Random;
 public class CorruptedCutPigsteel extends Block{
 
     public CorruptedCutPigsteel(Settings settings) {
-        super(FabricBlockSettings.copy(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.NETHERITE).ticksRandomly());
+        super(settings);
     }
 
     @Override

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "pigsteel",
-  "version": "1.5.0",
+  "version": "${version}",
 
   "name": "Pigsteel Mod",
   "description": "A mod that adds a nether counterpart to iron.",
@@ -14,7 +14,7 @@
     "sources": "https://github.com/ArshiaDPG/Pigsteel-Fabric"
   },
 
-  "license": "Apache License Version 2.0",
+  "license": "Apache 2.0",
   "icon": "assets/pigsteel/icon.png",
 
   "environment": "*",

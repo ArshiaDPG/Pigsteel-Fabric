@@ -8,9 +8,7 @@ import net.fabricmc.fabric.api.biome.v1.BiomeModifications; //DO NOT DELETE
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors; //DO NOT DELETE
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.SlabBlock;
+import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -26,7 +24,8 @@ import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.OreFeatureConfig;
 
 public class PigsteelMod implements ModInitializer {
-	
+
+
     public static final Block PIGSTEEL_BLOCK = new PigsteelBlock(FabricBlockSettings.copy(Blocks.IRON_BLOCK));
 	public static final Block WAXED_PIGSTEEL_BLOCK = new Block(FabricBlockSettings.copy(Blocks.IRON_BLOCK));
 
@@ -62,6 +61,8 @@ public class PigsteelMod implements ModInitializer {
 
 	public static final Block PIGSTEEL_ORE = new PigsteelOre(FabricBlockSettings.copy(Blocks.NETHER_GOLD_ORE));
 	public static final Block STONE_PIGSTEEL_ORE = new PigsteelOre(FabricBlockSettings.copy(Blocks.IRON_ORE));
+	public static final Block DEEPSLATE_PIGSTEEL_ORE = new PigsteelOre(FabricBlockSettings.copy(Blocks.DEEPSLATE_IRON_ORE));
+
 
 	private static ConfiguredFeature<?, ?> PIGSTEEL_ORE_NETHER = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.NETHERRACK, PIGSTEEL_ORE.getDefaultState(), 5)).uniformRange(YOffset.fixed(0), YOffset.getTop()).spreadHorizontally().repeat(15);
 	@Override
@@ -165,7 +166,9 @@ public class PigsteelMod implements ModInitializer {
 
 		Registry.register(Registry.BLOCK, new Identifier("pigsteel", "stone_pigsteel_ore"), STONE_PIGSTEEL_ORE);
         Registry.register(Registry.ITEM, new Identifier("pigsteel", "stone_pigsteel_ore"), new BlockItem(STONE_PIGSTEEL_ORE, new FabricItemSettings().group(ItemGroup.BUILDING_BLOCKS)));
-		
+
+		Registry.register(Registry.BLOCK, new Identifier("pigsteel", "deepslate_pigsteel_ore"), DEEPSLATE_PIGSTEEL_ORE);
+		Registry.register(Registry.ITEM, new Identifier("pigsteel", "deepslate_pigsteel_ore"), new BlockItem(DEEPSLATE_PIGSTEEL_ORE, new FabricItemSettings().group(ItemGroup.BUILDING_BLOCKS)));
 
 		//Items
 		Registry.register(Registry.ITEM, new Identifier("pigsteel", "pigsteel_ingot"), new Item(new FabricItemSettings().group(ItemGroup.MISC)));
