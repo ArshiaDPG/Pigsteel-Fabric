@@ -33,7 +33,7 @@ public class CorruptedCutPigsteel extends Block{
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit){
         if (player.getStackInHand(hand).getItem() == Items.HONEYCOMB) {
             world.setBlockState(pos, PigsteelMod.WAXED_CORRUPTED_CUT_PIGSTEEL.getDefaultState());
-            world.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_HONEY_BLOCK_PLACE, SoundCategory.BLOCKS, 1.0F, 0.8F + world.random.nextFloat() * 0.4F);
+            world.playSound((PlayerEntity)null, pos, SoundEvents.ITEM_HONEYCOMB_WAX_ON, SoundCategory.BLOCKS, 1.0F, 1.0F + world.random.nextFloat() * 0.4F);
         }
         return ActionResult.PASS;
     }

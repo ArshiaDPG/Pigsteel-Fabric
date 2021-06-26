@@ -46,7 +46,7 @@ public class CutPigsteelSlab extends SlabBlock{
             Boolean watered = state.get(Properties.WATERLOGGED);
 
             world.setBlockState(pos, PigsteelMod.WAXED_CUT_PIGSTEEL_SLAB.getDefaultState().with(Properties.WATERLOGGED, watered).with(Properties.SLAB_TYPE, half));
-            world.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_HONEY_BLOCK_PLACE, SoundCategory.BLOCKS, 1.0F, 0.8F + world.random.nextFloat() * 0.4F);
+            world.playSound((PlayerEntity)null, pos, SoundEvents.ITEM_HONEYCOMB_WAX_ON, SoundCategory.BLOCKS, 1.0F, 0.8F + world.random.nextFloat() * 0.4F);
         }
         return ActionResult.PASS;
     }

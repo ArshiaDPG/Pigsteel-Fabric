@@ -1,4 +1,4 @@
-package net.digitalpear.pigsteel.specialstairs;
+package net.digitalpear.pigsteel.specialstairs.waxed;
 
 import net.digitalpear.pigsteel.PigsteelMod;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -20,22 +20,22 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 
-
-public class ZombifiedCutPigsteelStairs extends StairsBlock{
-
-    public ZombifiedCutPigsteelStairs(BlockState baseBlockState, Settings settings) {
-        super(baseBlockState, FabricBlockSettings.copy(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.NETHERITE).ticksRandomly());
+public class WaxedCorruptedCutPigsteelStairs extends StairsBlock{
+    public WaxedCorruptedCutPigsteelStairs(BlockState baseBlockState, Settings settings)
+    {
+        super(baseBlockState, settings);
     }
-    //Waxing
+
+    //Unwaxing
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit){
         if (player.getStackInHand(hand).getItem() == Items.HONEYCOMB) {
             Direction direction = state.get(Properties.HORIZONTAL_FACING);
-            Boolean waterred = state.get(Properties.WATERLOGGED);
+            Boolean watered = state.get(Properties.WATERLOGGED);
             StairShape shape = state.get(Properties.STAIR_SHAPE);
             BlockHalf half = state.get(Properties.BLOCK_HALF);
 
-            world.setBlockState(pos, PigsteelMod.WAXED_ZOMBIFIED_CUT_PIGSTEEL_STAIRS.getDefaultState().with(Properties.HORIZONTAL_FACING, direction).with(Properties.WATERLOGGED, waterred).with(Properties.STAIR_SHAPE, shape).with(Properties.BLOCK_HALF, half));
-            world.playSound((PlayerEntity)null, pos, SoundEvents.ITEM_HONEYCOMB_WAX_ON, SoundCategory.BLOCKS, 1.0F, 0.8F + world.random.nextFloat() * 0.4F);
+            world.setBlockState(pos, PigsteelMod.CORRUPTED_CUT_PIGSTEEL_STAIRS.getDefaultState().with(Properties.HORIZONTAL_FACING, direction).with(Properties.WATERLOGGED, watered).with(Properties.STAIR_SHAPE, shape).with(Properties.BLOCK_HALF, half));
+            world.playSound((PlayerEntity)null, pos, SoundEvents.ITEM_AXE_WAX_OFF, SoundCategory.BLOCKS, 1.0F, 0.8F + world.random.nextFloat() * 0.4F);
         }
         return ActionResult.PASS;
     }
