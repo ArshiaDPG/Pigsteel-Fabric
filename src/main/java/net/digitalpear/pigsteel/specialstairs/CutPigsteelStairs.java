@@ -54,6 +54,7 @@ public class CutPigsteelStairs extends StairsBlock{
             StairShape shape = state.get(Properties.STAIR_SHAPE);
             BlockHalf half = state.get(Properties.BLOCK_HALF);
 
+            player.swingHand(hand);
             world.setBlockState(pos, PigsteelMod.WAXED_CUT_PIGSTEEL_STAIRS.getDefaultState().with(Properties.HORIZONTAL_FACING, direction).with(Properties.WATERLOGGED, watered).with(Properties.STAIR_SHAPE, shape).with(Properties.BLOCK_HALF, half));
             world.playSound((PlayerEntity)null, pos, SoundEvents.ITEM_HONEYCOMB_WAX_ON, SoundCategory.BLOCKS, 1.0F, 0.8F + world.random.nextFloat() * 0.4F);
         }
