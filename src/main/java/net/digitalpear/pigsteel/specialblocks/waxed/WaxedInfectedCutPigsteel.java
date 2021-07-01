@@ -6,6 +6,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.AxeItem;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
@@ -23,6 +24,10 @@ public class WaxedInfectedCutPigsteel extends Block {
             player.swingHand(hand);
             world.setBlockState(pos, PigsteelMod.INFECTED_CUT_PIGSTEEL.getDefaultState());
             world.playSound((PlayerEntity)null, pos, SoundEvents.ITEM_AXE_WAX_OFF, SoundCategory.BLOCKS, 1.0F, 1.0F + world.random.nextFloat() * 0.4F);
+            if (player != null && !player.isCreative()) {
+                player.getMainHandStack().damage(1, world.random, (ServerPlayerEntity) player);
+            }
+            return ActionResult.SUCCESS;
         }
         return ActionResult.PASS;
     }

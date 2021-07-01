@@ -8,6 +8,7 @@ import net.minecraft.block.SlabBlock;
 import net.minecraft.block.enums.SlabType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.AxeItem;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -32,6 +33,10 @@ public class WaxedCorruptedCutPigsteelSlab extends SlabBlock{
             player.swingHand(hand);
             world.setBlockState(pos, PigsteelMod.CORRUPTED_CUT_PIGSTEEL_SLAB.getDefaultState().with(Properties.WATERLOGGED, watered).with(Properties.SLAB_TYPE, half));
             world.playSound((PlayerEntity)null, pos, SoundEvents.ITEM_AXE_WAX_OFF, SoundCategory.BLOCKS, 1.0F, 0.8F + world.random.nextFloat() * 0.4F);
+            if (player != null && !player.isCreative()) {
+                player.getMainHandStack().damage(1, world.random, (ServerPlayerEntity) player);
+            }
+            return ActionResult.SUCCESS;
         }
         return ActionResult.PASS;
     }
