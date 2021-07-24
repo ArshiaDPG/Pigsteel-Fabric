@@ -10,7 +10,7 @@
         "tag": "minecraft:planks"
       },
       "o": {
-        "tag": "pigsteel:pigsteel_ingot"
+        "item": "pigsteel:pigsteel_ingot"
       }
     },
     "result": {
