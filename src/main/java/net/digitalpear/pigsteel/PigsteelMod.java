@@ -74,6 +74,7 @@ public class PigsteelMod implements ModInitializer {
 
 
 	private static ConfiguredFeature<?, ?> PIGSTEEL_ORE_NETHER = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.NETHERRACK, PIGSTEEL_ORE.getDefaultState(), 5)).uniformRange(YOffset.fixed(0), YOffset.getTop()).spreadHorizontally().repeat(15);
+	
 	@Override
 	public void onInitialize() {
 

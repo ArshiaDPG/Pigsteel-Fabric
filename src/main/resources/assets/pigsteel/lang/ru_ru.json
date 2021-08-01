@@ -6,6 +6,7 @@
     "block.pigsteel.zombified_cut_pigsteel": "Зомбифицированный резной свинцовый блок",
     "block.pigsteel.pigsteel_ore": "Свинцовая руда",
     "block.pigsteel.stone_pigsteel_ore": "Каменная свинцовая руда",
+    "block.pigsteel.deepslate_pigsteel_ore": "Глубоководная свиная руда",
 
     "block.pigsteel.waxed_cut_pigsteel": "Вощёный резной свинцовый блок",
     "block.pigsteel.waxed_infected_cut_pigsteel": "Вощёный заражённый резной свинцовый блок",
@@ -34,8 +35,6 @@
     "block.pigsteel.waxed_zombified_cut_pigsteel_slab": "Вощёная зомбифицированная плита из резного свинцового блока",
 
     "item.pigsteel.pigsteel_ingot": "Слиток свинца",
-    "item.pigsteel.pigsteel_nugget": "Кусочек свинца",
-    "block.pigsteel.deepslate_pigsteel_ore": "Deepslate Pigsteel Ore",
-    "block.pigsteel.deepslate_pigsteel_ore": "Deepslate Pigsteel Ore"
+    "item.pigsteel.pigsteel_nugget": "Кусочек свинца"
 
 }
