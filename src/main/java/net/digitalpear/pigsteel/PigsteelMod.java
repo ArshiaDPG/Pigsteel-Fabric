@@ -74,7 +74,7 @@ public class PigsteelMod implements ModInitializer {
 
 
 	private static ConfiguredFeature<?, ?> PIGSTEEL_ORE_NETHER = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.NETHERRACK, PIGSTEEL_ORE.getDefaultState(), 5)).uniformRange(YOffset.fixed(0), YOffset.getTop()).spreadHorizontally().repeat(15);
-	
+
 	@Override
 	public void onInitialize() {
 
@@ -188,6 +188,7 @@ public class PigsteelMod implements ModInitializer {
 		
 		RegistryKey<ConfiguredFeature<?, ?>> pigsteelOreNether = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier("pigsteel", "pigsteel_ore"));
 		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, pigsteelOreNether.getValue(), PIGSTEEL_ORE_NETHER);
+
 		BiomeModifications.addFeature(BiomeSelectors.foundInTheNether(), GenerationStep.Feature.UNDERGROUND_ORES, pigsteelOreNether);
 
 		System.out.println("Let there be pigsteel!");
