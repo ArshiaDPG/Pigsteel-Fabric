@@ -1,5 +1,5 @@
 {
-    "replace": true,
+    "replace": false,
     "values": [
       "pigsteel:pigsteel_ingot",
       "minecraft:iron_ingot"

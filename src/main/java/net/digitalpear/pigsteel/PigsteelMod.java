@@ -17,11 +17,13 @@ import net.fabricmc.fabric.api.biome.v1.BiomeModifications; //DO NOT DELETE
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors; //DO NOT DELETE
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.tag.TagRegistry;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.tag.Tag;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
@@ -33,7 +35,9 @@ import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.OreFeatureConfig;
 
 public class PigsteelMod implements ModInitializer {
+	public String MOD_ID = "pigsteel";
 
+	public static final Tag<Item> IRON_INGOTS = TagRegistry.item(new Identifier("c", "iron_ingots"));
 
     public static final Block PIGSTEEL_BLOCK = new PigsteelBlock(FabricBlockSettings.copy(Blocks.IRON_BLOCK));
 	public static final Block WAXED_PIGSTEEL_BLOCK = new WaxedPigsteelBlock(FabricBlockSettings.copy(Blocks.IRON_BLOCK));
@@ -73,12 +77,10 @@ public class PigsteelMod implements ModInitializer {
 	public static final Block DEEPSLATE_PIGSTEEL_ORE = new PigsteelOre(FabricBlockSettings.copy(Blocks.DEEPSLATE_IRON_ORE));
 
 
-	private static ConfiguredFeature<?, ?> PIGSTEEL_ORE_NETHER = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.NETHERRACK, PIGSTEEL_ORE.getDefaultState(), 5)).uniformRange(YOffset.fixed(0), YOffset.getTop()).spreadHorizontally().repeat(15);
+	private static ConfiguredFeature<?, ?> PIGSTEEL_ORE_NETHER = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.NETHERRACK, PIGSTEEL_ORE.getDefaultState(), 10)).uniformRange(YOffset.fixed(0), YOffset.getTop()).spreadHorizontally().repeat(20);
 
 	@Override
 	public void onInitialize() {
-
-		String MOD_ID = "pigsteel";
 
 		//Pigsteel Blocks
 		Registry.register(Registry.BLOCK, new Identifier(MOD_ID, "pigsteel_block"), PIGSTEEL_BLOCK);
@@ -182,11 +184,12 @@ public class PigsteelMod implements ModInitializer {
 		Registry.register(Registry.BLOCK, new Identifier(MOD_ID, "deepslate_pigsteel_ore"), DEEPSLATE_PIGSTEEL_ORE);
 		Registry.register(Registry.ITEM, new Identifier(MOD_ID, "deepslate_pigsteel_ore"), new BlockItem(DEEPSLATE_PIGSTEEL_ORE, new FabricItemSettings().group(ItemGroup.BUILDING_BLOCKS)));
 
+
 		//Items
 		Registry.register(Registry.ITEM, new Identifier(MOD_ID, "pigsteel_ingot"), new Item(new FabricItemSettings().group(ItemGroup.MISC)));
 		Registry.register(Registry.ITEM, new Identifier(MOD_ID, "pigsteel_nugget"), new Item(new FabricItemSettings().group(ItemGroup.MISC)));
 		
-		RegistryKey<ConfiguredFeature<?, ?>> pigsteelOreNether = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier("pigsteel", "pigsteel_ore"));
+		RegistryKey<ConfiguredFeature<?, ?>> pigsteelOreNether = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MOD_ID, "ore_pigsteel"));
 		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, pigsteelOreNether.getValue(), PIGSTEEL_ORE_NETHER);
 
 		BiomeModifications.addFeature(BiomeSelectors.foundInTheNether(), GenerationStep.Feature.UNDERGROUND_ORES, pigsteelOreNether);
