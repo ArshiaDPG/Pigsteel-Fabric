@@ -1,6 +1,7 @@
 package net.digitalpear.pigsteel.specialblocks;
 
 import net.digitalpear.pigsteel.PigsteelMod;
+import net.digitalpear.pigsteel.registering.PigsteelBlocks;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -25,7 +26,7 @@ public class ZombifiedCutPigsteel extends Block{
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit){
         if (player.getStackInHand(hand).getItem() == Items.HONEYCOMB) {
             player.swingHand(hand);
-            world.setBlockState(pos, PigsteelMod.WAXED_ZOMBIFIED_CUT_PIGSTEEL.getDefaultState());
+            world.setBlockState(pos, PigsteelBlocks.WAXED_ZOMBIFIED_CUT_PIGSTEEL.getDefaultState());
             world.playSound((PlayerEntity)null, pos, SoundEvents.ITEM_HONEYCOMB_WAX_ON, SoundCategory.BLOCKS, 1.0F, 1.0F + world.random.nextFloat() * 0.4F);
         }
         return ActionResult.PASS;

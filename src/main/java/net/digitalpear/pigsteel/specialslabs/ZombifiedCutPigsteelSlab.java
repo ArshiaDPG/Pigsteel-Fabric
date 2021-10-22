@@ -1,6 +1,7 @@
 package net.digitalpear.pigsteel.specialslabs;
 
 import net.digitalpear.pigsteel.PigsteelMod;
+import net.digitalpear.pigsteel.registering.PigsteelBlocks;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -30,7 +31,7 @@ public class ZombifiedCutPigsteelSlab extends SlabBlock{
             Boolean watered = state.get(Properties.WATERLOGGED);
 
             player.swingHand(hand);
-            world.setBlockState(pos, PigsteelMod.WAXED_ZOMBIFIED_CUT_PIGSTEEL_SLAB.getDefaultState().with(Properties.WATERLOGGED, watered).with(Properties.SLAB_TYPE, half));
+            world.setBlockState(pos, PigsteelBlocks.WAXED_ZOMBIFIED_CUT_PIGSTEEL_SLAB.getDefaultState().with(Properties.WATERLOGGED, watered).with(Properties.SLAB_TYPE, half));
             world.playSound((PlayerEntity)null, pos, SoundEvents.ITEM_HONEYCOMB_WAX_ON, SoundCategory.BLOCKS, 1.0F, 0.8F + world.random.nextFloat() * 0.4F);
         }
         return ActionResult.PASS;

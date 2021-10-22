@@ -1,6 +1,7 @@
 package net.digitalpear.pigsteel.specialslabs.waxed;
 
 import net.digitalpear.pigsteel.PigsteelMod;
+import net.digitalpear.pigsteel.registering.PigsteelBlocks;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -31,7 +32,7 @@ public class WaxedCorruptedCutPigsteelSlab extends SlabBlock{
             Boolean watered = state.get(Properties.WATERLOGGED);
 
             player.swingHand(hand);
-            world.setBlockState(pos, PigsteelMod.CORRUPTED_CUT_PIGSTEEL_SLAB.getDefaultState().with(Properties.WATERLOGGED, watered).with(Properties.SLAB_TYPE, half));
+            world.setBlockState(pos, PigsteelBlocks.CORRUPTED_CUT_PIGSTEEL_SLAB.getDefaultState().with(Properties.WATERLOGGED, watered).with(Properties.SLAB_TYPE, half));
             world.playSound((PlayerEntity)null, pos, SoundEvents.ITEM_AXE_WAX_OFF, SoundCategory.BLOCKS, 1.0F, 0.8F + world.random.nextFloat() * 0.4F);
             if (player != null && !player.isCreative()) {
                 player.getMainHandStack().damage(1, world.random, (ServerPlayerEntity) player);
