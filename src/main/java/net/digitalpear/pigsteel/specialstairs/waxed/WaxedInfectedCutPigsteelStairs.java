@@ -1,7 +1,6 @@
 package net.digitalpear.pigsteel.specialstairs.waxed;
 
 import net.digitalpear.pigsteel.PigsteelMod;
-import net.digitalpear.pigsteel.registering.PigsteelBlocks;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.StairsBlock;
 import net.minecraft.block.enums.BlockHalf;
@@ -19,6 +18,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 
+@SuppressWarnings("unused")
 public class WaxedInfectedCutPigsteelStairs extends StairsBlock{
 
     public WaxedInfectedCutPigsteelStairs(BlockState baseBlockState, Settings settings)
@@ -35,8 +35,8 @@ public class WaxedInfectedCutPigsteelStairs extends StairsBlock{
             BlockHalf half = state.get(Properties.BLOCK_HALF);
 
             player.swingHand(hand);
-            world.setBlockState(pos, PigsteelBlocks.INFECTED_CUT_PIGSTEEL_STAIRS.getDefaultState().with(Properties.HORIZONTAL_FACING, direction).with(Properties.WATERLOGGED, watered).with(Properties.STAIR_SHAPE, shape).with(Properties.BLOCK_HALF, half));
-            world.playSound((PlayerEntity)null, pos, SoundEvents.ITEM_AXE_WAX_OFF, SoundCategory.BLOCKS, 1.0F, 0.8F + world.random.nextFloat() * 0.4F);
+            world.setBlockState(pos, PigsteelMod.INFECTED_CUT_PIGSTEEL_STAIRS.getDefaultState().with(Properties.HORIZONTAL_FACING, direction).with(Properties.WATERLOGGED, watered).with(Properties.STAIR_SHAPE, shape).with(Properties.BLOCK_HALF, half));
+            world.playSound(null, pos, SoundEvents.ITEM_AXE_WAX_OFF, SoundCategory.BLOCKS, 1.0F, 0.8F + world.random.nextFloat() * 0.4F);
             if (player != null && !player.isCreative()) {
                 player.getMainHandStack().damage(1, world.random, (ServerPlayerEntity) player);
             }

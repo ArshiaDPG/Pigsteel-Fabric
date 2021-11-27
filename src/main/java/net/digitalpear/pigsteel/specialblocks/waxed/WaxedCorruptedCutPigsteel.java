@@ -1,7 +1,6 @@
 package net.digitalpear.pigsteel.specialblocks.waxed;
 
 import net.digitalpear.pigsteel.PigsteelMod;
-import net.digitalpear.pigsteel.registering.PigsteelBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -24,7 +23,7 @@ public class WaxedCorruptedCutPigsteel extends Block {
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit){
         if (player.getMainHandStack().getItem() instanceof AxeItem) {
             player.swingHand(hand);
-            world.setBlockState(pos, PigsteelBlocks.CORRUPTED_CUT_PIGSTEEL.getDefaultState());
+            world.setBlockState(pos, PigsteelMod.CORRUPTED_CUT_PIGSTEEL.getDefaultState());
             world.playSound((PlayerEntity)null, pos, SoundEvents.ITEM_AXE_WAX_OFF, SoundCategory.BLOCKS, 1.0F, 1.0F + world.random.nextFloat() * 0.4F);
             if (player != null && !player.isCreative()) {
                 player.getMainHandStack().damage(1, world.random, (ServerPlayerEntity) player);
