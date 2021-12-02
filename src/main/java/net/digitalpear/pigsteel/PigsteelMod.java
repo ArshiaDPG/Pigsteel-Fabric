@@ -23,44 +23,37 @@ import net.digitalpear.pigsteel.specialstairs.waxed.WaxedCutPigsteelStairs;
 import net.digitalpear.pigsteel.specialstairs.waxed.WaxedInfectedCutPigsteelStairs;
 import net.digitalpear.pigsteel.specialstairs.waxed.WaxedZombifiedCutPigsteelStairs;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
-import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
-import net.minecraft.util.registry.RegistryKey;
-import net.minecraft.world.gen.GenerationStep;
-import net.minecraft.world.gen.YOffset;
-import net.minecraft.world.gen.feature.ConfiguredFeature;
-import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.OreFeatureConfig;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 
-@SuppressWarnings({"deprecation", "unused"})
+@SuppressWarnings({"unused"})
 public class PigsteelMod implements ModInitializer {
 	public static final String MOD_ID = "pigsteel";
+	public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
 
 	//Ores
 	public static final Block PIGSTEEL_ORE = new PigsteelOre(FabricBlockSettings.copy(Blocks.NETHER_GOLD_ORE));
 	public static final Block STONE_PIGSTEEL_ORE = new PigsteelOre(FabricBlockSettings.copy(Blocks.IRON_ORE));
 	public static final Block DEEPSLATE_PIGSTEEL_ORE = new PigsteelOre(FabricBlockSettings.copy(Blocks.DEEPSLATE_IRON_ORE));
-
-
 	public static final Block PIGSTEEL_BLOCK = new PigsteelBlock(FabricBlockSettings.copy(Blocks.IRON_BLOCK));
 	public static final Block WAXED_PIGSTEEL_BLOCK = new Block(FabricBlockSettings.copy(Blocks.IRON_BLOCK));
 
 	//Cut Blocks
 	public static final Block CUT_PIGSTEEL = new CutPigsteel(FabricBlockSettings.copy(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.NETHERITE));
-	public static final Block INFECTED_CUT_PIGSTEEL = new InfectedCutPigsteel(FabricBlockSettings.copy(CUT_PIGSTEEL));
-	public static final Block CORRUPTED_CUT_PIGSTEEL = new CorruptedCutPigsteel(FabricBlockSettings.copy(CUT_PIGSTEEL));
-	public static final Block ZOMBIFIED_CUT_PIGSTEEL = new ZombifiedCutPigsteel(FabricBlockSettings.copy(CUT_PIGSTEEL));
+	public static final Block INFECTED_CUT_PIGSTEEL = new InfectedCutPigsteel(FabricBlockSettings.copy(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.NETHERITE));
+	public static final Block CORRUPTED_CUT_PIGSTEEL = new CorruptedCutPigsteel(FabricBlockSettings.copy(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.NETHERITE));
+	public static final Block ZOMBIFIED_CUT_PIGSTEEL = new ZombifiedCutPigsteel(FabricBlockSettings.copy(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.NETHERITE));
 
 	public static final Block WAXED_CUT_PIGSTEEL = new WaxedCutPigsteel(FabricBlockSettings.copy(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.NETHERITE));
 	public static final Block WAXED_INFECTED_CUT_PIGSTEEL = new WaxedInfectedCutPigsteel(FabricBlockSettings.copy(CUT_PIGSTEEL));
@@ -85,32 +78,24 @@ public class PigsteelMod implements ModInitializer {
 	public static final Block WAXED_ZOMBIFIED_CUT_PIGSTEEL_STAIRS = new WaxedZombifiedCutPigsteelStairs(WAXED_ZOMBIFIED_CUT_PIGSTEEL.getDefaultState(),
 			FabricBlockSettings.copy(CUT_PIGSTEEL));
 
-
-
 	public static final Block CUT_PIGSTEEL_SLAB = new CutPigsteelSlab(FabricBlockSettings.copy(CUT_PIGSTEEL));
 	public static final Block INFECTED_CUT_PIGSTEEL_SLAB = new InfectedCutPigsteelSlab(FabricBlockSettings.copy(CUT_PIGSTEEL));
 	public static final Block CORRUPTED_CUT_PIGSTEEL_SLAB = new CorruptedCutPigsteelSlab(FabricBlockSettings.copy(CUT_PIGSTEEL));
 	public static final Block ZOMBIFIED_CUT_PIGSTEEL_SLAB = new ZombifiedCutPigsteelSlab(FabricBlockSettings.copy(CUT_PIGSTEEL));
-
 
 	public static final Block WAXED_CUT_PIGSTEEL_SLAB = new WaxedCutPigsteelSlab(FabricBlockSettings.copy(CUT_PIGSTEEL));
 	public static final Block WAXED_INFECTED_CUT_PIGSTEEL_SLAB = new WaxedInfectedCutPigsteelSlab(FabricBlockSettings.copy(CUT_PIGSTEEL));
 	public static final Block WAXED_CORRUPTED_CUT_PIGSTEEL_SLAB = new WaxedCorruptedCutPigsteelSlab(FabricBlockSettings.copy(CUT_PIGSTEEL));
 	public static final Block WAXED_ZOMBIFIED_CUT_PIGSTEEL_SLAB = new WaxedZombifiedCutPigsteelSlab(FabricBlockSettings.copy(CUT_PIGSTEEL));
 
+	//Items
 	public static final Item PIGSTEEL_INGOT = new Item(new FabricItemSettings().group(ItemGroup.MATERIALS));
 	public static final Item PIGSTEEL_NUGGET = new Item(new FabricItemSettings().group(ItemGroup.MATERIALS));
-
-
-
-
-	private static final ConfiguredFeature<?, ?> ORE_PIGSTEEL_NETHER = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.NETHERRACK, PigsteelMod.PIGSTEEL_ORE.getDefaultState(), 7)).uniformRange(YOffset.fixed(0), YOffset.getTop()).spreadHorizontally().repeat(20);
-
 
 	@Override
 	public void onInitialize() {
 
-		Registry.register(Registry.BLOCK, new Identifier(MOD_ID, "pigsteel_ore"), PIGSTEEL_ORE);
+		Registry.register(Registry.BLOCK, new Identifier(MOD_ID, "pigsteel_ore"), CUT_PIGSTEEL);
 		Registry.register(Registry.ITEM, new Identifier(MOD_ID, "pigsteel_ore"),
 				new BlockItem(PIGSTEEL_ORE, new FabricItemSettings().group(ItemGroup.BUILDING_BLOCKS)));
 
@@ -133,7 +118,7 @@ public class PigsteelMod implements ModInitializer {
 				new BlockItem(WAXED_PIGSTEEL_BLOCK, new FabricItemSettings().group(ItemGroup.BUILDING_BLOCKS)));
 
 
-		//Cut Pigsteels
+		//Cut Pigsteel Blocks
 		Registry.register(Registry.BLOCK, new Identifier(MOD_ID, "cut_pigsteel"), CUT_PIGSTEEL);
 		Registry.register(Registry.ITEM, new Identifier(MOD_ID, "cut_pigsteel"),
 				new BlockItem(CUT_PIGSTEEL, new FabricItemSettings().group(ItemGroup.BUILDING_BLOCKS)));
@@ -151,7 +136,7 @@ public class PigsteelMod implements ModInitializer {
 				new BlockItem(ZOMBIFIED_CUT_PIGSTEEL, new FabricItemSettings().group(ItemGroup.BUILDING_BLOCKS)));
 
 
-		//Waxed Cut Pigsteels
+		//Waxed Cut Pigsteel Blocks
 		Registry.register(Registry.BLOCK, new Identifier(MOD_ID, "waxed_cut_pigsteel"), WAXED_CUT_PIGSTEEL);
 		Registry.register(Registry.ITEM, new Identifier(MOD_ID, "waxed_cut_pigsteel"),
 				new BlockItem(WAXED_CUT_PIGSTEEL, new FabricItemSettings().group(ItemGroup.BUILDING_BLOCKS)));
@@ -246,10 +231,7 @@ public class PigsteelMod implements ModInitializer {
 
 
 
-		RegistryKey<ConfiguredFeature<?, ?>> pigsteelOreNether = RegistryKey.of(Registry.CONFIGURED_FEATURE_KEY, new Identifier(MOD_ID, "ore_pigsteel_nether"));
-		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, pigsteelOreNether.getValue(), ORE_PIGSTEEL_NETHER);
-		BiomeModifications.addFeature(BiomeSelectors.foundInTheNether(), GenerationStep.Feature.UNDERGROUND_ORES, pigsteelOreNether);
 
-		System.out.println("Let there be pigsteel!");
+		LOGGER.info("Let there be pigsteel!");
 	}
 }

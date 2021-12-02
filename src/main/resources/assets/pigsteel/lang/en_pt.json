@@ -1,0 +1,43 @@
+{
+    "block.pigsteel.pigsteel_block": "Chunk o' oink steel",
+    "block.pigsteel.waxed_pigsteel_block": "Waxed Chunk o' oink steel",
+
+    "block.pigsteel.cut_pigsteel": "Cut Oink Steel",
+    "block.pigsteel.infected_cut_pigsteel": "Sick Sliced Oink Steel",
+    "block.pigsteel.corrupted_cut_pigsteel": "Coughin' Sliced Oink Steel",
+    "block.pigsteel.zombified_cut_pigsteel": "Dead Man's Sliced Oink Steel",
+
+    "block.pigsteel.cut_pigsteel_stairs": "Stairs o' Sliced Oink Steel",
+    "block.pigsteel.infected_cut_pigsteel_stairs": "Stairs o' Sick Sliced Oink Steel",
+    "block.pigsteel.corrupted_cut_pigsteel_stairs": "Stairs o' Coughin' Sliced Oink Steel",
+    "block.pigsteel.zombified_cut_pigsteel_stairs": "Stairs o' Dead Man's Sliced Oink Steel",
+
+    "block.pigsteel.cut_pigsteel_slab": "Slab o' Sliced Oink Steel",
+    "block.pigsteel.infected_cut_pigsteel_slab": "Slab o' Sick Sliced Oink Steel",
+    "block.pigsteel.corrupted_cut_pigsteel_slab": "Slab o' Coughin' Sliced Oink Steel",
+    "block.pigsteel.zombified_cut_pigsteel_slab": "Slab o' Dead Man's Sliced Oink Steel",
+
+    "block.pigsteel.waxed_cut_pigsteel": "Anti-Moss Spread Bad Metal o' Slicin'",
+    "block.pigsteel.waxed_infected_cut_pigsteel": "Anti-Moss Spread Sick Sliced Bad Metal",
+    "block.pigsteel.waxed_corrupted_cut_pigsteel": "Anti-Moss Spread Coughin' Sliced Bad Metal",
+    "block.pigsteel.waxed_zombified_cut_pigsteel": "Anti-Moss Spread Dead Man's Sliced Bad Metal",
+
+    "block.pigsteel.waxed_cut_pigsteel_stairs": "Anti-Moss Spread Stairs o' Bad Metal o' Slicin'",
+    "block.pigsteel.waxed_infected_cut_pigsteel_stairs": "Anti-Moss Spread Sick Stairs o' Bad Metal o' Slicin'",
+    "block.pigsteel.waxed_corrupted_cut_pigsteel_stairs": "Anti-Moss Spread Coughin' Stairs o' Bad Metal o' Slicin'",
+    "block.pigsteel.waxed_zombified_cut_pigsteel_stairs": "Anti-Moss Spread Dead Man's Stairs o' Bad Metal o' Slicin'",
+
+    "block.pigsteel.waxed_cut_pigsteel_slab": "Anti-Moss Spread Slab o' Bad Metal o' Slicin'",
+    "block.pigsteel.waxed_infected_cut_pigsteel_slab": "Anti-Moss Spread Sick Slab o' Bad Metal o' Slicin'",
+    "block.pigsteel.waxed_corrupted_cut_pigsteel_slab": "Anti-Moss Spread Coughin' Slab o' Bad Metal o' Slicin'",
+    "block.pigsteel.waxed_zombified_cut_pigsteel_slab": "Anti-Moss Spread Dead Man's Slab o' Bad Metal o' Slicin'",
+
+    "block.pigsteel.pigsteel_ore": "Orrre o' oink steel",
+    "block.pigsteel.stone_pigsteel_ore": "Rock orrre o' oink steel",
+    "block.pigsteel.deepslate_pigsteel_ore": "Tough orrre o' oink steel",
+
+
+    "item.pigsteel.pigsteel_ingot": "Bullion o' oink steel",
+    "item.pigsteel.pigsteel_nugget": "Doubloon o' oink steel"
+
+}

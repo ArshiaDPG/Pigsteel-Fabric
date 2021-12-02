@@ -4,7 +4,7 @@
   "version": "${version}",
 
   "name": "Pigsteel Mod",
-  "description": "A mod that adds a nether counterpart to iron.",
+  "description": "Adds a nether counterpart to iron.",
   "authors": [
     "DigitalPear",
     "PeterGamesGR",
@@ -33,7 +33,7 @@
   "depends": {
     "fabricloader": ">=0.11.3",
     "fabric": "*",
-    "minecraft": "1.17.x",
-    "java": ">=16"
+    "minecraft": "1.18.x",
+    "java": ">=17"
   }
 }

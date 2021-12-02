@@ -1,6 +1,5 @@
-package net.digitalpear.pigsteel.specialblocks;
+package net.digitalpear.pigsteel;
 
-import net.digitalpear.pigsteel.PigsteelMod;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -18,33 +17,44 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class CorruptedCutPigsteel extends Block{
-    public CorruptedCutPigsteel(Settings settings) {
-        super(settings.ticksRandomly());
+public class CutPigsteelBlock extends Block {
+
+    private BlockState rustingResult;
+    private BlockState axingResult;
+    private BlockState waxingResult;
+
+
+    public CutPigsteelBlock(Settings settings, BlockState rustingResult, BlockState axingResult, BlockState waxingResult) {
+        super(settings);
+        this.rustingResult = rustingResult;
+        this.axingResult = axingResult;
+        this.waxingResult = waxingResult;
     }
 
     @Override
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (!world.isClient) {
-            if (world.getDimension().isBedWorking()) {
-                world.setBlockState(pos, PigsteelMod.ZOMBIFIED_CUT_PIGSTEEL.getDefaultState());
+            if (this.rustingResult != null) {
+                if (world.getDimension().isBedWorking()) {
+                    world.setBlockState(pos, this.rustingResult);
+                }
             }
         }
     }
-    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit){
-        if (player.getStackInHand(hand).getItem() == Items.HONEYCOMB) {
+
+    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+        if (player.getStackInHand(hand).getItem() == Items.HONEYCOMB && this.waxingResult != null) {
             player.swingHand(hand);
-            world.setBlockState(pos, PigsteelMod.WAXED_CORRUPTED_CUT_PIGSTEEL.getDefaultState());
+            world.setBlockState(pos, this.waxingResult);
             world.playSound((PlayerEntity)null, pos, SoundEvents.ITEM_HONEYCOMB_WAX_ON, SoundCategory.BLOCKS, 1.0F, 1.0F + world.random.nextFloat() * 0.4F);
         }
-        else if (player.getMainHandStack().getItem() instanceof AxeItem) {
+        else if (player.getMainHandStack().getItem() instanceof AxeItem && this.axingResult != null) {
             player.swingHand(hand);
             world.playSound((PlayerEntity)null, pos, SoundEvents.ITEM_AXE_SCRAPE, SoundCategory.BLOCKS, 1.0F, 1.0F + world.random.nextFloat() * 0.4F);
-            world.setBlockState(pos, PigsteelMod.INFECTED_CUT_PIGSTEEL.getDefaultState());
             if (player != null && !player.isCreative()) {
                 player.getMainHandStack().damage(1, world.random, (ServerPlayerEntity) player);
             }
-
+            world.setBlockState(pos, this.axingResult);
         }
         return ActionResult.PASS;
     }
