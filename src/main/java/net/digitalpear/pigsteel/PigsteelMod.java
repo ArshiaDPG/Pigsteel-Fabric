@@ -1,27 +1,11 @@
 package net.digitalpear.pigsteel;
 
 
-import net.digitalpear.pigsteel.specialblocks.*;
-import net.digitalpear.pigsteel.specialblocks.waxed.WaxedCorruptedCutPigsteel;
-import net.digitalpear.pigsteel.specialblocks.waxed.WaxedCutPigsteel;
-import net.digitalpear.pigsteel.specialblocks.waxed.WaxedInfectedCutPigsteel;
-import net.digitalpear.pigsteel.specialblocks.waxed.WaxedZombifiedCutPigsteel;
-import net.digitalpear.pigsteel.specialslabs.CorruptedCutPigsteelSlab;
-import net.digitalpear.pigsteel.specialslabs.CutPigsteelSlab;
-import net.digitalpear.pigsteel.specialslabs.InfectedCutPigsteelSlab;
-import net.digitalpear.pigsteel.specialslabs.ZombifiedCutPigsteelSlab;
-import net.digitalpear.pigsteel.specialslabs.waxed.WaxedCorruptedCutPigsteelSlab;
-import net.digitalpear.pigsteel.specialslabs.waxed.WaxedCutPigsteelSlab;
-import net.digitalpear.pigsteel.specialslabs.waxed.WaxedInfectedCutPigsteelSlab;
-import net.digitalpear.pigsteel.specialslabs.waxed.WaxedZombifiedCutPigsteelSlab;
-import net.digitalpear.pigsteel.specialstairs.CorruptedCutPigsteelStairs;
-import net.digitalpear.pigsteel.specialstairs.CutPigsteelStairs;
-import net.digitalpear.pigsteel.specialstairs.InfectedCutPigsteelStairs;
-import net.digitalpear.pigsteel.specialstairs.ZombifiedCutPigsteelStairs;
-import net.digitalpear.pigsteel.specialstairs.waxed.WaxedCorruptedCutPigsteelStairs;
-import net.digitalpear.pigsteel.specialstairs.waxed.WaxedCutPigsteelStairs;
-import net.digitalpear.pigsteel.specialstairs.waxed.WaxedInfectedCutPigsteelStairs;
-import net.digitalpear.pigsteel.specialstairs.waxed.WaxedZombifiedCutPigsteelStairs;
+import net.digitalpear.pigsteel.blocks.*;
+import net.digitalpear.pigsteel.blocks.cutslabs.CorruptedCutPigsteelSlab;
+import net.digitalpear.pigsteel.blocks.cutslabs.CutPigsteelSlab;
+import net.digitalpear.pigsteel.blocks.cutslabs.InfectedCutPigsteelSlab;
+import net.digitalpear.pigsteel.blocks.cutslabs.ZombifiedCutPigsteelSlab;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
@@ -29,6 +13,7 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.SlabBlock;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -62,43 +47,46 @@ public class PigsteelMod implements ModInitializer {
 	public static final Block WAXED_PIGSTEEL_BLOCK = new Block(FabricBlockSettings.copy(Blocks.IRON_BLOCK));
 
 	//Cut Blocks
-	public static final Block CUT_PIGSTEEL = new CutPigsteel(FabricBlockSettings.copy(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.NETHERITE));
-	public static final Block INFECTED_CUT_PIGSTEEL = new InfectedCutPigsteel(FabricBlockSettings.copy(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.NETHERITE));
-	public static final Block CORRUPTED_CUT_PIGSTEEL = new CorruptedCutPigsteel(FabricBlockSettings.copy(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.NETHERITE));
-	public static final Block ZOMBIFIED_CUT_PIGSTEEL = new ZombifiedCutPigsteel(FabricBlockSettings.copy(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.NETHERITE));
-
-	public static final Block WAXED_CUT_PIGSTEEL = new WaxedCutPigsteel(FabricBlockSettings.copy(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.NETHERITE));
-	public static final Block WAXED_INFECTED_CUT_PIGSTEEL = new WaxedInfectedCutPigsteel(FabricBlockSettings.copy(CUT_PIGSTEEL));
-	public static final Block WAXED_CORRUPTED_CUT_PIGSTEEL = new WaxedCorruptedCutPigsteel(FabricBlockSettings.copy(CUT_PIGSTEEL));
-	public static final Block WAXED_ZOMBIFIED_CUT_PIGSTEEL = new WaxedZombifiedCutPigsteel(FabricBlockSettings.copy(CUT_PIGSTEEL));
+	public static final Block ZOMBIFIED_CUT_PIGSTEEL = new Block(FabricBlockSettings.copy(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.NETHERITE));
+	public static final Block CORRUPTED_CUT_PIGSTEEL = new CutPigsteelBlocks(ZOMBIFIED_CUT_PIGSTEEL.getDefaultState(), FabricBlockSettings.copy(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.NETHERITE));
+	public static final Block INFECTED_CUT_PIGSTEEL = new CutPigsteelBlocks(CORRUPTED_CUT_PIGSTEEL.getDefaultState(), FabricBlockSettings.copy(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.NETHERITE));
+	public static final Block CUT_PIGSTEEL = new CutPigsteelBlocks(INFECTED_CUT_PIGSTEEL.getDefaultState(), FabricBlockSettings.copy(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.NETHERITE));
 
 
-	public static final Block CUT_PIGSTEEL_STAIRS = new CutPigsteelStairs(CUT_PIGSTEEL.getDefaultState(), FabricBlockSettings.copy(CUT_PIGSTEEL));
-	public static final Block INFECTED_CUT_PIGSTEEL_STAIRS = new InfectedCutPigsteelStairs(INFECTED_CUT_PIGSTEEL.getDefaultState(),
+	public static final Block WAXED_CUT_PIGSTEEL = new Block(FabricBlockSettings.copy(CUT_PIGSTEEL));
+	public static final Block WAXED_INFECTED_CUT_PIGSTEEL = new Block(FabricBlockSettings.copy(CUT_PIGSTEEL));
+	public static final Block WAXED_CORRUPTED_CUT_PIGSTEEL = new Block(FabricBlockSettings.copy(CUT_PIGSTEEL));
+	public static final Block WAXED_ZOMBIFIED_CUT_PIGSTEEL = new Block(FabricBlockSettings.copy(CUT_PIGSTEEL));
+
+
+	public static final Block ZOMBIFIED_CUT_PIGSTEEL_STAIRS = new PigsteelStairs(INFECTED_CUT_PIGSTEEL.getDefaultState(),
 			FabricBlockSettings.copy(CUT_PIGSTEEL));
-	public static final Block CORRUPTED_CUT_PIGSTEEL_STAIRS = new CorruptedCutPigsteelStairs(CORRUPTED_CUT_PIGSTEEL.getDefaultState(),
+	public static final Block CORRUPTED_CUT_PIGSTEEL_STAIRS = new CutPigsteelStairsBlock(ZOMBIFIED_CUT_PIGSTEEL_STAIRS.getDefaultState(),CORRUPTED_CUT_PIGSTEEL.getDefaultState(),
 			FabricBlockSettings.copy(CUT_PIGSTEEL));
-	public static final Block ZOMBIFIED_CUT_PIGSTEEL_STAIRS = new ZombifiedCutPigsteelStairs(INFECTED_CUT_PIGSTEEL.getDefaultState(),
+	public static final Block INFECTED_CUT_PIGSTEEL_STAIRS = new CutPigsteelStairsBlock(CORRUPTED_CUT_PIGSTEEL_STAIRS.getDefaultState(),INFECTED_CUT_PIGSTEEL.getDefaultState(),
+			FabricBlockSettings.copy(CUT_PIGSTEEL));
+	public static final Block CUT_PIGSTEEL_STAIRS = new CutPigsteelStairsBlock(INFECTED_CUT_PIGSTEEL_STAIRS.getDefaultState(),CUT_PIGSTEEL.getDefaultState(),
 			FabricBlockSettings.copy(CUT_PIGSTEEL));
 
-	public static final Block WAXED_CUT_PIGSTEEL_STAIRS = new WaxedCutPigsteelStairs(WAXED_CUT_PIGSTEEL.getDefaultState(),
+
+	public static final Block WAXED_CUT_PIGSTEEL_STAIRS = new PigsteelStairs(WAXED_CUT_PIGSTEEL.getDefaultState(),
 			FabricBlockSettings.copy(CUT_PIGSTEEL));
-	public static final Block WAXED_INFECTED_CUT_PIGSTEEL_STAIRS = new WaxedInfectedCutPigsteelStairs(WAXED_INFECTED_CUT_PIGSTEEL.getDefaultState(),
+	public static final Block WAXED_INFECTED_CUT_PIGSTEEL_STAIRS = new PigsteelStairs(WAXED_INFECTED_CUT_PIGSTEEL.getDefaultState(),
 			FabricBlockSettings.copy(CUT_PIGSTEEL));
-	public static final Block WAXED_CORRUPTED_CUT_PIGSTEEL_STAIRS = new WaxedCorruptedCutPigsteelStairs(WAXED_CORRUPTED_CUT_PIGSTEEL.getDefaultState(),
+	public static final Block WAXED_CORRUPTED_CUT_PIGSTEEL_STAIRS = new PigsteelStairs(WAXED_CORRUPTED_CUT_PIGSTEEL.getDefaultState(),
 			FabricBlockSettings.copy(CUT_PIGSTEEL));
-	public static final Block WAXED_ZOMBIFIED_CUT_PIGSTEEL_STAIRS = new WaxedZombifiedCutPigsteelStairs(WAXED_ZOMBIFIED_CUT_PIGSTEEL.getDefaultState(),
+	public static final Block WAXED_ZOMBIFIED_CUT_PIGSTEEL_STAIRS = new PigsteelStairs(WAXED_ZOMBIFIED_CUT_PIGSTEEL.getDefaultState(),
 			FabricBlockSettings.copy(CUT_PIGSTEEL));
 
-	public static final Block CUT_PIGSTEEL_SLAB = new CutPigsteelSlab(FabricBlockSettings.copy(CUT_PIGSTEEL));
-	public static final Block INFECTED_CUT_PIGSTEEL_SLAB = new InfectedCutPigsteelSlab(FabricBlockSettings.copy(CUT_PIGSTEEL));
-	public static final Block CORRUPTED_CUT_PIGSTEEL_SLAB = new CorruptedCutPigsteelSlab(FabricBlockSettings.copy(CUT_PIGSTEEL));
-	public static final Block ZOMBIFIED_CUT_PIGSTEEL_SLAB = new ZombifiedCutPigsteelSlab(FabricBlockSettings.copy(CUT_PIGSTEEL));
+	public static final Block ZOMBIFIED_CUT_PIGSTEEL_SLAB = new SlabBlock(FabricBlockSettings.copy(CUT_PIGSTEEL));
+	public static final Block CORRUPTED_CUT_PIGSTEEL_SLAB = new CutPigsteelSlabBlock(ZOMBIFIED_CUT_PIGSTEEL_SLAB.getDefaultState(), FabricBlockSettings.copy(CUT_PIGSTEEL));
+	public static final Block INFECTED_CUT_PIGSTEEL_SLAB = new CutPigsteelSlabBlock(CORRUPTED_CUT_PIGSTEEL_SLAB.getDefaultState(), FabricBlockSettings.copy(CUT_PIGSTEEL));
+	public static final Block CUT_PIGSTEEL_SLAB = new CutPigsteelSlabBlock(INFECTED_CUT_PIGSTEEL_SLAB.getDefaultState(), FabricBlockSettings.copy(CUT_PIGSTEEL));
 
-	public static final Block WAXED_CUT_PIGSTEEL_SLAB = new WaxedCutPigsteelSlab(FabricBlockSettings.copy(CUT_PIGSTEEL));
-	public static final Block WAXED_INFECTED_CUT_PIGSTEEL_SLAB = new WaxedInfectedCutPigsteelSlab(FabricBlockSettings.copy(CUT_PIGSTEEL));
-	public static final Block WAXED_CORRUPTED_CUT_PIGSTEEL_SLAB = new WaxedCorruptedCutPigsteelSlab(FabricBlockSettings.copy(CUT_PIGSTEEL));
-	public static final Block WAXED_ZOMBIFIED_CUT_PIGSTEEL_SLAB = new WaxedZombifiedCutPigsteelSlab(FabricBlockSettings.copy(CUT_PIGSTEEL));
+	public static final Block WAXED_CUT_PIGSTEEL_SLAB = new SlabBlock(FabricBlockSettings.copy(CUT_PIGSTEEL));
+	public static final Block WAXED_INFECTED_CUT_PIGSTEEL_SLAB = new SlabBlock(FabricBlockSettings.copy(CUT_PIGSTEEL));
+	public static final Block WAXED_CORRUPTED_CUT_PIGSTEEL_SLAB = new SlabBlock(FabricBlockSettings.copy(CUT_PIGSTEEL));
+	public static final Block WAXED_ZOMBIFIED_CUT_PIGSTEEL_SLAB = new SlabBlock(FabricBlockSettings.copy(CUT_PIGSTEEL));
 
 	//Items
 	public static final Item PIGSTEEL_INGOT = new Item(new FabricItemSettings().group(ItemGroup.MATERIALS));

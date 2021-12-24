@@ -4,6 +4,8 @@
   "package": "net.digitalpear.pigsteel.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
+  "AxeItemMixin",
+  "HoneycombItemMixin"
   ],
   "client": [
     
