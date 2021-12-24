@@ -2,10 +2,6 @@ package net.digitalpear.pigsteel;
 
 
 import net.digitalpear.pigsteel.blocks.*;
-import net.digitalpear.pigsteel.blocks.cutslabs.CorruptedCutPigsteelSlab;
-import net.digitalpear.pigsteel.blocks.cutslabs.CutPigsteelSlab;
-import net.digitalpear.pigsteel.blocks.cutslabs.InfectedCutPigsteelSlab;
-import net.digitalpear.pigsteel.blocks.cutslabs.ZombifiedCutPigsteelSlab;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
@@ -59,7 +55,7 @@ public class PigsteelMod implements ModInitializer {
 	public static final Block WAXED_ZOMBIFIED_CUT_PIGSTEEL = new Block(FabricBlockSettings.copy(CUT_PIGSTEEL));
 
 
-	public static final Block ZOMBIFIED_CUT_PIGSTEEL_STAIRS = new PigsteelStairs(INFECTED_CUT_PIGSTEEL.getDefaultState(),
+	public static final Block ZOMBIFIED_CUT_PIGSTEEL_STAIRS = new PigsteelStairs(ZOMBIFIED_CUT_PIGSTEEL.getDefaultState(),
 			FabricBlockSettings.copy(CUT_PIGSTEEL));
 	public static final Block CORRUPTED_CUT_PIGSTEEL_STAIRS = new CutPigsteelStairsBlock(ZOMBIFIED_CUT_PIGSTEEL_STAIRS.getDefaultState(),CORRUPTED_CUT_PIGSTEEL.getDefaultState(),
 			FabricBlockSettings.copy(CUT_PIGSTEEL));
