@@ -15,6 +15,8 @@ public class PigsteelBlock extends Block{
     public PigsteelBlock(Settings settings) {
         super(FabricBlockSettings.copy(Blocks.IRON_BLOCK));
     }
+
+
     public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
         if (world.getDimension().isBedWorking()) {
            world.setBlockState(pos, Blocks.IRON_BLOCK.getDefaultState(), 3);

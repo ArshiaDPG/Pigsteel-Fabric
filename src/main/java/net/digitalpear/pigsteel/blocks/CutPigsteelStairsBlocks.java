@@ -16,19 +16,20 @@ import net.minecraft.util.math.Direction;
 
 import java.util.Random;
 
-public class CutPigsteelStairsBlock extends StairsBlock {
+public class CutPigsteelStairsBlocks extends StairsBlock {
     private final BlockState resultBlock;
 
-    public CutPigsteelStairsBlock(BlockState resultBlock, BlockState baseBlockState, Settings settings) {
+    public CutPigsteelStairsBlocks(BlockState resultBlock, BlockState baseBlockState, Settings settings) {
         super(baseBlockState, settings.ticksRandomly());
         this.resultBlock = resultBlock;
     }
 
+    //Rusting
     @Override
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (!world.isClient) {
             if (world.getDimension().isBedWorking()) {
-                if (random.nextInt(10) > 6) {
+                if (random.nextInt(10) > PigsteelMod.pigsteelRustingChance) {
                     Direction direction = state.get(Properties.HORIZONTAL_FACING);
                     Boolean watered = state.get(Properties.WATERLOGGED);
                     StairShape shape = state.get(Properties.STAIR_SHAPE);
@@ -39,5 +40,4 @@ public class CutPigsteelStairsBlock extends StairsBlock {
             }
         }
     }
-
 }
