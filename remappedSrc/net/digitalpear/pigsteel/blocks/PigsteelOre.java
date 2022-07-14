@@ -1,4 +1,4 @@
-package net.digitalpear.pigsteel.blocks;
+package net.digitalpear.pigsteel.common.blocks;
 
 import java.util.Random;
 
