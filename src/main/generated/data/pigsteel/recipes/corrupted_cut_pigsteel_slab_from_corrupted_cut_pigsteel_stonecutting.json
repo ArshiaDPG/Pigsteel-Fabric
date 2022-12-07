@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 2,
+  "group": "pigsteel_slabs",
+  "ingredient": {
+    "item": "pigsteel:corrupted_cut_pigsteel"
+  },
+  "result": "pigsteel:corrupted_cut_pigsteel_slab"
+}

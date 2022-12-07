@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "pigsteel_lantern",
+  "key": {
+    "#": {
+      "item": "pigsteel:pigsteel_nugget"
+    },
+    "X": {
+      "item": "minecraft:soul_torch"
+    }
+  },
+  "pattern": [
+    "###",
+    "#X#",
+    "###"
+  ],
+  "result": {
+    "item": "pigsteel:pigsteel_soul_lantern"
+  }
+}

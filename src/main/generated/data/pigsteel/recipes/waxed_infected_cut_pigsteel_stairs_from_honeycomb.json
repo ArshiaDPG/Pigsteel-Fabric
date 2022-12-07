@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "waxed_infected_cut_pigsteel_stairs",
+  "ingredients": [
+    {
+      "item": "pigsteel:infected_cut_pigsteel_stairs"
+    },
+    {
+      "item": "minecraft:honeycomb"
+    }
+  ],
+  "result": {
+    "item": "pigsteel:waxed_infected_cut_pigsteel_stairs"
+  }
+}

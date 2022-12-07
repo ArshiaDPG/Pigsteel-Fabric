@@ -8,6 +8,7 @@
   "authors": [
     "DigitalPear",
     "PeterGamesGR",
+    "Tamakii",
     "Uraneptus"
   ],
   "contact": {
@@ -26,6 +27,9 @@
     ],
     "client":[
       "net.digitalpear.pigsteel.client.PigsteelModClient"
+    ],
+    "fabric-datagen": [
+      "net.digitalpear.pigsteel.datagen.PigsteelModDatagens"
     ]
   },
      "mixins": [

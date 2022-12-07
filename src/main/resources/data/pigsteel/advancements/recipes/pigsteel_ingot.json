@@ -18,7 +18,7 @@
         "items": [
           {
             "items": [
-                "pigsteel:pigsteel_nugget"
+                "pigsteel:pigsteel_ingot"
             ]
           }
         ]
@@ -27,7 +27,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "pigsteel:pigsteel_nugget"
+        "recipe": "pigsteel:pigsteel_ingot"
       }
     }
   },

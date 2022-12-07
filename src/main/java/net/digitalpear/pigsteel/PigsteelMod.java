@@ -3,6 +3,8 @@ package net.digitalpear.pigsteel;
 
 import net.digitalpear.pigsteel.register.*;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
+import net.minecraft.data.server.BarterLootTableGenerator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -12,11 +14,14 @@ public class PigsteelMod implements ModInitializer {
 	public static final String MOD_ID = "pigsteel";
 	public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
 
+
 	@Override
 	public void onInitialize() {
 		PigsteelBlocks.init();
 		PigsteelItems.init();
-		PigsteelFeatures.init();
+		PigsteelConfiguredFeatures.init();
+		PigsteelPlacedFeatures.init();
+
 
 
 		LOGGER.info("Let there be pigsteel!");

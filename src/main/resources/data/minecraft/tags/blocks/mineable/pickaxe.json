@@ -2,6 +2,8 @@
   "replace": false,
   "values": [
     "#pigsteel:pigsteel_blocks",
-    "#pigsteel:pigsteel_ores"
+    "#pigsteel:pigsteel_ores",
+    "pigsteel:pigsteel_lantern",
+    "pigsteel:pigsteel_soul_lantern"
   ]
 }

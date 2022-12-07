@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:zombified_cut_pigsteel_stairs_from_zombified_cut_pigsteel_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_zombified_cut_pigsteel": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "pigsteel:zombified_cut_pigsteel"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_zombified_cut_pigsteel",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:zombified_cut_pigsteel_stairs_from_zombified_cut_pigsteel_stonecutting"
+    ]
+  }
+}
