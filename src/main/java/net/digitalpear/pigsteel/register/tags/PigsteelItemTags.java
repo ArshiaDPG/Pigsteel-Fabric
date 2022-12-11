@@ -1,11 +1,10 @@
 package net.digitalpear.pigsteel.register.tags;
 
 import net.digitalpear.pigsteel.PigsteelMod;
-import net.minecraft.block.Block;
 import net.minecraft.item.Item;
-import net.minecraft.tag.TagKey;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 
 public class PigsteelItemTags {
     public static final TagKey<Item> IRONS = of("irons");
@@ -15,6 +14,6 @@ public class PigsteelItemTags {
 
 
     private static TagKey<Item> of(String id) {
-        return TagKey.of(Registry.ITEM_KEY, new Identifier(PigsteelMod.MOD_ID, id));
+        return TagKey.of(Registries.ITEM.getKey(), new Identifier(PigsteelMod.MOD_ID, id));
     }
 }
