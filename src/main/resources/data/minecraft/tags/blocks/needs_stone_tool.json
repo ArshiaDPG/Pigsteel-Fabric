@@ -1,8 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "#pigsteel:pigsteel_blocks",
-	"pigsteel:stone_pigsteel_ore",
-    "pigsteel:deepslate_pigsteel_ore"
-  ]
-}

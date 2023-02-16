@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "group": "pigsteel_lantern",
   "key": {
     "#": {
@@ -16,5 +17,6 @@
   ],
   "result": {
     "item": "pigsteel:pigsteel_lantern"
-  }
+  },
+  "show_notification": true
 }

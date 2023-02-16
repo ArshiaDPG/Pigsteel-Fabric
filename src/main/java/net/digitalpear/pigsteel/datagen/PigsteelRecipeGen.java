@@ -1,16 +1,20 @@
 package net.digitalpear.pigsteel.datagen;
 
+import net.digitalpear.pigsteel.PigsteelMod;
 import net.digitalpear.pigsteel.register.PigsteelBlocks;
 import net.digitalpear.pigsteel.register.PigsteelItems;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.block.Block;
 import net.minecraft.data.server.recipe.*;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.book.RecipeCategory;
+import net.minecraft.registry.Registries;
+import net.minecraft.util.Identifier;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Consumer;
 
@@ -51,13 +55,24 @@ public class PigsteelRecipeGen extends FabricRecipeProvider {
                 .criterion("has_torch", conditionsFromItem(torch))
                 .offerTo(exporter);
     }
+    public static void offerReversibleCompactingIngotRecipes(Consumer<RecipeJsonProvider> exporter, RecipeCategory reverseCategory, ItemConvertible baseItem, RecipeCategory compactingCategory, ItemConvertible compactItem, @Nullable String compactingGroup, @Nullable String reverseGroup) {
+        ShapelessRecipeJsonBuilder.create(reverseCategory, baseItem, 9).input(compactItem).group(reverseGroup).criterion(hasItem(compactItem),
+                conditionsFromItem(compactItem)).offerTo(exporter, new Identifier(PigsteelMod.MOD_ID, Registries.ITEM.getId(baseItem.asItem()).getPath()));
+
+        ShapedRecipeJsonBuilder.create(compactingCategory, compactItem)
+                .input('#', baseItem)
+                .pattern("###")
+                .pattern("###")
+                .pattern("###").group(compactingGroup)
+                .criterion(hasItem(baseItem), conditionsFromItem(baseItem)).offerTo(exporter, new Identifier(PigsteelMod.MOD_ID, Registries.ITEM.getId(compactItem.asItem()).getPath() +"_from_" + Registries.ITEM.getId(baseItem.asItem()).getPath()));
+    }
 
     @Override
     public void generate(Consumer<RecipeJsonProvider> exporter) {
         offerWaxingRecipes(exporter);
 
         RecipeProvider.offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, PigsteelItems.PIGSTEEL_INGOT, RecipeCategory.BUILDING_BLOCKS, PigsteelBlocks.PIGSTEEL_BLOCK);
-        RecipeProvider.offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, PigsteelItems.PIGSTEEL_NUGGET, RecipeCategory.MISC, PigsteelItems.PIGSTEEL_INGOT);
+        offerReversibleCompactingIngotRecipes(exporter, RecipeCategory.MISC, PigsteelItems.PIGSTEEL_NUGGET, RecipeCategory.MISC, PigsteelItems.PIGSTEEL_INGOT, null, null);
 
 
         RecipeProvider.offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, PigsteelBlocks.CUT_PIGSTEEL, PigsteelBlocks.PIGSTEEL_BLOCK, 4);

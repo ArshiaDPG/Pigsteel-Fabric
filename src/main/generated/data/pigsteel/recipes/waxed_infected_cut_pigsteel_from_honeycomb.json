@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "category": "building",
   "group": "waxed_infected_cut_pigsteel",
   "ingredients": [
     {

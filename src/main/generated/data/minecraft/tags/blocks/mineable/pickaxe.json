@@ -1,0 +1,25 @@
+{
+  "replace": false,
+  "values": [
+    "#pigsteel:pigsteel_ores",
+    "#pigsteel:pigsteel_blocks",
+    "pigsteel:cut_pigsteel_stairs",
+    "pigsteel:waxed_cut_pigsteel_stairs",
+    "pigsteel:infected_cut_pigsteel_stairs",
+    "pigsteel:waxed_infected_cut_pigsteel_stairs",
+    "pigsteel:corrupted_cut_pigsteel_stairs",
+    "pigsteel:waxed_corrupted_cut_pigsteel_stairs",
+    "pigsteel:zombified_cut_pigsteel_stairs",
+    "pigsteel:waxed_zombified_cut_pigsteel_stairs",
+    "pigsteel:cut_pigsteel_slab",
+    "pigsteel:waxed_cut_pigsteel_slab",
+    "pigsteel:infected_cut_pigsteel_slab",
+    "pigsteel:waxed_infected_cut_pigsteel_slab",
+    "pigsteel:corrupted_cut_pigsteel_slab",
+    "pigsteel:waxed_corrupted_cut_pigsteel_slab",
+    "pigsteel:zombified_cut_pigsteel_slab",
+    "pigsteel:waxed_zombified_cut_pigsteel_slab",
+    "pigsteel:pigsteel_lantern",
+    "pigsteel:pigsteel_soul_lantern"
+  ]
+}

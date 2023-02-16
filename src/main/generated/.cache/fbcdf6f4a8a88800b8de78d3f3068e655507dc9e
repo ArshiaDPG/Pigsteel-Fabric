@@ -1,0 +1,6 @@
+// 23w07a	2023-02-15T15:48:03.7011019	Pigsteel Mod/Tags for minecraft:block
+99e0a9be3a39446ef97e8635a9b7f7f32ccf71b6 data\pigsteel\tags\blocks\pigsteel_ores.json
+2f0b18f477209bf8f18677f9777a7e61646f738f data\minecraft\tags\blocks\needs_stone_tool.json
+2ae0ddcbefe99123aa92eed7757100bb80f12563 data\minecraft\tags\blocks\mineable\pickaxe.json
+9ed4263f201a791a4540e3a59eba16f803080317 data\pigsteel\tags\blocks\pigsteel_blocks.json
+cf3c2b2e35c770b3303be225447d8234b5cff518 data\minecraft\tags\blocks\beacon_base_blocks.json
