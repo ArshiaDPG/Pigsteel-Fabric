@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class PigsteelLanguageGen extends FabricLanguageProvider {
-    protected PigsteelLanguageGen(FabricDataOutput dataOutput) {
+    public PigsteelLanguageGen(FabricDataOutput dataOutput) {
         super(dataOutput);
     }
 

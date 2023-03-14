@@ -10,6 +10,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.util.Identifier;
 
 import java.util.concurrent.CompletableFuture;
@@ -30,7 +31,7 @@ public class PigsteelItemTagGen extends FabricTagProvider<Item> {
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
-        getOrCreateTagBuilder(PigsteelItemTags.IRONS)
+        getOrCreateTagBuilder(PigsteelItemTags.IRON_INGOTS)
                 .add(Items.IRON_INGOT)
                 .add(PigsteelItems.PIGSTEEL_INGOT);
 
@@ -48,5 +49,7 @@ public class PigsteelItemTagGen extends FabricTagProvider<Item> {
                 .add(PigsteelBlocks.DEEPSLATE_PIGSTEEL_ORE.asItem())
                 .addOptional(new Identifier(PigsteelMod.MOD_ID, "blue_pigsteel_ore"))
                 .addOptional(new Identifier(PigsteelMod.MOD_ID, "brimstone_pigsteel_ore"));
+
+        getOrCreateTagBuilder(ItemTags.BEACON_PAYMENT_ITEMS).add(PigsteelItems.PIGSTEEL_INGOT);
     }
 }

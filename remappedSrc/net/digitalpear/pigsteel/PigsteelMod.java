@@ -1,10 +1,9 @@
 package net.digitalpear.pigsteel;
 
 
-import net.digitalpear.pigsteel.register.PigsteelBlocks;
-import net.digitalpear.pigsteel.register.PigsteelItems;
-import net.digitalpear.pigsteel.register.PigsteelPlacedFeatures;
+import net.digitalpear.pigsteel.register.*;
 import net.fabricmc.api.ModInitializer;
+import net.minecraft.item.trim.ArmorTrimMaterials;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -19,8 +18,9 @@ public class PigsteelMod implements ModInitializer {
 	public void onInitialize() {
 		PigsteelBlocks.init();
 		PigsteelItems.init();
+		PigsteelConfiguredFeatures.init();
 		PigsteelPlacedFeatures.init();
-
+		PigsteelData.init();
 
 		LOGGER.info("Let there be pigsteel!");
 	}

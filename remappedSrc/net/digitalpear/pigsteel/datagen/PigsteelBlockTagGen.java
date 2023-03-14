@@ -8,6 +8,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.Block;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.util.Identifier;
 
 import java.util.concurrent.CompletableFuture;
@@ -34,5 +35,40 @@ public class PigsteelBlockTagGen extends FabricTagProvider<Block> {
                 .add(PigsteelBlocks.DEEPSLATE_PIGSTEEL_ORE)
                 .addOptional(new Identifier(PigsteelMod.MOD_ID, "blue_pigsteel_ore"))
                 .addOptional(new Identifier(PigsteelMod.MOD_ID, "brimstone_pigsteel_ore"));
+
+
+        getOrCreateTagBuilder(PigsteelBlockTags.PIGSTEEL_BLOCKS)
+                .add(PigsteelBlocks.PIGSTEEL_BLOCK).add(PigsteelBlocks.WAXED_PIGSTEEL_BLOCK)
+                .add(PigsteelBlocks.CUT_PIGSTEEL).add(PigsteelBlocks.WAXED_CUT_PIGSTEEL)
+                .add(PigsteelBlocks.INFECTED_CUT_PIGSTEEL).add(PigsteelBlocks.WAXED_INFECTED_CUT_PIGSTEEL)
+                .add(PigsteelBlocks.CORRUPTED_CUT_PIGSTEEL).add(PigsteelBlocks.WAXED_CORRUPTED_CUT_PIGSTEEL)
+                .add(PigsteelBlocks.ZOMBIFIED_CUT_PIGSTEEL).add(PigsteelBlocks.WAXED_ZOMBIFIED_CUT_PIGSTEEL);
+
+        getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
+                .forceAddTag(PigsteelBlockTags.PIGSTEEL_ORES)
+                .forceAddTag(PigsteelBlockTags.PIGSTEEL_BLOCKS)
+                .add(PigsteelBlocks.CUT_PIGSTEEL_STAIRS).add(PigsteelBlocks.WAXED_CUT_PIGSTEEL_STAIRS)
+                .add(PigsteelBlocks.INFECTED_CUT_PIGSTEEL_STAIRS).add(PigsteelBlocks.WAXED_INFECTED_CUT_PIGSTEEL_STAIRS)
+                .add(PigsteelBlocks.CORRUPTED_CUT_PIGSTEEL_STAIRS).add(PigsteelBlocks.WAXED_CORRUPTED_CUT_PIGSTEEL_STAIRS)
+                .add(PigsteelBlocks.ZOMBIFIED_CUT_PIGSTEEL_STAIRS).add(PigsteelBlocks.WAXED_ZOMBIFIED_CUT_PIGSTEEL_STAIRS)
+                .add(PigsteelBlocks.CUT_PIGSTEEL_SLAB).add(PigsteelBlocks.WAXED_CUT_PIGSTEEL_SLAB)
+                .add(PigsteelBlocks.INFECTED_CUT_PIGSTEEL_SLAB).add(PigsteelBlocks.WAXED_INFECTED_CUT_PIGSTEEL_SLAB)
+                .add(PigsteelBlocks.CORRUPTED_CUT_PIGSTEEL_SLAB).add(PigsteelBlocks.WAXED_CORRUPTED_CUT_PIGSTEEL_SLAB)
+                .add(PigsteelBlocks.ZOMBIFIED_CUT_PIGSTEEL_SLAB).add(PigsteelBlocks.WAXED_ZOMBIFIED_CUT_PIGSTEEL_SLAB)
+                .add(PigsteelBlocks.PIGSTEEL_LANTERN).add(PigsteelBlocks.PIGSTEEL_SOUL_LANTERN);
+
+
+        getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
+                .forceAddTag(PigsteelBlockTags.PIGSTEEL_BLOCKS)
+                .add(PigsteelBlocks.CUT_PIGSTEEL_STAIRS).add(PigsteelBlocks.WAXED_CUT_PIGSTEEL_STAIRS)
+                .add(PigsteelBlocks.INFECTED_CUT_PIGSTEEL_STAIRS).add(PigsteelBlocks.WAXED_INFECTED_CUT_PIGSTEEL_STAIRS)
+                .add(PigsteelBlocks.CORRUPTED_CUT_PIGSTEEL_STAIRS).add(PigsteelBlocks.WAXED_CORRUPTED_CUT_PIGSTEEL_STAIRS)
+                .add(PigsteelBlocks.ZOMBIFIED_CUT_PIGSTEEL_STAIRS).add(PigsteelBlocks.WAXED_ZOMBIFIED_CUT_PIGSTEEL_STAIRS)
+                .add(PigsteelBlocks.CUT_PIGSTEEL_SLAB).add(PigsteelBlocks.WAXED_CUT_PIGSTEEL_SLAB)
+                .add(PigsteelBlocks.INFECTED_CUT_PIGSTEEL_SLAB).add(PigsteelBlocks.WAXED_INFECTED_CUT_PIGSTEEL_SLAB)
+                .add(PigsteelBlocks.CORRUPTED_CUT_PIGSTEEL_SLAB).add(PigsteelBlocks.WAXED_CORRUPTED_CUT_PIGSTEEL_SLAB)
+                .add(PigsteelBlocks.ZOMBIFIED_CUT_PIGSTEEL_SLAB).add(PigsteelBlocks.WAXED_ZOMBIFIED_CUT_PIGSTEEL_SLAB);
+
+        getOrCreateTagBuilder(BlockTags.BEACON_BASE_BLOCKS).forceAddTag(PigsteelBlockTags.PIGSTEEL_BLOCKS);
     }
 }

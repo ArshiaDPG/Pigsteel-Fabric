@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class PigsteelLanguageGen extends FabricLanguageProvider {
-    protected PigsteelLanguageGen(FabricDataOutput dataOutput) {
+    public PigsteelLanguageGen(FabricDataOutput dataOutput) {
         super(dataOutput);
     }
 
@@ -64,7 +64,8 @@ public class PigsteelLanguageGen extends FabricLanguageProvider {
         translationBuilder.add(PigsteelBlocks.PIGSTEEL_ORE, "Pigsteel Ore");
         translationBuilder.add(PigsteelBlocks.STONE_PIGSTEEL_ORE, "Stone Pigsteel Ore");
         translationBuilder.add(PigsteelBlocks.DEEPSLATE_PIGSTEEL_ORE, "Deepslate Pigsteel Ore");
-
+        translationBuilder.add("block.pigsteel.brimstone_pigsteel_ore", "Brimstone Pigsteel Ore");
+        translationBuilder.add("block.pigsteel.blue_pigsteel_ore", "Blue Pigsteel Ore");
 
         try {
             Path existingFilePath = dataOutput.getModContainer().findPath("assets/" + PigsteelMod.MOD_ID + "/lang/en_us.existing.json").get();

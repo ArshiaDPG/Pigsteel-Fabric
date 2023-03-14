@@ -29,7 +29,7 @@
       "net.digitalpear.pigsteel.client.PigsteelModClient"
     ],
     "fabric-datagen": [
-      "net.digitalpear.pigsteel.datagen.PigsteelModDatagens"
+      "net.digitalpear.pigsteel.PigsteelModDatagens"
     ]
   },
      "mixins": [

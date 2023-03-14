@@ -8,6 +8,7 @@ import net.minecraft.util.Identifier;
 
 public class PigsteelBlockTags {
     public static final TagKey<Block> PIGSTEEL_ORES = of("pigsteel_ores");
+    public static final TagKey<Block> PIGSTEEL_BLOCKS = of("pigsteel_blocks");
 
     private static TagKey<Block> of(String id) {
         return TagKey.of(Registries.BLOCK.getKey(), new Identifier(PigsteelMod.MOD_ID, id));

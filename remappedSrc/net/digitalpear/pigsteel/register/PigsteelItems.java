@@ -100,7 +100,5 @@ public class PigsteelItems {
                     entries.add(new ItemStack(PigsteelBlocks.WAXED_ZOMBIFIED_CUT_PIGSTEEL_SLAB));
                     entries.add(new ItemStack(PigsteelBlocks.WAXED_ZOMBIFIED_CUT_PIGSTEEL_STAIRS));
                 });
-
-
     }
 }

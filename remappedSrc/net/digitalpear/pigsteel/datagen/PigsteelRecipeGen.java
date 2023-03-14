@@ -3,7 +3,6 @@ package net.digitalpear.pigsteel.datagen;
 import net.digitalpear.pigsteel.PigsteelMod;
 import net.digitalpear.pigsteel.register.PigsteelBlocks;
 import net.digitalpear.pigsteel.register.PigsteelItems;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.block.Block;
@@ -17,6 +16,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.function.Consumer;
 
 public class PigsteelRecipeGen extends FabricRecipeProvider {
@@ -71,6 +71,9 @@ public class PigsteelRecipeGen extends FabricRecipeProvider {
     @Override
     public void generate(Consumer<RecipeJsonProvider> exporter) {
         offerWaxingRecipes(exporter);
+        makeSmeltnBlast(exporter, List.of(PigsteelBlocks.PIGSTEEL_ORE, PigsteelBlocks.STONE_PIGSTEEL_ORE, PigsteelBlocks.DEEPSLATE_PIGSTEEL_ORE), RecipeCategory.MISC, PigsteelItems.PIGSTEEL_INGOT, 0.7f, 200, "pigsteel_ingot");
+
+
 
         RecipeProvider.offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, PigsteelItems.PIGSTEEL_INGOT, RecipeCategory.BUILDING_BLOCKS, PigsteelBlocks.PIGSTEEL_BLOCK);
         offerReversibleCompactingIngotRecipes(exporter, RecipeCategory.MISC, PigsteelItems.PIGSTEEL_NUGGET, RecipeCategory.MISC, PigsteelItems.PIGSTEEL_INGOT, null, null);
@@ -86,5 +89,11 @@ public class PigsteelRecipeGen extends FabricRecipeProvider {
 
         makeLantern(exporter, PigsteelBlocks.PIGSTEEL_LANTERN, Items.TORCH);
         makeLantern(exporter, PigsteelBlocks.PIGSTEEL_SOUL_LANTERN, Items.SOUL_TORCH);
+    }
+
+    public static void makeSmeltnBlast(Consumer<RecipeJsonProvider> exporter, List<ItemConvertible> inputs, RecipeCategory category, ItemConvertible output, float experience, int cookingTime, String group){
+        RecipeProvider.offerSmelting(exporter, inputs, category, output, experience, cookingTime, group);
+        RecipeProvider.offerBlasting(exporter, inputs, category, output, experience, cookingTime/2, group);
+
     }
 }
