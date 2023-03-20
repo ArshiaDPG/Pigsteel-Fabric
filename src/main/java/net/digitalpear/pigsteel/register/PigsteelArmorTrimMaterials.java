@@ -3,7 +3,6 @@ package net.digitalpear.pigsteel.register;
 import net.digitalpear.pigsteel.PigsteelMod;
 import net.minecraft.item.ArmorMaterials;
 import net.minecraft.item.Item;
-import net.minecraft.item.Items;
 import net.minecraft.item.trim.ArmorTrimMaterial;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;

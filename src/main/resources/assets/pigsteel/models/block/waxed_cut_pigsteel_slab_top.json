@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "pigsteel:block/cut_pigsteel",
-    "top": "pigsteel:block/cut_pigsteel",
-    "side": "pigsteel:block/cut_pigsteel"
-  }
-}

@@ -82,8 +82,8 @@ public class PigsteelBlocks {
     public static final Block DEEPSLATE_PIGSTEEL_ORE = createOreBlock("deepslate_pigsteel_ore", Blocks.DEEPSLATE_IRON_ORE);
 
     //Oh the biomes you'll go
-    public static Block BLUE_PIGSTEEL_ORE;
-    public static Block BRIMSTONE_PIGSTEEL_ORE;
+    public static Block BLUE_PIGSTEEL_ORE = createOreBlock("blue_pigsteel_ore", Blocks.NETHER_GOLD_ORE);
+    public static Block BRIMSTONE_PIGSTEEL_ORE = createOreBlock("brimstone_pigsteel_ore", Blocks.NETHER_GOLD_ORE);
 
 
     public static final Block PIGSTEEL_BLOCK = createBlockWithItem("pigsteel_block", new PigsteelBlock(AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.NETHERITE).mapColor(MapColor.PURPLE)));
@@ -125,11 +125,6 @@ public class PigsteelBlocks {
 
 
     public static void init(){
-
-        if (FabricLoader.getInstance().isModLoaded("byg")) {
-            BLUE_PIGSTEEL_ORE = createOreBlock("blue_pigsteel_ore", Blocks.NETHER_GOLD_ORE);
-            BRIMSTONE_PIGSTEEL_ORE = createOreBlock("brimstone_pigsteel_ore", Blocks.NETHER_GOLD_ORE);
-        }
         PIGSTEEL_WAXING_MAP.put(PIGSTEEL_BLOCK, WAXED_PIGSTEEL_BLOCK);
 
         PIGSTEEL_WAXING_MAP.put(CUT_PIGSTEEL, WAXED_CUT_PIGSTEEL);

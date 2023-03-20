@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "pigsteel:block/cut_pigsteel",
+    "side": "pigsteel:block/cut_pigsteel",
+    "top": "pigsteel:block/cut_pigsteel"
+  }
+}

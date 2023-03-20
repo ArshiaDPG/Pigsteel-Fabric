@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "bottom": "pigsteel:block/corrupted_cut_pigsteel",
-    "top": "pigsteel:block/corrupted_cut_pigsteel",
-    "side": "pigsteel:block/corrupted_cut_pigsteel"
-  }
-}

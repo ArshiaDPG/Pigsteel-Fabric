@@ -1,9 +1,6 @@
 package net.digitalpear.pigsteel;
 
-import net.digitalpear.pigsteel.datagen.PigsteelBlockTagGen;
-import net.digitalpear.pigsteel.datagen.PigsteelItemTagGen;
-import net.digitalpear.pigsteel.datagen.PigsteelLanguageGen;
-import net.digitalpear.pigsteel.datagen.PigsteelRecipeGen;
+import net.digitalpear.pigsteel.datagen.*;
 import net.digitalpear.pigsteel.register.PigsteelArmorTrimMaterials;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
@@ -22,6 +19,7 @@ public class PigsteelModDatagens implements DataGeneratorEntrypoint {
         pack.addProvider(PigsteelBlockTagGen::new);
         pack.addProvider(PigsteelItemTagGen::new);
         pack.addProvider(PigsteelLanguageGen::new);
+        pack.addProvider(PigsteelModelGen::new);
     }
 
     @Override

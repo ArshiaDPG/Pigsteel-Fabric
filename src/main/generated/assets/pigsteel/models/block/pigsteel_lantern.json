@@ -1,0 +1,6 @@
+{
+  "parent": "pigsteel:block/pigsteel_lantern_base",
+  "textures": {
+    "all": "pigsteel:block/pigsteel_lantern"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "pigsteel:block/infected_cut_pigsteel",
+    "side": "pigsteel:block/infected_cut_pigsteel",
+    "top": "pigsteel:block/infected_cut_pigsteel"
+  }
+}

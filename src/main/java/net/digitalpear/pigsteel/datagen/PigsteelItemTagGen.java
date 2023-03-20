@@ -51,5 +51,6 @@ public class PigsteelItemTagGen extends FabricTagProvider<Item> {
                 .addOptional(new Identifier(PigsteelMod.MOD_ID, "brimstone_pigsteel_ore"));
 
         getOrCreateTagBuilder(ItemTags.BEACON_PAYMENT_ITEMS).add(PigsteelItems.PIGSTEEL_INGOT);
+        getOrCreateTagBuilder(ItemTags.TRIM_MATERIALS).add(PigsteelItems.PIGSTEEL_INGOT);
     }
 }
