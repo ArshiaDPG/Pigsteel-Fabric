@@ -4,13 +4,7 @@
     "pigsteel:pigsteel_ore",
     "pigsteel:stone_pigsteel_ore",
     "pigsteel:deepslate_pigsteel_ore",
-    {
-      "id": "pigsteel:blue_pigsteel_ore",
-      "required": false
-    },
-    {
-      "id": "pigsteel:brimstone_pigsteel_ore",
-      "required": false
-    }
+    "pigsteel:blue_pigsteel_ore",
+    "pigsteel:brimstone_pigsteel_ore"
   ]
 }

@@ -33,8 +33,8 @@ public class PigsteelBlockTagGen extends FabricTagProvider<Block> {
                 .add(PigsteelBlocks.PIGSTEEL_ORE)
                 .add(PigsteelBlocks.STONE_PIGSTEEL_ORE)
                 .add(PigsteelBlocks.DEEPSLATE_PIGSTEEL_ORE)
-                .addOptional(new Identifier(PigsteelMod.MOD_ID, "blue_pigsteel_ore"))
-                .addOptional(new Identifier(PigsteelMod.MOD_ID, "brimstone_pigsteel_ore"));
+                .add(PigsteelBlocks.BLUE_PIGSTEEL_ORE)
+                .add(PigsteelBlocks.BRIMSTONE_PIGSTEEL_ORE);
 
 
         getOrCreateTagBuilder(PigsteelBlockTags.PIGSTEEL_BLOCKS)

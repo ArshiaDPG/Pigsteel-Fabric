@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "pigsteel:block/waxed_cut_pigsteel"
+      "model": "pigsteel:block/cut_pigsteel"
     }
   }
 }

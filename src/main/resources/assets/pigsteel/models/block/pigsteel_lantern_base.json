@@ -2,7 +2,7 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [16, 24],
 	"textures": {
-		"0": "#texture",
+		"0": "#all",
 		"particle": "#0"
 	},
 	"elements": [
@@ -66,6 +66,5 @@
 				"down": {"uv": [2, 6, 4, 13.33333], "texture": "#0"}
 			}
 		}
-	],
-	"display": {}
+	]
 }

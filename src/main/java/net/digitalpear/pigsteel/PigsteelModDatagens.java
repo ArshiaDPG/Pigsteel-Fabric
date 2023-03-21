@@ -4,9 +4,7 @@ import net.digitalpear.pigsteel.datagen.*;
 import net.digitalpear.pigsteel.register.PigsteelArmorTrimMaterials;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
-import net.fabricmc.fabric.impl.biome.modification.BuiltInRegistryKeys;
 import net.minecraft.registry.RegistryBuilder;
-import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 
 public class PigsteelModDatagens implements DataGeneratorEntrypoint {
