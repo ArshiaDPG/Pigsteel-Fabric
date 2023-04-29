@@ -22,12 +22,15 @@ import net.minecraft.world.WorldView;
 
 public class PigsteelLanternBlock extends Block implements Waterloggable {
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
-    public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
+    public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
+
+
     /*
     Shape for wall hanger (This will never be useful, but I got it right on the first try and didn't wanna get rid of it.)
     Block.createCuboidShape(7.0D, 14.0D, 5.0D, 9.0D, 15.0D, 16.0D)
      */
-    protected static final VoxelShape SHAPE = VoxelShapes.union(Block.createCuboidShape(4.0D, 1.0D, 4.0D, 12.0D, 10.0D, 12.0D), Block.createCuboidShape(7.0D, 10.0D, 7.0D, 9.0D, 15.0D, 9.0D));
+    protected static final VoxelShape SHAPE = VoxelShapes.union(Block.createCuboidShape(4.0D, 1.0D, 4.0D, 12.0D, 10.0D, 12.0D),
+            Block.createCuboidShape(7.0D, 10.0D, 7.0D, 9.0D, 15.0D, 9.0D));
 
     public PigsteelLanternBlock(AbstractBlock.Settings settings) {
         super(settings);
@@ -50,7 +53,7 @@ public class PigsteelLanternBlock extends Block implements Waterloggable {
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
-        return this.getDefaultState().with(WATERLOGGED, fluidState.getFluid() == Fluids.WATER).with(FACING, ctx.getPlayerLookDirection().getOpposite());
+        return this.getDefaultState().with(WATERLOGGED, fluidState.getFluid() == Fluids.WATER).with(FACING, ctx.getHorizontalPlayerFacing().getOpposite());
     }
 
     @Override

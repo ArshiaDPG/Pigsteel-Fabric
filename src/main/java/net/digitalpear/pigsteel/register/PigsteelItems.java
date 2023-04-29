@@ -17,7 +17,7 @@ import net.minecraft.util.Identifier;
 import java.util.Arrays;
 
 
-@SuppressWarnings("unused")
+
 public class PigsteelItems {
     public static final String MOD_ID = PigsteelMod.MOD_ID;
 
@@ -27,21 +27,6 @@ public class PigsteelItems {
 
     public static final Item PIGSTEEL_INGOT = registerItem("pigsteel_ingot", new Item(new FabricItemSettings()));
     public static final Item PIGSTEEL_NUGGET = registerItem("pigsteel_nugget", new Item(new FabricItemSettings()));
-
-
-    public static void addItemsToGroup(ItemGroup itemGroup, Item... items){
-        ItemGroupEvents.modifyEntriesEvent(itemGroup)
-                .register(entries -> Arrays.stream(items).toList().forEach(entries::add));
-    }
-    public static void addItemsToGroup(ItemGroup itemGroup, Block... blocks){
-        ItemGroupEvents.modifyEntriesEvent(itemGroup)
-                .register(entries -> Arrays.stream(blocks).toList().forEach(entries::add));
-    }
-
-    public static void addOres(Block... blocks){
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL)
-                .register(entries -> Arrays.stream(blocks).toList().forEach(block -> entries.addAfter(Items.NETHER_QUARTZ_ORE, block)));
-    }
 
 
     public static void init(){

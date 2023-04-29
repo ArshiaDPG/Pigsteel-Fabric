@@ -1,11 +1,10 @@
 package net.digitalpear.pigsteel.register;
 
-import com.ibm.icu.text.UnicodeSetSpanner;
+import com.google.common.collect.ImmutableMap;
 import net.digitalpear.pigsteel.PigsteelMod;
 import net.digitalpear.pigsteel.common.blocks.*;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
-import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -35,21 +34,20 @@ public class PigsteelBlocks {
         return Registry.register(Registries.BLOCK, new Identifier(PigsteelMod.MOD_ID, blockID), block);
     }
 
+    public static final ImmutableMap COLOR_MAP = new ImmutableMap.Builder()
+            .put(Oxidizable.OxidationLevel.UNAFFECTED, MapColor.PURPLE)
+            .put(Oxidizable.OxidationLevel.EXPOSED, MapColor.PALE_GREEN)
+            .put(Oxidizable.OxidationLevel.WEATHERED, MapColor.GREEN)
+            .put(Oxidizable.OxidationLevel.OXIDIZED, MapColor.DARK_GREEN).build();
+
+    public static final ImmutableMap NAME_MAP = new ImmutableMap.Builder()
+        .put(Oxidizable.OxidationLevel.UNAFFECTED, "")
+        .put(Oxidizable.OxidationLevel.EXPOSED, "infected_")
+        .put(Oxidizable.OxidationLevel.WEATHERED, "corrupted_")
+        .put(Oxidizable.OxidationLevel.OXIDIZED, "zombified_").build();
 
     public static Block makeCutBlocks(Block base, Oxidizable.OxidationLevel oxidationLevel){
-        Map<Oxidizable.OxidationLevel, MapColor> COLOR_MAP = new HashMap<>();
-        COLOR_MAP.put(Oxidizable.OxidationLevel.UNAFFECTED, MapColor.PURPLE);
-        COLOR_MAP.put(Oxidizable.OxidationLevel.EXPOSED, MapColor.PALE_GREEN);
-        COLOR_MAP.put(Oxidizable.OxidationLevel.WEATHERED, MapColor.GREEN);
-        COLOR_MAP.put(Oxidizable.OxidationLevel.OXIDIZED, MapColor.DARK_GREEN);
-
-        Map<Oxidizable.OxidationLevel, String> NAME_MAP = new HashMap<>();
-        NAME_MAP.put(Oxidizable.OxidationLevel.UNAFFECTED, "");
-        NAME_MAP.put(Oxidizable.OxidationLevel.EXPOSED, "infected_");
-        NAME_MAP.put(Oxidizable.OxidationLevel.WEATHERED, "corrupted_");
-        NAME_MAP.put(Oxidizable.OxidationLevel.OXIDIZED, "zombified_");
-
-        MapColor color = COLOR_MAP.get(oxidationLevel);
+        MapColor color = (MapColor) COLOR_MAP.get(oxidationLevel);
         String name = NAME_MAP.get(oxidationLevel) + Registries.BLOCK.getId(base).getPath();
         AbstractBlock.Settings settings = AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.NETHERITE).mapColor(color);
 
@@ -82,8 +80,8 @@ public class PigsteelBlocks {
     public static final Block DEEPSLATE_PIGSTEEL_ORE = createOreBlock("deepslate_pigsteel_ore", Blocks.DEEPSLATE_IRON_ORE);
 
     //Oh the biomes you'll go
-    public static Block BLUE_PIGSTEEL_ORE;
-    public static Block BRIMSTONE_PIGSTEEL_ORE;
+    public static Block BLUE_PIGSTEEL_ORE = createOreBlock("blue_pigsteel_ore", Blocks.NETHER_GOLD_ORE);
+    public static Block BRIMSTONE_PIGSTEEL_ORE = createOreBlock("brimstone_pigsteel_ore", Blocks.NETHER_GOLD_ORE);
 
 
     public static final Block PIGSTEEL_BLOCK = createBlockWithItem("pigsteel_block", new PigsteelBlock(AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.NETHERITE).mapColor(MapColor.PURPLE)));
@@ -125,11 +123,6 @@ public class PigsteelBlocks {
 
 
     public static void init(){
-
-        if (FabricLoader.getInstance().isModLoaded("byg")) {
-            BLUE_PIGSTEEL_ORE = createOreBlock("blue_pigsteel_ore", Blocks.NETHER_GOLD_ORE);
-            BRIMSTONE_PIGSTEEL_ORE = createOreBlock("brimstone_pigsteel_ore", Blocks.NETHER_GOLD_ORE);
-        }
         PIGSTEEL_WAXING_MAP.put(PIGSTEEL_BLOCK, WAXED_PIGSTEEL_BLOCK);
 
         PIGSTEEL_WAXING_MAP.put(CUT_PIGSTEEL, WAXED_CUT_PIGSTEEL);

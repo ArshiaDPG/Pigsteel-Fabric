@@ -33,5 +33,6 @@
   "block.pigsteel.zombified_cut_pigsteel_slab": "Zombified Cut Pigsteel Slab",
   "block.pigsteel.zombified_cut_pigsteel_stairs": "Zombified Cut Pigsteel Stairs",
   "item.pigsteel.pigsteel_ingot": "Pigsteel Ingot",
-  "item.pigsteel.pigsteel_nugget": "Pigsteel Nugget"
+  "item.pigsteel.pigsteel_nugget": "Pigsteel Nugget",
+  "trim_material.pigsteel.pigsteel": "Pigsteel"
 }

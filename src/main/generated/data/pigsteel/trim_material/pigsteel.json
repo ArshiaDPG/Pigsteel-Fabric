@@ -1,0 +1,9 @@
+{
+  "asset_name": "pigsteel",
+  "description": {
+    "color": "#B58FB3",
+    "translate": "trim_material.pigsteel.pigsteel"
+  },
+  "ingredient": "pigsteel:pigsteel_ingot",
+  "item_model_index": 1.1
+}

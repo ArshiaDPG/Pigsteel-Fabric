@@ -1,6 +1,7 @@
 package net.digitalpear.pigsteel.datagen;
 
 import net.digitalpear.pigsteel.PigsteelMod;
+import net.digitalpear.pigsteel.register.PigsteelArmorTrimMaterials;
 import net.digitalpear.pigsteel.register.PigsteelBlocks;
 import net.digitalpear.pigsteel.register.PigsteelItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -64,8 +65,12 @@ public class PigsteelLanguageGen extends FabricLanguageProvider {
         translationBuilder.add(PigsteelBlocks.PIGSTEEL_ORE, "Pigsteel Ore");
         translationBuilder.add(PigsteelBlocks.STONE_PIGSTEEL_ORE, "Stone Pigsteel Ore");
         translationBuilder.add(PigsteelBlocks.DEEPSLATE_PIGSTEEL_ORE, "Deepslate Pigsteel Ore");
-        translationBuilder.add("block.pigsteel.brimstone_pigsteel_ore", "Brimstone Pigsteel Ore");
-        translationBuilder.add("block.pigsteel.blue_pigsteel_ore", "Blue Pigsteel Ore");
+        translationBuilder.add(PigsteelBlocks.BRIMSTONE_PIGSTEEL_ORE, "Brimstone Pigsteel Ore");
+        translationBuilder.add(PigsteelBlocks.BLUE_PIGSTEEL_ORE, "Blue Pigsteel Ore");
+
+        translationBuilder.add("trim_material.pigsteel.pigsteel", "Pigsteel");
+
+
 
         try {
             Path existingFilePath = dataOutput.getModContainer().findPath("assets/" + PigsteelMod.MOD_ID + "/lang/en_us.existing.json").get();

@@ -6,8 +6,12 @@ import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.Block;
 import net.minecraft.item.*;
+import net.minecraft.item.trim.ArmorTrimMaterial;
+import net.minecraft.item.trim.ArmorTrimMaterials;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
 
 import java.util.Arrays;
@@ -24,6 +28,7 @@ public class PigsteelItems {
     public static final Item PIGSTEEL_INGOT = registerItem("pigsteel_ingot", new Item(new FabricItemSettings()));
     public static final Item PIGSTEEL_NUGGET = registerItem("pigsteel_nugget", new Item(new FabricItemSettings()));
 
+
     public static void addItemsToGroup(ItemGroup itemGroup, Item... items){
         ItemGroupEvents.modifyEntriesEvent(itemGroup)
                 .register(entries -> Arrays.stream(items).toList().forEach(entries::add));
@@ -37,6 +42,7 @@ public class PigsteelItems {
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL)
                 .register(entries -> Arrays.stream(blocks).toList().forEach(block -> entries.addAfter(Items.NETHER_QUARTZ_ORE, block)));
     }
+
 
     public static void init(){
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL)
@@ -64,41 +70,42 @@ public class PigsteelItems {
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS)
                 .register(entries -> {
-                    entries.add(new ItemStack(PigsteelBlocks.PIGSTEEL_BLOCK));
+                    entries.add(PigsteelBlocks.PIGSTEEL_BLOCK);
 
-                    entries.add(new ItemStack(PigsteelBlocks.CUT_PIGSTEEL));
-                    entries.add(new ItemStack(PigsteelBlocks.CUT_PIGSTEEL_SLAB));
-                    entries.add(new ItemStack(PigsteelBlocks.CUT_PIGSTEEL_STAIRS));
+                    entries.add(PigsteelBlocks.CUT_PIGSTEEL);
+                    entries.add(PigsteelBlocks.CUT_PIGSTEEL_SLAB);
+                    entries.add(PigsteelBlocks.CUT_PIGSTEEL_STAIRS);
 
-                    entries.add(new ItemStack(PigsteelBlocks.INFECTED_CUT_PIGSTEEL));
-                    entries.add(new ItemStack(PigsteelBlocks.INFECTED_CUT_PIGSTEEL_SLAB));
-                    entries.add(new ItemStack(PigsteelBlocks.INFECTED_CUT_PIGSTEEL_STAIRS));
+                    entries.add(PigsteelBlocks.INFECTED_CUT_PIGSTEEL);
+                    entries.add(PigsteelBlocks.INFECTED_CUT_PIGSTEEL_SLAB);
+                    entries.add(PigsteelBlocks.INFECTED_CUT_PIGSTEEL_STAIRS);
 
-                    entries.add(new ItemStack(PigsteelBlocks.CORRUPTED_CUT_PIGSTEEL));
-                    entries.add(new ItemStack(PigsteelBlocks.CORRUPTED_CUT_PIGSTEEL_SLAB));
-                    entries.add(new ItemStack(PigsteelBlocks.CORRUPTED_CUT_PIGSTEEL_STAIRS));
+                    entries.add(PigsteelBlocks.CORRUPTED_CUT_PIGSTEEL);
+                    entries.add(PigsteelBlocks.CORRUPTED_CUT_PIGSTEEL_SLAB);
+                    entries.add(PigsteelBlocks.CORRUPTED_CUT_PIGSTEEL_STAIRS);
 
-                    entries.add(new ItemStack(PigsteelBlocks.ZOMBIFIED_CUT_PIGSTEEL));
-                    entries.add(new ItemStack(PigsteelBlocks.ZOMBIFIED_CUT_PIGSTEEL_SLAB));
-                    entries.add(new ItemStack(PigsteelBlocks.ZOMBIFIED_CUT_PIGSTEEL_STAIRS));
+                    entries.add(PigsteelBlocks.ZOMBIFIED_CUT_PIGSTEEL);
+                    entries.add(PigsteelBlocks.ZOMBIFIED_CUT_PIGSTEEL_SLAB);
+                    entries.add(PigsteelBlocks.ZOMBIFIED_CUT_PIGSTEEL_STAIRS);
 
-                    entries.add(new ItemStack(PigsteelBlocks.WAXED_PIGSTEEL_BLOCK));
+                    entries.add(PigsteelBlocks.WAXED_PIGSTEEL_BLOCK);
 
-                    entries.add(new ItemStack(PigsteelBlocks.WAXED_CUT_PIGSTEEL));
-                    entries.add(new ItemStack(PigsteelBlocks.WAXED_CUT_PIGSTEEL_SLAB));
-                    entries.add(new ItemStack(PigsteelBlocks.WAXED_CUT_PIGSTEEL_STAIRS));
+                    entries.add(PigsteelBlocks.WAXED_CUT_PIGSTEEL);
+                    entries.add(PigsteelBlocks.WAXED_CUT_PIGSTEEL_SLAB);
+                    entries.add(PigsteelBlocks.WAXED_CUT_PIGSTEEL_STAIRS);
 
-                    entries.add(new ItemStack(PigsteelBlocks.WAXED_INFECTED_CUT_PIGSTEEL));
-                    entries.add(new ItemStack(PigsteelBlocks.WAXED_INFECTED_CUT_PIGSTEEL_SLAB));
-                    entries.add(new ItemStack(PigsteelBlocks.WAXED_INFECTED_CUT_PIGSTEEL_STAIRS));
+                    entries.add(PigsteelBlocks.WAXED_INFECTED_CUT_PIGSTEEL);
+                    entries.add(PigsteelBlocks.WAXED_INFECTED_CUT_PIGSTEEL_SLAB);
+                    entries.add(PigsteelBlocks.WAXED_INFECTED_CUT_PIGSTEEL_STAIRS);
 
-                    entries.add(new ItemStack(PigsteelBlocks.WAXED_CORRUPTED_CUT_PIGSTEEL));
-                    entries.add(new ItemStack(PigsteelBlocks.WAXED_CORRUPTED_CUT_PIGSTEEL_SLAB));
-                    entries.add(new ItemStack(PigsteelBlocks.WAXED_CORRUPTED_CUT_PIGSTEEL_STAIRS));
+                    entries.add(PigsteelBlocks.WAXED_CORRUPTED_CUT_PIGSTEEL);
+                    entries.add(PigsteelBlocks.WAXED_CORRUPTED_CUT_PIGSTEEL_SLAB);
+                    entries.add(PigsteelBlocks.WAXED_CORRUPTED_CUT_PIGSTEEL_STAIRS);
 
-                    entries.add(new ItemStack(PigsteelBlocks.WAXED_ZOMBIFIED_CUT_PIGSTEEL));
-                    entries.add(new ItemStack(PigsteelBlocks.WAXED_ZOMBIFIED_CUT_PIGSTEEL_SLAB));
-                    entries.add(new ItemStack(PigsteelBlocks.WAXED_ZOMBIFIED_CUT_PIGSTEEL_STAIRS));
+                    entries.add(PigsteelBlocks.WAXED_ZOMBIFIED_CUT_PIGSTEEL);
+                    entries.add(PigsteelBlocks.WAXED_ZOMBIFIED_CUT_PIGSTEEL_SLAB);
+                    entries.add(PigsteelBlocks.WAXED_ZOMBIFIED_CUT_PIGSTEEL_STAIRS);
                 });
+
     }
 }
