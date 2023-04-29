@@ -89,6 +89,8 @@ public class PigsteelRecipeGen extends FabricRecipeProvider {
 
         makeLantern(exporter, PigsteelBlocks.PIGSTEEL_LANTERN, Items.TORCH);
         makeLantern(exporter, PigsteelBlocks.PIGSTEEL_SOUL_LANTERN, Items.SOUL_TORCH);
+
+
     }
 
     public static void makeSmeltnBlast(Consumer<RecipeJsonProvider> exporter, List<ItemConvertible> inputs, RecipeCategory category, ItemConvertible output, float experience, int cookingTime, String group){

@@ -1,11 +1,10 @@
 package net.digitalpear.pigsteel.register;
 
-import com.ibm.icu.text.UnicodeSetSpanner;
+import com.google.common.collect.ImmutableMap;
 import net.digitalpear.pigsteel.PigsteelMod;
 import net.digitalpear.pigsteel.common.blocks.*;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
-import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -35,21 +34,20 @@ public class PigsteelBlocks {
         return Registry.register(Registries.BLOCK, new Identifier(PigsteelMod.MOD_ID, blockID), block);
     }
 
+    public static final ImmutableMap COLOR_MAP = new ImmutableMap.Builder()
+            .put(Oxidizable.OxidationLevel.UNAFFECTED, MapColor.PURPLE)
+            .put(Oxidizable.OxidationLevel.EXPOSED, MapColor.PALE_GREEN)
+            .put(Oxidizable.OxidationLevel.WEATHERED, MapColor.GREEN)
+            .put(Oxidizable.OxidationLevel.OXIDIZED, MapColor.DARK_GREEN).build();
+
+    public static final ImmutableMap NAME_MAP = new ImmutableMap.Builder()
+        .put(Oxidizable.OxidationLevel.UNAFFECTED, "")
+        .put(Oxidizable.OxidationLevel.EXPOSED, "infected_")
+        .put(Oxidizable.OxidationLevel.WEATHERED, "corrupted_")
+        .put(Oxidizable.OxidationLevel.OXIDIZED, "zombified_").build();
 
     public static Block makeCutBlocks(Block base, Oxidizable.OxidationLevel oxidationLevel){
-        Map<Oxidizable.OxidationLevel, MapColor> COLOR_MAP = new HashMap<>();
-        COLOR_MAP.put(Oxidizable.OxidationLevel.UNAFFECTED, MapColor.PURPLE);
-        COLOR_MAP.put(Oxidizable.OxidationLevel.EXPOSED, MapColor.PALE_GREEN);
-        COLOR_MAP.put(Oxidizable.OxidationLevel.WEATHERED, MapColor.GREEN);
-        COLOR_MAP.put(Oxidizable.OxidationLevel.OXIDIZED, MapColor.DARK_GREEN);
-
-        Map<Oxidizable.OxidationLevel, String> NAME_MAP = new HashMap<>();
-        NAME_MAP.put(Oxidizable.OxidationLevel.UNAFFECTED, "");
-        NAME_MAP.put(Oxidizable.OxidationLevel.EXPOSED, "infected_");
-        NAME_MAP.put(Oxidizable.OxidationLevel.WEATHERED, "corrupted_");
-        NAME_MAP.put(Oxidizable.OxidationLevel.OXIDIZED, "zombified_");
-
-        MapColor color = COLOR_MAP.get(oxidationLevel);
+        MapColor color = (MapColor) COLOR_MAP.get(oxidationLevel);
         String name = NAME_MAP.get(oxidationLevel) + Registries.BLOCK.getId(base).getPath();
         AbstractBlock.Settings settings = AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.NETHERITE).mapColor(color);
 
