@@ -30,19 +30,23 @@ public class PigsteelRecipeGen extends FabricRecipeProvider {
         });
     }
 
-    public static void makeCutRecipes(Consumer<RecipeJsonProvider> exporter, Block base, Block stairs, Block slab){
-        RecipeProvider.createStairsRecipe(stairs, Ingredient.ofItems(base)).group("pigsteel_stairs");
-        RecipeProvider.createSlabRecipe(RecipeCategory.BUILDING_BLOCKS, stairs, Ingredient.ofItems(base)).group("pigsteel_slabs");
+    public static void makeCutRecipes(Consumer<RecipeJsonProvider> exporter, Block base, Block cut, Block stairs, Block slab){
 
-        SingleItemRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(base), RecipeCategory.BUILDING_BLOCKS, slab, 2)
-                .criterion(hasItem(base), conditionsFromItem(base))
+        RecipeProvider.offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, cut, base, 4);
+        RecipeProvider.createCutCopperRecipe(RecipeCategory.BUILDING_BLOCKS, cut, Ingredient.ofItems(base));
+
+        RecipeProvider.createStairsRecipe(stairs, Ingredient.ofItems(cut));
+        RecipeProvider.createSlabRecipe(RecipeCategory.BUILDING_BLOCKS, stairs, Ingredient.ofItems(cut));
+
+        SingleItemRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(cut), RecipeCategory.BUILDING_BLOCKS, slab, 2)
+                .criterion(hasItem(cut), conditionsFromItem(cut))
                 .group("pigsteel_slabs")
-                .offerTo(exporter, convertBetween(slab, base) + "_stonecutting");
+                .offerTo(exporter, convertBetween(slab, cut) + "_stonecutting");
 
-        SingleItemRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(base), RecipeCategory.BUILDING_BLOCKS, stairs, 1)
-                .criterion(hasItem(base), conditionsFromItem(base))
+        SingleItemRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(cut), RecipeCategory.BUILDING_BLOCKS, stairs, 1)
+                .criterion(hasItem(cut), conditionsFromItem(cut))
                 .group("pigsteel_stairs")
-                .offerTo(exporter, convertBetween(stairs, base) + "_stonecutting");
+                .offerTo(exporter, convertBetween(stairs, cut) + "_stonecutting");
     }
 
     public static void makeLantern(Consumer<RecipeJsonProvider> exporter, Block output, Item torch){
@@ -71,21 +75,12 @@ public class PigsteelRecipeGen extends FabricRecipeProvider {
     @Override
     public void generate(Consumer<RecipeJsonProvider> exporter) {
         offerWaxingRecipes(exporter);
-        makeSmeltnBlast(exporter, List.of(PigsteelBlocks.PIGSTEEL_ORE, PigsteelBlocks.STONE_PIGSTEEL_ORE, PigsteelBlocks.DEEPSLATE_PIGSTEEL_ORE), RecipeCategory.MISC, PigsteelItems.PIGSTEEL_INGOT, 0.7f, 200, "pigsteel_ingot");
+        makeSmeltnBlast(exporter, List.of(PigsteelBlocks.PIGSTEEL_ORE, PigsteelBlocks.STONE_PIGSTEEL_ORE, PigsteelBlocks.DEEPSLATE_PIGSTEEL_ORE, PigsteelBlocks.BLUE_PIGSTEEL_ORE, PigsteelBlocks.BRIMSTONE_PIGSTEEL_ORE), RecipeCategory.MISC, PigsteelItems.PIGSTEEL_INGOT, 0.7f, 200, "pigsteel_ingot");
 
-
-
-        RecipeProvider.offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, PigsteelItems.PIGSTEEL_INGOT, RecipeCategory.BUILDING_BLOCKS, PigsteelBlocks.PIGSTEEL_BLOCK);
-        offerReversibleCompactingIngotRecipes(exporter, RecipeCategory.MISC, PigsteelItems.PIGSTEEL_NUGGET, RecipeCategory.MISC, PigsteelItems.PIGSTEEL_INGOT, null, null);
-
-
-        RecipeProvider.offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, PigsteelBlocks.CUT_PIGSTEEL, PigsteelBlocks.PIGSTEEL_BLOCK, 4);
-        RecipeProvider.createCutCopperRecipe(RecipeCategory.BUILDING_BLOCKS, PigsteelBlocks.CUT_PIGSTEEL, Ingredient.ofItems(PigsteelBlocks.PIGSTEEL_BLOCK));
-
-        makeCutRecipes(exporter, PigsteelBlocks.CUT_PIGSTEEL, PigsteelBlocks.CUT_PIGSTEEL_STAIRS, PigsteelBlocks.CUT_PIGSTEEL_SLAB);
-        makeCutRecipes(exporter, PigsteelBlocks.INFECTED_CUT_PIGSTEEL, PigsteelBlocks.INFECTED_CUT_PIGSTEEL_STAIRS, PigsteelBlocks.INFECTED_CUT_PIGSTEEL_SLAB);
-        makeCutRecipes(exporter, PigsteelBlocks.CORRUPTED_CUT_PIGSTEEL, PigsteelBlocks.CORRUPTED_CUT_PIGSTEEL_STAIRS, PigsteelBlocks.CORRUPTED_CUT_PIGSTEEL_SLAB);
-        makeCutRecipes(exporter, PigsteelBlocks.ZOMBIFIED_CUT_PIGSTEEL, PigsteelBlocks.ZOMBIFIED_CUT_PIGSTEEL_STAIRS, PigsteelBlocks.ZOMBIFIED_CUT_PIGSTEEL_SLAB);
+        makeCutRecipes(exporter, PigsteelBlocks.PIGSTEEL_BLOCK, PigsteelBlocks.CUT_PIGSTEEL, PigsteelBlocks.CUT_PIGSTEEL_STAIRS, PigsteelBlocks.CUT_PIGSTEEL_SLAB);
+        makeCutRecipes(exporter, PigsteelBlocks.INFECTED_PIGSTEEL, PigsteelBlocks.INFECTED_CUT_PIGSTEEL, PigsteelBlocks.INFECTED_CUT_PIGSTEEL_STAIRS, PigsteelBlocks.INFECTED_CUT_PIGSTEEL_SLAB);
+        makeCutRecipes(exporter, PigsteelBlocks.CORRUPTED_PIGSTEEL, PigsteelBlocks.CORRUPTED_CUT_PIGSTEEL, PigsteelBlocks.CORRUPTED_CUT_PIGSTEEL_STAIRS, PigsteelBlocks.CORRUPTED_CUT_PIGSTEEL_SLAB);
+        makeCutRecipes(exporter, PigsteelBlocks.ZOMBIFIED_PIGSTEEL, PigsteelBlocks.ZOMBIFIED_CUT_PIGSTEEL, PigsteelBlocks.ZOMBIFIED_CUT_PIGSTEEL_STAIRS, PigsteelBlocks.ZOMBIFIED_CUT_PIGSTEEL_SLAB);
 
         makeLantern(exporter, PigsteelBlocks.PIGSTEEL_LANTERN, Items.TORCH);
         makeLantern(exporter, PigsteelBlocks.PIGSTEEL_SOUL_LANTERN, Items.SOUL_TORCH);

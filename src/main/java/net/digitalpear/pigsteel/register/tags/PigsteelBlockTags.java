@@ -10,7 +10,13 @@ public class PigsteelBlockTags {
     public static final TagKey<Block> PIGSTEEL_ORES = of("pigsteel_ores");
     public static final TagKey<Block> PIGSTEEL_BLOCKS = of("pigsteel_blocks");
 
+    public static final TagKey<Block> C_ORES = of("c","ores");
+    public static final TagKey<Block> C_IRON_BLOCKS = of("c","iron_blocks");
+
     private static TagKey<Block> of(String id) {
         return TagKey.of(Registries.BLOCK.getKey(), new Identifier(PigsteelMod.MOD_ID, id));
+    }
+    private static TagKey<Block> of(String modid,String id) {
+        return TagKey.of(Registries.BLOCK.getKey(), new Identifier(modid, id));
     }
 }

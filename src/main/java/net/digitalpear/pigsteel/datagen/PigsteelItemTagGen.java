@@ -47,10 +47,20 @@ public class PigsteelItemTagGen extends FabricTagProvider<Item> {
                 .add(PigsteelBlocks.PIGSTEEL_ORE.asItem())
                 .add(PigsteelBlocks.STONE_PIGSTEEL_ORE.asItem())
                 .add(PigsteelBlocks.DEEPSLATE_PIGSTEEL_ORE.asItem())
-                .addOptional(new Identifier(PigsteelMod.MOD_ID, "blue_pigsteel_ore"))
-                .addOptional(new Identifier(PigsteelMod.MOD_ID, "brimstone_pigsteel_ore"));
+                .add(PigsteelBlocks.BLUE_PIGSTEEL_ORE.asItem())
+                .add(PigsteelBlocks.BRIMSTONE_PIGSTEEL_ORE.asItem());
 
         getOrCreateTagBuilder(ItemTags.BEACON_PAYMENT_ITEMS).add(PigsteelItems.PIGSTEEL_INGOT);
         getOrCreateTagBuilder(ItemTags.TRIM_MATERIALS).add(PigsteelItems.PIGSTEEL_INGOT);
+
+        getOrCreateTagBuilder(PigsteelItemTags.C_IRONS)
+                .add(PigsteelItems.PIGSTEEL_INGOT);
+
+        getOrCreateTagBuilder(PigsteelItemTags.C_IRON_BLOCKS)
+                .add(PigsteelBlocks.PIGSTEEL_BLOCK.asItem());
+
+        getOrCreateTagBuilder(PigsteelItemTags.C_ORES)
+                .forceAddTag(PigsteelItemTags.PIGSTEEL_ORES);
+
     }
 }

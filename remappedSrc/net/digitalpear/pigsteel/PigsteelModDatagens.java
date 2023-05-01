@@ -1,8 +1,8 @@
 package net.digitalpear.pigsteel;
 
 import net.digitalpear.pigsteel.datagen.*;
-import net.digitalpear.pigsteel.datagen.worldgen.PigsteelConfiguredFeatureProvider;
-import net.digitalpear.pigsteel.datagen.worldgen.PigsteelPlacedFeatureProvider;
+import net.digitalpear.pigsteel.datagen.providers.worldgen.PigsteelConfiguredFeatureProvider;
+import net.digitalpear.pigsteel.datagen.providers.worldgen.PigsteelPlacedFeatureProvider;
 import net.digitalpear.pigsteel.register.PigsteelArmorTrimMaterials;
 import net.digitalpear.pigsteel.register.PigsteelConfiguredFeatures;
 import net.digitalpear.pigsteel.register.PigsteelPlacedFeatures;

@@ -53,9 +53,13 @@ public class PigsteelItems {
                     entries.addAfter(Items.SOUL_LANTERN, PigsteelBlocks.PIGSTEEL_LANTERN);
         });
 
+
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS)
                 .register(entries -> {
                     entries.add(PigsteelBlocks.PIGSTEEL_BLOCK);
+                    entries.add(PigsteelBlocks.INFECTED_PIGSTEEL);
+                    entries.add(PigsteelBlocks.CORRUPTED_PIGSTEEL);
+                    entries.add(PigsteelBlocks.ZOMBIFIED_PIGSTEEL);
 
                     entries.add(PigsteelBlocks.CUT_PIGSTEEL);
                     entries.add(PigsteelBlocks.CUT_PIGSTEEL_SLAB);
@@ -74,6 +78,9 @@ public class PigsteelItems {
                     entries.add(PigsteelBlocks.ZOMBIFIED_CUT_PIGSTEEL_STAIRS);
 
                     entries.add(PigsteelBlocks.WAXED_PIGSTEEL_BLOCK);
+                    entries.add(PigsteelBlocks.WAXED_INFECTED_PIGSTEEL);
+                    entries.add(PigsteelBlocks.WAXED_CORRUPTED_PIGSTEEL);
+                    entries.add(PigsteelBlocks.WAXED_ZOMBIFIED_PIGSTEEL);
 
                     entries.add(PigsteelBlocks.WAXED_CUT_PIGSTEEL);
                     entries.add(PigsteelBlocks.WAXED_CUT_PIGSTEEL_SLAB);

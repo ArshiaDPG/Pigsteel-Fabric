@@ -1,9 +1,9 @@
 package net.digitalpear.pigsteel;
 
 import net.digitalpear.pigsteel.datagen.*;
-import net.digitalpear.pigsteel.datagen.worldgen.PigsteelArmorTrimProvider;
-import net.digitalpear.pigsteel.datagen.worldgen.PigsteelConfiguredFeatureProvider;
-import net.digitalpear.pigsteel.datagen.worldgen.PigsteelPlacedFeatureProvider;
+import net.digitalpear.pigsteel.datagen.providers.worldgen.PigsteelConfiguredFeatureProvider;
+import net.digitalpear.pigsteel.datagen.providers.worldgen.PigsteelPlacedFeatureProvider;
+import net.digitalpear.pigsteel.datagen.providers.worldgen.PigsteelTrimMaterialProvider;
 import net.digitalpear.pigsteel.register.PigsteelArmorTrimMaterials;
 import net.digitalpear.pigsteel.register.PigsteelConfiguredFeatures;
 import net.digitalpear.pigsteel.register.PigsteelPlacedFeatures;
@@ -27,7 +27,7 @@ public class PigsteelModDatagens implements DataGeneratorEntrypoint {
         pack.addProvider(PigsteelLanguageGen::new);
         pack.addProvider(PigsteelModelGen::new);
 
-        pack.addProvider(PigsteelArmorTrimProvider::new);
+        pack.addProvider(PigsteelTrimMaterialProvider::new);
 
         pack.addProvider(PigsteelConfiguredFeatureProvider::new);
         pack.addProvider(PigsteelPlacedFeatureProvider::new);

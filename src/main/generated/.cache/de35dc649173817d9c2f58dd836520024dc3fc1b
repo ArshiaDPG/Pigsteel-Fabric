@@ -1,7 +1,10 @@
-// 23w17a	2023-04-28T18:37:22.7822196	Pigsteel Mod/Tags for minecraft:item
+// 23w17a	2023-04-30T19:17:55.6791455	Pigsteel Mod/Tags for minecraft:item
 bdb666e1212dcefa44d2b3fdc032c871f3fd3c34 data\minecraft\tags\items\beacon_payment_items.json
 da97f7224e2fd9f2c4af000d7402e2580bf867e5 data\pigsteel\tags\items\irons.json
 bdb666e1212dcefa44d2b3fdc032c871f3fd3c34 data\minecraft\tags\items\trim_materials.json
 003f5fb16166942ab3ef5f55ea2c764d4679308d data\pigsteel\tags\items\iron_blocks.json
-99e0a9be3a39446ef97e8635a9b7f7f32ccf71b6 data\pigsteel\tags\items\pigsteel_ores.json
+8818ae21df9439952855854bc4c02702376c03b3 data\pigsteel\tags\items\pigsteel_ores.json
+bdb666e1212dcefa44d2b3fdc032c871f3fd3c34 data\c\tags\items\iron_ingots.json
+a0da0c776cd8870b7c2eeb1d7aee9342bdb44a54 data\c\tags\items\iron_blocks.json
+1983c31dec3ebe23aced3fd6a41e106cbc7d5443 data\c\tags\items\ores.json
 5b9fa202e1a487da18dc3feaad848d66eda091fe data\pigsteel\tags\items\iron_nuggets.json
