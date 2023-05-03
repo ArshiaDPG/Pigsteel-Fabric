@@ -77,5 +77,7 @@ public class PigsteelBlockTagGen extends FabricTagProvider<Block> {
 
         getOrCreateTagBuilder(PigsteelBlockTags.C_IRON_BLOCKS).add(PigsteelBlocks.PIGSTEEL_BLOCK);
         getOrCreateTagBuilder(PigsteelBlockTags.C_ORES).forceAddTag(PigsteelBlockTags.PIGSTEEL_ORES);
+
+        getOrCreateTagBuilder(BlockTags.PIGLIN_REPELLENTS).add(PigsteelBlocks.PIGSTEEL_SOUL_LANTERN);
     }
 }
