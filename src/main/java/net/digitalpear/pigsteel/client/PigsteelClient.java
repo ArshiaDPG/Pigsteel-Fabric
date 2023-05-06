@@ -9,7 +9,7 @@ import net.minecraft.client.render.RenderLayer;
 
 
 @Environment(EnvType.CLIENT)
-public class PigsteelModClient implements ClientModInitializer {
+public class PigsteelClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {

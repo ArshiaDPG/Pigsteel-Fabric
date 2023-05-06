@@ -30,5 +30,6 @@
     "recipes": [
       "pigsteel:pigsteel_soul_lantern"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

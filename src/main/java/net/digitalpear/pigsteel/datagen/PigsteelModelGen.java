@@ -1,6 +1,6 @@
 package net.digitalpear.pigsteel.datagen;
 
-import net.digitalpear.pigsteel.PigsteelMod;
+import net.digitalpear.pigsteel.Pigsteel;
 import net.digitalpear.pigsteel.register.PigsteelBlocks;
 import net.digitalpear.pigsteel.register.PigsteelItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -24,6 +24,9 @@ public class PigsteelModelGen extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(PigsteelBlocks.PIGSTEEL_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(PigsteelBlocks.STONE_PIGSTEEL_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(PigsteelBlocks.DEEPSLATE_PIGSTEEL_ORE);
+
+
+        blockStateModelGenerator.registerSimpleCubeAll(PigsteelBlocks.PORKSLAG);
 
 
         createWaxable(blockStateModelGenerator, PigsteelBlocks.PIGSTEEL_BLOCK, PigsteelBlocks.WAXED_PIGSTEEL_BLOCK);
@@ -52,6 +55,7 @@ public class PigsteelModelGen extends FabricModelProvider {
 
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
+        itemModelGenerator.register(PigsteelItems.RAW_PIGSTEEL, Models.GENERATED);
         itemModelGenerator.register(PigsteelItems.PIGSTEEL_INGOT, Models.GENERATED);
         itemModelGenerator.register(PigsteelItems.PIGSTEEL_NUGGET, Models.GENERATED);
     }
@@ -60,7 +64,7 @@ public class PigsteelModelGen extends FabricModelProvider {
 
 
     private static Model block(String parent, TextureKey... requiredTextureKeys) {
-        return new Model(Optional.of(new Identifier(PigsteelMod.MOD_ID, "block/" + parent)), Optional.empty(), requiredTextureKeys);
+        return new Model(Optional.of(new Identifier(Pigsteel.MOD_ID, "block/" + parent)), Optional.empty(), requiredTextureKeys);
     }
     public final void createLantern(BlockStateModelGenerator blockStateModelGenerator, Block lantern) {
         Identifier identifier = block("pigsteel_lantern_base", TextureKey.ALL).upload(lantern, TextureMap.all(lantern), blockStateModelGenerator.modelCollector);

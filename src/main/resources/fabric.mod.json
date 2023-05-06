@@ -3,7 +3,7 @@
   "id": "pigsteel",
   "version": "${version}",
 
-  "name": "Pigsteel Mod",
+  "name": "Pigsteel",
   "description": "Adds a nether counterpart to iron.",
   "authors": [
     "DigitalPear",
@@ -22,10 +22,10 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.digitalpear.pigsteel.PigsteelMod"
+      "net.digitalpear.pigsteel.Pigsteel"
     ],
     "client":[
-      "net.digitalpear.pigsteel.client.PigsteelModClient"
+      "net.digitalpear.pigsteel.client.PigsteelClient"
     ],
     "fabric-datagen": [
       "net.digitalpear.pigsteel.PigsteelModDatagens"

@@ -1,6 +1,6 @@
 package net.digitalpear.pigsteel.datagen;
 
-import net.digitalpear.pigsteel.PigsteelMod;
+import net.digitalpear.pigsteel.Pigsteel;
 import net.digitalpear.pigsteel.register.PigsteelBlocks;
 import net.digitalpear.pigsteel.register.PigsteelItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -62,20 +62,22 @@ public class PigsteelRecipeGen extends FabricRecipeProvider {
     }
     public static void offerReversibleCompactingIngotRecipes(Consumer<RecipeJsonProvider> exporter, RecipeCategory reverseCategory, ItemConvertible baseItem, RecipeCategory compactingCategory, ItemConvertible compactItem, @Nullable String compactingGroup, @Nullable String reverseGroup) {
         ShapelessRecipeJsonBuilder.create(reverseCategory, baseItem, 9).input(compactItem).group(reverseGroup).criterion(hasItem(compactItem),
-                conditionsFromItem(compactItem)).offerTo(exporter, new Identifier(PigsteelMod.MOD_ID, Registries.ITEM.getId(baseItem.asItem()).getPath()));
+                conditionsFromItem(compactItem)).offerTo(exporter, new Identifier(Pigsteel.MOD_ID, Registries.ITEM.getId(baseItem.asItem()).getPath() +"_from_" + Registries.ITEM.getId(compactItem.asItem()).getPath()));
 
         ShapedRecipeJsonBuilder.create(compactingCategory, compactItem)
                 .input('#', baseItem)
                 .pattern("###")
                 .pattern("###")
                 .pattern("###").group(compactingGroup)
-                .criterion(hasItem(baseItem), conditionsFromItem(baseItem)).offerTo(exporter, new Identifier(PigsteelMod.MOD_ID, Registries.ITEM.getId(compactItem.asItem()).getPath() +"_from_" + Registries.ITEM.getId(baseItem.asItem()).getPath()));
+                .criterion(hasItem(baseItem), conditionsFromItem(baseItem)).offerTo(exporter, new Identifier(Pigsteel.MOD_ID, Registries.ITEM.getId(compactItem.asItem()).getPath() +"_from_" + Registries.ITEM.getId(baseItem.asItem()).getPath()));
     }
 
     @Override
     public void generate(Consumer<RecipeJsonProvider> exporter) {
+        offerReversibleCompactingIngotRecipes(exporter, RecipeCategory.MISC, PigsteelItems.PIGSTEEL_INGOT, RecipeCategory.BUILDING_BLOCKS, PigsteelBlocks.PIGSTEEL_BLOCK, null, null);
+        offerReversibleCompactingIngotRecipes(exporter, RecipeCategory.MISC, PigsteelItems.PIGSTEEL_NUGGET, RecipeCategory.MISC, PigsteelItems.PIGSTEEL_INGOT, null, null);
         offerWaxingRecipes(exporter);
-        makeSmeltnBlast(exporter, List.of(PigsteelBlocks.PIGSTEEL_ORE, PigsteelBlocks.STONE_PIGSTEEL_ORE, PigsteelBlocks.DEEPSLATE_PIGSTEEL_ORE, PigsteelBlocks.BLUE_PIGSTEEL_ORE, PigsteelBlocks.BRIMSTONE_PIGSTEEL_ORE), RecipeCategory.MISC, PigsteelItems.PIGSTEEL_INGOT, 0.7f, 200, "pigsteel_ingot");
+        makeSmeltnBlast(exporter, List.of(PigsteelItems.RAW_PIGSTEEL, PigsteelBlocks.PORKSLAG, PigsteelBlocks.PIGSTEEL_ORE, PigsteelBlocks.STONE_PIGSTEEL_ORE, PigsteelBlocks.DEEPSLATE_PIGSTEEL_ORE, PigsteelBlocks.BLUE_PIGSTEEL_ORE, PigsteelBlocks.BRIMSTONE_PIGSTEEL_ORE), RecipeCategory.MISC, PigsteelItems.PIGSTEEL_INGOT, 0.7f, 200, "pigsteel_ingot");
 
         makeCutRecipes(exporter, PigsteelBlocks.PIGSTEEL_BLOCK, PigsteelBlocks.CUT_PIGSTEEL, PigsteelBlocks.CUT_PIGSTEEL_STAIRS, PigsteelBlocks.CUT_PIGSTEEL_SLAB);
         makeCutRecipes(exporter, PigsteelBlocks.INFECTED_PIGSTEEL, PigsteelBlocks.INFECTED_CUT_PIGSTEEL, PigsteelBlocks.INFECTED_CUT_PIGSTEEL_STAIRS, PigsteelBlocks.INFECTED_CUT_PIGSTEEL_SLAB);
@@ -84,13 +86,10 @@ public class PigsteelRecipeGen extends FabricRecipeProvider {
 
         makeLantern(exporter, PigsteelBlocks.PIGSTEEL_LANTERN, Items.TORCH);
         makeLantern(exporter, PigsteelBlocks.PIGSTEEL_SOUL_LANTERN, Items.SOUL_TORCH);
-
-
     }
 
     public static void makeSmeltnBlast(Consumer<RecipeJsonProvider> exporter, List<ItemConvertible> inputs, RecipeCategory category, ItemConvertible output, float experience, int cookingTime, String group){
         RecipeProvider.offerSmelting(exporter, inputs, category, output, experience, cookingTime, group);
         RecipeProvider.offerBlasting(exporter, inputs, category, output, experience, cookingTime/2, group);
-
     }
 }

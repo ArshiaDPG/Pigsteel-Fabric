@@ -27,15 +27,17 @@ public class PigsteelConfiguredFeatures {
 
     public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> featureRegisterable) {
         RuleTest netherrackRule = new BlockMatchRuleTest(Blocks.NETHERRACK);
-        RuleTest ruleTest2 = new TagMatchRuleTest(BlockTags.STONE_ORE_REPLACEABLES);
-        RuleTest ruleTest3 = new TagMatchRuleTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
+        RuleTest stoneRule = new TagMatchRuleTest(BlockTags.STONE_ORE_REPLACEABLES);
+        RuleTest deepslateRule = new TagMatchRuleTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
+
         List<OreFeatureConfig.Target> list = List.of(
                 OreFeatureConfig.createTarget(netherrackRule, PigsteelBlocks.PIGSTEEL_ORE.getDefaultState()),
-                OreFeatureConfig.createTarget(ruleTest3, PigsteelBlocks.DEEPSLATE_PIGSTEEL_ORE.getDefaultState()),
-                OreFeatureConfig.createTarget(ruleTest2, PigsteelBlocks.STONE_PIGSTEEL_ORE.getDefaultState()));
+                OreFeatureConfig.createTarget(deepslateRule, PigsteelBlocks.DEEPSLATE_PIGSTEEL_ORE.getDefaultState()),
+                OreFeatureConfig.createTarget(stoneRule, PigsteelBlocks.STONE_PIGSTEEL_ORE.getDefaultState()));
 
         ConfiguredFeatures.register(featureRegisterable, ORE_PIGSTEEL, Feature.ORE, new OreFeatureConfig(list, 7));
     }
+
     public static void init(){
 
     }

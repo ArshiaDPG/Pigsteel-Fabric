@@ -1,29 +1,23 @@
 package net.digitalpear.pigsteel.register;
 
-import net.digitalpear.pigsteel.PigsteelMod;
+import net.digitalpear.pigsteel.Pigsteel;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.block.Block;
 import net.minecraft.item.*;
-import net.minecraft.item.trim.ArmorTrimMaterial;
-import net.minecraft.item.trim.ArmorTrimMaterials;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
-
-import java.util.Arrays;
-
 
 
 public class PigsteelItems {
-    public static final String MOD_ID = PigsteelMod.MOD_ID;
+    public static final String MOD_ID = Pigsteel.MOD_ID;
 
     public static Item registerItem(String id, Item item){
         return Registry.register(Registries.ITEM, new Identifier(MOD_ID, id), item);
     }
+
+    public static final Item RAW_PIGSTEEL = registerItem("raw_pigsteel", new Item(new FabricItemSettings()));
 
     public static final Item PIGSTEEL_INGOT = registerItem("pigsteel_ingot", new Item(new FabricItemSettings()));
     public static final Item PIGSTEEL_NUGGET = registerItem("pigsteel_nugget", new Item(new FabricItemSettings()));
@@ -39,6 +33,9 @@ public class PigsteelItems {
                         entries.addAfter(Items.NETHER_GOLD_ORE, PigsteelBlocks.BLUE_PIGSTEEL_ORE);
                     }
                     entries.addAfter(Items.NETHER_GOLD_ORE, PigsteelBlocks.PIGSTEEL_ORE);
+
+                    entries.addAfter(Items.ANCIENT_DEBRIS, PigsteelBlocks.PORKSLAG);
+                    entries.addAfter(Items.RAW_IRON, PigsteelItems.RAW_PIGSTEEL);
                 });
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS)

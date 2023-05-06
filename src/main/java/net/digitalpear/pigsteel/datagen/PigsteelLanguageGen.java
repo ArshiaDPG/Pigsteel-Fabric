@@ -1,7 +1,6 @@
 package net.digitalpear.pigsteel.datagen;
 
-import net.digitalpear.pigsteel.PigsteelMod;
-import net.digitalpear.pigsteel.register.PigsteelArmorTrimMaterials;
+import net.digitalpear.pigsteel.Pigsteel;
 import net.digitalpear.pigsteel.register.PigsteelBlocks;
 import net.digitalpear.pigsteel.register.PigsteelItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -21,6 +20,8 @@ public class PigsteelLanguageGen extends FabricLanguageProvider {
 
     @Override
     public void generateTranslations(TranslationBuilder translationBuilder) {
+
+        translationBuilder.add(PigsteelBlocks.PORKSLAG, "Porkslag");
 
         translationBuilder.add(PigsteelBlocks.PIGSTEEL_BLOCK, "Block of Pigsteel");
         translationBuilder.add(PigsteelBlocks.INFECTED_PIGSTEEL, "Infected Pigsteel");
@@ -63,6 +64,7 @@ public class PigsteelLanguageGen extends FabricLanguageProvider {
         translationBuilder.add(PigsteelBlocks.WAXED_ZOMBIFIED_CUT_PIGSTEEL_STAIRS, "Waxed Zombified Cut Pigsteel Stairs");
 
 
+        translationBuilder.add(PigsteelItems.RAW_PIGSTEEL, "Raw Pigsteel");
         translationBuilder.add(PigsteelItems.PIGSTEEL_INGOT, "Pigsteel Ingot");
         translationBuilder.add(PigsteelItems.PIGSTEEL_NUGGET, "Pigsteel Nugget");
 
@@ -80,7 +82,7 @@ public class PigsteelLanguageGen extends FabricLanguageProvider {
 
 
         try {
-            Path existingFilePath = dataOutput.getModContainer().findPath("assets/" + PigsteelMod.MOD_ID + "/lang/en_us.existing.json").get();
+            Path existingFilePath = dataOutput.getModContainer().findPath("assets/" + Pigsteel.MOD_ID + "/lang/en_us.existing.json").get();
             translationBuilder.add(existingFilePath);
         } catch (Exception e) {
             throw new RuntimeException("Failed to add existing language file!", e);

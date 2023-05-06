@@ -30,5 +30,6 @@
     "recipes": [
       "minecraft:cut_pigsteel_stairs_from_cut_pigsteel_stonecutting"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

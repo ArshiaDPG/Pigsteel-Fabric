@@ -30,5 +30,6 @@
     "recipes": [
       "minecraft:corrupted_cut_pigsteel_slab_from_corrupted_cut_pigsteel_stonecutting"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

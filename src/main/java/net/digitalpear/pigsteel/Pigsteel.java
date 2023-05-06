@@ -14,7 +14,7 @@ import org.apache.logging.log4j.Logger;
 
 
 @SuppressWarnings({"unused"})
-public class PigsteelMod implements ModInitializer {
+public class Pigsteel implements ModInitializer {
 	public static final String MOD_ID = "pigsteel";
 	public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
 

@@ -39,6 +39,10 @@ public class PigsteelBlockTagGen extends FabricTagProvider<Block> {
 
         getOrCreateTagBuilder(PigsteelBlockTags.PIGSTEEL_BLOCKS)
                 .add(PigsteelBlocks.PIGSTEEL_BLOCK).add(PigsteelBlocks.WAXED_PIGSTEEL_BLOCK)
+                .add(PigsteelBlocks.INFECTED_PIGSTEEL).add(PigsteelBlocks.WAXED_INFECTED_PIGSTEEL)
+                .add(PigsteelBlocks.CORRUPTED_PIGSTEEL).add(PigsteelBlocks.WAXED_CORRUPTED_PIGSTEEL)
+                .add(PigsteelBlocks.ZOMBIFIED_PIGSTEEL).add(PigsteelBlocks.WAXED_ZOMBIFIED_PIGSTEEL)
+                .add(PigsteelBlocks.PIGSTEEL_BLOCK).add(PigsteelBlocks.WAXED_PIGSTEEL_BLOCK)
                 .add(PigsteelBlocks.CUT_PIGSTEEL).add(PigsteelBlocks.WAXED_CUT_PIGSTEEL)
                 .add(PigsteelBlocks.INFECTED_CUT_PIGSTEEL).add(PigsteelBlocks.WAXED_INFECTED_CUT_PIGSTEEL)
                 .add(PigsteelBlocks.CORRUPTED_CUT_PIGSTEEL).add(PigsteelBlocks.WAXED_CORRUPTED_CUT_PIGSTEEL)
@@ -70,5 +74,10 @@ public class PigsteelBlockTagGen extends FabricTagProvider<Block> {
                 .add(PigsteelBlocks.ZOMBIFIED_CUT_PIGSTEEL_SLAB).add(PigsteelBlocks.WAXED_ZOMBIFIED_CUT_PIGSTEEL_SLAB);
 
         getOrCreateTagBuilder(BlockTags.BEACON_BASE_BLOCKS).forceAddTag(PigsteelBlockTags.PIGSTEEL_BLOCKS);
+
+        getOrCreateTagBuilder(PigsteelBlockTags.C_IRON_BLOCKS).add(PigsteelBlocks.PIGSTEEL_BLOCK);
+        getOrCreateTagBuilder(PigsteelBlockTags.C_ORES).forceAddTag(PigsteelBlockTags.PIGSTEEL_ORES);
+
+        getOrCreateTagBuilder(BlockTags.PIGLIN_REPELLENTS).add(PigsteelBlocks.PIGSTEEL_SOUL_LANTERN);
     }
 }

@@ -17,22 +17,5 @@ public class ZombifiableBlock extends OxidizableBlock {
             this.tickDegradation(state, world, pos, random);
         }
     }
-
-//    @Override
-//    public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random)  {
-//        if (!world.isClient && !world.getDimension().ultrawarm()) {
-//            if (state.isOf(PigsteelBlocks.ZOMBIFIED_PIGSTEEL)){
-//                world.setBlockState(pos, Blocks.IRON_BLOCK.getDefaultState(), 3);
-//                world.syncWorldEvent(2009, pos, 0);
-//            }
-//            this.tickDegradation(state, world, pos, random);
-//        }
-//    }
-//
-//
-//    @Override
-//    public boolean hasRandomTicks(BlockState state) {
-//        return state.isOf(PigsteelBlocks.ZOMBIFIED_PIGSTEEL) || super.hasRandomTicks(state);
-//    }
 }
 

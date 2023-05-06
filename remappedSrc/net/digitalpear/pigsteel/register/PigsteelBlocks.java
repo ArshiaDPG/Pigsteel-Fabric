@@ -61,7 +61,7 @@ public class PigsteelBlocks {
             return createBlockWithItem(name, new ZombifiableBlock(oxidationLevel, settings));
         }
     }
-    public static Block makeWaxed(Block base){
+    public static Block createWaxed(Block base){
         Block blockSettings;
         if (base instanceof StairsBlock){
             blockSettings = new StairsBlock(base.getDefaultState(),AbstractBlock.Settings.copy(base));
@@ -83,39 +83,51 @@ public class PigsteelBlocks {
     public static Block BLUE_PIGSTEEL_ORE = createOreBlock("blue_pigsteel_ore", Blocks.NETHER_GOLD_ORE);
     public static Block BRIMSTONE_PIGSTEEL_ORE = createOreBlock("brimstone_pigsteel_ore", Blocks.NETHER_GOLD_ORE);
 
+    public static Block pigsteelBlockSettings(Oxidizable.OxidationLevel level){
+        return new ZombifiableBlock(level, AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.NETHERITE).ticksRandomly().mapColor((MapColor) COLOR_MAP.get(level)));
+    }
 
-    public static final Block PIGSTEEL_BLOCK = createBlockWithItem("pigsteel_block", new PigsteelBlock(AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.NETHERITE).mapColor(MapColor.PURPLE)));
+
+//    public static final Block PIGSTEEL_BLOCK = createBlockWithItem("pigsteel_block", new PigsteelBlock(AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.NETHERITE).mapColor(MapColor.PURPLE)));
+    public static final Block PIGSTEEL_BLOCK = createBlockWithItem("pigsteel_block", pigsteelBlockSettings(Oxidizable.OxidationLevel.UNAFFECTED));
+    public static final Block INFECTED_PIGSTEEL = createBlockWithItem("infected_pigsteel", pigsteelBlockSettings(Oxidizable.OxidationLevel.EXPOSED));
+    public static final Block CORRUPTED_PIGSTEEL = createBlockWithItem("corrupted_pigsteel", pigsteelBlockSettings(Oxidizable.OxidationLevel.WEATHERED));
+    public static final Block ZOMBIFIED_PIGSTEEL = createBlockWithItem("zombified_pigsteel", pigsteelBlockSettings(Oxidizable.OxidationLevel.OXIDIZED));
+
     public static final Block WAXED_PIGSTEEL_BLOCK = createBlockWithItem("waxed_pigsteel_block", new Block(AbstractBlock.Settings.copy(PIGSTEEL_BLOCK)));
+    public static final Block WAXED_INFECTED_PIGSTEEL = createWaxed(INFECTED_PIGSTEEL);
+    public static final Block WAXED_CORRUPTED_PIGSTEEL = createWaxed(CORRUPTED_PIGSTEEL);
+    public static final Block WAXED_ZOMBIFIED_PIGSTEEL = createWaxed(ZOMBIFIED_PIGSTEEL);
 
-    public static final Block CUT_PIGSTEEL = createBlockWithItem("cut_pigsteel", new ZombifiableBlock(Oxidizable.OxidationLevel.UNAFFECTED, AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.NETHERITE).mapColor(MapColor.PURPLE)));
+    public static final Block CUT_PIGSTEEL = createBlockWithItem("cut_pigsteel", pigsteelBlockSettings(Oxidizable.OxidationLevel.UNAFFECTED));
     public static final Block INFECTED_CUT_PIGSTEEL = makeCutBlocks(CUT_PIGSTEEL, Oxidizable.OxidationLevel.EXPOSED);
     public static final Block CORRUPTED_CUT_PIGSTEEL = makeCutBlocks(CUT_PIGSTEEL, Oxidizable.OxidationLevel.WEATHERED);
     public static final Block ZOMBIFIED_CUT_PIGSTEEL = makeCutBlocks(CUT_PIGSTEEL, Oxidizable.OxidationLevel.OXIDIZED);
 
-    public static final Block WAXED_CUT_PIGSTEEL = makeWaxed(CUT_PIGSTEEL);
-    public static final Block WAXED_INFECTED_CUT_PIGSTEEL = makeWaxed(INFECTED_CUT_PIGSTEEL);
-    public static final Block WAXED_CORRUPTED_CUT_PIGSTEEL = makeWaxed(CORRUPTED_CUT_PIGSTEEL);
-    public static final Block WAXED_ZOMBIFIED_CUT_PIGSTEEL = makeWaxed(ZOMBIFIED_CUT_PIGSTEEL);
+    public static final Block WAXED_CUT_PIGSTEEL = createWaxed(CUT_PIGSTEEL);
+    public static final Block WAXED_INFECTED_CUT_PIGSTEEL = createWaxed(INFECTED_CUT_PIGSTEEL);
+    public static final Block WAXED_CORRUPTED_CUT_PIGSTEEL = createWaxed(CORRUPTED_CUT_PIGSTEEL);
+    public static final Block WAXED_ZOMBIFIED_CUT_PIGSTEEL = createWaxed(ZOMBIFIED_CUT_PIGSTEEL);
 
     public static final Block CUT_PIGSTEEL_STAIRS = createBlockWithItem("cut_pigsteel_stairs", new ZombifiableStairsBlock(Oxidizable.OxidationLevel.UNAFFECTED, CUT_PIGSTEEL.getDefaultState(), AbstractBlock.Settings.copy(CUT_PIGSTEEL)));
     public static final Block INFECTED_CUT_PIGSTEEL_STAIRS = makeCutBlocks(CUT_PIGSTEEL_STAIRS, Oxidizable.OxidationLevel.EXPOSED);
     public static final Block CORRUPTED_CUT_PIGSTEEL_STAIRS = makeCutBlocks(CUT_PIGSTEEL_STAIRS, Oxidizable.OxidationLevel.WEATHERED);
     public static final Block ZOMBIFIED_CUT_PIGSTEEL_STAIRS = makeCutBlocks(CUT_PIGSTEEL_STAIRS, Oxidizable.OxidationLevel.OXIDIZED);
 
-    public static final Block WAXED_CUT_PIGSTEEL_STAIRS = makeWaxed(CUT_PIGSTEEL_STAIRS);
-    public static final Block WAXED_INFECTED_CUT_PIGSTEEL_STAIRS = makeWaxed(INFECTED_CUT_PIGSTEEL_STAIRS);
-    public static final Block WAXED_CORRUPTED_CUT_PIGSTEEL_STAIRS = makeWaxed(CORRUPTED_CUT_PIGSTEEL_STAIRS);
-    public static final Block WAXED_ZOMBIFIED_CUT_PIGSTEEL_STAIRS = makeWaxed(ZOMBIFIED_CUT_PIGSTEEL_STAIRS);
+    public static final Block WAXED_CUT_PIGSTEEL_STAIRS = createWaxed(CUT_PIGSTEEL_STAIRS);
+    public static final Block WAXED_INFECTED_CUT_PIGSTEEL_STAIRS = createWaxed(INFECTED_CUT_PIGSTEEL_STAIRS);
+    public static final Block WAXED_CORRUPTED_CUT_PIGSTEEL_STAIRS = createWaxed(CORRUPTED_CUT_PIGSTEEL_STAIRS);
+    public static final Block WAXED_ZOMBIFIED_CUT_PIGSTEEL_STAIRS = createWaxed(ZOMBIFIED_CUT_PIGSTEEL_STAIRS);
 
     public static final Block CUT_PIGSTEEL_SLAB = createBlockWithItem("cut_pigsteel_slab", new ZombifiableSlabBlock(Oxidizable.OxidationLevel.UNAFFECTED, AbstractBlock.Settings.copy(CUT_PIGSTEEL)));
     public static final Block INFECTED_CUT_PIGSTEEL_SLAB = makeCutBlocks(CUT_PIGSTEEL_SLAB, Oxidizable.OxidationLevel.EXPOSED);
     public static final Block CORRUPTED_CUT_PIGSTEEL_SLAB = makeCutBlocks(CUT_PIGSTEEL_SLAB, Oxidizable.OxidationLevel.WEATHERED);
     public static final Block ZOMBIFIED_CUT_PIGSTEEL_SLAB = makeCutBlocks(CUT_PIGSTEEL_SLAB, Oxidizable.OxidationLevel.OXIDIZED);
 
-    public static final Block WAXED_CUT_PIGSTEEL_SLAB = makeWaxed(CUT_PIGSTEEL_SLAB);
-    public static final Block WAXED_INFECTED_CUT_PIGSTEEL_SLAB = makeWaxed(INFECTED_CUT_PIGSTEEL_SLAB);
-    public static final Block WAXED_CORRUPTED_CUT_PIGSTEEL_SLAB = makeWaxed(CORRUPTED_CUT_PIGSTEEL_SLAB);
-    public static final Block WAXED_ZOMBIFIED_CUT_PIGSTEEL_SLAB = makeWaxed(ZOMBIFIED_CUT_PIGSTEEL_SLAB);
+    public static final Block WAXED_CUT_PIGSTEEL_SLAB = createWaxed(CUT_PIGSTEEL_SLAB);
+    public static final Block WAXED_INFECTED_CUT_PIGSTEEL_SLAB = createWaxed(INFECTED_CUT_PIGSTEEL_SLAB);
+    public static final Block WAXED_CORRUPTED_CUT_PIGSTEEL_SLAB = createWaxed(CORRUPTED_CUT_PIGSTEEL_SLAB);
+    public static final Block WAXED_ZOMBIFIED_CUT_PIGSTEEL_SLAB = createWaxed(ZOMBIFIED_CUT_PIGSTEEL_SLAB);
 
     public static final Block PIGSTEEL_LANTERN = createBlockWithItem("pigsteel_lantern", new PigsteelLanternBlock(FabricBlockSettings.copy(Blocks.LANTERN).luminance(state -> 15).nonOpaque().mapColor(MapColor.PURPLE)));
     public static final Block PIGSTEEL_SOUL_LANTERN = createBlockWithItem("pigsteel_soul_lantern", new PigsteelLanternBlock(FabricBlockSettings.copy(Blocks.LANTERN).luminance(state -> 10).nonOpaque().mapColor(MapColor.PURPLE)));
@@ -124,6 +136,9 @@ public class PigsteelBlocks {
 
     public static void init(){
         PIGSTEEL_WAXING_MAP.put(PIGSTEEL_BLOCK, WAXED_PIGSTEEL_BLOCK);
+        PIGSTEEL_WAXING_MAP.put(INFECTED_PIGSTEEL, WAXED_INFECTED_PIGSTEEL);
+        PIGSTEEL_WAXING_MAP.put(CORRUPTED_PIGSTEEL, WAXED_CORRUPTED_PIGSTEEL);
+        PIGSTEEL_WAXING_MAP.put(ZOMBIFIED_PIGSTEEL, WAXED_ZOMBIFIED_PIGSTEEL);
 
         PIGSTEEL_WAXING_MAP.put(CUT_PIGSTEEL, WAXED_CUT_PIGSTEEL);
         PIGSTEEL_WAXING_MAP.put(INFECTED_CUT_PIGSTEEL, WAXED_INFECTED_CUT_PIGSTEEL);
@@ -139,6 +154,10 @@ public class PigsteelBlocks {
         PIGSTEEL_WAXING_MAP.put(INFECTED_CUT_PIGSTEEL_SLAB, WAXED_INFECTED_CUT_PIGSTEEL_SLAB);
         PIGSTEEL_WAXING_MAP.put(CORRUPTED_CUT_PIGSTEEL_SLAB, WAXED_CORRUPTED_CUT_PIGSTEEL_SLAB);
         PIGSTEEL_WAXING_MAP.put(ZOMBIFIED_CUT_PIGSTEEL_SLAB, WAXED_ZOMBIFIED_CUT_PIGSTEEL_SLAB);
+
+        PIGSTEEL_ZOMBIFYING_MAP.put(PIGSTEEL_BLOCK, INFECTED_PIGSTEEL);
+        PIGSTEEL_ZOMBIFYING_MAP.put(INFECTED_PIGSTEEL, CORRUPTED_PIGSTEEL);
+        PIGSTEEL_ZOMBIFYING_MAP.put(CORRUPTED_PIGSTEEL, ZOMBIFIED_PIGSTEEL);
 
         PIGSTEEL_ZOMBIFYING_MAP.put(CUT_PIGSTEEL, INFECTED_CUT_PIGSTEEL);
         PIGSTEEL_ZOMBIFYING_MAP.put(INFECTED_CUT_PIGSTEEL, CORRUPTED_CUT_PIGSTEEL);

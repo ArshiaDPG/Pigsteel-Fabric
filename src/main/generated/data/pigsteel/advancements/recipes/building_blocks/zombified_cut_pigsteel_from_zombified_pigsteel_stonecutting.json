@@ -30,5 +30,6 @@
     "recipes": [
       "minecraft:zombified_cut_pigsteel_from_zombified_pigsteel_stonecutting"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }
