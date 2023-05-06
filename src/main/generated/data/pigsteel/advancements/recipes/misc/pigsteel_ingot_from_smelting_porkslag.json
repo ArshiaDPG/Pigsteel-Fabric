@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_porkslag": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "pigsteel:porkslag"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:pigsteel_ingot_from_smelting_porkslag"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_porkslag",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:pigsteel_ingot_from_smelting_porkslag"
+    ]
+  },
+  "sends_telemetry_event": false
+}
