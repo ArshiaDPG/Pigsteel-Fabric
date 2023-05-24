@@ -1,8 +1,11 @@
 package net.digitalpear.pigsteel.register;
 
 import com.google.common.collect.ImmutableMap;
-import net.digitalpear.pigsteel.PigsteelMod;
-import net.digitalpear.pigsteel.common.blocks.*;
+import net.digitalpear.pigsteel.Pigsteel;
+import net.digitalpear.pigsteel.common.blocks.PigsteelLanternBlock;
+import net.digitalpear.pigsteel.common.blocks.ZombifiableBlock;
+import net.digitalpear.pigsteel.common.blocks.ZombifiableSlabBlock;
+import net.digitalpear.pigsteel.common.blocks.ZombifiableStairsBlock;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
 import net.minecraft.block.*;
@@ -23,7 +26,7 @@ public class PigsteelBlocks {
     public static Map<Block, Block> PIGSTEEL_ZOMBIFYING_MAP = new HashMap<>();
 
     public static BlockItem createBlockItem(String blockID, Block block) {
-        return Registry.register(Registries.ITEM, new Identifier(PigsteelMod.MOD_ID, blockID), new BlockItem(block, new Item.Settings()));
+        return Registry.register(Registries.ITEM, new Identifier(Pigsteel.MOD_ID, blockID), new BlockItem(block, new Item.Settings().fireproof()));
     }
     public static Block createOreBlock(String blockID, Block baseBlock) {
         return createBlockWithItem(blockID, new ExperienceDroppingBlock(FabricBlockSettings.copy(baseBlock).mapColor(MapColor.PALE_PURPLE)));
@@ -31,7 +34,7 @@ public class PigsteelBlocks {
 
     private static Block createBlockWithItem(String blockID, Block block) {
         createBlockItem(blockID, block);
-        return Registry.register(Registries.BLOCK, new Identifier(PigsteelMod.MOD_ID, blockID), block);
+        return Registry.register(Registries.BLOCK, new Identifier(Pigsteel.MOD_ID, blockID), block);
     }
 
     public static final ImmutableMap COLOR_MAP = new ImmutableMap.Builder()
@@ -41,10 +44,10 @@ public class PigsteelBlocks {
             .put(Oxidizable.OxidationLevel.OXIDIZED, MapColor.DARK_GREEN).build();
 
     public static final ImmutableMap NAME_MAP = new ImmutableMap.Builder()
-        .put(Oxidizable.OxidationLevel.UNAFFECTED, "")
-        .put(Oxidizable.OxidationLevel.EXPOSED, "infected_")
-        .put(Oxidizable.OxidationLevel.WEATHERED, "corrupted_")
-        .put(Oxidizable.OxidationLevel.OXIDIZED, "zombified_").build();
+            .put(Oxidizable.OxidationLevel.UNAFFECTED, "")
+            .put(Oxidizable.OxidationLevel.EXPOSED, "infected_")
+            .put(Oxidizable.OxidationLevel.WEATHERED, "corrupted_")
+            .put(Oxidizable.OxidationLevel.OXIDIZED, "zombified_").build();
 
     public static Block makeCutBlocks(Block base, Oxidizable.OxidationLevel oxidationLevel){
         MapColor color = (MapColor) COLOR_MAP.get(oxidationLevel);
@@ -75,6 +78,15 @@ public class PigsteelBlocks {
         return createBlockWithItem("waxed_" + Registries.BLOCK.getId(base).getPath(), blockSettings);
     }
 
+    public static final Block PORKSLAG = createBlockWithItem("porkslag", new Block(AbstractBlock.Settings.of()
+            .sounds(BlockSoundGroup.POLISHED_DEEPSLATE)
+            .strength(1.5f)
+            .mapColor(MapColor.BLACK)
+            .requiresTool()));
+
+
+    public static final Block RAW_PIGSTEEL_BLOCK = createBlockWithItem("raw_pigsteel_block", new Block(AbstractBlock.Settings.copy(Blocks.RAW_IRON_BLOCK)));
+
     public static final Block PIGSTEEL_ORE = createOreBlock("pigsteel_ore", Blocks.NETHER_GOLD_ORE);
     public static final Block STONE_PIGSTEEL_ORE = createOreBlock("stone_pigsteel_ore", Blocks.IRON_ORE);
     public static final Block DEEPSLATE_PIGSTEEL_ORE = createOreBlock("deepslate_pigsteel_ore", Blocks.DEEPSLATE_IRON_ORE);
@@ -88,7 +100,6 @@ public class PigsteelBlocks {
     }
 
 
-//    public static final Block PIGSTEEL_BLOCK = createBlockWithItem("pigsteel_block", new PigsteelBlock(AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.NETHERITE).mapColor(MapColor.PURPLE)));
     public static final Block PIGSTEEL_BLOCK = createBlockWithItem("pigsteel_block", pigsteelBlockSettings(Oxidizable.OxidationLevel.UNAFFECTED));
     public static final Block INFECTED_PIGSTEEL = createBlockWithItem("infected_pigsteel", pigsteelBlockSettings(Oxidizable.OxidationLevel.EXPOSED));
     public static final Block CORRUPTED_PIGSTEEL = createBlockWithItem("corrupted_pigsteel", pigsteelBlockSettings(Oxidizable.OxidationLevel.WEATHERED));

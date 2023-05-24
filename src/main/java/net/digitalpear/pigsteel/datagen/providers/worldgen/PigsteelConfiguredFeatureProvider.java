@@ -18,7 +18,6 @@ public class PigsteelConfiguredFeatureProvider extends FabricDynamicRegistryProv
     @Override
     protected void configure(RegistryWrapper.WrapperLookup registries, Entries entries) {
         add(registries, entries, PigsteelConfiguredFeatures.ORE_PIGSTEEL);
-        add(registries, entries, PigsteelConfiguredFeatures.PIGSTEEL_SPIRE);
 
     }
 

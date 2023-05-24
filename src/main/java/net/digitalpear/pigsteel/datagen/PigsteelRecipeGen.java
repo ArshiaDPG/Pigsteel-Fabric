@@ -76,6 +76,8 @@ public class PigsteelRecipeGen extends FabricRecipeProvider {
     public void generate(Consumer<RecipeJsonProvider> exporter) {
         offerReversibleCompactingIngotRecipes(exporter, RecipeCategory.MISC, PigsteelItems.PIGSTEEL_INGOT, RecipeCategory.BUILDING_BLOCKS, PigsteelBlocks.PIGSTEEL_BLOCK, null, null);
         offerReversibleCompactingIngotRecipes(exporter, RecipeCategory.MISC, PigsteelItems.PIGSTEEL_NUGGET, RecipeCategory.MISC, PigsteelItems.PIGSTEEL_INGOT, null, null);
+        offerReversibleCompactingIngotRecipes(exporter, RecipeCategory.MISC, PigsteelItems.RAW_PIGSTEEL, RecipeCategory.BUILDING_BLOCKS, PigsteelBlocks.RAW_PIGSTEEL_BLOCK, null, null);
+
         offerWaxingRecipes(exporter);
         makeSmeltnBlast(exporter, List.of(PigsteelItems.RAW_PIGSTEEL, PigsteelBlocks.PORKSLAG, PigsteelBlocks.PIGSTEEL_ORE, PigsteelBlocks.STONE_PIGSTEEL_ORE, PigsteelBlocks.DEEPSLATE_PIGSTEEL_ORE, PigsteelBlocks.BLUE_PIGSTEEL_ORE, PigsteelBlocks.BRIMSTONE_PIGSTEEL_ORE), RecipeCategory.MISC, PigsteelItems.PIGSTEEL_INGOT, 0.7f, 200, "pigsteel_ingot");
 

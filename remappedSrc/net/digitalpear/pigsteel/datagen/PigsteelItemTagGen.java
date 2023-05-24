@@ -1,6 +1,5 @@
 package net.digitalpear.pigsteel.datagen;
 
-import net.digitalpear.pigsteel.PigsteelMod;
 import net.digitalpear.pigsteel.register.PigsteelBlocks;
 import net.digitalpear.pigsteel.register.PigsteelItems;
 import net.digitalpear.pigsteel.register.tags.PigsteelItemTags;
@@ -11,7 +10,6 @@ import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
-import net.minecraft.util.Identifier;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -44,6 +42,7 @@ public class PigsteelItemTagGen extends FabricTagProvider<Item> {
                 .add(PigsteelBlocks.PIGSTEEL_BLOCK.asItem());
 
         getOrCreateTagBuilder(PigsteelItemTags.PIGSTEEL_ORES)
+                .add(PigsteelBlocks.PORKSLAG.asItem())
                 .add(PigsteelBlocks.PIGSTEEL_ORE.asItem())
                 .add(PigsteelBlocks.STONE_PIGSTEEL_ORE.asItem())
                 .add(PigsteelBlocks.DEEPSLATE_PIGSTEEL_ORE.asItem())

@@ -1,6 +1,5 @@
 package net.digitalpear.pigsteel.datagen;
 
-import net.digitalpear.pigsteel.PigsteelMod;
 import net.digitalpear.pigsteel.register.PigsteelBlocks;
 import net.digitalpear.pigsteel.register.tags.PigsteelBlockTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -9,7 +8,6 @@ import net.minecraft.block.Block;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
-import net.minecraft.util.Identifier;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -30,6 +28,7 @@ public class PigsteelBlockTagGen extends FabricTagProvider<Block> {
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
         getOrCreateTagBuilder(PigsteelBlockTags.PIGSTEEL_ORES)
+                .add(PigsteelBlocks.PORKSLAG)
                 .add(PigsteelBlocks.PIGSTEEL_ORE)
                 .add(PigsteelBlocks.STONE_PIGSTEEL_ORE)
                 .add(PigsteelBlocks.DEEPSLATE_PIGSTEEL_ORE)

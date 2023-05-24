@@ -6,6 +6,7 @@ import net.digitalpear.pigsteel.register.PigsteelItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.block.Block;
+import net.minecraft.block.StairsBlock;
 import net.minecraft.data.client.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
@@ -28,6 +29,7 @@ public class PigsteelModelGen extends FabricModelProvider {
 
         blockStateModelGenerator.registerSimpleCubeAll(PigsteelBlocks.PORKSLAG);
 
+        blockStateModelGenerator.registerSimpleCubeAll(PigsteelBlocks.RAW_PIGSTEEL_BLOCK);
 
         createWaxable(blockStateModelGenerator, PigsteelBlocks.PIGSTEEL_BLOCK, PigsteelBlocks.WAXED_PIGSTEEL_BLOCK);
         createWaxable(blockStateModelGenerator, PigsteelBlocks.INFECTED_PIGSTEEL, PigsteelBlocks.WAXED_INFECTED_PIGSTEEL);
@@ -51,6 +53,7 @@ public class PigsteelModelGen extends FabricModelProvider {
 
         createLantern(blockStateModelGenerator, PigsteelBlocks.PIGSTEEL_LANTERN);
         createLantern(blockStateModelGenerator, PigsteelBlocks.PIGSTEEL_SOUL_LANTERN);
+
     }
 
     @Override
@@ -58,6 +61,8 @@ public class PigsteelModelGen extends FabricModelProvider {
         itemModelGenerator.register(PigsteelItems.RAW_PIGSTEEL, Models.GENERATED);
         itemModelGenerator.register(PigsteelItems.PIGSTEEL_INGOT, Models.GENERATED);
         itemModelGenerator.register(PigsteelItems.PIGSTEEL_NUGGET, Models.GENERATED);
+
+
     }
 
 

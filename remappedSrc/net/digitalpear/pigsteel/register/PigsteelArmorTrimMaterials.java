@@ -1,6 +1,6 @@
 package net.digitalpear.pigsteel.register;
 
-import net.digitalpear.pigsteel.PigsteelMod;
+import net.digitalpear.pigsteel.Pigsteel;
 import net.minecraft.item.ArmorMaterials;
 import net.minecraft.item.Item;
 import net.minecraft.item.trim.ArmorTrimMaterial;
@@ -30,7 +30,7 @@ public class PigsteelArmorTrimMaterials {
         registry.register(key, armorTrimMaterial);
     }
     private static RegistryKey<ArmorTrimMaterial> of(String id) {
-        return RegistryKey.of(RegistryKeys.TRIM_MATERIAL, new Identifier(PigsteelMod.MOD_ID,id));
+        return RegistryKey.of(RegistryKeys.TRIM_MATERIAL, new Identifier(Pigsteel.MOD_ID,id));
     }
 
     public static void init(){

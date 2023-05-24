@@ -17,10 +17,10 @@ public class PigsteelItems {
         return Registry.register(Registries.ITEM, new Identifier(MOD_ID, id), item);
     }
 
-    public static final Item RAW_PIGSTEEL = registerItem("raw_pigsteel", new Item(new FabricItemSettings()));
+    public static final Item RAW_PIGSTEEL = registerItem("raw_pigsteel", new Item(new Item.Settings().fireproof()));
 
-    public static final Item PIGSTEEL_INGOT = registerItem("pigsteel_ingot", new Item(new FabricItemSettings()));
-    public static final Item PIGSTEEL_NUGGET = registerItem("pigsteel_nugget", new Item(new FabricItemSettings()));
+    public static final Item PIGSTEEL_INGOT = registerItem("pigsteel_ingot", new Item(new Item.Settings().fireproof()));
+    public static final Item PIGSTEEL_NUGGET = registerItem("pigsteel_nugget", new Item(new Item.Settings().fireproof()));
 
 
     public static void init(){
@@ -35,13 +35,15 @@ public class PigsteelItems {
                     entries.addAfter(Items.NETHER_GOLD_ORE, PigsteelBlocks.PIGSTEEL_ORE);
 
                     entries.addAfter(Items.ANCIENT_DEBRIS, PigsteelBlocks.PORKSLAG);
-                    entries.addAfter(Items.RAW_IRON, PigsteelItems.RAW_PIGSTEEL);
+                    entries.addAfter(Items.RAW_IRON_BLOCK, PigsteelBlocks.RAW_PIGSTEEL_BLOCK);
+
                 });
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS)
                 .register(entries -> {
                     entries.addAfter(Items.IRON_INGOT, PIGSTEEL_INGOT);
                     entries.addAfter(Items.IRON_NUGGET, PIGSTEEL_NUGGET);
+                    entries.addAfter(Items.RAW_IRON, PigsteelItems.RAW_PIGSTEEL);
         });
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL)

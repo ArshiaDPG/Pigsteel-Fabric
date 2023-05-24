@@ -26,7 +26,7 @@ public class PigsteelBlocks {
     public static Map<Block, Block> PIGSTEEL_ZOMBIFYING_MAP = new HashMap<>();
 
     public static BlockItem createBlockItem(String blockID, Block block) {
-        return Registry.register(Registries.ITEM, new Identifier(Pigsteel.MOD_ID, blockID), new BlockItem(block, new Item.Settings()));
+        return Registry.register(Registries.ITEM, new Identifier(Pigsteel.MOD_ID, blockID), new BlockItem(block, new Item.Settings().fireproof()));
     }
     public static Block createOreBlock(String blockID, Block baseBlock) {
         return createBlockWithItem(blockID, new ExperienceDroppingBlock(FabricBlockSettings.copy(baseBlock).mapColor(MapColor.PALE_PURPLE)));
@@ -84,6 +84,8 @@ public class PigsteelBlocks {
             .mapColor(MapColor.BLACK)
             .requiresTool()));
 
+
+    public static final Block RAW_PIGSTEEL_BLOCK = createBlockWithItem("raw_pigsteel_block", new Block(AbstractBlock.Settings.copy(Blocks.RAW_IRON_BLOCK)));
 
     public static final Block PIGSTEEL_ORE = createOreBlock("pigsteel_ore", Blocks.NETHER_GOLD_ORE);
     public static final Block STONE_PIGSTEEL_ORE = createOreBlock("stone_pigsteel_ore", Blocks.IRON_ORE);

@@ -5,6 +5,7 @@ import net.digitalpear.pigsteel.register.PigsteelItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.minecraft.block.Block;
+import net.minecraft.block.SlabBlock;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
@@ -31,15 +32,23 @@ public class PigsteelBlockLootTableGen extends FabricBlockLootTableProvider {
     @Override
     public void accept(BiConsumer<Identifier, LootTable.Builder> biConsumer) {
         PigsteelBlocks.PIGSTEEL_WAXING_MAP.forEach((normal, waxed) -> {
-            makeDrop(biConsumer, normal);
-            makeDrop(biConsumer, waxed);
+            if (normal instanceof SlabBlock){
+
+                makeDrop(biConsumer, normal, slabDrops(normal));
+                makeDrop(biConsumer, waxed, slabDrops(waxed));
+            }
+            else{
+                makeDrop(biConsumer, normal);
+                makeDrop(biConsumer, waxed);
+            }
         });
 
         makeDrop(biConsumer, PigsteelBlocks.PORKSLAG, oreDrops(PigsteelBlocks.PORKSLAG, PigsteelItems.RAW_PIGSTEEL));
 
+        makeDrop(biConsumer, PigsteelBlocks.RAW_PIGSTEEL_BLOCK);
+
         makeDrop(biConsumer, PigsteelBlocks.PIGSTEEL_LANTERN);
         makeDrop(biConsumer, PigsteelBlocks.PIGSTEEL_SOUL_LANTERN);
-
 
         makeOre(biConsumer, PigsteelBlocks.PIGSTEEL_ORE, PigsteelItems.PIGSTEEL_NUGGET);
         makeOre(biConsumer, PigsteelBlocks.STONE_PIGSTEEL_ORE, PigsteelItems.PIGSTEEL_NUGGET);
@@ -59,6 +68,6 @@ public class PigsteelBlockLootTableGen extends FabricBlockLootTableProvider {
         makeDrop(biConsumer, block, dropsWithSilkTouch(block, this.applyExplosionDecay(block, ItemEntry.builder(alternativeDrop).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(2.0F, 6.0F))).apply(ApplyBonusLootFunction.oreDrops(Enchantments.FORTUNE)))));
     }
     public net.minecraft.loot.LootTable.Builder oreDrops(Block dropWithSilkTouch, Item drop) {
-        return dropsWithSilkTouch(dropWithSilkTouch, (net.minecraft.loot.entry.LootPoolEntry.Builder)this.applyExplosionDecay(dropWithSilkTouch, ItemEntry.builder(drop).apply(ApplyBonusLootFunction.oreDrops(Enchantments.FORTUNE))));
+        return dropsWithSilkTouch(dropWithSilkTouch, this.applyExplosionDecay(dropWithSilkTouch, ItemEntry.builder(drop).apply(ApplyBonusLootFunction.oreDrops(Enchantments.FORTUNE))));
     }
 }

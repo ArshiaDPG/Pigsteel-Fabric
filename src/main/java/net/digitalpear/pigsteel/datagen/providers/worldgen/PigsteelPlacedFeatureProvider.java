@@ -18,16 +18,14 @@ public class PigsteelPlacedFeatureProvider extends FabricDynamicRegistryProvider
     @Override
     protected void configure(RegistryWrapper.WrapperLookup registries, Entries entries) {
         add(registries, entries, PigsteelPlacedFeatures.ORE_PIGSTEEL);
-        add(registries, entries, PigsteelPlacedFeatures.PIGSTEEL_SPIRE);
-
     }
 
 
     private void add(RegistryWrapper.WrapperLookup registries, Entries entries, RegistryKey<PlacedFeature> resourceKey) {
         RegistryWrapper.Impl<PlacedFeature> configuredFeatureRegistryLookup = registries.getWrapperOrThrow(RegistryKeys.PLACED_FEATURE);
-
         entries.add(resourceKey, configuredFeatureRegistryLookup.getOrThrow(resourceKey).value());
     }
+
     @Override
     public String getName() {
         return "worldgen/placed_feature";

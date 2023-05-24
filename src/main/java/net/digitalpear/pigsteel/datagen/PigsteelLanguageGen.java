@@ -23,6 +23,8 @@ public class PigsteelLanguageGen extends FabricLanguageProvider {
 
         translationBuilder.add(PigsteelBlocks.PORKSLAG, "Porkslag");
 
+        translationBuilder.add(PigsteelBlocks.RAW_PIGSTEEL_BLOCK, "Raw Pigsteel Block");
+
         translationBuilder.add(PigsteelBlocks.PIGSTEEL_BLOCK, "Block of Pigsteel");
         translationBuilder.add(PigsteelBlocks.INFECTED_PIGSTEEL, "Infected Pigsteel");
         translationBuilder.add(PigsteelBlocks.CORRUPTED_PIGSTEEL, "Corrupted Pigsteel");
@@ -62,7 +64,6 @@ public class PigsteelLanguageGen extends FabricLanguageProvider {
         translationBuilder.add(PigsteelBlocks.WAXED_INFECTED_CUT_PIGSTEEL_STAIRS, "Waxed Infected Cut Pigsteel Stairs");
         translationBuilder.add(PigsteelBlocks.WAXED_CORRUPTED_CUT_PIGSTEEL_STAIRS, "Waxed Corrupted Cut Pigsteel Stairs");
         translationBuilder.add(PigsteelBlocks.WAXED_ZOMBIFIED_CUT_PIGSTEEL_STAIRS, "Waxed Zombified Cut Pigsteel Stairs");
-
 
         translationBuilder.add(PigsteelItems.RAW_PIGSTEEL, "Raw Pigsteel");
         translationBuilder.add(PigsteelItems.PIGSTEEL_INGOT, "Pigsteel Ingot");
