@@ -22,6 +22,7 @@ public class PigsteelPlacedFeatures {
 
 
     public static final RegistryKey<PlacedFeature> ORE_PIGSTEEL = of("ore_pigsteel_nether");
+    public static final RegistryKey<PlacedFeature> MOLTEN_REMAINS = of("molten_remains");
 
     public static RegistryKey<PlacedFeature> of(String id) {
         return RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(Pigsteel.MOD_ID, id));
@@ -31,8 +32,10 @@ public class PigsteelPlacedFeatures {
         RegistryEntryLookup<ConfiguredFeature<?, ?>> registryEntryLookup = featureRegisterable.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
 
         RegistryEntry<ConfiguredFeature<?, ?>> pigsteelOre = registryEntryLookup.getOrThrow(PigsteelConfiguredFeatures.ORE_PIGSTEEL);
+        RegistryEntry<ConfiguredFeature<?, ?>> moltenRemains = registryEntryLookup.getOrThrow(PigsteelConfiguredFeatures.MOLTEN_REMAINS);
 
         PlacedFeatures.register(featureRegisterable, ORE_PIGSTEEL, pigsteelOre, modifiersWithCount(20, HeightRangePlacementModifier.uniform(YOffset.fixed(0), YOffset.fixed(128))));
+        PlacedFeatures.register(featureRegisterable, MOLTEN_REMAINS, moltenRemains, List.of(RarityFilterPlacementModifier.of(12), SquarePlacementModifier.of(), HeightRangePlacementModifier.uniform(YOffset.getTop(), YOffset.belowTop(12)), BiomePlacementModifier.of()));
     }
     private static List<PlacementModifier> modifiers(PlacementModifier countModifier, PlacementModifier heightModifier) {
         return List.of(countModifier, SquarePlacementModifier.of(), heightModifier, BiomePlacementModifier.of());
@@ -44,5 +47,6 @@ public class PigsteelPlacedFeatures {
 
     public static void init() {
         BiomeModifications.addFeature(BiomeSelectors.foundInTheNether(), GenerationStep.Feature.UNDERGROUND_ORES, ORE_PIGSTEEL);
+        BiomeModifications.addFeature(BiomeSelectors.foundInTheNether(), GenerationStep.Feature.UNDERGROUND_ORES, MOLTEN_REMAINS);
     }
 }

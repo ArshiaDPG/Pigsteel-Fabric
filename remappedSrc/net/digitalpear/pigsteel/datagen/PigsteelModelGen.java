@@ -6,10 +6,16 @@ import net.digitalpear.pigsteel.register.PigsteelItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.StairsBlock;
 import net.minecraft.data.client.*;
+import net.minecraft.item.ArmorItem;
+import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 
+import java.util.Iterator;
 import java.util.Optional;
 
 public class PigsteelModelGen extends FabricModelProvider {
@@ -29,7 +35,6 @@ public class PigsteelModelGen extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(PigsteelBlocks.PORKSLAG);
 
         blockStateModelGenerator.registerSimpleCubeAll(PigsteelBlocks.RAW_PIGSTEEL_BLOCK);
-
 
         createWaxable(blockStateModelGenerator, PigsteelBlocks.PIGSTEEL_BLOCK, PigsteelBlocks.WAXED_PIGSTEEL_BLOCK);
         createWaxable(blockStateModelGenerator, PigsteelBlocks.INFECTED_PIGSTEEL, PigsteelBlocks.WAXED_INFECTED_PIGSTEEL);
@@ -53,6 +58,8 @@ public class PigsteelModelGen extends FabricModelProvider {
 
         createLantern(blockStateModelGenerator, PigsteelBlocks.PIGSTEEL_LANTERN);
         createLantern(blockStateModelGenerator, PigsteelBlocks.PIGSTEEL_SOUL_LANTERN);
+
+        registerIronBars(blockStateModelGenerator, PigsteelBlocks.PIGSTEEL_BARS);
     }
 
     @Override
@@ -62,7 +69,17 @@ public class PigsteelModelGen extends FabricModelProvider {
         itemModelGenerator.register(PigsteelItems.PIGSTEEL_NUGGET, Models.GENERATED);
     }
 
+    private void registerIronBars(BlockStateModelGenerator blockStateModelGenerator, Block bars) {
+        Identifier identifier = block("bars_post_ends", TextureKey.ALL).upload(bars, "_post_ends", TextureMap.all(bars), blockStateModelGenerator.modelCollector);
+        Identifier identifier2 = block("bars_post", TextureKey.ALL).upload(bars, "_post", TextureMap.all(bars), blockStateModelGenerator.modelCollector);
+        Identifier identifier3 = block("bars_cap", TextureKey.ALL).upload(bars, "_cap", TextureMap.all(bars), blockStateModelGenerator.modelCollector);
+        Identifier identifier4 = block("bars_cap_alt", TextureKey.ALL).upload(bars, "_cap_alt", TextureMap.all(bars), blockStateModelGenerator.modelCollector);
+        Identifier identifier5 = block("bars_side", TextureKey.ALL).upload(bars, "_side", TextureMap.all(bars), blockStateModelGenerator.modelCollector);
+        Identifier identifier6 = block("bars_side_alt", TextureKey.ALL).upload(bars, "_side_alt", TextureMap.all(bars), blockStateModelGenerator.modelCollector);
+        blockStateModelGenerator.blockStateCollector.accept(MultipartBlockStateSupplier.create(bars).with(BlockStateVariant.create().put(VariantSettings.MODEL, identifier)).with(When.create().set(Properties.NORTH, false).set(Properties.EAST, false).set(Properties.SOUTH, false).set(Properties.WEST, false), BlockStateVariant.create().put(VariantSettings.MODEL, identifier2)).with(When.create().set(Properties.NORTH, true).set(Properties.EAST, false).set(Properties.SOUTH, false).set(Properties.WEST, false), BlockStateVariant.create().put(VariantSettings.MODEL, identifier3)).with(When.create().set(Properties.NORTH, false).set(Properties.EAST, true).set(Properties.SOUTH, false).set(Properties.WEST, false), BlockStateVariant.create().put(VariantSettings.MODEL, identifier3).put(VariantSettings.Y, VariantSettings.Rotation.R90)).with(When.create().set(Properties.NORTH, false).set(Properties.EAST, false).set(Properties.SOUTH, true).set(Properties.WEST, false), BlockStateVariant.create().put(VariantSettings.MODEL, identifier4)).with(When.create().set(Properties.NORTH, false).set(Properties.EAST, false).set(Properties.SOUTH, false).set(Properties.WEST, true), BlockStateVariant.create().put(VariantSettings.MODEL, identifier4).put(VariantSettings.Y, VariantSettings.Rotation.R90)).with(When.create().set(Properties.NORTH, true), BlockStateVariant.create().put(VariantSettings.MODEL, identifier5)).with(When.create().set(Properties.EAST, true), BlockStateVariant.create().put(VariantSettings.MODEL, identifier5).put(VariantSettings.Y, VariantSettings.Rotation.R90)).with(When.create().set(Properties.SOUTH, true), BlockStateVariant.create().put(VariantSettings.MODEL, identifier6)).with(When.create().set(Properties.WEST, true), BlockStateVariant.create().put(VariantSettings.MODEL, identifier6).put(VariantSettings.Y, VariantSettings.Rotation.R90)));
 
+        blockStateModelGenerator.registerItemModel(bars);
+    }
 
 
     private static Model block(String parent, TextureKey... requiredTextureKeys) {

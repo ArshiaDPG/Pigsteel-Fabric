@@ -1,4 +1,4 @@
-package net.digitalpear.pigsteel.datagen.providers.worldgen;
+package net.digitalpear.pigsteel.datagen.providers;
 
 import net.digitalpear.pigsteel.register.PigsteelArmorTrimMaterials;
 import net.digitalpear.pigsteel.register.PigsteelConfiguredFeatures;

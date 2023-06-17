@@ -5,6 +5,7 @@ import net.digitalpear.pigsteel.register.PigsteelItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.minecraft.block.Block;
+import net.minecraft.block.SlabBlock;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
@@ -31,8 +32,15 @@ public class PigsteelBlockLootTableGen extends FabricBlockLootTableProvider {
     @Override
     public void accept(BiConsumer<Identifier, LootTable.Builder> biConsumer) {
         PigsteelBlocks.PIGSTEEL_WAXING_MAP.forEach((normal, waxed) -> {
-            makeDrop(biConsumer, normal);
-            makeDrop(biConsumer, waxed);
+            if (normal instanceof SlabBlock){
+
+                makeDrop(biConsumer, normal, slabDrops(normal));
+                makeDrop(biConsumer, waxed, slabDrops(waxed));
+            }
+            else{
+                makeDrop(biConsumer, normal);
+                makeDrop(biConsumer, waxed);
+            }
         });
 
         makeDrop(biConsumer, PigsteelBlocks.PORKSLAG, oreDrops(PigsteelBlocks.PORKSLAG, PigsteelItems.RAW_PIGSTEEL));

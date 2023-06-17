@@ -1,6 +1,7 @@
 package net.digitalpear.pigsteel;
 
 
+import net.digitalpear.pigsteel.common.worldgen.PigsteelFeature;
 import net.digitalpear.pigsteel.register.*;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
@@ -23,6 +24,7 @@ public class Pigsteel implements ModInitializer {
 	public void onInitialize() {
 		PigsteelBlocks.init();
 		PigsteelItems.init();
+		PigsteelFeature.init();
 		PigsteelConfiguredFeatures.init();
 		PigsteelPlacedFeatures.init();
 		PigsteelData.init();

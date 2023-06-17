@@ -1,7 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
-  "group": "pigsteel_lantern",
   "key": {
     "#": {
       "item": "pigsteel:pigsteel_nugget"

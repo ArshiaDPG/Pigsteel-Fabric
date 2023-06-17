@@ -1,9 +1,0 @@
-{
-    "additions": [
-        "pigtseel:pigtseel_ingot"
-    ],
-    "targets": [
-        "minecraft:iron_ingot"
-    ],
-    "recipes": {}
-}

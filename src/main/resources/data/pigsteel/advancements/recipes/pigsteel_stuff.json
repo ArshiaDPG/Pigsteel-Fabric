@@ -2,19 +2,11 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "pigsteel:pigsteel_ingot_from_blasting",
-      "pigsteel:pigsteel_ingot_from_smelting",
-      "pigsteel:pigsteel_ingot_from_blasting_deepslate",
-      "pigsteel:pigsteel_ingot_from_smelting_deepslate",
-      "pigsteel:pigsteel_ingot_from_blasting_stone",
-      "pigsteel:pigsteel_ingot_from_smelting_stone",
-      "pigsteel:pigsteel_ingot_from_nuggets",
       "pigsteel:pigsteel_activator_rail",
       "pigsteel:pigsteel_anvil",
       "pigsteel:pigsteel_axe",
       "pigsteel:pigsteel_axe_backwards",
       "pigsteel:flint_and_pigsteel",
-      "pigsteel:pigsteel_bars",
       "pigsteel:pigsteel_blast_furnace",
       "pigsteel:pigsteel_boots",
       "pigsteel:pigsteel_bucket",
@@ -43,12 +35,11 @@
       "pigsteel:pigsteel_stonecutter",
       "pigsteel:pigsteel_sword",
       "pigsteel:pigsteel_trapdoor",
-      "pigsteel:pigsteel_tripwire_hook",
-      "pigsteel:pigsteel_block"
+      "pigsteel:pigsteel_tripwire_hook"
     ]
   },
   "criteria": {
-    "has_raw_iron_block": {
+    "has_pigsteel_ingot": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
@@ -63,7 +54,7 @@
   },
   "requirements": [
     [
-      "has_raw_iron_block"
+      "has_pigsteel_ingot"
     ]
   ]
 }

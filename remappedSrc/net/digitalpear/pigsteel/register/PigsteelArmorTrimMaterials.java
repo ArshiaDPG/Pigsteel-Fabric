@@ -20,7 +20,7 @@ public class PigsteelArmorTrimMaterials {
 
 
     public static void oneTwentyBootstrap(Registerable<ArmorTrimMaterial> registry) {
-        register(registry, PIGSTEEL, PigsteelItems.PIGSTEEL_INGOT, Style.EMPTY.withColor(11898803), 1.1F);
+        register(registry, PIGSTEEL, PigsteelItems.PIGSTEEL_INGOT, Style.EMPTY.withColor(11898803), 0.85F);
     }
         private static void register(Registerable<ArmorTrimMaterial> registry, RegistryKey<ArmorTrimMaterial> key, Item ingredient, Style style, float itemModelIndex) {
         register(registry, key, ingredient, style, itemModelIndex, Map.of());

@@ -6,6 +6,7 @@ import net.digitalpear.pigsteel.register.PigsteelItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.data.server.recipe.*;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
@@ -47,6 +48,11 @@ public class PigsteelRecipeGen extends FabricRecipeProvider {
                 .criterion(hasItem(cut), conditionsFromItem(cut))
                 .group("pigsteel_stairs")
                 .offerTo(exporter, convertBetween(stairs, cut) + "_stonecutting");
+
+
+
+
+
     }
 
     public static void makeLantern(Consumer<RecipeJsonProvider> exporter, Block output, Item torch){
@@ -56,7 +62,6 @@ public class PigsteelRecipeGen extends FabricRecipeProvider {
                 .pattern("###")
                 .pattern("#X#")
                 .pattern("###")
-                .group("pigsteel_lantern")
                 .criterion("has_torch", conditionsFromItem(torch))
                 .offerTo(exporter);
     }
@@ -71,6 +76,15 @@ public class PigsteelRecipeGen extends FabricRecipeProvider {
                 .pattern("###").group(compactingGroup)
                 .criterion(hasItem(baseItem), conditionsFromItem(baseItem)).offerTo(exporter, new Identifier(Pigsteel.MOD_ID, Registries.ITEM.getId(compactItem.asItem()).getPath() +"_from_" + Registries.ITEM.getId(baseItem.asItem()).getPath()));
     }
+    public static void makeSmeltnBlast(Consumer<RecipeJsonProvider> exporter, List<ItemConvertible> inputs, RecipeCategory category, ItemConvertible output, float experience, int cookingTime, String group){
+        RecipeProvider.offerSmelting(exporter, inputs, category, output, experience, cookingTime, group);
+        RecipeProvider.offerBlasting(exporter, inputs, category, output, experience, cookingTime/2, group);
+    }
+
+
+
+
+
 
     @Override
     public void generate(Consumer<RecipeJsonProvider> exporter) {
@@ -88,10 +102,11 @@ public class PigsteelRecipeGen extends FabricRecipeProvider {
 
         makeLantern(exporter, PigsteelBlocks.PIGSTEEL_LANTERN, Items.TORCH);
         makeLantern(exporter, PigsteelBlocks.PIGSTEEL_SOUL_LANTERN, Items.SOUL_TORCH);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, PigsteelBlocks.PIGSTEEL_BARS, 16)
+                .input('#', PigsteelItems.PIGSTEEL_INGOT).pattern("###").pattern("###").criterion("has_pigsteel_ingot", conditionsFromItem(PigsteelItems.PIGSTEEL_INGOT))
+                .offerTo(exporter);
     }
 
-    public static void makeSmeltnBlast(Consumer<RecipeJsonProvider> exporter, List<ItemConvertible> inputs, RecipeCategory category, ItemConvertible output, float experience, int cookingTime, String group){
-        RecipeProvider.offerSmelting(exporter, inputs, category, output, experience, cookingTime, group);
-        RecipeProvider.offerBlasting(exporter, inputs, category, output, experience, cookingTime/2, group);
-    }
+
 }

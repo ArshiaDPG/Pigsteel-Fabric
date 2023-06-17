@@ -78,7 +78,7 @@ public class PigsteelBlocks {
         return createBlockWithItem("waxed_" + Registries.BLOCK.getId(base).getPath(), blockSettings);
     }
 
-    public static final Block PORKSLAG = createBlockWithItem("porkslag", new Block(AbstractBlock.Settings.of()
+    public static final Block PORKSLAG = createBlockWithItem("porkslag", new Block(AbstractBlock.Settings.create()
             .sounds(BlockSoundGroup.POLISHED_DEEPSLATE)
             .strength(1.5f)
             .mapColor(MapColor.BLACK)
@@ -98,7 +98,6 @@ public class PigsteelBlocks {
     public static Block pigsteelBlockSettings(Oxidizable.OxidationLevel level){
         return new ZombifiableBlock(level, AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.NETHERITE).ticksRandomly().mapColor((MapColor) COLOR_MAP.get(level)));
     }
-
 
     public static final Block PIGSTEEL_BLOCK = createBlockWithItem("pigsteel_block", pigsteelBlockSettings(Oxidizable.OxidationLevel.UNAFFECTED));
     public static final Block INFECTED_PIGSTEEL = createBlockWithItem("infected_pigsteel", pigsteelBlockSettings(Oxidizable.OxidationLevel.EXPOSED));
@@ -143,6 +142,7 @@ public class PigsteelBlocks {
     public static final Block PIGSTEEL_LANTERN = createBlockWithItem("pigsteel_lantern", new PigsteelLanternBlock(FabricBlockSettings.copy(Blocks.LANTERN).luminance(state -> 15).nonOpaque().mapColor(MapColor.PURPLE)));
     public static final Block PIGSTEEL_SOUL_LANTERN = createBlockWithItem("pigsteel_soul_lantern", new PigsteelLanternBlock(FabricBlockSettings.copy(Blocks.LANTERN).luminance(state -> 10).nonOpaque().mapColor(MapColor.PURPLE)));
 
+    public static final Block PIGSTEEL_BARS = createBlockWithItem("pigsteel_bars", new PaneBlock(FabricBlockSettings.copy(Blocks.IRON_BARS).nonOpaque().mapColor(MapColor.PURPLE)));
 
 
     public static void init(){

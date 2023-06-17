@@ -1,6 +1,8 @@
 package net.digitalpear.pigsteel.register;
 
 import net.digitalpear.pigsteel.Pigsteel;
+import net.digitalpear.pigsteel.common.worldgen.MoltenRemainsFeature;
+import net.digitalpear.pigsteel.common.worldgen.PigsteelFeature;
 import net.minecraft.block.Blocks;
 import net.minecraft.registry.*;
 import net.minecraft.registry.tag.BlockTags;
@@ -14,6 +16,7 @@ import java.util.List;
 
 public class PigsteelConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> ORE_PIGSTEEL = of("ore_pigsteel");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> MOLTEN_REMAINS = of("molten_remains");
 
     public static RegistryKey<ConfiguredFeature<?, ?>> of(String id) {
         return RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, new Identifier(Pigsteel.MOD_ID, id));
@@ -31,6 +34,8 @@ public class PigsteelConfiguredFeatures {
         );
 
         ConfiguredFeatures.register(featureRegisterable, ORE_PIGSTEEL, Feature.ORE, new OreFeatureConfig(list, 7));
+
+        ConfiguredFeatures.register(featureRegisterable, MOLTEN_REMAINS, PigsteelFeature.MOLTEN_REMAINS, new DefaultFeatureConfig());
     }
 
     public static void init(){

@@ -1,0 +1,6 @@
+{
+  "parent": "pigsteel:block/bars_cap_alt",
+  "textures": {
+    "all": "pigsteel:block/pigsteel_bars"
+  }
+}

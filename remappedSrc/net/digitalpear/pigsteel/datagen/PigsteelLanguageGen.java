@@ -1,17 +1,9 @@
 package net.digitalpear.pigsteel.datagen;
 
-import net.digitalpear.pigsteel.Pigsteel;
 import net.digitalpear.pigsteel.register.PigsteelBlocks;
 import net.digitalpear.pigsteel.register.PigsteelItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
-import net.minecraft.item.ItemConvertible;
-import net.minecraft.registry.Registries;
-import org.apache.commons.lang3.StringUtils;
-
-import java.nio.file.Path;
-import java.util.List;
-import java.util.Objects;
 
 public class PigsteelLanguageGen extends FabricLanguageProvider {
     public PigsteelLanguageGen(FabricDataOutput dataOutput) {
@@ -78,33 +70,9 @@ public class PigsteelLanguageGen extends FabricLanguageProvider {
         translationBuilder.add(PigsteelBlocks.BRIMSTONE_PIGSTEEL_ORE, "Brimstone Pigsteel Ore");
         translationBuilder.add(PigsteelBlocks.BLUE_PIGSTEEL_ORE, "Blue Pigsteel Ore");
 
+
+        translationBuilder.add(PigsteelBlocks.PIGSTEEL_BARS, "Pigsteel Bars");
+
         translationBuilder.add("trim_material.pigsteel.pigsteel", "Pigsteel");
-
-
-
-        try {
-            Path existingFilePath = dataOutput.getModContainer().findPath("assets/" + Pigsteel.MOD_ID + "/lang/en_us.existing.json").get();
-            translationBuilder.add(existingFilePath);
-        } catch (Exception e) {
-            throw new RuntimeException("Failed to add existing language file!", e);
-        }
-    }
-    public static void makeTranslation(ItemConvertible itemConvertible, TranslationBuilder translationBuilder){
-        translationBuilder.add(itemConvertible.asItem().getTranslationKey(), generateName(itemConvertible));
-    }
-
-    public static String generateName(ItemConvertible itemConvertible){
-        List<String> name_list = List.of(Registries.ITEM.getId(itemConvertible.asItem()).getPath().split("_"));
-        final String[] final_name = {""};
-        name_list.forEach(s -> {
-            StringUtils.capitalize(s);
-            if (Objects.equals(final_name[0], "")){
-                final_name[0] = final_name[0] + s;
-            }
-            else{
-                final_name[0] = final_name[0] + " " + s;
-            }
-        });
-        return final_name[0];
     }
 }

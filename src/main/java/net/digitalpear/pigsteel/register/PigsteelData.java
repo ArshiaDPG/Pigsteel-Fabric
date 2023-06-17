@@ -2,6 +2,7 @@ package net.digitalpear.pigsteel.register;
 
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
 import net.minecraft.block.Blocks;
+import net.minecraft.data.server.loottable.vanilla.VanillaChestLootTableGenerator;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Items;
 import net.minecraft.loot.LootPool;
@@ -44,7 +45,6 @@ public class PigsteelData {
                 return createBastionBridgeChestTableBuilder().build();
             }
             else if (LootTables.PIGLIN_BARTERING_GAMEPLAY.equals(id) && source.isBuiltin()) {
-
                 return createPiglinBarteringLootTableBuilder().build();
             }
             else {

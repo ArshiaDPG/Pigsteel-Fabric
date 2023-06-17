@@ -1,4 +1,4 @@
-// 23w18a	2023-05-23T22:51:43.9148552	Pigsteel/Block Loot Tables
+// 1.20.1	2023-06-16T18:07:40.2697892	Pigsteel/Block Loot Tables
 26696664df5e4d5605520a39124210f80e8d72fd data\pigsteel\loot_tables\blocks\zombified_cut_pigsteel_slab.json
 aae12cfb35c529cc08de50a1efe1e0fcca9ea4c2 data\pigsteel\loot_tables\blocks\pigsteel_lantern.json
 b738d2fc6afc1ec0629d41829563f702214fe500 data\pigsteel\loot_tables\blocks\porkslag.json
@@ -16,8 +16,8 @@ cbd20cb6589ba6b8c7ffbcadaac8da2cfd443386 data\pigsteel\loot_tables\blocks\brimst
 4dc1f56b1271744ceb756ebe4236b79ee40e7833 data\pigsteel\loot_tables\blocks\waxed_infected_cut_pigsteel.json
 8905145576144b7542f28ee2b476280dda76b78c data\pigsteel\loot_tables\blocks\waxed_corrupted_cut_pigsteel_slab.json
 6c33b4d5efd16f967969f29fac25670ceaf1d853 data\pigsteel\loot_tables\blocks\zombified_cut_pigsteel_stairs.json
-c2537c33f3556965debd02276268bfb3e8385f86 data\pigsteel\loot_tables\blocks\corrupted_cut_pigsteel.json
 e4ab0fa467ad3d63aed4705db64578ea95863481 data\pigsteel\loot_tables\blocks\waxed_zombified_pigsteel.json
+c2537c33f3556965debd02276268bfb3e8385f86 data\pigsteel\loot_tables\blocks\corrupted_cut_pigsteel.json
 f49c46f0a4ce1f85c440257b34f554ec96859905 data\pigsteel\loot_tables\blocks\waxed_infected_cut_pigsteel_stairs.json
 b9a833a77a2c0e00209f952e87cfbb41ca4aeaad data\pigsteel\loot_tables\blocks\corrupted_cut_pigsteel_slab.json
 2e36ccf8eb3d64c8ba180862956789674016dc6d data\pigsteel\loot_tables\blocks\cut_pigsteel_slab.json
