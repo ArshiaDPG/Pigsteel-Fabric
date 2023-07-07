@@ -6,19 +6,11 @@ import net.digitalpear.pigsteel.register.PigsteelItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.StairsBlock;
 import net.minecraft.data.client.*;
-import net.minecraft.item.ArmorItem;
-import net.minecraft.item.ArmorMaterials;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
-import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 
-import java.util.Iterator;
 import java.util.Optional;
 
 public class PigsteelModelGen extends FabricModelProvider {
@@ -28,11 +20,11 @@ public class PigsteelModelGen extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-        blockStateModelGenerator.registerSimpleCubeAll(PigsteelBlocks.BRIMSTONE_PIGSTEEL_ORE);
-        blockStateModelGenerator.registerSimpleCubeAll(PigsteelBlocks.BLUE_PIGSTEEL_ORE);
-        blockStateModelGenerator.registerSimpleCubeAll(PigsteelBlocks.PIGSTEEL_ORE);
-        blockStateModelGenerator.registerSimpleCubeAll(PigsteelBlocks.STONE_PIGSTEEL_ORE);
-        blockStateModelGenerator.registerSimpleCubeAll(PigsteelBlocks.DEEPSLATE_PIGSTEEL_ORE);
+//        blockStateModelGenerator.registerSimpleCubeAll(PigsteelBlocks.BRIMSTONE_PIGSTEEL_ORE);
+//        blockStateModelGenerator.registerSimpleCubeAll(PigsteelBlocks.BLUE_PIGSTEEL_ORE);
+//        blockStateModelGenerator.registerSimpleCubeAll(PigsteelBlocks.PIGSTEEL_ORE);
+//        blockStateModelGenerator.registerSimpleCubeAll(PigsteelBlocks.STONE_PIGSTEEL_ORE);
+//        blockStateModelGenerator.registerSimpleCubeAll(PigsteelBlocks.DEEPSLATE_PIGSTEEL_ORE);
 
 
         blockStateModelGenerator.registerSimpleCubeAll(PigsteelBlocks.PORKSLAG);
@@ -62,7 +54,10 @@ public class PigsteelModelGen extends FabricModelProvider {
         createLantern(blockStateModelGenerator, PigsteelBlocks.PIGSTEEL_LANTERN);
         createLantern(blockStateModelGenerator, PigsteelBlocks.PIGSTEEL_SOUL_LANTERN);
 
-        registerIronBars(blockStateModelGenerator, PigsteelBlocks.PIGSTEEL_BARS);
+        registerWaxeableIronBars(blockStateModelGenerator, PigsteelBlocks.PIGSTEEL_BARS, PigsteelBlocks.WAXED_PIGSTEEL_BARS);
+        registerWaxeableIronBars(blockStateModelGenerator, PigsteelBlocks.INFECTED_PIGSTEEL_BARS, PigsteelBlocks.WAXED_INFECTED_PIGSTEEL_BARS);
+        registerWaxeableIronBars(blockStateModelGenerator, PigsteelBlocks.CORRUPTED_PIGSTEEL_BARS, PigsteelBlocks.WAXED_CORRUPTED_PIGSTEEL_BARS);
+        registerWaxeableIronBars(blockStateModelGenerator, PigsteelBlocks.ZOMBIFIED_PIGSTEEL_BARS, PigsteelBlocks.WAXED_ZOMBIFIED_PIGSTEEL_BARS);
     }
 
     @Override
@@ -82,6 +77,19 @@ public class PigsteelModelGen extends FabricModelProvider {
         blockStateModelGenerator.blockStateCollector.accept(MultipartBlockStateSupplier.create(bars).with(BlockStateVariant.create().put(VariantSettings.MODEL, identifier)).with(When.create().set(Properties.NORTH, false).set(Properties.EAST, false).set(Properties.SOUTH, false).set(Properties.WEST, false), BlockStateVariant.create().put(VariantSettings.MODEL, identifier2)).with(When.create().set(Properties.NORTH, true).set(Properties.EAST, false).set(Properties.SOUTH, false).set(Properties.WEST, false), BlockStateVariant.create().put(VariantSettings.MODEL, identifier3)).with(When.create().set(Properties.NORTH, false).set(Properties.EAST, true).set(Properties.SOUTH, false).set(Properties.WEST, false), BlockStateVariant.create().put(VariantSettings.MODEL, identifier3).put(VariantSettings.Y, VariantSettings.Rotation.R90)).with(When.create().set(Properties.NORTH, false).set(Properties.EAST, false).set(Properties.SOUTH, true).set(Properties.WEST, false), BlockStateVariant.create().put(VariantSettings.MODEL, identifier4)).with(When.create().set(Properties.NORTH, false).set(Properties.EAST, false).set(Properties.SOUTH, false).set(Properties.WEST, true), BlockStateVariant.create().put(VariantSettings.MODEL, identifier4).put(VariantSettings.Y, VariantSettings.Rotation.R90)).with(When.create().set(Properties.NORTH, true), BlockStateVariant.create().put(VariantSettings.MODEL, identifier5)).with(When.create().set(Properties.EAST, true), BlockStateVariant.create().put(VariantSettings.MODEL, identifier5).put(VariantSettings.Y, VariantSettings.Rotation.R90)).with(When.create().set(Properties.SOUTH, true), BlockStateVariant.create().put(VariantSettings.MODEL, identifier6)).with(When.create().set(Properties.WEST, true), BlockStateVariant.create().put(VariantSettings.MODEL, identifier6).put(VariantSettings.Y, VariantSettings.Rotation.R90)));
 
         blockStateModelGenerator.registerItemModel(bars);
+    }
+    private void registerWaxeableIronBars(BlockStateModelGenerator blockStateModelGenerator, Block bars, Block waxed) {
+        Identifier identifier = block("bars_post_ends", TextureKey.ALL).upload(bars, "_post_ends", TextureMap.all(bars), blockStateModelGenerator.modelCollector);
+        Identifier identifier2 = block("bars_post", TextureKey.ALL).upload(bars, "_post", TextureMap.all(bars), blockStateModelGenerator.modelCollector);
+        Identifier identifier3 = block("bars_cap", TextureKey.ALL).upload(bars, "_cap", TextureMap.all(bars), blockStateModelGenerator.modelCollector);
+        Identifier identifier4 = block("bars_cap_alt", TextureKey.ALL).upload(bars, "_cap_alt", TextureMap.all(bars), blockStateModelGenerator.modelCollector);
+        Identifier identifier5 = block("bars_side", TextureKey.ALL).upload(bars, "_side", TextureMap.all(bars), blockStateModelGenerator.modelCollector);
+        Identifier identifier6 = block("bars_side_alt", TextureKey.ALL).upload(bars, "_side_alt", TextureMap.all(bars), blockStateModelGenerator.modelCollector);
+        blockStateModelGenerator.blockStateCollector.accept(MultipartBlockStateSupplier.create(bars).with(BlockStateVariant.create().put(VariantSettings.MODEL, identifier)).with(When.create().set(Properties.NORTH, false).set(Properties.EAST, false).set(Properties.SOUTH, false).set(Properties.WEST, false), BlockStateVariant.create().put(VariantSettings.MODEL, identifier2)).with(When.create().set(Properties.NORTH, true).set(Properties.EAST, false).set(Properties.SOUTH, false).set(Properties.WEST, false), BlockStateVariant.create().put(VariantSettings.MODEL, identifier3)).with(When.create().set(Properties.NORTH, false).set(Properties.EAST, true).set(Properties.SOUTH, false).set(Properties.WEST, false), BlockStateVariant.create().put(VariantSettings.MODEL, identifier3).put(VariantSettings.Y, VariantSettings.Rotation.R90)).with(When.create().set(Properties.NORTH, false).set(Properties.EAST, false).set(Properties.SOUTH, true).set(Properties.WEST, false), BlockStateVariant.create().put(VariantSettings.MODEL, identifier4)).with(When.create().set(Properties.NORTH, false).set(Properties.EAST, false).set(Properties.SOUTH, false).set(Properties.WEST, true), BlockStateVariant.create().put(VariantSettings.MODEL, identifier4).put(VariantSettings.Y, VariantSettings.Rotation.R90)).with(When.create().set(Properties.NORTH, true), BlockStateVariant.create().put(VariantSettings.MODEL, identifier5)).with(When.create().set(Properties.EAST, true), BlockStateVariant.create().put(VariantSettings.MODEL, identifier5).put(VariantSettings.Y, VariantSettings.Rotation.R90)).with(When.create().set(Properties.SOUTH, true), BlockStateVariant.create().put(VariantSettings.MODEL, identifier6)).with(When.create().set(Properties.WEST, true), BlockStateVariant.create().put(VariantSettings.MODEL, identifier6).put(VariantSettings.Y, VariantSettings.Rotation.R90)));
+        blockStateModelGenerator.blockStateCollector.accept(MultipartBlockStateSupplier.create(waxed).with(BlockStateVariant.create().put(VariantSettings.MODEL, identifier)).with(When.create().set(Properties.NORTH, false).set(Properties.EAST, false).set(Properties.SOUTH, false).set(Properties.WEST, false), BlockStateVariant.create().put(VariantSettings.MODEL, identifier2)).with(When.create().set(Properties.NORTH, true).set(Properties.EAST, false).set(Properties.SOUTH, false).set(Properties.WEST, false), BlockStateVariant.create().put(VariantSettings.MODEL, identifier3)).with(When.create().set(Properties.NORTH, false).set(Properties.EAST, true).set(Properties.SOUTH, false).set(Properties.WEST, false), BlockStateVariant.create().put(VariantSettings.MODEL, identifier3).put(VariantSettings.Y, VariantSettings.Rotation.R90)).with(When.create().set(Properties.NORTH, false).set(Properties.EAST, false).set(Properties.SOUTH, true).set(Properties.WEST, false), BlockStateVariant.create().put(VariantSettings.MODEL, identifier4)).with(When.create().set(Properties.NORTH, false).set(Properties.EAST, false).set(Properties.SOUTH, false).set(Properties.WEST, true), BlockStateVariant.create().put(VariantSettings.MODEL, identifier4).put(VariantSettings.Y, VariantSettings.Rotation.R90)).with(When.create().set(Properties.NORTH, true), BlockStateVariant.create().put(VariantSettings.MODEL, identifier5)).with(When.create().set(Properties.EAST, true), BlockStateVariant.create().put(VariantSettings.MODEL, identifier5).put(VariantSettings.Y, VariantSettings.Rotation.R90)).with(When.create().set(Properties.SOUTH, true), BlockStateVariant.create().put(VariantSettings.MODEL, identifier6)).with(When.create().set(Properties.WEST, true), BlockStateVariant.create().put(VariantSettings.MODEL, identifier6).put(VariantSettings.Y, VariantSettings.Rotation.R90)));
+
+        blockStateModelGenerator.registerItemModel(bars);
+        blockStateModelGenerator.registerParentedItemModel(waxed, getItemId(bars));
     }
 
 
@@ -147,7 +155,10 @@ public class PigsteelModelGen extends FabricModelProvider {
         blockStateModelGenerator.registerParentedItemModel(waxed, SLAB);
     }
 
-
+    public static Identifier getItemId(Block block) {
+        Identifier identifier = Registries.BLOCK.getId(block);
+        return identifier.withPrefixedPath("item/");
+    }
     public static Identifier getId(Block block) {
         Identifier identifier = Registries.BLOCK.getId(block);
         return identifier.withPrefixedPath("block/");

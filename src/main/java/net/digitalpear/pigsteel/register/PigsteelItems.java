@@ -26,13 +26,13 @@ public class PigsteelItems {
     public static void init(){
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL)
                 .register(entries -> {
-                    entries.addAfter(Items.NETHER_GOLD_ORE, PigsteelBlocks.DEEPSLATE_PIGSTEEL_ORE);
-                    entries.addAfter(Items.NETHER_GOLD_ORE, PigsteelBlocks.STONE_PIGSTEEL_ORE);
-                    if (FabricLoader.getInstance().isModLoaded("byg")) {
-                        entries.addAfter(Items.NETHER_GOLD_ORE, PigsteelBlocks.BRIMSTONE_PIGSTEEL_ORE);
-                        entries.addAfter(Items.NETHER_GOLD_ORE, PigsteelBlocks.BLUE_PIGSTEEL_ORE);
-                    }
-                    entries.addAfter(Items.NETHER_GOLD_ORE, PigsteelBlocks.PIGSTEEL_ORE);
+//                    entries.addAfter(Items.NETHER_GOLD_ORE, PigsteelBlocks.DEEPSLATE_PIGSTEEL_ORE);
+//                    entries.addAfter(Items.NETHER_GOLD_ORE, PigsteelBlocks.STONE_PIGSTEEL_ORE);
+//                    if (FabricLoader.getInstance().isModLoaded("byg")) {
+//                        entries.addAfter(Items.NETHER_GOLD_ORE, PigsteelBlocks.BRIMSTONE_PIGSTEEL_ORE);
+//                        entries.addAfter(Items.NETHER_GOLD_ORE, PigsteelBlocks.BLUE_PIGSTEEL_ORE);
+//                    }
+//                    entries.addAfter(Items.NETHER_GOLD_ORE, PigsteelBlocks.PIGSTEEL_ORE);
 
                     entries.addAfter(Items.ANCIENT_DEBRIS, PigsteelBlocks.PORKSLAG);
                     entries.addAfter(Items.RAW_IRON_BLOCK, PigsteelBlocks.RAW_PIGSTEEL_BLOCK);
@@ -96,6 +96,16 @@ public class PigsteelItems {
                     entries.add(PigsteelBlocks.WAXED_ZOMBIFIED_CUT_PIGSTEEL);
                     entries.add(PigsteelBlocks.WAXED_ZOMBIFIED_CUT_PIGSTEEL_SLAB);
                     entries.add(PigsteelBlocks.WAXED_ZOMBIFIED_CUT_PIGSTEEL_STAIRS);
+
+                    entries.add(PigsteelBlocks.PIGSTEEL_BARS);
+                    entries.add(PigsteelBlocks.INFECTED_PIGSTEEL_BARS);
+                    entries.add(PigsteelBlocks.CORRUPTED_PIGSTEEL_BARS);
+                    entries.add(PigsteelBlocks.ZOMBIFIED_PIGSTEEL_BARS);
+
+                    entries.add(PigsteelBlocks.WAXED_PIGSTEEL_BARS);
+                    entries.add(PigsteelBlocks.WAXED_INFECTED_PIGSTEEL_BARS);
+                    entries.add(PigsteelBlocks.WAXED_CORRUPTED_PIGSTEEL_BARS);
+                    entries.add(PigsteelBlocks.WAXED_ZOMBIFIED_PIGSTEEL_BARS);
                 });
 
     }

@@ -1,28 +1,24 @@
 package net.digitalpear.pigsteel.common.worldgen;
 
 import com.mojang.serialization.Codec;
-import net.digitalpear.pigsteel.register.PigsteelBlocks;
-import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.StructureWorldAccess;
-import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.util.FeatureContext;
 
-import java.util.List;
-
-public class MoltenRemainsFeature extends Feature<DefaultFeatureConfig> {
+public class MoltenRemainsFeature extends Feature<MoltenRemainsFeatureConfig> {
 
 
-    public MoltenRemainsFeature(Codec<DefaultFeatureConfig> configCodec) {
+    public MoltenRemainsFeature(Codec<MoltenRemainsFeatureConfig> configCodec) {
         super(configCodec);
     }
 
     @Override
-    public boolean generate(FeatureContext<DefaultFeatureConfig> context) {
+    public boolean generate(FeatureContext<MoltenRemainsFeatureConfig> context) {
         BlockPos origin = context.getOrigin();
         StructureWorldAccess world = context.getWorld();
         Random random = world.getRandom();
@@ -34,8 +30,8 @@ public class MoltenRemainsFeature extends Feature<DefaultFeatureConfig> {
             if (world.getBlockState(origin.down(depth)).isOf(Blocks.BEDROCK)){
                 return true;
             }
-            placeDisk(world, origin.down(y), i);
-            placeDisk(world, origin.down(depth), i);
+            placeDisk(context, origin.down(y), i);
+            placeDisk(context, origin.down(depth), i);
             if (i > 2){
                 i = i - random.nextInt(2);
             }
@@ -43,7 +39,7 @@ public class MoltenRemainsFeature extends Feature<DefaultFeatureConfig> {
         }
 
         while (origin.down(depth).getY() > world.getBottomY()){
-            placeDisk(world, origin.down(depth), i);
+            placeDisk(context, origin.down(depth), i);
             if (i > 2){
                 i = i + random.nextBetween(-1, 1);
             }
@@ -55,11 +51,9 @@ public class MoltenRemainsFeature extends Feature<DefaultFeatureConfig> {
         return true;
     }
 
-    public void placeDisk(StructureWorldAccess world,BlockPos blockPos, int radius){
-        Random random = world.getRandom();
-
-        List<Block> blockList = List.of(Blocks.BLACKSTONE, Blocks.MAGMA_BLOCK);
-
+    public void placeDisk(FeatureContext<MoltenRemainsFeatureConfig> context, BlockPos blockPos, int radius){
+        StructureWorldAccess world = context.getWorld();
+        Random random = context.getRandom();
         for(int i = 0; i < 3; ++i) {
             int x = radius + random.nextBetween(-1, 1);
             int y = random.nextBetween(2, 3);
@@ -68,7 +62,7 @@ public class MoltenRemainsFeature extends Feature<DefaultFeatureConfig> {
 
             for (BlockPos blockPos2 : BlockPos.iterate(blockPos.add(-x, -y, -z), blockPos.add(x, y, z))) {
                 if (blockPos2.getSquaredDistance(blockPos) <= (double) (r * r) && !world.getBlockState(blockPos2).isIn(BlockTags.FEATURES_CANNOT_REPLACE)) {
-                    world.setBlockState(blockPos2, makeBlock(random).getDefaultState(), 3);
+                    world.setBlockState(blockPos2, makeBlock(context), 3);
                 }
             }
 
@@ -76,16 +70,17 @@ public class MoltenRemainsFeature extends Feature<DefaultFeatureConfig> {
         }
     }
 
-    public Block makeBlock(Random random){
-        int i = random.nextInt(15);
+    public BlockState makeBlock(FeatureContext<MoltenRemainsFeatureConfig> context){
+        MoltenRemainsFeatureConfig config = context.getConfig();
+        int i = context.getRandom().nextInt(30);
         if (i == 0){
-            return PigsteelBlocks.PORKSLAG;
+            return config.getRawBlock();
         }
-        else if (i < 4){
-            return Blocks.MAGMA_BLOCK;
+        else if (i < 3){
+            return config.getOre();
         }
         else{
-            return Blocks.BLACKSTONE;
+            return config.getRock();
         }
     }
 }

@@ -2,10 +2,7 @@ package net.digitalpear.pigsteel.register;
 
 import com.google.common.collect.ImmutableMap;
 import net.digitalpear.pigsteel.Pigsteel;
-import net.digitalpear.pigsteel.common.blocks.PigsteelLanternBlock;
-import net.digitalpear.pigsteel.common.blocks.ZombifiableBlock;
-import net.digitalpear.pigsteel.common.blocks.ZombifiableSlabBlock;
-import net.digitalpear.pigsteel.common.blocks.ZombifiableStairsBlock;
+import net.digitalpear.pigsteel.common.blocks.*;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
 import net.minecraft.block.*;
@@ -77,6 +74,12 @@ public class PigsteelBlocks {
         }
         return createBlockWithItem("waxed_" + Registries.BLOCK.getId(base).getPath(), blockSettings);
     }
+    public static Block createPaneBlock(Oxidizable.OxidationLevel oxidationLevel){
+        return new ZombifiablePaneBlock(oxidationLevel, AbstractBlock.Settings.copy(Blocks.IRON_BARS).sounds(BlockSoundGroup.NETHERITE).nonOpaque().ticksRandomly().mapColor((MapColor) COLOR_MAP.get(oxidationLevel)));
+    }
+    public static Block createWaxedPaneBlock(Oxidizable.OxidationLevel oxidationLevel){
+        return new PaneBlock(AbstractBlock.Settings.copy(Blocks.IRON_BARS).sounds(BlockSoundGroup.NETHERITE).nonOpaque().mapColor((MapColor) COLOR_MAP.get(oxidationLevel)));
+    }
 
     public static final Block PORKSLAG = createBlockWithItem("porkslag", new Block(AbstractBlock.Settings.create()
             .sounds(BlockSoundGroup.POLISHED_DEEPSLATE)
@@ -86,14 +89,6 @@ public class PigsteelBlocks {
 
 
     public static final Block RAW_PIGSTEEL_BLOCK = createBlockWithItem("raw_pigsteel_block", new Block(AbstractBlock.Settings.copy(Blocks.RAW_IRON_BLOCK)));
-
-    public static final Block PIGSTEEL_ORE = createOreBlock("pigsteel_ore", Blocks.NETHER_GOLD_ORE);
-    public static final Block STONE_PIGSTEEL_ORE = createOreBlock("stone_pigsteel_ore", Blocks.IRON_ORE);
-    public static final Block DEEPSLATE_PIGSTEEL_ORE = createOreBlock("deepslate_pigsteel_ore", Blocks.DEEPSLATE_IRON_ORE);
-
-    //Oh the biomes you'll go
-    public static Block BLUE_PIGSTEEL_ORE = createOreBlock("blue_pigsteel_ore", Blocks.NETHER_GOLD_ORE);
-    public static Block BRIMSTONE_PIGSTEEL_ORE = createOreBlock("brimstone_pigsteel_ore", Blocks.NETHER_GOLD_ORE);
 
     public static Block pigsteelBlockSettings(Oxidizable.OxidationLevel level){
         return new ZombifiableBlock(level, AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.NETHERITE).ticksRandomly().mapColor((MapColor) COLOR_MAP.get(level)));
@@ -142,8 +137,15 @@ public class PigsteelBlocks {
     public static final Block PIGSTEEL_LANTERN = createBlockWithItem("pigsteel_lantern", new PigsteelLanternBlock(FabricBlockSettings.copy(Blocks.LANTERN).luminance(state -> 15).nonOpaque().mapColor(MapColor.PURPLE)));
     public static final Block PIGSTEEL_SOUL_LANTERN = createBlockWithItem("pigsteel_soul_lantern", new PigsteelLanternBlock(FabricBlockSettings.copy(Blocks.LANTERN).luminance(state -> 10).nonOpaque().mapColor(MapColor.PURPLE)));
 
-    public static final Block PIGSTEEL_BARS = createBlockWithItem("pigsteel_bars", new PaneBlock(FabricBlockSettings.copy(Blocks.IRON_BARS).nonOpaque().mapColor(MapColor.PURPLE)));
+    public static final Block PIGSTEEL_BARS = createBlockWithItem("pigsteel_bars", createPaneBlock(Oxidizable.OxidationLevel.UNAFFECTED));
+    public static final Block INFECTED_PIGSTEEL_BARS = createBlockWithItem("infected_pigsteel_bars", createPaneBlock(Oxidizable.OxidationLevel.EXPOSED));
+    public static final Block CORRUPTED_PIGSTEEL_BARS = createBlockWithItem("corrupted_pigsteel_bars", createPaneBlock(Oxidizable.OxidationLevel.WEATHERED));
+    public static final Block ZOMBIFIED_PIGSTEEL_BARS = createBlockWithItem("zombified_pigsteel_bars", createPaneBlock(Oxidizable.OxidationLevel.OXIDIZED));
 
+    public static final Block WAXED_PIGSTEEL_BARS = createBlockWithItem("waxed_pigsteel_bars", createWaxedPaneBlock(Oxidizable.OxidationLevel.UNAFFECTED));
+    public static final Block WAXED_INFECTED_PIGSTEEL_BARS = createBlockWithItem("waxed_infected_pigsteel_bars", createWaxedPaneBlock(Oxidizable.OxidationLevel.EXPOSED));
+    public static final Block WAXED_CORRUPTED_PIGSTEEL_BARS = createBlockWithItem("waxed_corrupted_pigsteel_bars", createWaxedPaneBlock(Oxidizable.OxidationLevel.WEATHERED));
+    public static final Block WAXED_ZOMBIFIED_PIGSTEEL_BARS = createBlockWithItem("waxed_zombified_pigsteel_bars", createWaxedPaneBlock(Oxidizable.OxidationLevel.OXIDIZED));
 
     public static void init(){
         PIGSTEEL_WAXING_MAP.put(PIGSTEEL_BLOCK, WAXED_PIGSTEEL_BLOCK);
@@ -166,6 +168,13 @@ public class PigsteelBlocks {
         PIGSTEEL_WAXING_MAP.put(CORRUPTED_CUT_PIGSTEEL_SLAB, WAXED_CORRUPTED_CUT_PIGSTEEL_SLAB);
         PIGSTEEL_WAXING_MAP.put(ZOMBIFIED_CUT_PIGSTEEL_SLAB, WAXED_ZOMBIFIED_CUT_PIGSTEEL_SLAB);
 
+        PIGSTEEL_WAXING_MAP.put(PIGSTEEL_BARS, WAXED_PIGSTEEL_BARS);
+        PIGSTEEL_WAXING_MAP.put(INFECTED_PIGSTEEL_BARS, WAXED_INFECTED_PIGSTEEL_BARS);
+        PIGSTEEL_WAXING_MAP.put(CORRUPTED_PIGSTEEL_BARS, WAXED_CORRUPTED_PIGSTEEL_BARS);
+        PIGSTEEL_WAXING_MAP.put(ZOMBIFIED_PIGSTEEL_BARS, WAXED_ZOMBIFIED_PIGSTEEL_BARS);
+
+
+
         PIGSTEEL_ZOMBIFYING_MAP.put(PIGSTEEL_BLOCK, INFECTED_PIGSTEEL);
         PIGSTEEL_ZOMBIFYING_MAP.put(INFECTED_PIGSTEEL, CORRUPTED_PIGSTEEL);
         PIGSTEEL_ZOMBIFYING_MAP.put(CORRUPTED_PIGSTEEL, ZOMBIFIED_PIGSTEEL);
@@ -181,6 +190,11 @@ public class PigsteelBlocks {
         PIGSTEEL_ZOMBIFYING_MAP.put(CUT_PIGSTEEL_SLAB, INFECTED_CUT_PIGSTEEL_SLAB);
         PIGSTEEL_ZOMBIFYING_MAP.put(INFECTED_CUT_PIGSTEEL_SLAB, CORRUPTED_CUT_PIGSTEEL_SLAB);
         PIGSTEEL_ZOMBIFYING_MAP.put(CORRUPTED_CUT_PIGSTEEL_SLAB, ZOMBIFIED_CUT_PIGSTEEL_SLAB);
+
+        PIGSTEEL_ZOMBIFYING_MAP.put(PIGSTEEL_BARS, INFECTED_PIGSTEEL_BARS);
+        PIGSTEEL_ZOMBIFYING_MAP.put(INFECTED_PIGSTEEL_BARS, CORRUPTED_PIGSTEEL_BARS);
+        PIGSTEEL_ZOMBIFYING_MAP.put(CORRUPTED_PIGSTEEL_BARS, ZOMBIFIED_PIGSTEEL_BARS);
+
 
 
         PIGSTEEL_WAXING_MAP.forEach(OxidizableBlocksRegistry::registerWaxableBlockPair);

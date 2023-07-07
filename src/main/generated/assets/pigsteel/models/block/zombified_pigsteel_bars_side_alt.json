@@ -1,0 +1,6 @@
+{
+  "parent": "pigsteel:block/bars_side_alt",
+  "textures": {
+    "all": "pigsteel:block/zombified_pigsteel_bars"
+  }
+}

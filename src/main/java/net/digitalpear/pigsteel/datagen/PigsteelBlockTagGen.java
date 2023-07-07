@@ -28,12 +28,7 @@ public class PigsteelBlockTagGen extends FabricTagProvider<Block> {
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
         getOrCreateTagBuilder(PigsteelBlockTags.PIGSTEEL_ORES)
-                .add(PigsteelBlocks.PORKSLAG)
-                .add(PigsteelBlocks.PIGSTEEL_ORE)
-                .add(PigsteelBlocks.STONE_PIGSTEEL_ORE)
-                .add(PigsteelBlocks.DEEPSLATE_PIGSTEEL_ORE)
-                .add(PigsteelBlocks.BLUE_PIGSTEEL_ORE)
-                .add(PigsteelBlocks.BRIMSTONE_PIGSTEEL_ORE);
+                .add(PigsteelBlocks.PORKSLAG);
 
 
         getOrCreateTagBuilder(PigsteelBlockTags.PIGSTEEL_BLOCKS)

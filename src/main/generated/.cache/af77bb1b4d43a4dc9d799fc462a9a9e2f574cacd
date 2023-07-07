@@ -1,3 +1,4 @@
-// 1.20.1	2023-06-16T18:07:40.2727805	Pigsteel/worldgen/configured_feature
-46d998e74567fa2e26543bd308238bd9656ef1e2 data\pigsteel\worldgen\configured_feature\ore_pigsteel.json
-299287f9ed24e54eb62b77fe565f34ecf74b5783 data\pigsteel\worldgen\configured_feature\molten_remains.json
+// 1.20.1	2023-07-06T20:51:15.768107	Pigsteel/worldgen/configured_feature
+29c3dfde680af3e0c31f5817914ddb9722ed4ffb data\pigsteel\worldgen\configured_feature\ore_pigsteel.json
+6b8ea76e81b37cedad13d067c653814de051db67 data\pigsteel\worldgen\configured_feature\pigsteel_molten_remains.json
+4eaeb8363984900e72a31bc8b5700b8105287904 data\pigsteel\worldgen\configured_feature\gold_molten_remains.json

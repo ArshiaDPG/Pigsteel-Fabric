@@ -1,11 +1,6 @@
 {
   "replace": false,
   "values": [
-    "pigsteel:porkslag",
-    "pigsteel:pigsteel_ore",
-    "pigsteel:stone_pigsteel_ore",
-    "pigsteel:deepslate_pigsteel_ore",
-    "pigsteel:blue_pigsteel_ore",
-    "pigsteel:brimstone_pigsteel_ore"
+    "pigsteel:porkslag"
   ]
 }

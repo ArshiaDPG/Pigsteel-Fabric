@@ -8,13 +8,10 @@ import net.minecraft.util.Identifier;
 
 public class PigsteelItemTags {
 
-    public static final TagKey<Item> IRON_INGOTS = of("irons");
-    public static final TagKey<Item> IRON_NUGGETS = of("iron_nuggets");
-    public static final TagKey<Item> IRON_BLOCKS = of("iron_blocks");
     public static final TagKey<Item> PIGSTEEL_ORES = of("pigsteel_ores");
 
     public static final TagKey<Item> C_ORES = of("c","ores");
-    public static final TagKey<Item> C_IRONS = of("c","iron_ingots");
+    public static final TagKey<Item> C_IRON_INGOTS = of("c","iron_ingots");
     public static final TagKey<Item> C_IRON_BLOCKS = of("c","iron_blocks");
 
 

@@ -7,7 +7,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.world.gen.feature.*;
 
 public class PigsteelFeature {
-    public static final Feature<DefaultFeatureConfig> MOLTEN_REMAINS = register("molten_remains", new MoltenRemainsFeature(DefaultFeatureConfig.CODEC));
+    public static final Feature<MoltenRemainsFeatureConfig> MOLTEN_REMAINS = register("molten_remains", new MoltenRemainsFeature(MoltenRemainsFeatureConfig.CODEC));
 
 
     private static <C extends FeatureConfig, F extends Feature<C>> F register(String name, F feature) {

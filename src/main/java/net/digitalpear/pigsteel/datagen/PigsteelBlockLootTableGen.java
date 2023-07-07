@@ -50,12 +50,6 @@ public class PigsteelBlockLootTableGen extends FabricBlockLootTableProvider {
         makeDrop(biConsumer, PigsteelBlocks.PIGSTEEL_LANTERN);
         makeDrop(biConsumer, PigsteelBlocks.PIGSTEEL_SOUL_LANTERN);
 
-        makeOre(biConsumer, PigsteelBlocks.PIGSTEEL_ORE, PigsteelItems.PIGSTEEL_NUGGET);
-        makeOre(biConsumer, PigsteelBlocks.STONE_PIGSTEEL_ORE, PigsteelItems.PIGSTEEL_NUGGET);
-        makeOre(biConsumer, PigsteelBlocks.DEEPSLATE_PIGSTEEL_ORE, PigsteelItems.PIGSTEEL_NUGGET);
-        makeOre(biConsumer, PigsteelBlocks.BLUE_PIGSTEEL_ORE, PigsteelItems.PIGSTEEL_NUGGET);
-        makeOre(biConsumer, PigsteelBlocks.BRIMSTONE_PIGSTEEL_ORE, PigsteelItems.PIGSTEEL_NUGGET);
-
     }
     public void makeDrop(BiConsumer<Identifier, LootTable.Builder> biConsumer, Block block){
         makeDrop(biConsumer, block, this.drops(block));

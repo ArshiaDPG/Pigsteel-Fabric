@@ -64,14 +64,22 @@ public class PigsteelLanguageGen extends FabricLanguageProvider {
         translationBuilder.add(PigsteelBlocks.PIGSTEEL_LANTERN, "Pigsteel Lantern");
         translationBuilder.add(PigsteelBlocks.PIGSTEEL_SOUL_LANTERN, "Pigsteel Soul Lantern");
 
-        translationBuilder.add(PigsteelBlocks.PIGSTEEL_ORE, "Pigsteel Ore");
-        translationBuilder.add(PigsteelBlocks.STONE_PIGSTEEL_ORE, "Stone Pigsteel Ore");
-        translationBuilder.add(PigsteelBlocks.DEEPSLATE_PIGSTEEL_ORE, "Deepslate Pigsteel Ore");
-        translationBuilder.add(PigsteelBlocks.BRIMSTONE_PIGSTEEL_ORE, "Brimstone Pigsteel Ore");
-        translationBuilder.add(PigsteelBlocks.BLUE_PIGSTEEL_ORE, "Blue Pigsteel Ore");
+//        translationBuilder.add(PigsteelBlocks.PIGSTEEL_ORE, "Pigsteel Ore");
+//        translationBuilder.add(PigsteelBlocks.STONE_PIGSTEEL_ORE, "Stone Pigsteel Ore");
+//        translationBuilder.add(PigsteelBlocks.DEEPSLATE_PIGSTEEL_ORE, "Deepslate Pigsteel Ore");
+//        translationBuilder.add(PigsteelBlocks.BRIMSTONE_PIGSTEEL_ORE, "Brimstone Pigsteel Ore");
+//        translationBuilder.add(PigsteelBlocks.BLUE_PIGSTEEL_ORE, "Blue Pigsteel Ore");
 
 
         translationBuilder.add(PigsteelBlocks.PIGSTEEL_BARS, "Pigsteel Bars");
+        translationBuilder.add(PigsteelBlocks.INFECTED_PIGSTEEL_BARS, "Infected Pigsteel Bars");
+        translationBuilder.add(PigsteelBlocks.CORRUPTED_PIGSTEEL_BARS, "Corrupted Pigsteel Bars");
+        translationBuilder.add(PigsteelBlocks.ZOMBIFIED_PIGSTEEL_BARS, "Zombified Pigsteel Bars");
+
+        translationBuilder.add(PigsteelBlocks.WAXED_PIGSTEEL_BARS, "Waxed Pigsteel Bars");
+        translationBuilder.add(PigsteelBlocks.WAXED_INFECTED_PIGSTEEL_BARS, "Waxed Infected Pigsteel Bars");
+        translationBuilder.add(PigsteelBlocks.WAXED_CORRUPTED_PIGSTEEL_BARS, "Waxed Corrupted Pigsteel Bars");
+        translationBuilder.add(PigsteelBlocks.WAXED_ZOMBIFIED_PIGSTEEL_BARS, "Waxed Zombified Pigsteel Bars");
 
         translationBuilder.add("trim_material.pigsteel.pigsteel", "Pigsteel");
     }

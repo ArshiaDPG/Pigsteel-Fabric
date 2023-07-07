@@ -1,0 +1,14 @@
+{
+  "type": "pigsteel:molten_remains",
+  "config": {
+    "ore": {
+      "Name": "minecraft:gilded_blackstone"
+    },
+    "rawBlock": {
+      "Name": "minecraft:raw_gold_block"
+    },
+    "rock": {
+      "Name": "minecraft:blackstone"
+    }
+  }
+}

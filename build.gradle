@@ -112,12 +112,15 @@ unifiedPublishing {
 		changelog = '''<ul>
   <li>Updated to 1.20.1.</li>
   <li>All textures in the mod have been revamped thanks to Tamakii.</li>
-  <li>Added pigsteel bars.</li>
+  <li>Added Pigsteel Bars, as well as zombified and waxed variants.</li>
   <li>Removed pigsteel ores, pigsteel slag will now generate in their place.</li>
+  <li>Added Pigsteel Slag, an alternative to pigsteel ores which will drop Raw Pigsteel when mined.</li>
   <li>Trimmed is now used for adding the trim material, which fixes many of the issues, including incompatibility with other mods.</li>
+  <li>Changed vanilla recipes for pigsteel to use data generators.</li>
+  <li>Improved Pigsteel Lantern placement logic.</li>
 </ul> '''
 		releaseType = "beta" // Optional, use "release", "beta" or "alpha"
-		gameVersions = ["${project.minecraft_version}"]
+		gameVersions = ["${project.minecraft_version}", "1.20"]
 		gameLoaders = ["fabric"]
 
 		mainPublication tasks.remapJar

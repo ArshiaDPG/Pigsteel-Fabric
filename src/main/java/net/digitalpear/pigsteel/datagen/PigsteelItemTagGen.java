@@ -29,30 +29,13 @@ public class PigsteelItemTagGen extends FabricTagProvider<Item> {
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
-        getOrCreateTagBuilder(PigsteelItemTags.IRON_INGOTS)
-                .add(Items.IRON_INGOT)
-                .add(PigsteelItems.PIGSTEEL_INGOT);
-
-        getOrCreateTagBuilder(PigsteelItemTags.IRON_NUGGETS)
-                .add(Items.IRON_NUGGET)
-                .add(PigsteelItems.PIGSTEEL_NUGGET);
-
-        getOrCreateTagBuilder(PigsteelItemTags.IRON_BLOCKS)
-                .add(Items.IRON_BLOCK)
-                .add(PigsteelBlocks.PIGSTEEL_BLOCK.asItem());
-
         getOrCreateTagBuilder(PigsteelItemTags.PIGSTEEL_ORES)
-                .add(PigsteelBlocks.PORKSLAG.asItem())
-                .add(PigsteelBlocks.PIGSTEEL_ORE.asItem())
-                .add(PigsteelBlocks.STONE_PIGSTEEL_ORE.asItem())
-                .add(PigsteelBlocks.DEEPSLATE_PIGSTEEL_ORE.asItem())
-                .add(PigsteelBlocks.BLUE_PIGSTEEL_ORE.asItem())
-                .add(PigsteelBlocks.BRIMSTONE_PIGSTEEL_ORE.asItem());
+                .add(PigsteelBlocks.PORKSLAG.asItem());
 
         getOrCreateTagBuilder(ItemTags.BEACON_PAYMENT_ITEMS).add(PigsteelItems.PIGSTEEL_INGOT);
         getOrCreateTagBuilder(ItemTags.TRIM_MATERIALS).add(PigsteelItems.PIGSTEEL_INGOT);
 
-        getOrCreateTagBuilder(PigsteelItemTags.C_IRONS)
+        getOrCreateTagBuilder(PigsteelItemTags.C_IRON_INGOTS)
                 .add(PigsteelItems.PIGSTEEL_INGOT);
 
         getOrCreateTagBuilder(PigsteelItemTags.C_IRON_BLOCKS)

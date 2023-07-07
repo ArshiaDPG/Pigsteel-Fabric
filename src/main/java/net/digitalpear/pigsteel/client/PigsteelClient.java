@@ -13,6 +13,14 @@ public class PigsteelClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), PigsteelBlocks.PIGSTEEL_LANTERN, PigsteelBlocks.PIGSTEEL_SOUL_LANTERN, PigsteelBlocks.PIGSTEEL_BARS);
+        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(),
+
+                PigsteelBlocks.PIGSTEEL_LANTERN, PigsteelBlocks.PIGSTEEL_SOUL_LANTERN,
+
+                PigsteelBlocks.PIGSTEEL_BARS, PigsteelBlocks.INFECTED_PIGSTEEL_BARS,
+                PigsteelBlocks.CORRUPTED_PIGSTEEL_BARS, PigsteelBlocks.ZOMBIFIED_PIGSTEEL_BARS,
+
+                PigsteelBlocks.WAXED_PIGSTEEL_BARS, PigsteelBlocks.WAXED_INFECTED_PIGSTEEL_BARS,
+                PigsteelBlocks.WAXED_CORRUPTED_PIGSTEEL_BARS, PigsteelBlocks.WAXED_ZOMBIFIED_PIGSTEEL_BARS);
     }
 }

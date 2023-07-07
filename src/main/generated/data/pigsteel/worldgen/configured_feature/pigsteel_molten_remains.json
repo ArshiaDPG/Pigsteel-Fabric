@@ -1,0 +1,17 @@
+{
+  "type": "pigsteel:molten_remains",
+  "config": {
+    "ore": {
+      "Name": "pigsteel:porkslag"
+    },
+    "rawBlock": {
+      "Name": "pigsteel:raw_pigsteel_block"
+    },
+    "rock": {
+      "Name": "minecraft:basalt",
+      "Properties": {
+        "axis": "y"
+      }
+    }
+  }
+}

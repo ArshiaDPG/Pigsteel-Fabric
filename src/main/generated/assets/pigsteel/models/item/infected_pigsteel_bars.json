@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "pigsteel:block/infected_pigsteel_bars"
+  }
+}

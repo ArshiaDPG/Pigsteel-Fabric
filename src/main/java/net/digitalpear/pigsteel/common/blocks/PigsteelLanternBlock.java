@@ -19,6 +19,8 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 
+import java.util.Arrays;
+
 
 public class PigsteelLanternBlock extends Block implements Waterloggable {
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
@@ -52,8 +54,26 @@ public class PigsteelLanternBlock extends Block implements Waterloggable {
 
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
+        BlockState blockState = this.getDefaultState();
         FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
-        return this.getDefaultState().with(WATERLOGGED, fluidState.getFluid() == Fluids.WATER).with(FACING, ctx.getHorizontalPlayerFacing().getOpposite());
+        WorldView worldView = ctx.getWorld();
+        BlockPos blockPos = ctx.getBlockPos();
+        Direction[] directions = ctx.getPlacementDirections();
+        Direction[] var7 = directions;
+        int var8 = directions.length;
+
+        for(int var9 = 0; var9 < var8; ++var9) {
+            Direction direction = var7[var9];
+            if (direction.getAxis().isHorizontal()) {
+                Direction direction2 = direction.getOpposite();
+                blockState = blockState.with(FACING, direction2);
+                if (blockState.canPlaceAt(worldView, blockPos)) {
+                    return blockState.with(WATERLOGGED, fluidState.getFluid() == Fluids.WATER);
+                }
+            }
+        }
+
+        return null;
     }
 
     @Override
