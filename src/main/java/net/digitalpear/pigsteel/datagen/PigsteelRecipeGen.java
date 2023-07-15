@@ -40,17 +40,14 @@ public class PigsteelRecipeGen extends FabricRecipeProvider {
         RecipeProvider.createCutCopperRecipe(RecipeCategory.BUILDING_BLOCKS, cut, Ingredient.ofItems(base));
 
         RecipeProvider.createStairsRecipe(stairs, Ingredient.ofItems(cut));
-        RecipeProvider.createSlabRecipe(RecipeCategory.BUILDING_BLOCKS, stairs, Ingredient.ofItems(cut));
+        RecipeProvider.createSlabRecipe(RecipeCategory.BUILDING_BLOCKS, slab, Ingredient.ofItems(cut));
 
-        SingleItemRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(cut), RecipeCategory.BUILDING_BLOCKS, slab, 2)
-                .criterion(hasItem(cut), conditionsFromItem(cut))
-                .group("pigsteel_slabs")
-                .offerTo(exporter, convertBetween(slab, cut) + "_stonecutting");
+        RecipeProvider.offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, stairs, base, 4);
+        RecipeProvider.offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, slab, base, 8);
 
-        SingleItemRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(cut), RecipeCategory.BUILDING_BLOCKS, stairs, 1)
-                .criterion(hasItem(cut), conditionsFromItem(cut))
-                .group("pigsteel_stairs")
-                .offerTo(exporter, convertBetween(stairs, cut) + "_stonecutting");
+        RecipeProvider.offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, stairs, cut);
+        RecipeProvider.offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, slab, cut, 2);
+
     }
 
     public static void makeVanillaRecipes(Consumer<RecipeJsonProvider> exporter){
@@ -86,7 +83,6 @@ public class PigsteelRecipeGen extends FabricRecipeProvider {
         ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, Blocks.SMITHING_TABLE).input('#', ItemTags.PLANKS).input('@', PigsteelItemTags.C_IRON_INGOTS).pattern("@@").pattern("##").pattern("##").criterion("has_iron_ingot", conditionsFromTag(PigsteelItemTags.C_IRON_INGOTS)).offerTo(exporter);
         ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, Blocks.STONECUTTER).input('I', PigsteelItemTags.C_IRON_INGOTS).input('#', Blocks.STONE).pattern(" I ").pattern("###").criterion("has_stone", conditionsFromItem(Blocks.STONE)).offerTo(exporter);
         ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, Blocks.CHAIN).input('I', PigsteelItemTags.C_IRON_INGOTS).input('N', Items.IRON_NUGGET).pattern("N").pattern("I").pattern("N").criterion("has_iron_nugget", conditionsFromItem(Items.IRON_NUGGET)).criterion("has_iron_ingot", conditionsFromTag(PigsteelItemTags.C_IRON_INGOTS)).offerTo(exporter);
-
     }
     public static void offer2x2CompactingRecipe(Consumer<RecipeJsonProvider> exporter, RecipeCategory category, ItemConvertible output, TagKey<Item> input) {
         ShapedRecipeJsonBuilder.create(category, output, 1).input('#', input).pattern("##").pattern("##").criterion("has_iron_ingot", conditionsFromTag(input)).offerTo(exporter);
@@ -137,7 +133,6 @@ public class PigsteelRecipeGen extends FabricRecipeProvider {
         offerReversibleCompactingIngotRecipes(exporter, RecipeCategory.MISC, PigsteelItems.RAW_PIGSTEEL, RecipeCategory.BUILDING_BLOCKS, PigsteelBlocks.RAW_PIGSTEEL_BLOCK, null, null);
 
         offerWaxingRecipes(exporter);
-//        makeSmeltnBlast(exporter, List.of(PigsteelItems.RAW_PIGSTEEL, PigsteelBlocks.PORKSLAG, PigsteelBlocks.PIGSTEEL_ORE, PigsteelBlocks.STONE_PIGSTEEL_ORE, PigsteelBlocks.DEEPSLATE_PIGSTEEL_ORE, PigsteelBlocks.BLUE_PIGSTEEL_ORE, PigsteelBlocks.BRIMSTONE_PIGSTEEL_ORE), RecipeCategory.MISC, PigsteelItems.PIGSTEEL_INGOT, 0.7f, 200, "pigsteel_ingot");
         makeSmeltnBlast(exporter, List.of(PigsteelItems.RAW_PIGSTEEL, PigsteelBlocks.PORKSLAG), RecipeCategory.MISC, PigsteelItems.PIGSTEEL_INGOT, 0.7f, 200, "pigsteel_ingot");
 
         makeCutRecipes(exporter, PigsteelBlocks.PIGSTEEL_BLOCK, PigsteelBlocks.CUT_PIGSTEEL, PigsteelBlocks.CUT_PIGSTEEL_STAIRS, PigsteelBlocks.CUT_PIGSTEEL_SLAB);

@@ -23,6 +23,7 @@ repositories {
 			includeGroup "maven.modrinth"
 		}
 	}
+	maven { url = "https://jitpack.io/" }
 }
 
 dependencies {
@@ -34,8 +35,9 @@ dependencies {
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
+	runtimeOnly("com.github.llamalad7.mixinextras:mixinextras-fabric:0.2.0-beta.9")
 	modRuntimeOnly("maven.modrinth:HIuqnQpi:AlRsvRjn")
-	modImplementation "maven.modrinth:trimmed:2.0.0"
+	modImplementation "maven.modrinth:trimmed:${project.trimmed}"
 }
 
 processResources {

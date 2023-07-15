@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_corrupted_pigsteel": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "pigsteel:corrupted_pigsteel"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:corrupted_cut_pigsteel_stairs_from_corrupted_pigsteel_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_corrupted_pigsteel",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:corrupted_cut_pigsteel_stairs_from_corrupted_pigsteel_stonecutting"
+    ]
+  },
+  "sends_telemetry_event": false
+}

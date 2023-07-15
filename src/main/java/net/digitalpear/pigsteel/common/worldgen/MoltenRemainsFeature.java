@@ -27,9 +27,9 @@ public class MoltenRemainsFeature extends Feature<MoltenRemainsFeatureConfig> {
 
         int depth = 0;
         for (int y = 0; y < 20; y++){
-            if (world.getBlockState(origin.down(depth)).isOf(Blocks.BEDROCK)){
-                return true;
-            }
+//            if (world.getBlockState(origin.down(depth)).isOf(Blocks.BEDROCK)){
+//                return true;
+//            }
             placeDisk(context, origin.down(y), i);
             placeDisk(context, origin.down(depth), i);
             if (i > 2){
@@ -73,11 +73,8 @@ public class MoltenRemainsFeature extends Feature<MoltenRemainsFeatureConfig> {
     public BlockState makeBlock(FeatureContext<MoltenRemainsFeatureConfig> context){
         MoltenRemainsFeatureConfig config = context.getConfig();
         int i = context.getRandom().nextInt(30);
-        if (i == 0){
-            return config.getRawBlock();
-        }
-        else if (i < 3){
-            return config.getOre();
+        if (i < 3){
+            return context.getRandom().nextInt(10) == 0 ? config.getRawBlock() : config.getOre();
         }
         else{
             return config.getRock();

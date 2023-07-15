@@ -1,4 +1,4 @@
-package net.digitalpear.pigsteel.register;
+package net.digitalpear.pigsteel.register.worldgen;
 
 import net.digitalpear.pigsteel.Pigsteel;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
@@ -21,6 +21,7 @@ public class PigsteelPlacedFeatures {
 
     public static final RegistryKey<PlacedFeature> ORE_PIGSTEEL = of("ore_pigsteel_nether");
     public static final RegistryKey<PlacedFeature> PIGSTEEL_MOLTEN_REMAINS = of("pigsteel_molten_remains");
+    public static final RegistryKey<PlacedFeature> GOLD_MOLTEN_REMAINS = of("gold_molten_remains");
 
     public static RegistryKey<PlacedFeature> of(String id) {
         return RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(Pigsteel.MOD_ID, id));
@@ -31,9 +32,15 @@ public class PigsteelPlacedFeatures {
 
         RegistryEntry<ConfiguredFeature<?, ?>> pigsteelOre = registryEntryLookup.getOrThrow(PigsteelConfiguredFeatures.ORE_PIGSTEEL);
         RegistryEntry<ConfiguredFeature<?, ?>> pigsteelMoltenRemains = registryEntryLookup.getOrThrow(PigsteelConfiguredFeatures.PIGSTEEL_MOLTEN_REMAINS);
+        RegistryEntry<ConfiguredFeature<?, ?>> goldMoltenRemains = registryEntryLookup.getOrThrow(PigsteelConfiguredFeatures.GOLD_MOLTEN_REMAINS);
 
         PlacedFeatures.register(featureRegisterable, ORE_PIGSTEEL, pigsteelOre, modifiersWithCount(20, HeightRangePlacementModifier.uniform(YOffset.fixed(0), YOffset.fixed(128))));
-        PlacedFeatures.register(featureRegisterable, PIGSTEEL_MOLTEN_REMAINS, pigsteelMoltenRemains, List.of(RarityFilterPlacementModifier.of(12), SquarePlacementModifier.of(), HeightRangePlacementModifier.uniform(YOffset.getTop(), YOffset.belowTop(12)), BiomePlacementModifier.of()));
+        PlacedFeatures.register(featureRegisterable, PIGSTEEL_MOLTEN_REMAINS, pigsteelMoltenRemains, moltenRemainsModifiers());
+        PlacedFeatures.register(featureRegisterable, GOLD_MOLTEN_REMAINS, goldMoltenRemains, moltenRemainsModifiers());
+    }
+
+    public static List<PlacementModifier> moltenRemainsModifiers(){
+        return List.of(RarityFilterPlacementModifier.of(2), SquarePlacementModifier.of(), HeightRangePlacementModifier.uniform(YOffset.getTop(), YOffset.belowTop(12)), BiomePlacementModifier.of());
     }
     private static List<PlacementModifier> modifiers(PlacementModifier countModifier, PlacementModifier heightModifier) {
         return List.of(countModifier, SquarePlacementModifier.of(), heightModifier, BiomePlacementModifier.of());

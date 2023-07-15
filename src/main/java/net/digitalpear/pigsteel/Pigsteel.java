@@ -3,13 +3,9 @@ package net.digitalpear.pigsteel;
 
 import net.digitalpear.pigsteel.common.worldgen.PigsteelFeature;
 import net.digitalpear.pigsteel.register.*;
+import net.digitalpear.pigsteel.register.worldgen.PigsteelConfiguredFeatures;
+import net.digitalpear.pigsteel.register.worldgen.PigsteelPlacedFeatures;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
-import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.SpawnGroup;
-import net.minecraft.item.trim.ArmorTrim;
-import net.minecraft.item.trim.ArmorTrimMaterials;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

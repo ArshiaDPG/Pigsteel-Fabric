@@ -1,14 +1,14 @@
-package net.digitalpear.pigsteel.register;
+package net.digitalpear.pigsteel.register.worldgen;
 
 import net.digitalpear.pigsteel.Pigsteel;
 import net.digitalpear.pigsteel.common.worldgen.MoltenRemainsFeatureConfig;
 import net.digitalpear.pigsteel.common.worldgen.PigsteelFeature;
+import net.digitalpear.pigsteel.register.PigsteelBlocks;
 import net.minecraft.block.Blocks;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.BlockTags;
-import net.minecraft.structure.rule.BlockMatchRuleTest;
 import net.minecraft.structure.rule.RuleTest;
 import net.minecraft.structure.rule.TagMatchRuleTest;
 import net.minecraft.util.Identifier;
@@ -16,8 +16,6 @@ import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.ConfiguredFeatures;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.OreFeatureConfig;
-
-import java.util.List;
 
 public class PigsteelConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> ORE_PIGSTEEL = of("ore_pigsteel");
@@ -33,7 +31,7 @@ public class PigsteelConfiguredFeatures {
 
         ConfiguredFeatures.register(featureRegisterable, ORE_PIGSTEEL, Feature.ORE, new OreFeatureConfig(netherrackRule, PigsteelBlocks.PORKSLAG.getDefaultState(), 7));
 
-        ConfiguredFeatures.register(featureRegisterable, PIGSTEEL_MOLTEN_REMAINS, PigsteelFeature.MOLTEN_REMAINS, new MoltenRemainsFeatureConfig(Blocks.BASALT, PigsteelBlocks.PORKSLAG, PigsteelBlocks.RAW_PIGSTEEL_BLOCK));
+        ConfiguredFeatures.register(featureRegisterable, PIGSTEEL_MOLTEN_REMAINS, PigsteelFeature.MOLTEN_REMAINS, new MoltenRemainsFeatureConfig(Blocks.SMOOTH_BASALT, PigsteelBlocks.PORKSLAG, PigsteelBlocks.RAW_PIGSTEEL_BLOCK));
         ConfiguredFeatures.register(featureRegisterable, GOLD_MOLTEN_REMAINS, PigsteelFeature.MOLTEN_REMAINS, new MoltenRemainsFeatureConfig(Blocks.BLACKSTONE, Blocks.GILDED_BLACKSTONE, Blocks.RAW_GOLD_BLOCK));
     }
 

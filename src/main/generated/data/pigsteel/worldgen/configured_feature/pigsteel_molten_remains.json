@@ -8,10 +8,7 @@
       "Name": "pigsteel:raw_pigsteel_block"
     },
     "rock": {
-      "Name": "minecraft:basalt",
-      "Properties": {
-        "axis": "y"
-      }
+      "Name": "minecraft:smooth_basalt"
     }
   }
 }
