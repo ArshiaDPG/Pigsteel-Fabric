@@ -1,9 +1,10 @@
 package net.digitalpear.pigsteel.datagen;
 
-import net.digitalpear.pigsteel.register.PigsteelBlocks;
-import net.digitalpear.pigsteel.register.PigsteelItems;
+import net.digitalpear.pigsteel.init.PigsteelBlocks;
+import net.digitalpear.pigsteel.init.PigsteelItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
+import net.minecraft.registry.Registries;
 
 public class PigsteelLanguageGen extends FabricLanguageProvider {
     public PigsteelLanguageGen(FabricDataOutput dataOutput) {
@@ -64,23 +65,28 @@ public class PigsteelLanguageGen extends FabricLanguageProvider {
         translationBuilder.add(PigsteelBlocks.PIGSTEEL_LANTERN, "Pigsteel Lantern");
         translationBuilder.add(PigsteelBlocks.PIGSTEEL_SOUL_LANTERN, "Pigsteel Soul Lantern");
 
-//        translationBuilder.add(PigsteelBlocks.PIGSTEEL_ORE, "Pigsteel Ore");
-//        translationBuilder.add(PigsteelBlocks.STONE_PIGSTEEL_ORE, "Stone Pigsteel Ore");
-//        translationBuilder.add(PigsteelBlocks.DEEPSLATE_PIGSTEEL_ORE, "Deepslate Pigsteel Ore");
-//        translationBuilder.add(PigsteelBlocks.BRIMSTONE_PIGSTEEL_ORE, "Brimstone Pigsteel Ore");
-//        translationBuilder.add(PigsteelBlocks.BLUE_PIGSTEEL_ORE, "Blue Pigsteel Ore");
-
-
-        translationBuilder.add(PigsteelBlocks.PIGSTEEL_BARS, "Pigsteel Bars");
-        translationBuilder.add(PigsteelBlocks.INFECTED_PIGSTEEL_BARS, "Infected Pigsteel Bars");
-        translationBuilder.add(PigsteelBlocks.CORRUPTED_PIGSTEEL_BARS, "Corrupted Pigsteel Bars");
-        translationBuilder.add(PigsteelBlocks.ZOMBIFIED_PIGSTEEL_BARS, "Zombified Pigsteel Bars");
-
-        translationBuilder.add(PigsteelBlocks.WAXED_PIGSTEEL_BARS, "Waxed Pigsteel Bars");
-        translationBuilder.add(PigsteelBlocks.WAXED_INFECTED_PIGSTEEL_BARS, "Waxed Infected Pigsteel Bars");
-        translationBuilder.add(PigsteelBlocks.WAXED_CORRUPTED_PIGSTEEL_BARS, "Waxed Corrupted Pigsteel Bars");
-        translationBuilder.add(PigsteelBlocks.WAXED_ZOMBIFIED_PIGSTEEL_BARS, "Waxed Zombified Pigsteel Bars");
+        PigsteelBlocks.pigsteelBars.getAllBlocks().forEach(block -> translationBuilder.add(block, formatString(Registries.BLOCK.getId(block).getPath())));
 
         translationBuilder.add("trim_material.pigsteel.pigsteel", "Pigsteel");
+    }
+
+
+    public static String formatString(String input) {
+        String[] words = input.split("_"); // Split the input string at underscores
+        StringBuilder result = new StringBuilder();
+
+        for (String word : words) {
+            if (!word.isEmpty()) {
+                // Capitalize the first letter of each word and append it to the result
+                result.append(Character.toUpperCase(word.charAt(0)));
+                if (word.length() > 1) {
+                    // Append the rest of the word (excluding the first letter)
+                    result.append(word.substring(1));
+                }
+                result.append(" "); // Append a space after each word
+            }
+        }
+
+        return result.toString().trim(); // Trim any leading/trailing spaces and return the formatted string
     }
 }

@@ -1,7 +1,7 @@
 package net.digitalpear.pigsteel.datagen;
 
-import net.digitalpear.pigsteel.register.PigsteelBlocks;
-import net.digitalpear.pigsteel.register.tags.PigsteelBlockTags;
+import net.digitalpear.pigsteel.init.PigsteelBlocks;
+import net.digitalpear.pigsteel.init.tags.PigsteelBlockTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.Block;

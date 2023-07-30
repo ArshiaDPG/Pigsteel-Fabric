@@ -1,4 +1,4 @@
-package net.digitalpear.pigsteel.register;
+package net.digitalpear.pigsteel.init;
 
 import com.google.common.collect.ImmutableMap;
 import net.digitalpear.pigsteel.Pigsteel;

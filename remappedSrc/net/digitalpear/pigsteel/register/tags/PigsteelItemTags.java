@@ -1,4 +1,4 @@
-package net.digitalpear.pigsteel.register.tags;
+package net.digitalpear.pigsteel.init.tags;
 
 import net.digitalpear.pigsteel.Pigsteel;
 import net.minecraft.item.Item;

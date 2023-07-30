@@ -2,7 +2,7 @@ package net.digitalpear.pigsteel.datagen.providers.item;
 
 import dhyces.trimmed.api.data.ItemOverrideDataProvider;
 import net.digitalpear.pigsteel.Pigsteel;
-import net.digitalpear.pigsteel.register.PigsteelArmorTrimMaterials;
+import net.digitalpear.pigsteel.init.PigsteelArmorTrimMaterials;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;

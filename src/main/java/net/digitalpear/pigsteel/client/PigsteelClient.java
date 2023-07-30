@@ -1,6 +1,6 @@
 package net.digitalpear.pigsteel.client;
 
-import net.digitalpear.pigsteel.register.PigsteelBlocks;
+import net.digitalpear.pigsteel.init.PigsteelBlocks;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -13,14 +13,8 @@ public class PigsteelClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(),
+        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), PigsteelBlocks.PIGSTEEL_LANTERN, PigsteelBlocks.PIGSTEEL_SOUL_LANTERN);
 
-                PigsteelBlocks.PIGSTEEL_LANTERN, PigsteelBlocks.PIGSTEEL_SOUL_LANTERN,
-
-                PigsteelBlocks.PIGSTEEL_BARS, PigsteelBlocks.INFECTED_PIGSTEEL_BARS,
-                PigsteelBlocks.CORRUPTED_PIGSTEEL_BARS, PigsteelBlocks.ZOMBIFIED_PIGSTEEL_BARS,
-
-                PigsteelBlocks.WAXED_PIGSTEEL_BARS, PigsteelBlocks.WAXED_INFECTED_PIGSTEEL_BARS,
-                PigsteelBlocks.WAXED_CORRUPTED_PIGSTEEL_BARS, PigsteelBlocks.WAXED_ZOMBIFIED_PIGSTEEL_BARS);
+        PigsteelBlocks.pigsteelBars.getAllBlocks().forEach(block -> BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), block));
     }
 }

@@ -1,9 +1,9 @@
 package net.digitalpear.pigsteel.datagen;
 
 import net.digitalpear.pigsteel.Pigsteel;
-import net.digitalpear.pigsteel.register.PigsteelBlocks;
-import net.digitalpear.pigsteel.register.PigsteelItems;
-import net.digitalpear.pigsteel.register.tags.PigsteelItemTags;
+import net.digitalpear.pigsteel.init.PigsteelBlocks;
+import net.digitalpear.pigsteel.init.PigsteelItems;
+import net.digitalpear.pigsteel.init.tags.PigsteelItemTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.block.Block;
@@ -62,7 +62,7 @@ public class PigsteelRecipeGen extends FabricRecipeProvider {
         offerPressurePlateRecipe(exporter, Blocks.HEAVY_WEIGHTED_PRESSURE_PLATE, PigsteelItemTags.C_IRON_INGOTS);
         ShapedRecipeJsonBuilder.create(RecipeCategory.REDSTONE, Blocks.HOPPER).input('C', Blocks.CHEST).input('I', PigsteelItemTags.C_IRON_INGOTS).pattern("I I").pattern("ICI").pattern(" I ").criterion("has_iron_ingot", conditionsFromTag(PigsteelItemTags.C_IRON_INGOTS)).offerTo(exporter);
         ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, Items.IRON_AXE).input('#', Items.STICK).input('X', PigsteelItemTags.C_IRON_INGOTS).pattern("XX").pattern("X#").pattern(" #").criterion("has_iron_ingot", conditionsFromTag(PigsteelItemTags.C_IRON_INGOTS)).offerTo(exporter);
-        ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, Blocks.IRON_BARS, 16).input('#', PigsteelItemTags.C_IRON_INGOTS).pattern("###").pattern("###").criterion("has_iron_ingot", conditionsFromTag(PigsteelItemTags.C_IRON_INGOTS)).offerTo(exporter);
+//        ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, Blocks.IRON_BARS, 16).input('#', PigsteelItemTags.C_IRON_INGOTS).pattern("###").pattern("###").criterion("has_iron_ingot", conditionsFromTag(PigsteelItemTags.C_IRON_INGOTS)).offerTo(exporter);
         ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, Items.IRON_BOOTS).input('X', PigsteelItemTags.C_IRON_INGOTS).pattern("X X").pattern("X X").criterion("has_iron_ingot", conditionsFromTag(PigsteelItemTags.C_IRON_INGOTS)).offerTo(exporter);
         ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, Items.IRON_CHESTPLATE).input('X', PigsteelItemTags.C_IRON_INGOTS).pattern("X X").pattern("XXX").pattern("XXX").criterion("has_iron_ingot", conditionsFromTag(PigsteelItemTags.C_IRON_INGOTS)).offerTo(exporter);
         createDoorRecipe(Blocks.IRON_DOOR, Ingredient.fromTag(PigsteelItemTags.C_IRON_INGOTS)).criterion("has_iron_ingot", conditionsFromTag(PigsteelItemTags.C_IRON_INGOTS)).offerTo(exporter);
@@ -143,7 +143,7 @@ public class PigsteelRecipeGen extends FabricRecipeProvider {
         makeLantern(exporter, PigsteelBlocks.PIGSTEEL_LANTERN, Items.TORCH);
         makeLantern(exporter, PigsteelBlocks.PIGSTEEL_SOUL_LANTERN, Items.SOUL_TORCH);
 
-        makeBarsRecipe(exporter, PigsteelBlocks.ZOMBIFIED_PIGSTEEL_BARS, PigsteelItems.PIGSTEEL_INGOT);
+        makeBarsRecipe(exporter, PigsteelBlocks.pigsteelBars.getUnaffectedBlock(), PigsteelItems.PIGSTEEL_INGOT);
 
 
         makeVanillaRecipes(exporter);

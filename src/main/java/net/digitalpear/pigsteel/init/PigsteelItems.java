@@ -1,9 +1,7 @@
-package net.digitalpear.pigsteel.register;
+package net.digitalpear.pigsteel.init;
 
 import net.digitalpear.pigsteel.Pigsteel;
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -97,15 +95,7 @@ public class PigsteelItems {
                     entries.add(PigsteelBlocks.WAXED_ZOMBIFIED_CUT_PIGSTEEL_SLAB);
                     entries.add(PigsteelBlocks.WAXED_ZOMBIFIED_CUT_PIGSTEEL_STAIRS);
 
-                    entries.add(PigsteelBlocks.PIGSTEEL_BARS);
-                    entries.add(PigsteelBlocks.INFECTED_PIGSTEEL_BARS);
-                    entries.add(PigsteelBlocks.CORRUPTED_PIGSTEEL_BARS);
-                    entries.add(PigsteelBlocks.ZOMBIFIED_PIGSTEEL_BARS);
-
-                    entries.add(PigsteelBlocks.WAXED_PIGSTEEL_BARS);
-                    entries.add(PigsteelBlocks.WAXED_INFECTED_PIGSTEEL_BARS);
-                    entries.add(PigsteelBlocks.WAXED_CORRUPTED_PIGSTEEL_BARS);
-                    entries.add(PigsteelBlocks.WAXED_ZOMBIFIED_PIGSTEEL_BARS);
+                    PigsteelBlocks.pigsteelBars.getAllBlocks().forEach(entries::add);
                 });
 
     }

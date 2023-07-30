@@ -1,6 +1,6 @@
 package net.digitalpear.pigsteel.datagen.providers.worldgen;
 
-import net.digitalpear.pigsteel.register.PigsteelPlacedFeatures;
+import net.digitalpear.pigsteel.init.PigsteelPlacedFeatures;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider;
 import net.minecraft.registry.RegistryKey;

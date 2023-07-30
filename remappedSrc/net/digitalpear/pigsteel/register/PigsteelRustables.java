@@ -1,4 +1,4 @@
-package net.digitalpear.pigsteel.register;
+package net.digitalpear.pigsteel.init;
 
 import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
 

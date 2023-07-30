@@ -1,4 +1,4 @@
-package net.digitalpear.pigsteel.register.worldgen;
+package net.digitalpear.pigsteel.init.worldgen;
 
 import net.digitalpear.pigsteel.Pigsteel;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;

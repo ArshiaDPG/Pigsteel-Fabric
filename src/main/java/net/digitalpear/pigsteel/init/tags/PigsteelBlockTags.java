@@ -1,4 +1,4 @@
-package net.digitalpear.pigsteel.register.tags;
+package net.digitalpear.pigsteel.init.tags;
 
 import net.digitalpear.pigsteel.Pigsteel;
 import net.minecraft.block.Block;
@@ -9,6 +9,9 @@ import net.minecraft.util.Identifier;
 public class PigsteelBlockTags {
     public static final TagKey<Block> PIGSTEEL_ORES = of("pigsteel_ores");
     public static final TagKey<Block> PIGSTEEL_BLOCKS = of("pigsteel_blocks");
+
+    public static final TagKey<Block> WARM_BLOCKS = of("warm_blocks");
+    public static final TagKey<Block> COLD_BLOCKS = of("cold_blocks");
 
     public static final TagKey<Block> C_ORES = of("c","ores");
     public static final TagKey<Block> C_IRON_BLOCKS = of("c","iron_blocks");

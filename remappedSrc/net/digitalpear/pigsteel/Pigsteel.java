@@ -1,7 +1,7 @@
 package net.digitalpear.pigsteel;
 
 
-import net.digitalpear.pigsteel.register.*;
+import net.digitalpear.pigsteel.init.*;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;

@@ -1,6 +1,6 @@
 package net.digitalpear.pigsteel.client;
 
-import net.digitalpear.pigsteel.register.PigsteelBlocks;
+import net.digitalpear.pigsteel.init.PigsteelBlocks;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

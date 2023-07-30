@@ -120,6 +120,7 @@ unifiedPublishing {
   <li>Trimmed is now used for adding the trim material, which fixes many of the issues, including incompatibility with other mods.</li>
   <li>Changed vanilla recipes for pigsteel to use data generators.</li>
   <li>Improved Pigsteel Lantern placement logic.</li>
+  <li>Pigsteel zombification has been completely rewritten from scratch. Now pigsteel's zombification speed can be influenced by the blocks around it.</li>
 </ul> '''
 		releaseType = "beta" // Optional, use "release", "beta" or "alpha"
 		gameVersions = ["${project.minecraft_version}", "1.20"]

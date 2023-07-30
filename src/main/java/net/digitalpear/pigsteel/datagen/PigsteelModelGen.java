@@ -1,8 +1,8 @@
 package net.digitalpear.pigsteel.datagen;
 
 import net.digitalpear.pigsteel.Pigsteel;
-import net.digitalpear.pigsteel.register.PigsteelBlocks;
-import net.digitalpear.pigsteel.register.PigsteelItems;
+import net.digitalpear.pigsteel.init.PigsteelBlocks;
+import net.digitalpear.pigsteel.init.PigsteelItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.block.Block;
@@ -54,10 +54,9 @@ public class PigsteelModelGen extends FabricModelProvider {
         createLantern(blockStateModelGenerator, PigsteelBlocks.PIGSTEEL_LANTERN);
         createLantern(blockStateModelGenerator, PigsteelBlocks.PIGSTEEL_SOUL_LANTERN);
 
-        registerWaxeableIronBars(blockStateModelGenerator, PigsteelBlocks.PIGSTEEL_BARS, PigsteelBlocks.WAXED_PIGSTEEL_BARS);
-        registerWaxeableIronBars(blockStateModelGenerator, PigsteelBlocks.INFECTED_PIGSTEEL_BARS, PigsteelBlocks.WAXED_INFECTED_PIGSTEEL_BARS);
-        registerWaxeableIronBars(blockStateModelGenerator, PigsteelBlocks.CORRUPTED_PIGSTEEL_BARS, PigsteelBlocks.WAXED_CORRUPTED_PIGSTEEL_BARS);
-        registerWaxeableIronBars(blockStateModelGenerator, PigsteelBlocks.ZOMBIFIED_PIGSTEEL_BARS, PigsteelBlocks.WAXED_ZOMBIFIED_PIGSTEEL_BARS);
+        for (int i = 0; i < 4; i++){
+            registerWaxeableIronBars(blockStateModelGenerator, PigsteelBlocks.pigsteelBars.getZombifiables().get(i), PigsteelBlocks.pigsteelBars.getWaxed().get(i));
+        }
     }
 
     @Override

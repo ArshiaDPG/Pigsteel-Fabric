@@ -1,4 +1,4 @@
-// 1.20.1	2023-07-14T22:02:23.9077493	Pigsteel/Model Definitions
+// 1.20.1	2023-07-30T16:35:31.4794354	Pigsteel/Model Definitions
 7272d3655582273eb353e82388a7465f9cc95c11 assets\pigsteel\blockstates\corrupted_pigsteel.json
 9037041e4ea008962612d5c947b4c990263aa2b2 assets\pigsteel\models\item\corrupted_pigsteel.json
 883365fec146d851859e2eab7bee192aab4d5771 assets\pigsteel\models\block\infected_pigsteel_bars_post_ends.json
@@ -34,8 +34,8 @@ d3b3e877d209c7bf2b2523b1497ce0b2cc332dec assets\pigsteel\models\block\corrupted_
 6c9f3b401a92d1c7a4cefd7481cffdb205b0eff6 assets\pigsteel\blockstates\zombified_cut_pigsteel.json
 3b087f3a1fe65be3be77d978962d0e9707c4b457 assets\pigsteel\models\item\zombified_cut_pigsteel_stairs.json
 9db464a7e96f59af86bcc53e5a45030773ce0e51 assets\pigsteel\models\block\corrupted_pigsteel_bars_post.json
-ef9c4846da0fc1c6ef1c22cee16a4852465b638d assets\pigsteel\models\item\infected_pigsteel.json
 62c8345048a0044023adba5a5838a5a7c9cd0f3c assets\pigsteel\blockstates\waxed_cut_pigsteel_stairs.json
+ef9c4846da0fc1c6ef1c22cee16a4852465b638d assets\pigsteel\models\item\infected_pigsteel.json
 a2bccab18a845fdd742199c3b4e15e9a14036ebe assets\pigsteel\models\block\zombified_cut_pigsteel_slab_top.json
 44378a6053a9c7a8ed1fb73322868e9a04b5fbef assets\pigsteel\models\item\corrupted_pigsteel_bars.json
 c040206eb47d08562e0c482962a45f6e787dcbbf assets\pigsteel\models\block\cut_pigsteel_slab.json

@@ -1,7 +1,7 @@
 package net.digitalpear.pigsteel.datagen;
 
-import net.digitalpear.pigsteel.register.PigsteelBlocks;
-import net.digitalpear.pigsteel.register.tags.PigsteelBlockTags;
+import net.digitalpear.pigsteel.init.PigsteelBlocks;
+import net.digitalpear.pigsteel.init.tags.PigsteelBlockTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.Block;
@@ -30,6 +30,9 @@ public class PigsteelBlockTagGen extends FabricTagProvider<Block> {
         getOrCreateTagBuilder(PigsteelBlockTags.PIGSTEEL_ORES)
                 .add(PigsteelBlocks.PORKSLAG);
 
+        getOrCreateTagBuilder(PigsteelBlockTags.WARM_BLOCKS).forceAddTag(BlockTags.FIRE).forceAddTag(BlockTags.CAMPFIRES);
+        getOrCreateTagBuilder(PigsteelBlockTags.COLD_BLOCKS).forceAddTag(BlockTags.ICE).forceAddTag(BlockTags.SNOW);
+
 
         getOrCreateTagBuilder(PigsteelBlockTags.PIGSTEEL_BLOCKS)
                 .add(PigsteelBlocks.PIGSTEEL_BLOCK).add(PigsteelBlocks.WAXED_PIGSTEEL_BLOCK)
@@ -55,6 +58,10 @@ public class PigsteelBlockTagGen extends FabricTagProvider<Block> {
                 .add(PigsteelBlocks.ZOMBIFIED_CUT_PIGSTEEL_SLAB).add(PigsteelBlocks.WAXED_ZOMBIFIED_CUT_PIGSTEEL_SLAB)
                 .add(PigsteelBlocks.PIGSTEEL_LANTERN).add(PigsteelBlocks.PIGSTEEL_SOUL_LANTERN);
 
+        for (int i = 0; i < 4; i++){
+            getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(PigsteelBlocks.pigsteelBars.getZombifiables().get(i));
+            getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(PigsteelBlocks.pigsteelBars.getWaxed().get(i));
+        }
 
         getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
                 .forceAddTag(PigsteelBlockTags.PIGSTEEL_BLOCKS)

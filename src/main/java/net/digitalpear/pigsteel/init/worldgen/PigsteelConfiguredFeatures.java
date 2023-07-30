@@ -1,9 +1,9 @@
-package net.digitalpear.pigsteel.register.worldgen;
+package net.digitalpear.pigsteel.init.worldgen;
 
 import net.digitalpear.pigsteel.Pigsteel;
 import net.digitalpear.pigsteel.common.worldgen.MoltenRemainsFeatureConfig;
 import net.digitalpear.pigsteel.common.worldgen.PigsteelFeature;
-import net.digitalpear.pigsteel.register.PigsteelBlocks;
+import net.digitalpear.pigsteel.init.PigsteelBlocks;
 import net.minecraft.block.Blocks;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;

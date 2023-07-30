@@ -1,6 +1,6 @@
 package net.digitalpear.pigsteel.datagen.providers;
 
-import net.digitalpear.pigsteel.register.PigsteelArmorTrimMaterials;
+import net.digitalpear.pigsteel.init.PigsteelArmorTrimMaterials;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider;
 import net.minecraft.item.trim.ArmorTrimMaterial;
@@ -19,6 +19,7 @@ public class PigsteelTrimMaterialProvider extends FabricDynamicRegistryProvider 
     protected void configure(RegistryWrapper.WrapperLookup registries, Entries entries) {
         add(registries, entries, PigsteelArmorTrimMaterials.PIGSTEEL);
     }
+
 
 
     private void add(RegistryWrapper.WrapperLookup registries, Entries entries, RegistryKey<ArmorTrimMaterial> resourceKey) {

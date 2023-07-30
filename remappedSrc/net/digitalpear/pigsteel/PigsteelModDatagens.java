@@ -5,9 +5,9 @@ import net.digitalpear.pigsteel.datagen.providers.item.PigsteelItemOverrideProvi
 import net.digitalpear.pigsteel.datagen.providers.worldgen.PigsteelConfiguredFeatureProvider;
 import net.digitalpear.pigsteel.datagen.providers.worldgen.PigsteelPlacedFeatureProvider;
 import net.digitalpear.pigsteel.datagen.providers.worldgen.PigsteelTrimMaterialProvider;
-import net.digitalpear.pigsteel.register.PigsteelArmorTrimMaterials;
-import net.digitalpear.pigsteel.register.PigsteelConfiguredFeatures;
-import net.digitalpear.pigsteel.register.PigsteelPlacedFeatures;
+import net.digitalpear.pigsteel.init.PigsteelArmorTrimMaterials;
+import net.digitalpear.pigsteel.init.PigsteelConfiguredFeatures;
+import net.digitalpear.pigsteel.init.PigsteelPlacedFeatures;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.minecraft.data.DataProvider;

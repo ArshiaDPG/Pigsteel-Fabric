@@ -1,4 +1,4 @@
-package net.digitalpear.pigsteel.register;
+package net.digitalpear.pigsteel.init;
 
 import net.digitalpear.pigsteel.Pigsteel;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
