@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_infected_pigsteel": {
+    "has_corrupted_pigsteel": {
       "conditions": {
         "items": [
           {
             "items": [
-              "pigsteel:infected_pigsteel"
+              "pigsteel:corrupted_pigsteel"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:infected_cut_pigsteel_slab_from_infected_pigsteel_stonecutting"
+        "recipe": "minecraft:cut_pigsteel_slab_from_corrupted_pigsteel_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_infected_pigsteel",
+      "has_corrupted_pigsteel",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:infected_cut_pigsteel_slab_from_infected_pigsteel_stonecutting"
+      "minecraft:cut_pigsteel_slab_from_corrupted_pigsteel_stonecutting"
     ]
   },
   "sends_telemetry_event": false

@@ -40,7 +40,7 @@ public class PigsteelPlacedFeatures {
     }
 
     public static List<PlacementModifier> moltenRemainsModifiers(){
-        return List.of(RarityFilterPlacementModifier.of(2), SquarePlacementModifier.of(), HeightRangePlacementModifier.uniform(YOffset.getTop(), YOffset.belowTop(12)), BiomePlacementModifier.of());
+        return List.of(RarityFilterPlacementModifier.of(200), SquarePlacementModifier.of(), HeightRangePlacementModifier.uniform(YOffset.getTop(), YOffset.belowTop(12)), BiomePlacementModifier.of());
     }
     private static List<PlacementModifier> modifiers(PlacementModifier countModifier, PlacementModifier heightModifier) {
         return List.of(countModifier, SquarePlacementModifier.of(), heightModifier, BiomePlacementModifier.of());
@@ -52,6 +52,6 @@ public class PigsteelPlacedFeatures {
 
     public static void init() {
         BiomeModifications.addFeature(BiomeSelectors.foundInTheNether(), GenerationStep.Feature.UNDERGROUND_ORES, ORE_PIGSTEEL);
-        BiomeModifications.addFeature(BiomeSelectors.foundInTheNether(), GenerationStep.Feature.UNDERGROUND_ORES, PIGSTEEL_MOLTEN_REMAINS);
+//        BiomeModifications.addFeature(BiomeSelectors.foundInTheNether(), GenerationStep.Feature.UNDERGROUND_ORES, PIGSTEEL_MOLTEN_REMAINS);
     }
 }

@@ -5,11 +5,13 @@ import net.digitalpear.pigsteel.common.blocks.Zombifiable;
 import net.digitalpear.pigsteel.init.PigsteelBlocks;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.MapColor;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 
 import java.util.List;
@@ -19,6 +21,7 @@ public class ZombifiableBlockRegistry {
     private final Class<? extends Block> baseBlockClass;
     private final Class<? extends Block> waxedBlockClass;
     private final String baseName;
+    private final AbstractBlock.Settings settings;
 
     private Block unaffectedBlock;
     private Block infectedBlock;
@@ -30,7 +33,24 @@ public class ZombifiableBlockRegistry {
     private Block waxedCorruptedBlock;
     private Block waxedZombifiedBlock;
 
+    public ZombifiableBlockRegistry(String baseName, Class<? extends Block> baseBlockClass, Class<? extends Block> waxedBlockClass, AbstractBlock.Settings settings) {
+        this.settings = settings;
+        this.baseName = baseName;
+        this.baseBlockClass = baseBlockClass;
+        this.waxedBlockClass = waxedBlockClass;
+
+        this.unaffectedBlock = registerBlock(Zombifiable.ZombificationLevel.UNAFFECTED);
+        this.infectedBlock = registerBlock(Zombifiable.ZombificationLevel.INFECTED);
+        this.corruptedBlock = registerBlock(Zombifiable.ZombificationLevel.CORRUPTED);
+        this.zombifiedBlock = registerBlock(Zombifiable.ZombificationLevel.ZOMBIFIED);
+
+        this.waxedUnaffectedBlock = PigsteelBlocks.createBlockWithItem(Registries.BLOCK.getId(unaffectedBlock).withPrefixedPath("waxed_").getPath(), createWaxedBlock(unaffectedBlock.getDefaultMapColor()));
+        this.waxedInfectedBlock = PigsteelBlocks.createBlockWithItem(Registries.BLOCK.getId(infectedBlock).withPrefixedPath("waxed_").getPath(), createWaxedBlock(infectedBlock.getDefaultMapColor()));
+        this.waxedCorruptedBlock = PigsteelBlocks.createBlockWithItem(Registries.BLOCK.getId(corruptedBlock).withPrefixedPath("waxed_").getPath(), createWaxedBlock(corruptedBlock.getDefaultMapColor()));
+        this.waxedZombifiedBlock = PigsteelBlocks.createBlockWithItem(Registries.BLOCK.getId(zombifiedBlock).withPrefixedPath("waxed_").getPath(), createWaxedBlock(zombifiedBlock.getDefaultMapColor()));
+    }
     public ZombifiableBlockRegistry(String baseName, Class<? extends Block> baseBlockClass, Class<? extends Block> waxedBlockClass) {
+        this.settings = AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.NETHERITE);
         this.baseName = baseName;
         this.baseBlockClass = baseBlockClass;
         this.waxedBlockClass = waxedBlockClass;
@@ -61,7 +81,7 @@ public class ZombifiableBlockRegistry {
     }
     private Block createWaxedBlock(MapColor mapColor) {
         try {
-            return waxedBlockClass.getConstructor(AbstractBlock.Settings.class).newInstance(AbstractBlock.Settings.create().mapColor(mapColor));
+            return waxedBlockClass.getConstructor(AbstractBlock.Settings.class).newInstance(settings.mapColor(mapColor));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -69,7 +89,7 @@ public class ZombifiableBlockRegistry {
     }
     private Block createBlock(MapColor mapColor) {
         try {
-            return baseBlockClass.getConstructor(AbstractBlock.Settings.class).newInstance(AbstractBlock.Settings.create().mapColor(mapColor));
+            return baseBlockClass.getConstructor(AbstractBlock.Settings.class).newInstance(settings.mapColor(mapColor));
         } catch (Exception e) {
             e.printStackTrace();
         }

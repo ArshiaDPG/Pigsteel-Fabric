@@ -3,16 +3,16 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:zombified_cut_pigsteel_slab_from_zombified_pigsteel_stonecutting"
+        "recipe": "minecraft:cut_pigsteel_slab_from_zombified_cut_pigsteel_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
-    "has_zombified_pigsteel": {
+    "has_zombified_cut_pigsteel": {
       "conditions": {
         "items": [
           {
             "items": [
-              "pigsteel:zombified_pigsteel"
+              "pigsteel:zombified_cut_pigsteel"
             ]
           }
         ]
@@ -22,13 +22,13 @@
   },
   "requirements": [
     [
-      "has_zombified_pigsteel",
+      "has_zombified_cut_pigsteel",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:zombified_cut_pigsteel_slab_from_zombified_pigsteel_stonecutting"
+      "minecraft:cut_pigsteel_slab_from_zombified_cut_pigsteel_stonecutting"
     ]
   },
   "sends_telemetry_event": false

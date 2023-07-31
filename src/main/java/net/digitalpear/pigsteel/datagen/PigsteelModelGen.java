@@ -20,12 +20,6 @@ public class PigsteelModelGen extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-//        blockStateModelGenerator.registerSimpleCubeAll(PigsteelBlocks.BRIMSTONE_PIGSTEEL_ORE);
-//        blockStateModelGenerator.registerSimpleCubeAll(PigsteelBlocks.BLUE_PIGSTEEL_ORE);
-//        blockStateModelGenerator.registerSimpleCubeAll(PigsteelBlocks.PIGSTEEL_ORE);
-//        blockStateModelGenerator.registerSimpleCubeAll(PigsteelBlocks.STONE_PIGSTEEL_ORE);
-//        blockStateModelGenerator.registerSimpleCubeAll(PigsteelBlocks.DEEPSLATE_PIGSTEEL_ORE);
-
 
         blockStateModelGenerator.registerSimpleCubeAll(PigsteelBlocks.PORKSLAG);
 
@@ -36,27 +30,20 @@ public class PigsteelModelGen extends FabricModelProvider {
         createWaxable(blockStateModelGenerator, PigsteelBlocks.CORRUPTED_PIGSTEEL, PigsteelBlocks.WAXED_CORRUPTED_PIGSTEEL);
         createWaxable(blockStateModelGenerator, PigsteelBlocks.ZOMBIFIED_PIGSTEEL, PigsteelBlocks.WAXED_ZOMBIFIED_PIGSTEEL);
 
-        createWaxable(blockStateModelGenerator, PigsteelBlocks.CUT_PIGSTEEL, PigsteelBlocks.WAXED_CUT_PIGSTEEL);
-        createWaxable(blockStateModelGenerator, PigsteelBlocks.INFECTED_CUT_PIGSTEEL, PigsteelBlocks.WAXED_INFECTED_CUT_PIGSTEEL);
-        createWaxable(blockStateModelGenerator, PigsteelBlocks.CORRUPTED_CUT_PIGSTEEL, PigsteelBlocks.WAXED_CORRUPTED_CUT_PIGSTEEL);
-        createWaxable(blockStateModelGenerator, PigsteelBlocks.ZOMBIFIED_CUT_PIGSTEEL, PigsteelBlocks.WAXED_ZOMBIFIED_CUT_PIGSTEEL);
+        for (int i = 0; i < 4; i++){
+            createWaxable(blockStateModelGenerator, PigsteelBlocks.cutPigsteel.getZombifiables().get(i), PigsteelBlocks.cutPigsteel.getWaxed().get(i));
+            createWaxableSlab(blockStateModelGenerator, PigsteelBlocks.cutPigsteel.getZombifiables().get(i), PigsteelBlocks.cutPigsteelSlabs.getZombifiables().get(i),PigsteelBlocks.cutPigsteelSlabs.getWaxed().get(i));
+            registerWaxeableIronBars(blockStateModelGenerator, PigsteelBlocks.pigsteelBars.getZombifiables().get(i), PigsteelBlocks.pigsteelBars.getWaxed().get(i));
+        }
 
-        createWaxableStairs(blockStateModelGenerator, PigsteelBlocks.CUT_PIGSTEEL, PigsteelBlocks.CUT_PIGSTEEL_STAIRS, PigsteelBlocks.WAXED_CUT_PIGSTEEL_STAIRS);
-        createWaxableStairs(blockStateModelGenerator, PigsteelBlocks.INFECTED_CUT_PIGSTEEL, PigsteelBlocks.INFECTED_CUT_PIGSTEEL_STAIRS, PigsteelBlocks.WAXED_INFECTED_CUT_PIGSTEEL_STAIRS);
-        createWaxableStairs(blockStateModelGenerator, PigsteelBlocks.CORRUPTED_CUT_PIGSTEEL, PigsteelBlocks.CORRUPTED_CUT_PIGSTEEL_STAIRS, PigsteelBlocks.WAXED_CORRUPTED_CUT_PIGSTEEL_STAIRS);
-        createWaxableStairs(blockStateModelGenerator, PigsteelBlocks.ZOMBIFIED_CUT_PIGSTEEL, PigsteelBlocks.ZOMBIFIED_CUT_PIGSTEEL_STAIRS, PigsteelBlocks.WAXED_ZOMBIFIED_CUT_PIGSTEEL_STAIRS);
 
-        createWaxableSlab(blockStateModelGenerator, PigsteelBlocks.CUT_PIGSTEEL, PigsteelBlocks.CUT_PIGSTEEL_SLAB, PigsteelBlocks.WAXED_CUT_PIGSTEEL_SLAB);
-        createWaxableSlab(blockStateModelGenerator, PigsteelBlocks.INFECTED_CUT_PIGSTEEL, PigsteelBlocks.INFECTED_CUT_PIGSTEEL_SLAB, PigsteelBlocks.WAXED_INFECTED_CUT_PIGSTEEL_SLAB);
-        createWaxableSlab(blockStateModelGenerator, PigsteelBlocks.CORRUPTED_CUT_PIGSTEEL, PigsteelBlocks.CORRUPTED_CUT_PIGSTEEL_SLAB, PigsteelBlocks.WAXED_CORRUPTED_CUT_PIGSTEEL_SLAB);
-        createWaxableSlab(blockStateModelGenerator, PigsteelBlocks.ZOMBIFIED_CUT_PIGSTEEL, PigsteelBlocks.ZOMBIFIED_CUT_PIGSTEEL_SLAB, PigsteelBlocks.WAXED_ZOMBIFIED_CUT_PIGSTEEL_SLAB);
+        createWaxableStairs(blockStateModelGenerator, PigsteelBlocks.cutPigsteel.getUnaffectedBlock(), PigsteelBlocks.CUT_PIGSTEEL_STAIRS, PigsteelBlocks.WAXED_CUT_PIGSTEEL_STAIRS);
+        createWaxableStairs(blockStateModelGenerator, PigsteelBlocks.cutPigsteel.getInfectedBlock(), PigsteelBlocks.INFECTED_CUT_PIGSTEEL_STAIRS, PigsteelBlocks.WAXED_INFECTED_CUT_PIGSTEEL_STAIRS);
+        createWaxableStairs(blockStateModelGenerator, PigsteelBlocks.cutPigsteel.getCorruptedBlock(), PigsteelBlocks.CORRUPTED_CUT_PIGSTEEL_STAIRS, PigsteelBlocks.WAXED_CORRUPTED_CUT_PIGSTEEL_STAIRS);
+        createWaxableStairs(blockStateModelGenerator, PigsteelBlocks.cutPigsteel.getZombifiedBlock(), PigsteelBlocks.ZOMBIFIED_CUT_PIGSTEEL_STAIRS, PigsteelBlocks.WAXED_ZOMBIFIED_CUT_PIGSTEEL_STAIRS);
 
         createLantern(blockStateModelGenerator, PigsteelBlocks.PIGSTEEL_LANTERN);
         createLantern(blockStateModelGenerator, PigsteelBlocks.PIGSTEEL_SOUL_LANTERN);
-
-        for (int i = 0; i < 4; i++){
-            registerWaxeableIronBars(blockStateModelGenerator, PigsteelBlocks.pigsteelBars.getZombifiables().get(i), PigsteelBlocks.pigsteelBars.getWaxed().get(i));
-        }
     }
 
     @Override
@@ -66,17 +53,6 @@ public class PigsteelModelGen extends FabricModelProvider {
         itemModelGenerator.register(PigsteelItems.PIGSTEEL_NUGGET, Models.GENERATED);
     }
 
-    private void registerIronBars(BlockStateModelGenerator blockStateModelGenerator, Block bars) {
-        Identifier identifier = block("bars_post_ends", TextureKey.ALL).upload(bars, "_post_ends", TextureMap.all(bars), blockStateModelGenerator.modelCollector);
-        Identifier identifier2 = block("bars_post", TextureKey.ALL).upload(bars, "_post", TextureMap.all(bars), blockStateModelGenerator.modelCollector);
-        Identifier identifier3 = block("bars_cap", TextureKey.ALL).upload(bars, "_cap", TextureMap.all(bars), blockStateModelGenerator.modelCollector);
-        Identifier identifier4 = block("bars_cap_alt", TextureKey.ALL).upload(bars, "_cap_alt", TextureMap.all(bars), blockStateModelGenerator.modelCollector);
-        Identifier identifier5 = block("bars_side", TextureKey.ALL).upload(bars, "_side", TextureMap.all(bars), blockStateModelGenerator.modelCollector);
-        Identifier identifier6 = block("bars_side_alt", TextureKey.ALL).upload(bars, "_side_alt", TextureMap.all(bars), blockStateModelGenerator.modelCollector);
-        blockStateModelGenerator.blockStateCollector.accept(MultipartBlockStateSupplier.create(bars).with(BlockStateVariant.create().put(VariantSettings.MODEL, identifier)).with(When.create().set(Properties.NORTH, false).set(Properties.EAST, false).set(Properties.SOUTH, false).set(Properties.WEST, false), BlockStateVariant.create().put(VariantSettings.MODEL, identifier2)).with(When.create().set(Properties.NORTH, true).set(Properties.EAST, false).set(Properties.SOUTH, false).set(Properties.WEST, false), BlockStateVariant.create().put(VariantSettings.MODEL, identifier3)).with(When.create().set(Properties.NORTH, false).set(Properties.EAST, true).set(Properties.SOUTH, false).set(Properties.WEST, false), BlockStateVariant.create().put(VariantSettings.MODEL, identifier3).put(VariantSettings.Y, VariantSettings.Rotation.R90)).with(When.create().set(Properties.NORTH, false).set(Properties.EAST, false).set(Properties.SOUTH, true).set(Properties.WEST, false), BlockStateVariant.create().put(VariantSettings.MODEL, identifier4)).with(When.create().set(Properties.NORTH, false).set(Properties.EAST, false).set(Properties.SOUTH, false).set(Properties.WEST, true), BlockStateVariant.create().put(VariantSettings.MODEL, identifier4).put(VariantSettings.Y, VariantSettings.Rotation.R90)).with(When.create().set(Properties.NORTH, true), BlockStateVariant.create().put(VariantSettings.MODEL, identifier5)).with(When.create().set(Properties.EAST, true), BlockStateVariant.create().put(VariantSettings.MODEL, identifier5).put(VariantSettings.Y, VariantSettings.Rotation.R90)).with(When.create().set(Properties.SOUTH, true), BlockStateVariant.create().put(VariantSettings.MODEL, identifier6)).with(When.create().set(Properties.WEST, true), BlockStateVariant.create().put(VariantSettings.MODEL, identifier6).put(VariantSettings.Y, VariantSettings.Rotation.R90)));
-
-        blockStateModelGenerator.registerItemModel(bars);
-    }
     private void registerWaxeableIronBars(BlockStateModelGenerator blockStateModelGenerator, Block bars, Block waxed) {
         Identifier identifier = block("bars_post_ends", TextureKey.ALL).upload(bars, "_post_ends", TextureMap.all(bars), blockStateModelGenerator.modelCollector);
         Identifier identifier2 = block("bars_post", TextureKey.ALL).upload(bars, "_post", TextureMap.all(bars), blockStateModelGenerator.modelCollector);

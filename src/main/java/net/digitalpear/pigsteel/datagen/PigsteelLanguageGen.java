@@ -23,16 +23,6 @@ public class PigsteelLanguageGen extends FabricLanguageProvider {
         translationBuilder.add(PigsteelBlocks.CORRUPTED_PIGSTEEL, "Corrupted Pigsteel");
         translationBuilder.add(PigsteelBlocks.ZOMBIFIED_PIGSTEEL, "Zombified Pigsteel");
 
-        translationBuilder.add(PigsteelBlocks.CUT_PIGSTEEL, "Cut Pigsteel");
-        translationBuilder.add(PigsteelBlocks.INFECTED_CUT_PIGSTEEL, "Infected Cut Pigsteel");
-        translationBuilder.add(PigsteelBlocks.CORRUPTED_CUT_PIGSTEEL, "Corrupted Cut Pigsteel");
-        translationBuilder.add(PigsteelBlocks.ZOMBIFIED_CUT_PIGSTEEL, "Zombified Cut Pigsteel");
-
-        translationBuilder.add(PigsteelBlocks.CUT_PIGSTEEL_SLAB, "Cut Pigsteel Slab");
-        translationBuilder.add(PigsteelBlocks.INFECTED_CUT_PIGSTEEL_SLAB, "Infected Cut Pigsteel Slab");
-        translationBuilder.add(PigsteelBlocks.CORRUPTED_CUT_PIGSTEEL_SLAB, "Corrupted Cut Pigsteel Slab");
-        translationBuilder.add(PigsteelBlocks.ZOMBIFIED_CUT_PIGSTEEL_SLAB, "Zombified Cut Pigsteel Slab");
-
         translationBuilder.add(PigsteelBlocks.CUT_PIGSTEEL_STAIRS, "Cut Pigsteel Stairs");
         translationBuilder.add(PigsteelBlocks.INFECTED_CUT_PIGSTEEL_STAIRS, "Infected Cut Pigsteel Stairs");
         translationBuilder.add(PigsteelBlocks.CORRUPTED_CUT_PIGSTEEL_STAIRS, "Corrupted Cut Pigsteel Stairs");
@@ -42,16 +32,6 @@ public class PigsteelLanguageGen extends FabricLanguageProvider {
         translationBuilder.add(PigsteelBlocks.WAXED_INFECTED_PIGSTEEL, "Waxed Infected Pigsteel");
         translationBuilder.add(PigsteelBlocks.WAXED_CORRUPTED_PIGSTEEL, "Waxed Corrupted Pigsteel");
         translationBuilder.add(PigsteelBlocks.WAXED_ZOMBIFIED_PIGSTEEL, "Waxed Zombified Pigsteel");
-
-        translationBuilder.add(PigsteelBlocks.WAXED_CUT_PIGSTEEL, "Waxed Cut Pigsteel");
-        translationBuilder.add(PigsteelBlocks.WAXED_INFECTED_CUT_PIGSTEEL, "Waxed Infected Cut Pigsteel");
-        translationBuilder.add(PigsteelBlocks.WAXED_CORRUPTED_CUT_PIGSTEEL, "Waxed Corrupted Cut Pigsteel");
-        translationBuilder.add(PigsteelBlocks.WAXED_ZOMBIFIED_CUT_PIGSTEEL, "Waxed Zombified Cut Pigsteel");
-
-        translationBuilder.add(PigsteelBlocks.WAXED_CUT_PIGSTEEL_SLAB, "Waxed Cut Pigsteel Slab");
-        translationBuilder.add(PigsteelBlocks.WAXED_INFECTED_CUT_PIGSTEEL_SLAB, "Waxed Infected Cut Pigsteel Slab");
-        translationBuilder.add(PigsteelBlocks.WAXED_CORRUPTED_CUT_PIGSTEEL_SLAB, "Waxed Corrupted Cut Pigsteel Slab");
-        translationBuilder.add(PigsteelBlocks.WAXED_ZOMBIFIED_CUT_PIGSTEEL_SLAB, "Waxed Zombified Cut Pigsteel Slab");
 
         translationBuilder.add(PigsteelBlocks.WAXED_CUT_PIGSTEEL_STAIRS, "Waxed Cut Pigsteel Stairs");
         translationBuilder.add(PigsteelBlocks.WAXED_INFECTED_CUT_PIGSTEEL_STAIRS, "Waxed Infected Cut Pigsteel Stairs");
@@ -66,6 +46,8 @@ public class PigsteelLanguageGen extends FabricLanguageProvider {
         translationBuilder.add(PigsteelBlocks.PIGSTEEL_SOUL_LANTERN, "Pigsteel Soul Lantern");
 
         PigsteelBlocks.pigsteelBars.getAllBlocks().forEach(block -> translationBuilder.add(block, formatString(Registries.BLOCK.getId(block).getPath())));
+        PigsteelBlocks.cutPigsteel.getAllBlocks().forEach(block -> translationBuilder.add(block, formatString(Registries.BLOCK.getId(block).getPath())));
+        PigsteelBlocks.cutPigsteelSlabs.getAllBlocks().forEach(block -> translationBuilder.add(block, formatString(Registries.BLOCK.getId(block).getPath())));
 
         translationBuilder.add("trim_material.pigsteel.pigsteel", "Pigsteel");
     }

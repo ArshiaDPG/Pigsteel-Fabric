@@ -1,10 +1,10 @@
-// 1.20.1	2023-07-30T16:35:31.4894029	Pigsteel/Tags for minecraft:block
+// 1.20.1	2023-07-30T16:59:43.1358274	Pigsteel/Tags for minecraft:block
 0492ca6573f802f0d147256e649d6f636ad0b8a8 data\pigsteel\tags\blocks\pigsteel_ores.json
-2f0b18f477209bf8f18677f9777a7e61646f738f data\minecraft\tags\blocks\needs_stone_tool.json
+c371c035439a11fe0a910eaa790f717074ae11f8 data\minecraft\tags\blocks\needs_stone_tool.json
 1983c31dec3ebe23aced3fd6a41e106cbc7d5443 data\c\tags\blocks\ores.json
 c43b06aa03efc6c79fc19eb22df5efb253ce1500 data\minecraft\tags\blocks\piglin_repellents.json
 443174706da3b8b8bc97e6dcc124b14fe32239fa data\pigsteel\tags\blocks\warm_blocks.json
-b8922ca4ce1886472f6af63df58ad7a1aff3f134 data\minecraft\tags\blocks\mineable\pickaxe.json
+6e13c4ab180809fcf61147ceb285edbc341789c3 data\minecraft\tags\blocks\mineable\pickaxe.json
 a0da0c776cd8870b7c2eeb1d7aee9342bdb44a54 data\c\tags\blocks\iron_blocks.json
 d94cf07516f486032a9375ce7fa075b509e893aa data\pigsteel\tags\blocks\pigsteel_blocks.json
 4a64b4a13e3f14c91b38032cf713f3ea3e2bab30 data\pigsteel\tags\blocks\cold_blocks.json

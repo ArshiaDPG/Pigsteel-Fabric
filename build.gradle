@@ -114,7 +114,7 @@ unifiedPublishing {
 		changelog = '''<ul>
   <li>Updated to 1.20.1.</li>
   <li>All textures in the mod have been revamped thanks to Tamakii.</li>
-  <li>Added Pigsteel Bars, as well as zombified and waxed variants.</li>
+  <li>Added Pigsteel Bars, as well as zombified and waxed variants. (Pigsteel can no longer be used to craft iron bars)</li>
   <li>Removed pigsteel ores, pigsteel slag will now generate in their place.</li>
   <li>Added Pigsteel Slag, an alternative to pigsteel ores which will drop Raw Pigsteel when mined.</li>
   <li>Trimmed is now used for adding the trim material, which fixes many of the issues, including incompatibility with other mods.</li>

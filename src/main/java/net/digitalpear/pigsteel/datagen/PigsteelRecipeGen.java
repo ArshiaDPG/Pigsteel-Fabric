@@ -135,10 +135,10 @@ public class PigsteelRecipeGen extends FabricRecipeProvider {
         offerWaxingRecipes(exporter);
         makeSmeltnBlast(exporter, List.of(PigsteelItems.RAW_PIGSTEEL, PigsteelBlocks.PORKSLAG), RecipeCategory.MISC, PigsteelItems.PIGSTEEL_INGOT, 0.7f, 200, "pigsteel_ingot");
 
-        makeCutRecipes(exporter, PigsteelBlocks.PIGSTEEL_BLOCK, PigsteelBlocks.CUT_PIGSTEEL, PigsteelBlocks.CUT_PIGSTEEL_STAIRS, PigsteelBlocks.CUT_PIGSTEEL_SLAB);
-        makeCutRecipes(exporter, PigsteelBlocks.INFECTED_PIGSTEEL, PigsteelBlocks.INFECTED_CUT_PIGSTEEL, PigsteelBlocks.INFECTED_CUT_PIGSTEEL_STAIRS, PigsteelBlocks.INFECTED_CUT_PIGSTEEL_SLAB);
-        makeCutRecipes(exporter, PigsteelBlocks.CORRUPTED_PIGSTEEL, PigsteelBlocks.CORRUPTED_CUT_PIGSTEEL, PigsteelBlocks.CORRUPTED_CUT_PIGSTEEL_STAIRS, PigsteelBlocks.CORRUPTED_CUT_PIGSTEEL_SLAB);
-        makeCutRecipes(exporter, PigsteelBlocks.ZOMBIFIED_PIGSTEEL, PigsteelBlocks.ZOMBIFIED_CUT_PIGSTEEL, PigsteelBlocks.ZOMBIFIED_CUT_PIGSTEEL_STAIRS, PigsteelBlocks.ZOMBIFIED_CUT_PIGSTEEL_SLAB);
+        makeCutRecipes(exporter, PigsteelBlocks.PIGSTEEL_BLOCK, PigsteelBlocks.cutPigsteel.getUnaffectedBlock(), PigsteelBlocks.CUT_PIGSTEEL_STAIRS, PigsteelBlocks.cutPigsteelSlabs.getUnaffectedBlock());
+        makeCutRecipes(exporter, PigsteelBlocks.INFECTED_PIGSTEEL, PigsteelBlocks.cutPigsteel.getInfectedBlock(), PigsteelBlocks.INFECTED_CUT_PIGSTEEL_STAIRS, PigsteelBlocks.cutPigsteelSlabs.getUnaffectedBlock());
+        makeCutRecipes(exporter, PigsteelBlocks.CORRUPTED_PIGSTEEL, PigsteelBlocks.cutPigsteel.getCorruptedBlock(), PigsteelBlocks.CORRUPTED_CUT_PIGSTEEL_STAIRS, PigsteelBlocks.cutPigsteelSlabs.getUnaffectedBlock());
+        makeCutRecipes(exporter, PigsteelBlocks.ZOMBIFIED_PIGSTEEL, PigsteelBlocks.cutPigsteel.getZombifiedBlock(), PigsteelBlocks.ZOMBIFIED_CUT_PIGSTEEL_STAIRS, PigsteelBlocks.cutPigsteelSlabs.getUnaffectedBlock());
 
         makeLantern(exporter, PigsteelBlocks.PIGSTEEL_LANTERN, Items.TORCH);
         makeLantern(exporter, PigsteelBlocks.PIGSTEEL_SOUL_LANTERN, Items.SOUL_TORCH);
