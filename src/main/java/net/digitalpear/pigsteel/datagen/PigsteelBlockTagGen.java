@@ -50,32 +50,18 @@ public class PigsteelBlockTagGen extends FabricTagProvider<Block> {
                 .add(PigsteelBlocks.ZOMBIFIED_CUT_PIGSTEEL_STAIRS).add(PigsteelBlocks.WAXED_ZOMBIFIED_CUT_PIGSTEEL_STAIRS)
                 .add(PigsteelBlocks.PIGSTEEL_LANTERN).add(PigsteelBlocks.PIGSTEEL_SOUL_LANTERN);
 
-        for (int i = 0; i < 4; i++){
-            getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(PigsteelBlocks.cutPigsteel.getZombifiables().get(i));
-            getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(PigsteelBlocks.cutPigsteel.getWaxed().get(i));
-
-            getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(PigsteelBlocks.cutPigsteelSlabs.getZombifiables().get(i));
-            getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(PigsteelBlocks.cutPigsteelSlabs.getWaxed().get(i));
-
-            getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(PigsteelBlocks.pigsteelBars.getZombifiables().get(i));
-            getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(PigsteelBlocks.pigsteelBars.getWaxed().get(i));
-
-
-
-            getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL).add(PigsteelBlocks.cutPigsteel.getZombifiables().get(i));
-            getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL).add(PigsteelBlocks.cutPigsteel.getWaxed().get(i));
-
-            getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL).add(PigsteelBlocks.cutPigsteelSlabs.getZombifiables().get(i));
-            getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL).add(PigsteelBlocks.cutPigsteelSlabs.getWaxed().get(i));
-
-            getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL).add(PigsteelBlocks.pigsteelBars.getZombifiables().get(i));
-            getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL).add(PigsteelBlocks.pigsteelBars.getWaxed().get(i));
-
-
-
-            getOrCreateTagBuilder(PigsteelBlockTags.PIGSTEEL_BLOCKS).add(PigsteelBlocks.cutPigsteel.getZombifiables().get(i));
-            getOrCreateTagBuilder(PigsteelBlockTags.PIGSTEEL_BLOCKS).add(PigsteelBlocks.cutPigsteel.getWaxed().get(i));
-        }
+        PigsteelBlocks.cutPigsteel.getAllBlocks().forEach(block -> {
+            getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(block);
+            getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL).add(block);
+            getOrCreateTagBuilder(PigsteelBlockTags.PIGSTEEL_BLOCKS).add(block);
+        });
+        PigsteelBlocks.cutPigsteelSlabs.getAllBlocks().forEach(block -> {
+            getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(block);
+            getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL).add(block);
+        });
+        PigsteelBlocks.pigsteelBars.getAllBlocks().forEach(block -> {
+            getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(block);
+        });
 
         getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
                 .forceAddTag(PigsteelBlockTags.PIGSTEEL_BLOCKS)

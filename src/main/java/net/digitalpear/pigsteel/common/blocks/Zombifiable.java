@@ -2,6 +2,7 @@ package net.digitalpear.pigsteel.common.blocks;
 
 import net.digitalpear.pigsteel.init.PigsteelBlocks;
 import net.digitalpear.pigsteel.init.tags.PigsteelBlockTags;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.MapColor;
 import net.minecraft.util.StringIdentifiable;
@@ -20,7 +21,7 @@ public interface Zombifiable {
 
     default void tryZombify(World world, BlockState state, BlockPos pos){
         float chance = baseChance;
-        if (canZombify(world, state)){
+        if (canZombify(world, state) && world.getRandom().nextInt(9) < 2){
             if (getZombificationLevel() == ZombificationLevel.UNAFFECTED){
                 chance -= 0.1;
             }
@@ -31,19 +32,19 @@ public interface Zombifiable {
                 else if (world.getBlockState(blockPos).isIn(PigsteelBlockTags.COLD_BLOCKS)){
                     chance += blockInfluence;
                 }
+                else if (PigsteelBlocks.PIGSTEEL_WAXING_MAP.containsKey(world.getBlockState(blockPos).getBlock()) || PigsteelBlocks.PIGSTEEL_WAXING_MAP.containsValue(world.getBlockState(blockPos).getBlock())){
+                    chance -= blockInfluence / 5;
+                }
             }
 
             if (world.getRandom().nextFloat() < chance){
-                world.setBlockState(pos, PigsteelBlocks.PIGSTEEL_ZOMBIFYING_MAP.get(state.getBlock()).getStateWithProperties(state));
+                world.setBlockState(pos, PigsteelBlocks.PIGSTEEL_ZOMBIFYING_MAP.get(state.getBlock()).getStateWithProperties(state), Block.NOTIFY_ALL);
             }
         }
 
 
     }
 
-    default int zombificationChance(){
-        return 5;
-    }
     ZombificationLevel getZombificationLevel();
 
     enum ZombificationLevel implements StringIdentifiable {

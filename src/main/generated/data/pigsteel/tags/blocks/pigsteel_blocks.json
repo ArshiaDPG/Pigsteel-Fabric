@@ -12,12 +12,12 @@
     "pigsteel:pigsteel_block",
     "pigsteel:waxed_pigsteel_block",
     "pigsteel:cut_pigsteel",
-    "pigsteel:waxed_cut_pigsteel",
     "pigsteel:infected_cut_pigsteel",
-    "pigsteel:waxed_infected_cut_pigsteel",
     "pigsteel:corrupted_cut_pigsteel",
-    "pigsteel:waxed_corrupted_cut_pigsteel",
     "pigsteel:zombified_cut_pigsteel",
+    "pigsteel:waxed_cut_pigsteel",
+    "pigsteel:waxed_infected_cut_pigsteel",
+    "pigsteel:waxed_corrupted_cut_pigsteel",
     "pigsteel:waxed_zombified_cut_pigsteel"
   ]
 }

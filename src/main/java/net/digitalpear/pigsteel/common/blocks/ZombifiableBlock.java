@@ -29,14 +29,14 @@ public class ZombifiableBlock extends Block implements Zombifiable {
     @Override
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         super.randomTick(state, world, pos, random);
-        if (random.nextInt() == zombificationChance()){
+        if (!world.isClient()){
             tryZombify(world, state, pos);
         }
     }
 
     @Override
     public boolean hasRandomTicks(BlockState state) {
-        return PigsteelBlocks.PIGSTEEL_ZOMBIFYING_MAP.containsKey(state.getBlock());
+        return getZombificationLevel() != ZombificationLevel.ZOMBIFIED;
     }
 
     @Override

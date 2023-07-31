@@ -9,7 +9,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 
 public class ZombifiableSlabBlock extends SlabBlock implements Zombifiable {
-    private ZombificationLevel zombificationLevel;
+    private final ZombificationLevel zombificationLevel;
+
 
     public ZombifiableSlabBlock(Settings settings) {
         super(settings);
@@ -28,7 +29,7 @@ public class ZombifiableSlabBlock extends SlabBlock implements Zombifiable {
     @Override
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         super.randomTick(state, world, pos, random);
-        if (random.nextInt() == zombificationChance()){
+        if (!world.isClient()){
             tryZombify(world, state, pos);
         }
     }

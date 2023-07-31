@@ -89,7 +89,7 @@ public class ZombifiableBlockRegistry {
     }
     private Block createBlock(MapColor mapColor) {
         try {
-            return baseBlockClass.getConstructor(AbstractBlock.Settings.class).newInstance(settings.mapColor(mapColor));
+            return baseBlockClass.getConstructor(AbstractBlock.Settings.class).newInstance(settings.mapColor(mapColor).ticksRandomly());
         } catch (Exception e) {
             e.printStackTrace();
         }
