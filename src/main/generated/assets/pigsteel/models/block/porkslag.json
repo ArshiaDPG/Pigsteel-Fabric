@@ -1,6 +1,7 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "minecraft:block/cube_column",
   "textures": {
-    "all": "pigsteel:block/porkslag"
+    "end": "pigsteel:block/porkslag_top",
+    "side": "pigsteel:block/porkslag_side"
   }
 }

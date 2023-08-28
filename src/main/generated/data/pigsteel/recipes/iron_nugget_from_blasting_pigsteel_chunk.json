@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.7,
+  "group": "iron_nugget",
+  "ingredient": {
+    "item": "pigsteel:pigsteel_chunk"
+  },
+  "result": "minecraft:iron_nugget"
+}

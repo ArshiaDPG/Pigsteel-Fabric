@@ -14,7 +14,9 @@ import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ZombifiableBlockRegistry {
 
@@ -76,7 +78,7 @@ public class ZombifiableBlockRegistry {
             blockName = new Identifier(Pigsteel.MOD_ID, level.asString() + "_" + baseName);
         }
         Block block = createBlock(level.getMapColor());
-        Registry.register(Registries.ITEM, blockName, new BlockItem(block, new Item.Settings()));
+        Registry.register(Registries.ITEM, blockName, new BlockItem(block, new Item.Settings().fireproof()));
         return Registry.register(Registries.BLOCK, blockName, block);
     }
     private Block createWaxedBlock(MapColor mapColor) {
@@ -134,6 +136,16 @@ public class ZombifiableBlockRegistry {
 
     public Block getWaxedZombifiedBlock() {
         return waxedZombifiedBlock;
+    }
+
+    public Map<Block, Block> getBlockToWaxedMap(){
+        Map<Block, Block> map = new HashMap<>();
+        map.put(getUnaffectedBlock(), getWaxedUnaffectedBlock());
+        map.put(getInfectedBlock(), getWaxedInfectedBlock());
+        map.put(getCorruptedBlock(), getWaxedCorruptedBlock());
+        map.put(getZombifiedBlock(), getWaxedZombifiedBlock());
+
+        return map;
     }
     public List<Block> getWaxed(){
         return List.of(waxedUnaffectedBlock, waxedInfectedBlock, waxedCorruptedBlock, waxedZombifiedBlock);

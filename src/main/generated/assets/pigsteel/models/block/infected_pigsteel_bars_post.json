@@ -1,6 +1,0 @@
-{
-  "parent": "pigsteel:block/bars_post",
-  "textures": {
-    "all": "pigsteel:block/infected_pigsteel_bars"
-  }
-}

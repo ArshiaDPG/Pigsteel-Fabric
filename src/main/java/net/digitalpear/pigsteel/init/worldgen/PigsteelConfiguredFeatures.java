@@ -19,8 +19,6 @@ import net.minecraft.world.gen.feature.OreFeatureConfig;
 
 public class PigsteelConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> ORE_PIGSTEEL = of("ore_pigsteel");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> PIGSTEEL_MOLTEN_REMAINS = of("pigsteel_molten_remains");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> GOLD_MOLTEN_REMAINS = of("gold_molten_remains");
 
     public static RegistryKey<ConfiguredFeature<?, ?>> of(String id) {
         return RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, new Identifier(Pigsteel.MOD_ID, id));
@@ -30,9 +28,6 @@ public class PigsteelConfiguredFeatures {
         RuleTest netherrackRule = new TagMatchRuleTest(BlockTags.BASE_STONE_NETHER);
 
         ConfiguredFeatures.register(featureRegisterable, ORE_PIGSTEEL, Feature.ORE, new OreFeatureConfig(netherrackRule, PigsteelBlocks.PORKSLAG.getDefaultState(), 7));
-
-        ConfiguredFeatures.register(featureRegisterable, PIGSTEEL_MOLTEN_REMAINS, PigsteelFeature.MOLTEN_REMAINS, new MoltenRemainsFeatureConfig(Blocks.SMOOTH_BASALT, PigsteelBlocks.PORKSLAG, PigsteelBlocks.RAW_PIGSTEEL_BLOCK));
-        ConfiguredFeatures.register(featureRegisterable, GOLD_MOLTEN_REMAINS, PigsteelFeature.MOLTEN_REMAINS, new MoltenRemainsFeatureConfig(Blocks.BLACKSTONE, Blocks.GILDED_BLACKSTONE, Blocks.RAW_GOLD_BLOCK));
     }
 
     public static void init(){

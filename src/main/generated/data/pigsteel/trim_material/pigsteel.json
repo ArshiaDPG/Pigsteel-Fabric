@@ -4,6 +4,6 @@
     "color": "#B58FB3",
     "translate": "trim_material.pigsteel.pigsteel"
   },
-  "ingredient": "pigsteel:pigsteel_ingot",
+  "ingredient": "pigsteel:pigsteel_chunk",
   "item_model_index": 0.85
 }

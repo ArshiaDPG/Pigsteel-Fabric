@@ -26,42 +26,52 @@ public interface Zombifiable {
                 chance -= 0.1;
             }
             for (BlockPos blockPos : BlockPos.iterate(pos.add(-1, -1, -1), pos.add(1, 1, 1))) {
-                if (world.getBlockState(blockPos).isIn(PigsteelBlockTags.WARM_BLOCKS)){
+                /*
+                    Slow down or speed up zombification depending on adjacent blocks.
+                 */
+                if (world.getBlockState(blockPos).isIn(PigsteelBlockTags.ZOMBIFICATION_DECELERATION)){
                     chance -= blockInfluence;
                 }
-                else if (world.getBlockState(blockPos).isIn(PigsteelBlockTags.COLD_BLOCKS)){
+                else if (world.getBlockState(blockPos).isIn(PigsteelBlockTags.ZOMBIFICATION_ACCELERATION)){
                     chance += blockInfluence;
                 }
-                else if (PigsteelBlocks.PIGSTEEL_WAXING_MAP.containsKey(world.getBlockState(blockPos).getBlock()) || PigsteelBlocks.PIGSTEEL_WAXING_MAP.containsValue(world.getBlockState(blockPos).getBlock())){
-                    chance -= blockInfluence / 5;
+                else if (isZombifiablePigsteelBlock(world.getBlockState(blockPos))){
+                        chance -= blockInfluence / 2;
                 }
             }
-
             if (world.getRandom().nextFloat() < chance){
                 world.setBlockState(pos, PigsteelBlocks.PIGSTEEL_ZOMBIFYING_MAP.get(state.getBlock()).getStateWithProperties(state), Block.NOTIFY_ALL);
             }
         }
+    }
 
-
+    default boolean isZombifiablePigsteelBlock(BlockState state){
+        return PigsteelBlocks.PIGSTEEL_WAXING_MAP.containsKey(state.getBlock());
     }
 
     ZombificationLevel getZombificationLevel();
 
     enum ZombificationLevel implements StringIdentifiable {
-        UNAFFECTED("", MapColor.PURPLE),
-        INFECTED("infected", MapColor.PALE_GREEN),
-        CORRUPTED("corrupted", MapColor.GREEN),
-        ZOMBIFIED("zombified", MapColor.DARK_GREEN);
+        UNAFFECTED(0, "", MapColor.PURPLE),
+        INFECTED(1, "infected", MapColor.PALE_GREEN),
+        CORRUPTED(2, "corrupted", MapColor.GREEN),
+        ZOMBIFIED(3, "zombified", MapColor.DARK_GREEN);
 
-        ZombificationLevel(String name, MapColor mapColor){
+        ZombificationLevel(int levelNumber, String name, MapColor mapColor){
             this.name = name;
             this.mapColor = mapColor;
+            this.levelNumber = levelNumber;
         }
-        String name;
-        MapColor mapColor;
+        private String name;
+        private MapColor mapColor;
+        private int levelNumber;
 
         public MapColor getMapColor() {
             return mapColor;
+        }
+
+        public int getLevelNumber() {
+            return levelNumber;
         }
 
         @Override

@@ -33,14 +33,6 @@ public class PigsteelBlocks {
         createBlockItem(blockID, block);
         return Registry.register(Registries.BLOCK, new Identifier(Pigsteel.MOD_ID, blockID), block);
     }
-
-    public static Block createPaneBlock(Zombifiable.ZombificationLevel oxidationLevel){
-        return new ZombifiablePaneBlock(oxidationLevel, AbstractBlock.Settings.copy(Blocks.IRON_BARS).sounds(BlockSoundGroup.NETHERITE).nonOpaque().ticksRandomly());
-    }
-    public static Block createWaxedPaneBlock(Zombifiable.ZombificationLevel oxidationLevel){
-        return new PaneBlock(AbstractBlock.Settings.copy(Blocks.IRON_BARS).sounds(BlockSoundGroup.NETHERITE).nonOpaque());
-    }
-
     public static final Block PORKSLAG = createBlockWithItem("porkslag", new Block(AbstractBlock.Settings.create()
             .sounds(BlockSoundGroup.POLISHED_DEEPSLATE)
             .strength(1.5f)
@@ -48,22 +40,14 @@ public class PigsteelBlocks {
             .requiresTool()));
 
 
-    public static final Block RAW_PIGSTEEL_BLOCK = createBlockWithItem("raw_pigsteel_block", new Block(AbstractBlock.Settings.copy(Blocks.RAW_IRON_BLOCK)));
+    public static final Block PIGSTEEL_CHUNK_BLOCK = createBlockWithItem("pigsteel_chunk_block", new Block(AbstractBlock.Settings.copy(Blocks.RAW_IRON_BLOCK)));
 
     public static Block pigsteelBlockSettings(Zombifiable.ZombificationLevel level){
         return new ZombifiableBlock(level, AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.NETHERITE).ticksRandomly());
     }
 
-    public static final Block PIGSTEEL_BLOCK = createBlockWithItem("pigsteel_block", pigsteelBlockSettings(Zombifiable.ZombificationLevel.UNAFFECTED));
-    public static final Block INFECTED_PIGSTEEL = createBlockWithItem("infected_pigsteel", pigsteelBlockSettings(Zombifiable.ZombificationLevel.INFECTED));
-    public static final Block CORRUPTED_PIGSTEEL = createBlockWithItem("corrupted_pigsteel", pigsteelBlockSettings(Zombifiable.ZombificationLevel.CORRUPTED));
-    public static final Block ZOMBIFIED_PIGSTEEL = createBlockWithItem("zombified_pigsteel", pigsteelBlockSettings(Zombifiable.ZombificationLevel.ZOMBIFIED));
 
-    public static final Block WAXED_PIGSTEEL_BLOCK = createBlockWithItem("waxed_pigsteel_block", new Block(AbstractBlock.Settings.copy(PIGSTEEL_BLOCK)));
-    public static final Block WAXED_INFECTED_PIGSTEEL = createBlockWithItem("waxed_infected_pigsteel", new Block(AbstractBlock.Settings.copy(INFECTED_PIGSTEEL)));
-    public static final Block WAXED_CORRUPTED_PIGSTEEL = createBlockWithItem("waxed_corrupted_pigsteel", new Block(AbstractBlock.Settings.copy(CORRUPTED_PIGSTEEL)));
-    public static final Block WAXED_ZOMBIFIED_PIGSTEEL = createBlockWithItem("waxed_zombified_pigsteel", new Block(AbstractBlock.Settings.copy(ZOMBIFIED_PIGSTEEL)));
-
+    public static final ZombifiableBlockRegistry refinedPigsteel = new ZombifiableBlockRegistry("refined_pigsteel", ZombifiableBlock.class, Block.class);
     public static final ZombifiableBlockRegistry cutPigsteel = new ZombifiableBlockRegistry("cut_pigsteel", ZombifiableBlock.class, Block.class);
     public static final ZombifiableBlockRegistry cutPigsteelSlabs = new ZombifiableBlockRegistry("cut_pigsteel_slab", ZombifiableSlabBlock.class, SlabBlock.class);
 
@@ -80,33 +64,22 @@ public class PigsteelBlocks {
     public static final Block PIGSTEEL_LANTERN = createBlockWithItem("pigsteel_lantern", new PigsteelLanternBlock(FabricBlockSettings.copy(Blocks.LANTERN).luminance(state -> 15).nonOpaque().mapColor(MapColor.PURPLE)));
     public static final Block PIGSTEEL_SOUL_LANTERN = createBlockWithItem("pigsteel_soul_lantern", new PigsteelLanternBlock(FabricBlockSettings.copy(Blocks.LANTERN).luminance(state -> 10).nonOpaque().mapColor(MapColor.PURPLE)));
 
-    public static final ZombifiableBlockRegistry pigsteelBars = new ZombifiableBlockRegistry("pigsteel_bars", ZombifiablePaneBlock.class, PaneBlock.class, AbstractBlock.Settings.copy(Blocks.IRON_BARS).sounds(BlockSoundGroup.NETHERITE));
 
     public static void init(){
-        PIGSTEEL_WAXING_MAP.put(PIGSTEEL_BLOCK, WAXED_PIGSTEEL_BLOCK);
-        PIGSTEEL_WAXING_MAP.put(INFECTED_PIGSTEEL, WAXED_INFECTED_PIGSTEEL);
-        PIGSTEEL_WAXING_MAP.put(CORRUPTED_PIGSTEEL, WAXED_CORRUPTED_PIGSTEEL);
-        PIGSTEEL_WAXING_MAP.put(ZOMBIFIED_PIGSTEEL, WAXED_ZOMBIFIED_PIGSTEEL);
 
         PIGSTEEL_WAXING_MAP.put(CUT_PIGSTEEL_STAIRS, WAXED_CUT_PIGSTEEL_STAIRS);
         PIGSTEEL_WAXING_MAP.put(INFECTED_CUT_PIGSTEEL_STAIRS, WAXED_INFECTED_CUT_PIGSTEEL_STAIRS);
         PIGSTEEL_WAXING_MAP.put(CORRUPTED_CUT_PIGSTEEL_STAIRS, WAXED_CORRUPTED_CUT_PIGSTEEL_STAIRS);
         PIGSTEEL_WAXING_MAP.put(ZOMBIFIED_CUT_PIGSTEEL_STAIRS, WAXED_ZOMBIFIED_CUT_PIGSTEEL_STAIRS);
 
-
-
-        PIGSTEEL_ZOMBIFYING_MAP.put(PIGSTEEL_BLOCK, INFECTED_PIGSTEEL);
-        PIGSTEEL_ZOMBIFYING_MAP.put(INFECTED_PIGSTEEL, CORRUPTED_PIGSTEEL);
-        PIGSTEEL_ZOMBIFYING_MAP.put(CORRUPTED_PIGSTEEL, ZOMBIFIED_PIGSTEEL);
-
         PIGSTEEL_ZOMBIFYING_MAP.put(CUT_PIGSTEEL_STAIRS, INFECTED_CUT_PIGSTEEL_STAIRS);
         PIGSTEEL_ZOMBIFYING_MAP.put(INFECTED_CUT_PIGSTEEL_STAIRS, CORRUPTED_CUT_PIGSTEEL_STAIRS);
         PIGSTEEL_ZOMBIFYING_MAP.put(CORRUPTED_CUT_PIGSTEEL_STAIRS, ZOMBIFIED_CUT_PIGSTEEL_STAIRS);
 
 
+        mapWaxingAndAxing(refinedPigsteel);
         mapWaxingAndAxing(cutPigsteel);
         mapWaxingAndAxing(cutPigsteelSlabs);
-        mapWaxingAndAxing(pigsteelBars);
 
         PIGSTEEL_WAXING_MAP.forEach(OxidizableBlocksRegistry::registerWaxableBlockPair);
         PIGSTEEL_ZOMBIFYING_MAP.forEach(OxidizableBlocksRegistry::registerOxidizableBlockPair);

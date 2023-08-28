@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_pigsteel_chunk_block": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "pigsteel:pigsteel_chunk_block"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "pigsteel:pigsteel_chunk_from_pigsteel_chunk_block"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_pigsteel_chunk_block",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "pigsteel:pigsteel_chunk_from_pigsteel_chunk_block"
+    ]
+  },
+  "sends_telemetry_event": false
+}

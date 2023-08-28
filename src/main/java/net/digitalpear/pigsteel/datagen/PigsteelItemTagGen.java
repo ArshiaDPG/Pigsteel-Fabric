@@ -31,14 +31,7 @@ public class PigsteelItemTagGen extends FabricTagProvider<Item> {
         getOrCreateTagBuilder(PigsteelItemTags.PIGSTEEL_ORES)
                 .add(PigsteelBlocks.PORKSLAG.asItem());
 
-        getOrCreateTagBuilder(ItemTags.BEACON_PAYMENT_ITEMS).add(PigsteelItems.PIGSTEEL_INGOT);
-        getOrCreateTagBuilder(ItemTags.TRIM_MATERIALS).add(PigsteelItems.PIGSTEEL_INGOT);
-
-        getOrCreateTagBuilder(PigsteelItemTags.C_IRON_INGOTS)
-                .add(PigsteelItems.PIGSTEEL_INGOT);
-
-        getOrCreateTagBuilder(PigsteelItemTags.C_IRON_BLOCKS)
-                .add(PigsteelBlocks.PIGSTEEL_BLOCK.asItem());
+        getOrCreateTagBuilder(ItemTags.TRIM_MATERIALS).add(PigsteelItems.PIGSTEEL_CHUNK);
 
         getOrCreateTagBuilder(PigsteelItemTags.C_ORES)
                 .forceAddTag(PigsteelItemTags.PIGSTEEL_ORES);

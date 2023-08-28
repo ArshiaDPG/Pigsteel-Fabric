@@ -1,6 +1,0 @@
-{
-  "parent": "pigsteel:block/bars_cap",
-  "textures": {
-    "all": "pigsteel:block/corrupted_pigsteel_bars"
-  }
-}

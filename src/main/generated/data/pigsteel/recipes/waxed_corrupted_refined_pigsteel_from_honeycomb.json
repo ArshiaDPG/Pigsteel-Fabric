@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "waxed_corrupted_refined_pigsteel",
+  "ingredients": [
+    {
+      "item": "pigsteel:corrupted_refined_pigsteel"
+    },
+    {
+      "item": "minecraft:honeycomb"
+    }
+  ],
+  "result": {
+    "item": "pigsteel:waxed_corrupted_refined_pigsteel"
+  }
+}
