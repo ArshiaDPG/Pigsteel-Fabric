@@ -22,7 +22,7 @@ import net.minecraft.world.WorldView;
 import java.util.Arrays;
 
 
-public class PigsteelLanternBlock extends Block implements Waterloggable {
+public class PigsteelLanternBlock extends Block implements Waterloggable{
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
 
@@ -31,12 +31,17 @@ public class PigsteelLanternBlock extends Block implements Waterloggable {
     Shape for wall hanger (This will never be useful, but I got it right on the first try and didn't wanna get rid of it.)
     Block.createCuboidShape(7.0D, 14.0D, 5.0D, 9.0D, 15.0D, 16.0D)
      */
-    protected static final VoxelShape SHAPE = VoxelShapes.union(Block.createCuboidShape(4.0D, 1.0D, 4.0D, 12.0D, 10.0D, 12.0D),
-            Block.createCuboidShape(7.0D, 10.0D, 7.0D, 9.0D, 15.0D, 9.0D));
+    protected static final VoxelShape SHAPE = VoxelShapes.union(
+            Block.createCuboidShape(7.0D, 10.0D, 7.0D, 9.0D, 15.0D, 9.0D),
+            Block.createCuboidShape(2.0D, 8.0D, 2.0D, 14.0D, 10.0D, 14.0D),
+            Block.createCuboidShape(4.0D, 3.0D, 4.0D, 12.0D, 8.0D, 12.0D),
+            Block.createCuboidShape(3.0D, 1.0D, 3.0D, 13.0D, 3.0D, 13.0D)
+    );
 
     public PigsteelLanternBlock(AbstractBlock.Settings settings) {
         super(settings);
         this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH).with(WATERLOGGED, false));
+
     }
 
     @Override
@@ -110,4 +115,5 @@ public class PigsteelLanternBlock extends Block implements Waterloggable {
     public boolean canPathfindThrough(BlockState state, BlockView world, BlockPos pos, NavigationType type) {
         return false;
     }
+
 }

@@ -1,11 +1,11 @@
-// 1.20.1	2023-08-28T14:42:42.8117253	Pigsteel/ItemOverrideProvider for pigsteel
+// 1.20.1	2023-08-28T18:08:22.8920046	Pigsteel/ItemOverrideProvider for pigsteel
 c9464e6bd2cae15ff0a6a0c66610923d0ab0cfd1 assets\minecraft\models\item\overrides\golden_helmet.json
 4c2ff88ad0a69ffc2fb767e0b37672e3876bab81 assets\minecraft\models\item\overrides\leather_helmet.json
 9cf310ac61883889e24fbe369a5dd69eca1d691a assets\minecraft\models\item\overrides\golden_boots.json
 63a92827f0126fe338f376ca09cbfba38ba234cd assets\minecraft\models\item\overrides\iron_helmet.json
 a02cae665a434bc7c286a2f0c95bd0ffe825dbff assets\minecraft\models\item\overrides\netherite_chestplate.json
-5c4c29dae64da840dfa2875f6281de99fadf6ee9 assets\minecraft\models\item\overrides\iron_boots.json
 9ac7206610c317d24581fc1f07d8526b76ac0cfa assets\minecraft\models\item\overrides\diamond_leggings.json
+5c4c29dae64da840dfa2875f6281de99fadf6ee9 assets\minecraft\models\item\overrides\iron_boots.json
 eb5ad2163bc0b69363b03553c42a2cf5a4296436 assets\minecraft\models\item\overrides\leather_chestplate.json
 53f0d6b215c01bb289b6c8a6fcaa5bcef7d87f42 assets\minecraft\models\item\overrides\iron_chestplate.json
 6cdc5714e2797ccb955f992caafe600c1e4d2680 assets\minecraft\models\item\overrides\chainmail_chestplate.json
@@ -20,7 +20,6 @@ adb6a8e6000795de5bc0d515f1f4e08d43bfe7f7 assets\minecraft\models\item\overrides\
 fc9e15435ff9376a175789e988885bdb7d8c4bdd assets\minecraft\models\item\overrides\diamond_helmet.json
 1a8faa544de260972a4fb5558da57d5f70235733 assets\minecraft\models\item\overrides\golden_leggings.json
 c57ece44b494a8896fa3a32a8ac2a34e790ed4b3 assets\minecraft\models\item\overrides\diamond_boots.json
-2c3573cbf1e140ba2aa8e6dcb455f3296a273000 assets\minecraft\models\item\overrides\turtle_helmet.json
 5aa6391a9ed088cba464cf1ee49acd5ee0629bbf assets\minecraft\models\item\overrides\leather_leggings.json
 aa08b61f1768065fa1caf6db18815db11f15bbf2 assets\minecraft\models\item\overrides\netherite_helmet.json
 afdef8ed94458a69fd8365518f65271af3dbb033 assets\minecraft\models\item\overrides\chainmail_leggings.json

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "pigsteel:item/corrupted_pigsteel_soul_lantern"
+  }
+}

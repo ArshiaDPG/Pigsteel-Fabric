@@ -4,13 +4,7 @@ import dhyces.trimmed.api.data.ItemOverrideDataProvider;
 import net.digitalpear.pigsteel.Pigsteel;
 import net.digitalpear.pigsteel.init.PigsteelArmorTrimMaterials;
 import net.minecraft.data.DataOutput;
-import net.minecraft.item.ArmorItem;
-import net.minecraft.item.Item;
-import net.minecraft.registry.Registries;
-import net.minecraft.util.Util;
-
-import java.util.LinkedList;
-import java.util.List;
+import net.minecraft.item.Items;
 
 public class PigsteelItemOverrideDataProvider extends ItemOverrideDataProvider {
 
@@ -20,10 +14,34 @@ public class PigsteelItemOverrideDataProvider extends ItemOverrideDataProvider {
 
     @Override
     protected void addItemOverrides() {
-        final List<Item> armorItems = Util.make(new LinkedList<>(), list -> Registries.ITEM.stream().filter(item -> item instanceof ArmorItem).forEach(list::add));
+        addTrimOverride(Items.LEATHER_HELMET, PigsteelArmorTrimMaterials.PIGSTEEL);
+        addTrimOverride(Items.LEATHER_CHESTPLATE, PigsteelArmorTrimMaterials.PIGSTEEL);
+        addTrimOverride(Items.LEATHER_LEGGINGS, PigsteelArmorTrimMaterials.PIGSTEEL);
+        addTrimOverride(Items.LEATHER_BOOTS, PigsteelArmorTrimMaterials.PIGSTEEL);
 
-        for (Item item : armorItems) {
-            addTrimOverride(item, PigsteelArmorTrimMaterials.PIGSTEEL);
-        }
+        addTrimOverride(Items.CHAINMAIL_HELMET, PigsteelArmorTrimMaterials.PIGSTEEL);
+        addTrimOverride(Items.CHAINMAIL_CHESTPLATE, PigsteelArmorTrimMaterials.PIGSTEEL);
+        addTrimOverride(Items.CHAINMAIL_LEGGINGS, PigsteelArmorTrimMaterials.PIGSTEEL);
+        addTrimOverride(Items.CHAINMAIL_BOOTS, PigsteelArmorTrimMaterials.PIGSTEEL);
+
+        addTrimOverride(Items.IRON_HELMET, PigsteelArmorTrimMaterials.PIGSTEEL);
+        addTrimOverride(Items.IRON_CHESTPLATE, PigsteelArmorTrimMaterials.PIGSTEEL);
+        addTrimOverride(Items.IRON_LEGGINGS, PigsteelArmorTrimMaterials.PIGSTEEL);
+        addTrimOverride(Items.IRON_BOOTS, PigsteelArmorTrimMaterials.PIGSTEEL);
+
+        addTrimOverride(Items.GOLDEN_HELMET, PigsteelArmorTrimMaterials.PIGSTEEL);
+        addTrimOverride(Items.GOLDEN_CHESTPLATE, PigsteelArmorTrimMaterials.PIGSTEEL);
+        addTrimOverride(Items.GOLDEN_LEGGINGS, PigsteelArmorTrimMaterials.PIGSTEEL);
+        addTrimOverride(Items.GOLDEN_BOOTS, PigsteelArmorTrimMaterials.PIGSTEEL);
+
+        addTrimOverride(Items.DIAMOND_HELMET, PigsteelArmorTrimMaterials.PIGSTEEL);
+        addTrimOverride(Items.DIAMOND_CHESTPLATE, PigsteelArmorTrimMaterials.PIGSTEEL);
+        addTrimOverride(Items.DIAMOND_LEGGINGS, PigsteelArmorTrimMaterials.PIGSTEEL);
+        addTrimOverride(Items.DIAMOND_BOOTS, PigsteelArmorTrimMaterials.PIGSTEEL);
+
+        addTrimOverride(Items.NETHERITE_HELMET, PigsteelArmorTrimMaterials.PIGSTEEL);
+        addTrimOverride(Items.NETHERITE_CHESTPLATE, PigsteelArmorTrimMaterials.PIGSTEEL);
+        addTrimOverride(Items.NETHERITE_LEGGINGS, PigsteelArmorTrimMaterials.PIGSTEEL);
+        addTrimOverride(Items.NETHERITE_BOOTS, PigsteelArmorTrimMaterials.PIGSTEEL);
     }
 }

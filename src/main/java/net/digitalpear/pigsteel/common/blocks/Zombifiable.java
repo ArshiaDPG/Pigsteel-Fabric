@@ -39,6 +39,7 @@ public interface Zombifiable {
                         chance -= blockInfluence / 2;
                 }
             }
+            chance -= (float) state.getLuminance() / 10;
             if (world.getRandom().nextFloat() < chance){
                 world.setBlockState(pos, PigsteelBlocks.PIGSTEEL_ZOMBIFYING_MAP.get(state.getBlock()).getStateWithProperties(state), Block.NOTIFY_ALL);
             }

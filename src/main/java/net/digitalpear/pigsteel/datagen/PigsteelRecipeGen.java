@@ -90,8 +90,8 @@ public class PigsteelRecipeGen extends FabricRecipeProvider {
         makeCutRecipes(exporter, PigsteelBlocks.refinedPigsteel.getCorruptedBlock(), PigsteelBlocks.cutPigsteel.getCorruptedBlock(), PigsteelBlocks.CORRUPTED_CUT_PIGSTEEL_STAIRS, PigsteelBlocks.cutPigsteelSlabs.getUnaffectedBlock());
         makeCutRecipes(exporter, PigsteelBlocks.refinedPigsteel.getZombifiedBlock(), PigsteelBlocks.cutPigsteel.getZombifiedBlock(), PigsteelBlocks.ZOMBIFIED_CUT_PIGSTEEL_STAIRS, PigsteelBlocks.cutPigsteelSlabs.getUnaffectedBlock());
 
-        makeLantern(exporter, PigsteelBlocks.PIGSTEEL_LANTERN, Items.TORCH);
-        makeLantern(exporter, PigsteelBlocks.PIGSTEEL_SOUL_LANTERN, Items.SOUL_TORCH);
+        makeLantern(exporter, PigsteelBlocks.pigsteelLanterns.getUnaffectedBlock(), Items.TORCH);
+        makeLantern(exporter, PigsteelBlocks.pigsteelSoulLanterns.getUnaffectedBlock(), Items.SOUL_TORCH);
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, PigsteelBlocks.refinedPigsteel.getUnaffectedBlock()).pattern("##").pattern("##").input('#', PigsteelItems.PIGSTEEL_CHUNK).criterion(hasItem(PigsteelItems.PIGSTEEL_CHUNK), conditionsFromItem(PigsteelItems.PIGSTEEL_CHUNK)).offerTo(exporter);
     }

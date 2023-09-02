@@ -50,6 +50,8 @@ public class PigsteelBlocks {
     public static final ZombifiableBlockRegistry refinedPigsteel = new ZombifiableBlockRegistry("refined_pigsteel", ZombifiableBlock.class, Block.class);
     public static final ZombifiableBlockRegistry cutPigsteel = new ZombifiableBlockRegistry("cut_pigsteel", ZombifiableBlock.class, Block.class);
     public static final ZombifiableBlockRegistry cutPigsteelSlabs = new ZombifiableBlockRegistry("cut_pigsteel_slab", ZombifiableSlabBlock.class, SlabBlock.class);
+    public static final ZombifiableBlockRegistry pigsteelLanterns = new ZombifiableBlockRegistry("pigsteel_lantern", ZombifiableLanternBlock.class, PigsteelLanternBlock.class, AbstractBlock.Settings.copy(Blocks.LANTERN).luminance(state -> 15).nonOpaque());
+    public static final ZombifiableBlockRegistry pigsteelSoulLanterns = new ZombifiableBlockRegistry("pigsteel_soul_lantern", ZombifiableLanternBlock.class, PigsteelLanternBlock.class, FabricBlockSettings.copy(Blocks.LANTERN).luminance(state -> 10).nonOpaque());
 
     public static final Block CUT_PIGSTEEL_STAIRS = createBlockWithItem("cut_pigsteel_stairs", new ZombifiableStairsBlock(cutPigsteel.getUnaffectedBlock().getDefaultState(), AbstractBlock.Settings.copy(cutPigsteel.getUnaffectedBlock())));
     public static final Block INFECTED_CUT_PIGSTEEL_STAIRS = createBlockWithItem("infected_cut_pigsteel_stairs", new ZombifiableStairsBlock(Zombifiable.ZombificationLevel.INFECTED, cutPigsteel.getInfectedBlock().getDefaultState(), AbstractBlock.Settings.copy(cutPigsteel.getInfectedBlock())));
@@ -60,9 +62,6 @@ public class PigsteelBlocks {
     public static final Block WAXED_INFECTED_CUT_PIGSTEEL_STAIRS = createBlockWithItem("waxed_infected_cut_pigsteel_stairs", new StairsBlock(cutPigsteel.getWaxedInfectedBlock().getDefaultState(), AbstractBlock.Settings.copy(cutPigsteel.getWaxedInfectedBlock())));
     public static final Block WAXED_CORRUPTED_CUT_PIGSTEEL_STAIRS = createBlockWithItem("waxed_corrupted_cut_pigsteel_stairs", new StairsBlock(cutPigsteel.getWaxedCorruptedBlock().getDefaultState(), AbstractBlock.Settings.copy(cutPigsteel.getWaxedCorruptedBlock())));
     public static final Block WAXED_ZOMBIFIED_CUT_PIGSTEEL_STAIRS = createBlockWithItem("waxed_zombified_cut_pigsteel_stairs", new StairsBlock(cutPigsteel.getWaxedZombifiedBlock().getDefaultState(), AbstractBlock.Settings.copy(cutPigsteel.getWaxedZombifiedBlock())));
-
-    public static final Block PIGSTEEL_LANTERN = createBlockWithItem("pigsteel_lantern", new PigsteelLanternBlock(FabricBlockSettings.copy(Blocks.LANTERN).luminance(state -> 15).nonOpaque().mapColor(MapColor.PURPLE)));
-    public static final Block PIGSTEEL_SOUL_LANTERN = createBlockWithItem("pigsteel_soul_lantern", new PigsteelLanternBlock(FabricBlockSettings.copy(Blocks.LANTERN).luminance(state -> 10).nonOpaque().mapColor(MapColor.PURPLE)));
 
 
     public static void init(){
@@ -77,6 +76,8 @@ public class PigsteelBlocks {
         PIGSTEEL_ZOMBIFYING_MAP.put(CORRUPTED_CUT_PIGSTEEL_STAIRS, ZOMBIFIED_CUT_PIGSTEEL_STAIRS);
 
 
+        mapWaxingAndAxing(pigsteelLanterns);
+        mapWaxingAndAxing(pigsteelSoulLanterns);
         mapWaxingAndAxing(refinedPigsteel);
         mapWaxingAndAxing(cutPigsteel);
         mapWaxingAndAxing(cutPigsteelSlabs);
@@ -86,9 +87,7 @@ public class PigsteelBlocks {
     }
 
     private static void mapWaxingAndAxing(ZombifiableBlockRegistry zombifiableBlockRegistry){
-        for (int i = 0; i < 4; i++){
-            PIGSTEEL_WAXING_MAP.put(zombifiableBlockRegistry.getZombifiables().get(i), zombifiableBlockRegistry.getWaxed().get(i));
-        }
+        PIGSTEEL_WAXING_MAP.putAll(zombifiableBlockRegistry.getBlockToWaxedMap());
         PIGSTEEL_ZOMBIFYING_MAP.put(zombifiableBlockRegistry.getUnaffectedBlock(), zombifiableBlockRegistry.getInfectedBlock());
         PIGSTEEL_ZOMBIFYING_MAP.put(zombifiableBlockRegistry.getInfectedBlock(), zombifiableBlockRegistry.getCorruptedBlock());
         PIGSTEEL_ZOMBIFYING_MAP.put(zombifiableBlockRegistry.getCorruptedBlock(), zombifiableBlockRegistry.getZombifiedBlock());

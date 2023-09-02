@@ -8,7 +8,6 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.block.Block;
 import net.minecraft.data.client.*;
 import net.minecraft.registry.Registries;
-import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 
 import java.util.Optional;
@@ -29,6 +28,14 @@ public class PigsteelModelGen extends FabricModelProvider {
             blockStateModelGenerator.registerSimpleCubeAll(block);
             blockStateModelGenerator.registerParented(block, waxed);
         });
+        PigsteelBlocks.pigsteelLanterns.getBlockToWaxedMap().forEach((block, waxed) -> {
+            createLantern(blockStateModelGenerator, block);
+            createLantern(blockStateModelGenerator, waxed, block);
+        });
+        PigsteelBlocks.pigsteelSoulLanterns.getBlockToWaxedMap().forEach((block, waxed) -> {
+            createLantern(blockStateModelGenerator, block);
+            createLantern(blockStateModelGenerator, waxed, block);
+        });
 
         for (int i = 0; i < 4; i++){
             createWaxable(blockStateModelGenerator, PigsteelBlocks.cutPigsteel.getZombifiables().get(i), PigsteelBlocks.cutPigsteel.getWaxed().get(i));
@@ -41,8 +48,8 @@ public class PigsteelModelGen extends FabricModelProvider {
         createWaxableStairs(blockStateModelGenerator, PigsteelBlocks.cutPigsteel.getCorruptedBlock(), PigsteelBlocks.CORRUPTED_CUT_PIGSTEEL_STAIRS, PigsteelBlocks.WAXED_CORRUPTED_CUT_PIGSTEEL_STAIRS);
         createWaxableStairs(blockStateModelGenerator, PigsteelBlocks.cutPigsteel.getZombifiedBlock(), PigsteelBlocks.ZOMBIFIED_CUT_PIGSTEEL_STAIRS, PigsteelBlocks.WAXED_ZOMBIFIED_CUT_PIGSTEEL_STAIRS);
 
-        createLantern(blockStateModelGenerator, PigsteelBlocks.PIGSTEEL_LANTERN);
-        createLantern(blockStateModelGenerator, PigsteelBlocks.PIGSTEEL_SOUL_LANTERN);
+//        createLantern(blockStateModelGenerator, PigsteelBlocks.PIGSTEEL_LANTERN);
+//        createLantern(blockStateModelGenerator, PigsteelBlocks.PIGSTEEL_SOUL_LANTERN);
     }
 
     @Override
@@ -55,12 +62,17 @@ public class PigsteelModelGen extends FabricModelProvider {
         return new Model(Optional.of(new Identifier(Pigsteel.MOD_ID, "block/" + parent)), Optional.empty(), requiredTextureKeys);
     }
     public final void createLantern(BlockStateModelGenerator blockStateModelGenerator, Block lantern) {
-        Identifier identifier = block("pigsteel_lantern_base", TextureKey.ALL).upload(lantern, TextureMap.all(lantern), blockStateModelGenerator.modelCollector);
+        Identifier identifier = block("template_pigsteel_lantern", TextureKey.ALL).upload(lantern, TextureMap.all(lantern), blockStateModelGenerator.modelCollector);
         blockStateModelGenerator.registerItemModel(lantern.asItem());
         blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(lantern, BlockStateVariant.create().put(VariantSettings.MODEL, identifier))
                 .coordinate(BlockStateModelGenerator.createNorthDefaultHorizontalRotationStates()));
     }
-
+    public final void createLantern(BlockStateModelGenerator blockStateModelGenerator, Block lantern, Block baseModel) {
+        Identifier identifier = getId(baseModel);
+        blockStateModelGenerator.registerParentedItemModel(lantern.asItem(), getItemId(baseModel));
+        blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(lantern, BlockStateVariant.create().put(VariantSettings.MODEL, identifier))
+                .coordinate(BlockStateModelGenerator.createNorthDefaultHorizontalRotationStates()));
+    }
 
 
     public final void createWaxable(BlockStateModelGenerator blockStateModelGenerator, Block block, Block waxed) {

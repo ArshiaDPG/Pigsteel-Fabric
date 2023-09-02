@@ -34,6 +34,8 @@ public class PigsteelBlockTagGen extends FabricTagProvider<Block> {
 
 
         getOrCreateTagBuilder(PigsteelBlockTags.ZOMBIFICATION_DECELERATION)
+                .add(Blocks.FIRE)
+                .add(Blocks.SOUL_FIRE)
                 .add(Blocks.CRIMSON_NYLIUM)
                 .add(Blocks.CRIMSON_ROOTS)
                 .add(Blocks.CRIMSON_FUNGUS)
@@ -56,8 +58,7 @@ public class PigsteelBlockTagGen extends FabricTagProvider<Block> {
                 .add(PigsteelBlocks.CUT_PIGSTEEL_STAIRS).add(PigsteelBlocks.WAXED_CUT_PIGSTEEL_STAIRS)
                 .add(PigsteelBlocks.INFECTED_CUT_PIGSTEEL_STAIRS).add(PigsteelBlocks.WAXED_INFECTED_CUT_PIGSTEEL_STAIRS)
                 .add(PigsteelBlocks.CORRUPTED_CUT_PIGSTEEL_STAIRS).add(PigsteelBlocks.WAXED_CORRUPTED_CUT_PIGSTEEL_STAIRS)
-                .add(PigsteelBlocks.ZOMBIFIED_CUT_PIGSTEEL_STAIRS).add(PigsteelBlocks.WAXED_ZOMBIFIED_CUT_PIGSTEEL_STAIRS)
-                .add(PigsteelBlocks.PIGSTEEL_LANTERN).add(PigsteelBlocks.PIGSTEEL_SOUL_LANTERN);
+                .add(PigsteelBlocks.ZOMBIFIED_CUT_PIGSTEEL_STAIRS).add(PigsteelBlocks.WAXED_ZOMBIFIED_CUT_PIGSTEEL_STAIRS);
 
         PigsteelBlocks.refinedPigsteel.getAllBlocks().forEach(block -> {
             getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(block);
@@ -73,6 +74,14 @@ public class PigsteelBlockTagGen extends FabricTagProvider<Block> {
             getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL).add(block);
         });
 
+        PigsteelBlocks.pigsteelLanterns.getAllBlocks().forEach(block -> {
+            getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(block);
+        });
+        PigsteelBlocks.pigsteelSoulLanterns.getAllBlocks().forEach(block -> {
+            getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(block);
+            getOrCreateTagBuilder(BlockTags.PIGLIN_REPELLENTS).add(block);
+        });
+
 
         getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
                 .forceAddTag(PigsteelBlockTags.PIGSTEEL_BLOCKS)
@@ -84,7 +93,5 @@ public class PigsteelBlockTagGen extends FabricTagProvider<Block> {
         getOrCreateTagBuilder(BlockTags.BEACON_BASE_BLOCKS).forceAddTag(PigsteelBlockTags.PIGSTEEL_BLOCKS);
 
         getOrCreateTagBuilder(PigsteelBlockTags.C_ORES).forceAddTag(PigsteelBlockTags.PIGSTEEL_ORES);
-
-        getOrCreateTagBuilder(BlockTags.PIGLIN_REPELLENTS).add(PigsteelBlocks.PIGSTEEL_SOUL_LANTERN);
     }
 }

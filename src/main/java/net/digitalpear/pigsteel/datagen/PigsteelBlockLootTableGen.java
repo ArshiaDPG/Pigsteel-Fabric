@@ -49,9 +49,6 @@ public class PigsteelBlockLootTableGen extends FabricBlockLootTableProvider {
         makeDrop(biConsumer, PigsteelBlocks.PORKSLAG, dropsWithSilkTouch(PigsteelBlocks.PORKSLAG, (LootPoolEntry.Builder)this.applyExplosionDecay(PigsteelBlocks.PORKSLAG, ((LeafEntry.Builder)ItemEntry.builder(PigsteelItems.PIGSTEEL_CHUNK).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(2.0f, 6.0f)))).apply(ApplyBonusLootFunction.oreDrops(Enchantments.FORTUNE)))));
         makeDrop(biConsumer, PigsteelBlocks.PIGSTEEL_CHUNK_BLOCK);
 
-        makeDrop(biConsumer, PigsteelBlocks.PIGSTEEL_LANTERN);
-        makeDrop(biConsumer, PigsteelBlocks.PIGSTEEL_SOUL_LANTERN);
-
     }
     public void makeDrop(BiConsumer<Identifier, LootTable.Builder> biConsumer, Block block){
         makeDrop(biConsumer, block, this.drops(block));

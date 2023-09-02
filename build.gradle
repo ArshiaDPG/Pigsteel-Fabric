@@ -37,7 +37,7 @@ dependencies {
 
 	runtimeOnly("com.github.llamalad7.mixinextras:mixinextras-fabric:0.2.0-beta.9")
 	modRuntimeOnly("maven.modrinth:HIuqnQpi:AlRsvRjn")
-	modImplementation "maven.modrinth:trimmed:${project.trimmed}"
+	modImplementation include("maven.modrinth:trimmed:${project.trimmed}")
 }
 
 processResources {
@@ -114,12 +114,11 @@ unifiedPublishing {
 		changelog = '''<ul>
   <li>Updated to 1.20.1.</li>
   <li>All textures in the mod have been revamped thanks to Tamakii.</li>
-  <li>Added Pigsteel Bars, as well as zombified and waxed variants. (Pigsteel can no longer be used to craft iron bars)</li>
   <li>Removed pigsteel ores, pigsteel slag will now generate in their place.</li>
-  <li>Added Pigsteel Slag, an alternative to pigsteel ores which will drop Raw Pigsteel when mined.</li>
+  <li>Added Pigsteel Slag, an alternative to pigsteel ores which will drop Pigsteel Chunks when mined.</li>
   <li>Trimmed is now used for adding the trim material, which fixes many of the issues, including incompatibility with other mods.</li>
-  <li>Changed vanilla recipes for pigsteel to use data generators.</li>
   <li>Improved Pigsteel Lantern placement logic.</li>
+  <li>Pigsteel Lanterns now zombify, the rate of zombification is now inversely tied to the lantern's light level.</li>
   <li>Pigsteel zombification has been completely rewritten from scratch. Now pigsteel's zombification speed can be influenced by the blocks around it.</li>
 </ul> '''
 		releaseType = "beta" // Optional, use "release", "beta" or "alpha"
@@ -130,8 +129,8 @@ unifiedPublishing {
 
 		relations {
 			depends { // Mark as a required dependency
-				curseforge = "fabric-api, trimmed" // Optional, project slug
-				modrinth = "fabric-api, trimmed" // Optional, project slug or id
+				curseforge = "fabric-api" // Optional, project slug
+				modrinth = "fabric-api" // Optional, project slug or id
 			}
 			includes {} // Mark as an included dependency
 			optional {} // Mark as an optional dependency

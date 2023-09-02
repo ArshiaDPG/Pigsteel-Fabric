@@ -31,12 +31,12 @@ public class PigsteelLanguageGen extends FabricLanguageProvider {
         translationBuilder.add(PigsteelItems.PIGSTEEL_CHUNK, "Pigsteel Chunk");
 
 
-        translationBuilder.add(PigsteelBlocks.PIGSTEEL_LANTERN, "Pigsteel Lantern");
-        translationBuilder.add(PigsteelBlocks.PIGSTEEL_SOUL_LANTERN, "Pigsteel Soul Lantern");
 
         PigsteelBlocks.refinedPigsteel.getAllBlocks().forEach(block -> translationBuilder.add(block, formatString(Registries.BLOCK.getId(block).getPath())));
         PigsteelBlocks.cutPigsteel.getAllBlocks().forEach(block -> translationBuilder.add(block, formatString(Registries.BLOCK.getId(block).getPath())));
         PigsteelBlocks.cutPigsteelSlabs.getAllBlocks().forEach(block -> translationBuilder.add(block, formatString(Registries.BLOCK.getId(block).getPath())));
+        PigsteelBlocks.pigsteelLanterns.getAllBlocks().forEach(block -> translationBuilder.add(block, formatString(Registries.BLOCK.getId(block).getPath())));
+        PigsteelBlocks.pigsteelSoulLanterns.getAllBlocks().forEach(block -> translationBuilder.add(block, formatString(Registries.BLOCK.getId(block).getPath())));
 
         translationBuilder.add("trim_material.pigsteel.pigsteel", "Pigsteel");
     }

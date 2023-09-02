@@ -1,0 +1,6 @@
+{
+  "parent": "pigsteel:block/template_pigsteel_lantern",
+  "textures": {
+    "all": "pigsteel:block/zombified_pigsteel_lantern"
+  }
+}

@@ -31,9 +31,28 @@ public class PigsteelItems {
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL)
                 .register(entries -> {
-                    entries.addAfter(Items.SOUL_LANTERN, PigsteelBlocks.PIGSTEEL_SOUL_LANTERN);
-                    entries.addAfter(Items.SOUL_LANTERN, PigsteelBlocks.PIGSTEEL_LANTERN);
+                    entries.addAfter(Items.SOUL_LANTERN,
+                            PigsteelBlocks.pigsteelSoulLanterns.getUnaffectedBlock(),
+                            PigsteelBlocks.pigsteelSoulLanterns.getInfectedBlock(),
+                            PigsteelBlocks.pigsteelSoulLanterns.getCorruptedBlock(),
+                            PigsteelBlocks.pigsteelSoulLanterns.getZombifiedBlock(),
+                            PigsteelBlocks.pigsteelSoulLanterns.getWaxedUnaffectedBlock(),
+                            PigsteelBlocks.pigsteelSoulLanterns.getWaxedInfectedBlock(),
+                            PigsteelBlocks.pigsteelSoulLanterns.getWaxedCorruptedBlock(),
+                            PigsteelBlocks.pigsteelSoulLanterns.getWaxedZombifiedBlock()
+                    );
+                    entries.addAfter(Items.SOUL_LANTERN,
+                            PigsteelBlocks.pigsteelLanterns.getUnaffectedBlock(),
+                            PigsteelBlocks.pigsteelLanterns.getInfectedBlock(),
+                            PigsteelBlocks.pigsteelLanterns.getCorruptedBlock(),
+                            PigsteelBlocks.pigsteelLanterns.getZombifiedBlock(),
+                            PigsteelBlocks.pigsteelLanterns.getWaxedUnaffectedBlock(),
+                            PigsteelBlocks.pigsteelLanterns.getWaxedInfectedBlock(),
+                            PigsteelBlocks.pigsteelLanterns.getWaxedCorruptedBlock(),
+                            PigsteelBlocks.pigsteelLanterns.getWaxedZombifiedBlock()
+                    );
         });
+
 
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS)
