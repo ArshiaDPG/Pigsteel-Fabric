@@ -20,14 +20,15 @@ public class PigsteelModDatagens implements DataGeneratorEntrypoint {
 
         FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
 
-        pack.addProvider(PigsteelRecipeGen::new);
-        pack.addProvider(PigsteelBlockLootTableGen::new);
+        pack.addProvider(PigsteelRecipeProvider::new);
+        pack.addProvider(PigsteelBlockLootTableProvider::new);
 
-        pack.addProvider(PigsteelBlockTagGen::new);
-        pack.addProvider(PigsteelItemTagGen::new);
+        pack.addProvider(PigsteelBlockTagProvider::new);
+        pack.addProvider(PigsteelItemTagProvider::new);
+        pack.addProvider(PigsteelBiomeTagProvider::new);
 
-        pack.addProvider(PigsteelLanguageGen::new);
-        pack.addProvider(PigsteelModelGen::new);
+        pack.addProvider(PigsteelLanguageProvider::new);
+        pack.addProvider(PigsteelModelProvider::new);
 
         pack.addProvider(PigsteelTrimMaterialProvider::new);
 

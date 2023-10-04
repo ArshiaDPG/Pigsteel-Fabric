@@ -1,6 +1,5 @@
 package net.digitalpear.pigsteel.datagen;
 
-import net.digitalpear.pigsteel.Pigsteel;
 import net.digitalpear.pigsteel.init.PigsteelBlocks;
 import net.digitalpear.pigsteel.init.tags.PigsteelBlockTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -13,7 +12,7 @@ import net.minecraft.registry.tag.BlockTags;
 
 import java.util.concurrent.CompletableFuture;
 
-public class PigsteelBlockTagGen extends FabricTagProvider<Block> {
+public class PigsteelBlockTagProvider extends FabricTagProvider<Block> {
 
     /**
      * Constructs a new {@link FabricTagProvider} with the default computed path.
@@ -23,7 +22,7 @@ public class PigsteelBlockTagGen extends FabricTagProvider<Block> {
      * @param output           the {@link FabricDataOutput} instance
      * @param registriesFuture the backing registry for the tag type
      */
-    public PigsteelBlockTagGen(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
+    public PigsteelBlockTagProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
         super(output, Registries.BLOCK.getKey(), registriesFuture);
     }
 
@@ -55,6 +54,8 @@ public class PigsteelBlockTagGen extends FabricTagProvider<Block> {
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
                 .forceAddTag(PigsteelBlockTags.PIGSTEEL_ORES)
                 .forceAddTag(PigsteelBlockTags.PIGSTEEL_BLOCKS)
+                .add(PigsteelBlocks.PORKSLAG)
+                .add(PigsteelBlocks.PIGSTEEL_CHUNK_BLOCK)
                 .add(PigsteelBlocks.CUT_PIGSTEEL_STAIRS).add(PigsteelBlocks.WAXED_CUT_PIGSTEEL_STAIRS)
                 .add(PigsteelBlocks.INFECTED_CUT_PIGSTEEL_STAIRS).add(PigsteelBlocks.WAXED_INFECTED_CUT_PIGSTEEL_STAIRS)
                 .add(PigsteelBlocks.CORRUPTED_CUT_PIGSTEEL_STAIRS).add(PigsteelBlocks.WAXED_CORRUPTED_CUT_PIGSTEEL_STAIRS)
@@ -84,6 +85,8 @@ public class PigsteelBlockTagGen extends FabricTagProvider<Block> {
 
 
         getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
+                .add(PigsteelBlocks.PIGSTEEL_CHUNK_BLOCK)
+                .add(PigsteelBlocks.PORKSLAG)
                 .forceAddTag(PigsteelBlockTags.PIGSTEEL_BLOCKS)
                 .add(PigsteelBlocks.CUT_PIGSTEEL_STAIRS).add(PigsteelBlocks.WAXED_CUT_PIGSTEEL_STAIRS)
                 .add(PigsteelBlocks.INFECTED_CUT_PIGSTEEL_STAIRS).add(PigsteelBlocks.WAXED_INFECTED_CUT_PIGSTEEL_STAIRS)

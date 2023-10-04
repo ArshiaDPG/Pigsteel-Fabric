@@ -3,6 +3,8 @@
   "values": [
     "#pigsteel:pigsteel_ores",
     "#pigsteel:pigsteel_blocks",
+    "pigsteel:porkslag",
+    "pigsteel:pigsteel_chunk_block",
     "pigsteel:cut_pigsteel_stairs",
     "pigsteel:waxed_cut_pigsteel_stairs",
     "pigsteel:infected_cut_pigsteel_stairs",

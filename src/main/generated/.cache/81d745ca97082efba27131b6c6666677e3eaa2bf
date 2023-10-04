@@ -1,2 +1,3 @@
-// 1.20.1	2023-08-28T18:08:22.8860199	Pigsteel/worldgen/placed_feature
-11301593fea4014bafaade42d492f62c35c95ec4 data\pigsteel\worldgen\placed_feature\ore_pigsteel_nether.json
+// 1.20.1	2023-10-03T22:18:27.968389	Pigsteel/worldgen/placed_feature
+19d1159ccaee0c459943255c16f77692af7a0bee data\pigsteel\worldgen\placed_feature\ore_pigsteel_extra.json
+192b176119f95873171df85b12e9fe8cd2fd369e data\pigsteel\worldgen\placed_feature\ore_pigsteel.json

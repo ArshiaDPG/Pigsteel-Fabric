@@ -1,14 +1,13 @@
 package net.digitalpear.pigsteel;
 
 
-import net.digitalpear.pigsteel.init.*;
+import net.digitalpear.pigsteel.init.PigsteelArmorTrimMaterials;
+import net.digitalpear.pigsteel.init.PigsteelBlocks;
+import net.digitalpear.pigsteel.init.data.PigsteelData;
+import net.digitalpear.pigsteel.init.PigsteelItems;
+import net.digitalpear.pigsteel.init.worldgen.PigsteelConfiguredFeatures;
+import net.digitalpear.pigsteel.init.worldgen.PigsteelPlacedFeatures;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
-import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.SpawnGroup;
-import net.minecraft.item.trim.ArmorTrim;
-import net.minecraft.item.trim.ArmorTrimMaterials;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -21,6 +20,7 @@ public class Pigsteel implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+
 		PigsteelBlocks.init();
 		PigsteelItems.init();
 		PigsteelConfiguredFeatures.init();

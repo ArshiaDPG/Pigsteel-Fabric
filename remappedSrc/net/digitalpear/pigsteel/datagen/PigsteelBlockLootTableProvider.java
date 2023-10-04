@@ -6,11 +6,9 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.minecraft.block.Block;
 import net.minecraft.block.SlabBlock;
-import net.minecraft.data.server.loottable.vanilla.VanillaBlockLootTableGenerator;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
-import net.minecraft.item.Items;
 import net.minecraft.loot.LootTable;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.entry.LeafEntry;
@@ -23,8 +21,8 @@ import net.minecraft.util.Identifier;
 
 import java.util.function.BiConsumer;
 
-public class PigsteelBlockLootTableGen extends FabricBlockLootTableProvider {
-    public PigsteelBlockLootTableGen(FabricDataOutput dataOutput) {
+public class PigsteelBlockLootTableProvider extends FabricBlockLootTableProvider {
+    public PigsteelBlockLootTableProvider(FabricDataOutput dataOutput) {
         super(dataOutput);
     }
 
@@ -48,7 +46,6 @@ public class PigsteelBlockLootTableGen extends FabricBlockLootTableProvider {
 
         makeDrop(biConsumer, PigsteelBlocks.PORKSLAG, dropsWithSilkTouch(PigsteelBlocks.PORKSLAG, (LootPoolEntry.Builder)this.applyExplosionDecay(PigsteelBlocks.PORKSLAG, ((LeafEntry.Builder)ItemEntry.builder(PigsteelItems.PIGSTEEL_CHUNK).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(2.0f, 6.0f)))).apply(ApplyBonusLootFunction.oreDrops(Enchantments.FORTUNE)))));
         makeDrop(biConsumer, PigsteelBlocks.PIGSTEEL_CHUNK_BLOCK);
-
     }
     public void makeDrop(BiConsumer<Identifier, LootTable.Builder> biConsumer, Block block){
         makeDrop(biConsumer, block, this.drops(block));

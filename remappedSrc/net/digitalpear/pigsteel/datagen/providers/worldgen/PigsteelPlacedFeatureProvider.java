@@ -1,6 +1,7 @@
 package net.digitalpear.pigsteel.datagen.providers.worldgen;
 
-import net.digitalpear.pigsteel.init.PigsteelPlacedFeatures;
+import net.digitalpear.pigsteel.init.worldgen.PigsteelConfiguredFeatures;
+import net.digitalpear.pigsteel.init.worldgen.PigsteelPlacedFeatures;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider;
 import net.minecraft.registry.RegistryKey;
@@ -17,7 +18,7 @@ public class PigsteelPlacedFeatureProvider extends FabricDynamicRegistryProvider
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup registries, Entries entries) {
-        add(registries, entries, PigsteelPlacedFeatures.ORE_PIGSTEEL);
+        PigsteelPlacedFeatures.features.forEach(configuredFeatureRegistryKey -> add(registries, entries, configuredFeatureRegistryKey));
     }
 
 

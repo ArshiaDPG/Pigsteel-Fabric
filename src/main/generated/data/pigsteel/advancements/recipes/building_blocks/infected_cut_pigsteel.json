@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_infected_refined_pigsteel": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "pigsteel:infected_refined_pigsteel"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "pigsteel:infected_cut_pigsteel"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_infected_refined_pigsteel",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "pigsteel:infected_cut_pigsteel"
+    ]
+  },
+  "sends_telemetry_event": false
+}

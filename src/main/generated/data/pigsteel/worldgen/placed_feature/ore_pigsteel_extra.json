@@ -1,9 +1,9 @@
 {
-  "feature": "pigsteel:ore_pigsteel",
+  "feature": "pigsteel:ore_pigsteel_extra",
   "placement": [
     {
       "type": "minecraft:count",
-      "count": 20
+      "count": 8
     },
     {
       "type": "minecraft:in_square"

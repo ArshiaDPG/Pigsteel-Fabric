@@ -33,14 +33,14 @@ public class PigsteelBlocks {
         createBlockItem(blockID, block);
         return Registry.register(Registries.BLOCK, new Identifier(Pigsteel.MOD_ID, blockID), block);
     }
-    public static final Block PORKSLAG = createBlockWithItem("porkslag", new Block(AbstractBlock.Settings.create()
+    public static final Block PORKSLAG = createBlockWithItem("porkslag", new ExperienceDroppingBlock(AbstractBlock.Settings.create()
             .sounds(BlockSoundGroup.POLISHED_DEEPSLATE)
             .strength(1.5f)
             .mapColor(MapColor.BLACK)
             .requiresTool()));
 
 
-    public static final Block PIGSTEEL_CHUNK_BLOCK = createBlockWithItem("pigsteel_chunk_block", new Block(AbstractBlock.Settings.copy(Blocks.RAW_IRON_BLOCK)));
+    public static final Block PIGSTEEL_CHUNK_BLOCK = createBlockWithItem("pigsteel_chunk_block", new Block(AbstractBlock.Settings.copy(Blocks.RAW_IRON_BLOCK).sounds(BlockSoundGroup.NETHER_GOLD_ORE)));
 
     public static Block pigsteelBlockSettings(Zombifiable.ZombificationLevel level){
         return new ZombifiableBlock(level, AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.NETHERITE).ticksRandomly());

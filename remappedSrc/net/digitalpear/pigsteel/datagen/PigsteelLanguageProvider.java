@@ -6,8 +6,8 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.registry.Registries;
 
-public class PigsteelLanguageGen extends FabricLanguageProvider {
-    public PigsteelLanguageGen(FabricDataOutput dataOutput) {
+public class PigsteelLanguageProvider extends FabricLanguageProvider {
+    public PigsteelLanguageProvider(FabricDataOutput dataOutput) {
         super(dataOutput);
     }
 

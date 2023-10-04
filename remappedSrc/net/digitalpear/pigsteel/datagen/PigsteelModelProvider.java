@@ -12,8 +12,8 @@ import net.minecraft.util.Identifier;
 
 import java.util.Optional;
 
-public class PigsteelModelGen extends FabricModelProvider {
-    public PigsteelModelGen(FabricDataOutput output) {
+public class PigsteelModelProvider extends FabricModelProvider {
+    public PigsteelModelProvider(FabricDataOutput output) {
         super(output);
     }
 

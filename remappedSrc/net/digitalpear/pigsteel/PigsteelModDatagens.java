@@ -1,33 +1,34 @@
 package net.digitalpear.pigsteel;
 
 import net.digitalpear.pigsteel.datagen.*;
-import net.digitalpear.pigsteel.datagen.providers.item.PigsteelItemOverrideProvider;
+import net.digitalpear.pigsteel.datagen.providers.PigsteelItemOverrideDataProvider;
+import net.digitalpear.pigsteel.datagen.providers.PigsteelTrimMaterialProvider;
 import net.digitalpear.pigsteel.datagen.providers.worldgen.PigsteelConfiguredFeatureProvider;
 import net.digitalpear.pigsteel.datagen.providers.worldgen.PigsteelPlacedFeatureProvider;
-import net.digitalpear.pigsteel.datagen.providers.worldgen.PigsteelTrimMaterialProvider;
 import net.digitalpear.pigsteel.init.PigsteelArmorTrimMaterials;
-import net.digitalpear.pigsteel.init.PigsteelConfiguredFeatures;
-import net.digitalpear.pigsteel.init.PigsteelPlacedFeatures;
+import net.digitalpear.pigsteel.init.worldgen.PigsteelConfiguredFeatures;
+import net.digitalpear.pigsteel.init.worldgen.PigsteelPlacedFeatures;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
-import net.minecraft.data.DataProvider;
 import net.minecraft.registry.RegistryBuilder;
 import net.minecraft.registry.RegistryKeys;
 
 public class PigsteelModDatagens implements DataGeneratorEntrypoint {
+
     @Override
     public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
 
         FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
 
-        pack.addProvider(PigsteelRecipeGen::new);
-        pack.addProvider(PigsteelBlockLootTableGen::new);
+        pack.addProvider(PigsteelRecipeProvider::new);
+        pack.addProvider(PigsteelBlockLootTableProvider::new);
 
-        pack.addProvider(PigsteelBlockTagGen::new);
-        pack.addProvider(PigsteelItemTagGen::new);
+        pack.addProvider(PigsteelBlockTagProvider::new);
+        pack.addProvider(PigsteelItemTagProvider::new);
+        pack.addProvider(PigsteelBiomeTagProvider::new);
 
-        pack.addProvider(PigsteelLanguageGen::new);
-        pack.addProvider(PigsteelModelGen::new);
+        pack.addProvider(PigsteelLanguageProvider::new);
+        pack.addProvider(PigsteelModelProvider::new);
 
         pack.addProvider(PigsteelTrimMaterialProvider::new);
 
@@ -35,7 +36,7 @@ public class PigsteelModDatagens implements DataGeneratorEntrypoint {
         pack.addProvider(PigsteelPlacedFeatureProvider::new);
 
 
-        pack.addProvider(PigsteelItemOverrideProvider::new);
+        pack.addProvider((FabricDataGenerator.Pack.Factory<PigsteelItemOverrideDataProvider>) PigsteelItemOverrideDataProvider::new);
     }
 
     @Override

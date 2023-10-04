@@ -22,8 +22,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class PigsteelRecipeGen extends FabricRecipeProvider {
-    public PigsteelRecipeGen(FabricDataOutput output) {
+public class PigsteelRecipeProvider extends FabricRecipeProvider {
+    public PigsteelRecipeProvider(FabricDataOutput output) {
         super(output);
     }
 
@@ -36,7 +36,7 @@ public class PigsteelRecipeGen extends FabricRecipeProvider {
     public static void makeCutRecipes(Consumer<RecipeJsonProvider> exporter, Block base, Block cut, Block stairs, Block slab){
 
         RecipeProvider.offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, cut, base, 4);
-        RecipeProvider.createCutCopperRecipe(RecipeCategory.BUILDING_BLOCKS, cut, Ingredient.ofItems(base));
+        RecipeProvider.createCutCopperRecipe(RecipeCategory.BUILDING_BLOCKS, cut, Ingredient.ofItems(base)).criterion(hasItem(base), conditionsFromItem(base)).offerTo(exporter);
 
         RecipeProvider.createStairsRecipe(stairs, Ingredient.ofItems(cut));
         RecipeProvider.createSlabRecipe(RecipeCategory.BUILDING_BLOCKS, slab, Ingredient.ofItems(cut));
