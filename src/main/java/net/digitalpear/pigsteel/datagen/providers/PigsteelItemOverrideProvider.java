@@ -6,9 +6,8 @@ import net.digitalpear.pigsteel.init.PigsteelArmorTrimMaterials;
 import net.minecraft.data.DataOutput;
 import net.minecraft.item.Items;
 
-public class PigsteelItemOverrideDataProvider extends ItemOverrideDataProvider {
-
-    public PigsteelItemOverrideDataProvider(DataOutput output) {
+public class PigsteelItemOverrideProvider extends ItemOverrideDataProvider{
+    public PigsteelItemOverrideProvider(DataOutput output) {
         super(output, Pigsteel.MOD_ID);
     }
 

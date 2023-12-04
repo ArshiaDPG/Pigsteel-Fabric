@@ -37,7 +37,7 @@ dependencies {
 
 	runtimeOnly("com.github.llamalad7.mixinextras:mixinextras-fabric:0.2.0-beta.9")
 	modRuntimeOnly("maven.modrinth:HIuqnQpi:AlRsvRjn")
-	modImplementation include("maven.modrinth:trimmed:${project.trimmed}")
+	modImplementation ("maven.modrinth:trimmed:${project.trimmed}")
 }
 
 processResources {
@@ -120,8 +120,14 @@ unifiedPublishing {
   <li>Improved Pigsteel Lantern placement logic.</li>
   <li>Pigsteel Lanterns now zombify, the rate of zombification is now inversely tied to the lantern's light level.</li>
   <li>Pigsteel zombification has been completely rewritten from scratch. Now pigsteel's zombification speed can be influenced by the blocks around it.</li>
+  <li>Added "zombification_deceleration" and "zombification_acceleration" block tags to allow for influencing speed of block zombification.</li>
+  <li>Removed pigsteel nuggets and ingots.</li>
+  <li>Added Pigsteel Chunk and Block of Pigsteel Chunks.</li>
+  <li>Pigsteel Chunk replaces ingots and nuggets in all pigsteel recipes where they were used before.<li>
+  <li>Pigsteel Chunks can be smelted into iron nuggets.</li>
+  <li>Renamed Block of Pigsteel to Refined Pigsteel, it is now crafted with 4 pigsteel chunks.</li>
 </ul> '''
-		releaseType = "beta" // Optional, use "release", "beta" or "alpha"
+		releaseType = "release" // Optional, use "release", "beta" or "alpha"
 		gameVersions = ["${project.minecraft_version}", "1.20"]
 		gameLoaders = ["fabric"]
 

@@ -1,7 +1,7 @@
 package net.digitalpear.pigsteel;
 
 import net.digitalpear.pigsteel.datagen.*;
-import net.digitalpear.pigsteel.datagen.providers.PigsteelItemOverrideDataProvider;
+import net.digitalpear.pigsteel.datagen.providers.PigsteelItemOverrideProvider;
 import net.digitalpear.pigsteel.datagen.providers.PigsteelTrimMaterialProvider;
 import net.digitalpear.pigsteel.datagen.providers.worldgen.PigsteelConfiguredFeatureProvider;
 import net.digitalpear.pigsteel.datagen.providers.worldgen.PigsteelPlacedFeatureProvider;
@@ -31,12 +31,10 @@ public class PigsteelModDatagens implements DataGeneratorEntrypoint {
         pack.addProvider(PigsteelModelProvider::new);
 
         pack.addProvider(PigsteelTrimMaterialProvider::new);
+        pack.addProvider((FabricDataGenerator.Pack.Factory<PigsteelItemOverrideProvider>) PigsteelItemOverrideProvider::new);
 
         pack.addProvider(PigsteelConfiguredFeatureProvider::new);
         pack.addProvider(PigsteelPlacedFeatureProvider::new);
-
-
-        pack.addProvider((FabricDataGenerator.Pack.Factory<PigsteelItemOverrideDataProvider>) PigsteelItemOverrideDataProvider::new);
     }
 
     @Override
