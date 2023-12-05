@@ -1,6 +1,7 @@
 package net.digitalpear.pigsteel.init;
 
 import net.digitalpear.pigsteel.Pigsteel;
+import net.digitalpear.pigsteel.init.data.ZombifiableBlockRegistry;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
@@ -29,29 +30,10 @@ public class PigsteelItems {
                     entries.addAfter(Items.RAW_IRON, PigsteelItems.PIGSTEEL_CHUNK);
         });
 
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL)
-                .register(entries -> {
-                    entries.addAfter(Items.SOUL_LANTERN,
-                            PigsteelBlocks.pigsteelSoulLanterns.getUnaffectedBlock(),
-                            PigsteelBlocks.pigsteelSoulLanterns.getInfectedBlock(),
-                            PigsteelBlocks.pigsteelSoulLanterns.getCorruptedBlock(),
-                            PigsteelBlocks.pigsteelSoulLanterns.getZombifiedBlock(),
-                            PigsteelBlocks.pigsteelSoulLanterns.getWaxedUnaffectedBlock(),
-                            PigsteelBlocks.pigsteelSoulLanterns.getWaxedInfectedBlock(),
-                            PigsteelBlocks.pigsteelSoulLanterns.getWaxedCorruptedBlock(),
-                            PigsteelBlocks.pigsteelSoulLanterns.getWaxedZombifiedBlock()
-                    );
-                    entries.addAfter(Items.SOUL_LANTERN,
-                            PigsteelBlocks.pigsteelLanterns.getUnaffectedBlock(),
-                            PigsteelBlocks.pigsteelLanterns.getInfectedBlock(),
-                            PigsteelBlocks.pigsteelLanterns.getCorruptedBlock(),
-                            PigsteelBlocks.pigsteelLanterns.getZombifiedBlock(),
-                            PigsteelBlocks.pigsteelLanterns.getWaxedUnaffectedBlock(),
-                            PigsteelBlocks.pigsteelLanterns.getWaxedInfectedBlock(),
-                            PigsteelBlocks.pigsteelLanterns.getWaxedCorruptedBlock(),
-                            PigsteelBlocks.pigsteelLanterns.getWaxedZombifiedBlock()
-                    );
-        });
+
+        PigsteelBlocks.pigsteelSoulLanterns.addToItemGroup(ItemGroups.FUNCTIONAL, Items.SOUL_LANTERN);
+        PigsteelBlocks.pigsteelLanterns.addToItemGroup(ItemGroups.FUNCTIONAL, Items.SOUL_LANTERN);
+
 
 
 

@@ -1,11 +1,11 @@
-// 1.20.1	2023-12-04T12:33:39.907116	Pigsteel/ItemOverrideProvider for pigsteel
+// 1.20.1	2023-12-04T16:51:30.216953	Pigsteel/ItemOverrideProvider for pigsteel
 c9464e6bd2cae15ff0a6a0c66610923d0ab0cfd1 assets\minecraft\models\item\overrides\golden_helmet.json
 4c2ff88ad0a69ffc2fb767e0b37672e3876bab81 assets\minecraft\models\item\overrides\leather_helmet.json
 9cf310ac61883889e24fbe369a5dd69eca1d691a assets\minecraft\models\item\overrides\golden_boots.json
 63a92827f0126fe338f376ca09cbfba38ba234cd assets\minecraft\models\item\overrides\iron_helmet.json
 a02cae665a434bc7c286a2f0c95bd0ffe825dbff assets\minecraft\models\item\overrides\netherite_chestplate.json
-5c4c29dae64da840dfa2875f6281de99fadf6ee9 assets\minecraft\models\item\overrides\iron_boots.json
 9ac7206610c317d24581fc1f07d8526b76ac0cfa assets\minecraft\models\item\overrides\diamond_leggings.json
+5c4c29dae64da840dfa2875f6281de99fadf6ee9 assets\minecraft\models\item\overrides\iron_boots.json
 eb5ad2163bc0b69363b03553c42a2cf5a4296436 assets\minecraft\models\item\overrides\leather_chestplate.json
 53f0d6b215c01bb289b6c8a6fcaa5bcef7d87f42 assets\minecraft\models\item\overrides\iron_chestplate.json
 6cdc5714e2797ccb955f992caafe600c1e4d2680 assets\minecraft\models\item\overrides\chainmail_chestplate.json

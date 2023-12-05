@@ -2,20 +2,22 @@ package net.digitalpear.pigsteel.init.data;
 
 import net.digitalpear.pigsteel.Pigsteel;
 import net.digitalpear.pigsteel.common.blocks.Zombifiable;
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.MapColor;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKey;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ZombifiableBlockRegistry {
 
@@ -193,5 +195,19 @@ public class ZombifiableBlockRegistry {
 
     public List<Block> getAllBlocks(){
         return List.of(unaffectedBlock, infectedBlock, corruptedBlock, zombifiedBlock, waxedUnaffectedBlock, waxedInfectedBlock, waxedCorruptedBlock, waxedZombifiedBlock);
+    }
+
+    public void addToItemGroup(RegistryKey<ItemGroup> itemGroup){
+        ItemGroupEvents.modifyEntriesEvent(itemGroup).register(entries -> getAllBlocks().forEach(entries::add));
+    }
+    public void addToItemGroup(RegistryKey<ItemGroup> itemGroup, Item afterItem){
+        ItemGroupEvents.modifyEntriesEvent(itemGroup).register(entries -> {
+            List<ItemStack> list = new ArrayList<>();
+            getAllBlocks().forEach(block -> {
+                list.add(new ItemStack(block));
+            });
+
+            entries.addAfter(afterItem, list);
+        });
     }
 }

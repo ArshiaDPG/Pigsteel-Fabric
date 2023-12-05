@@ -112,20 +112,9 @@ unifiedPublishing {
 		displayName = "${project.minecraft_version}-${project.mod_version}" // Optional, name of the file
 		version = "${project.mod_version}" // Optional, Inferred from project by default
 		changelog = '''<ul>
-  <li>Updated to 1.20.1.</li>
-  <li>All textures in the mod have been revamped thanks to Tamakii.</li>
-  <li>Removed pigsteel ores, pigsteel slag will now generate in their place.</li>
-  <li>Added Pigsteel Slag, an alternative to pigsteel ores which will drop Pigsteel Chunks when mined.</li>
-  <li>Trimmed is now used for adding the trim material, which fixes many of the issues, including incompatibility with other mods.</li>
-  <li>Improved Pigsteel Lantern placement logic.</li>
-  <li>Pigsteel Lanterns now zombify, the rate of zombification is now inversely tied to the lantern's light level.</li>
-  <li>Pigsteel zombification has been completely rewritten from scratch. Now pigsteel's zombification speed can be influenced by the blocks around it.</li>
-  <li>Added "zombification_deceleration" and "zombification_acceleration" block tags to allow for influencing speed of block zombification.</li>
-  <li>Removed pigsteel nuggets and ingots.</li>
-  <li>Added Pigsteel Chunk and Block of Pigsteel Chunks.</li>
-  <li>Pigsteel Chunk replaces ingots and nuggets in all pigsteel recipes where they were used before.<li>
-  <li>Pigsteel Chunks can be smelted into iron nuggets.</li>
-  <li>Renamed Block of Pigsteel to Refined Pigsteel, it is now crafted with 4 pigsteel chunks.</li>
+  <li>Made porkslag slightly tougher.</li>
+  <li>Porkslag and Block of Pigsteel Chunks now have the right map colors.</li>
+  <li>Changed sounds for Block of Pigsteel Chunks.</li>
 </ul> '''
 		releaseType = "release" // Optional, use "release", "beta" or "alpha"
 		gameVersions = ["${project.minecraft_version}", "1.20"]

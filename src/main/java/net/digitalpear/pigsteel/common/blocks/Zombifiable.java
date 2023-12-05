@@ -2,9 +2,14 @@ package net.digitalpear.pigsteel.common.blocks;
 
 import net.digitalpear.pigsteel.init.PigsteelBlocks;
 import net.digitalpear.pigsteel.init.tags.PigsteelBlockTags;
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.MapColor;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemGroups;
+import net.minecraft.registry.RegistryKey;
 import net.minecraft.util.StringIdentifiable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -23,7 +28,7 @@ public interface Zombifiable {
         float chance = baseChance;
         if (canZombify(world, state) && world.getRandom().nextInt(9) < 2){
             if (getZombificationLevel() == ZombificationLevel.UNAFFECTED){
-                chance -= 0.1;
+                chance -= 0.1F;
             }
             for (BlockPos blockPos : BlockPos.iterate(pos.add(-1, -1, -1), pos.add(1, 1, 1))) {
                 /*
@@ -49,6 +54,7 @@ public interface Zombifiable {
     default boolean isZombifiablePigsteelBlock(BlockState state){
         return PigsteelBlocks.PIGSTEEL_WAXING_MAP.containsKey(state.getBlock());
     }
+
 
     ZombificationLevel getZombificationLevel();
 
