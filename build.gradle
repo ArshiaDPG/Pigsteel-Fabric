@@ -115,6 +115,7 @@ unifiedPublishing {
   <li>Made porkslag slightly tougher.</li>
   <li>Porkslag and Block of Pigsteel Chunks now have the right map colors.</li>
   <li>Changed sounds for Block of Pigsteel Chunks.</li>
+  <li>Cut pigsteel and block palettes have been touched up by KingRolly.</li>
 </ul> '''
 		releaseType = "release" // Optional, use "release", "beta" or "alpha"
 		gameVersions = ["${project.minecraft_version}", "1.20"]
