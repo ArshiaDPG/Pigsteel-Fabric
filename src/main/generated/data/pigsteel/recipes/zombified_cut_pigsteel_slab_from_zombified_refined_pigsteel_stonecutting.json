@@ -4,5 +4,5 @@
   "ingredient": {
     "item": "pigsteel:zombified_refined_pigsteel"
   },
-  "result": "pigsteel:cut_pigsteel_slab"
+  "result": "pigsteel:zombified_cut_pigsteel_slab"
 }

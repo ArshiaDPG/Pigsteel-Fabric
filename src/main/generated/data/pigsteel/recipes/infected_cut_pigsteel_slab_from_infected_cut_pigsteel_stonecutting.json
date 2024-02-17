@@ -4,5 +4,5 @@
   "ingredient": {
     "item": "pigsteel:infected_cut_pigsteel"
   },
-  "result": "pigsteel:cut_pigsteel_slab"
+  "result": "pigsteel:infected_cut_pigsteel_slab"
 }
