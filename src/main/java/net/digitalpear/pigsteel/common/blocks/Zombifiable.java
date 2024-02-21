@@ -52,7 +52,7 @@ public interface Zombifiable {
     }
 
     default boolean isZombifiablePigsteelBlock(BlockState state){
-        return PigsteelBlocks.PIGSTEEL_WAXING_MAP.containsKey(state.getBlock());
+        return state.getBlock() instanceof Zombifiable;
     }
 
 
