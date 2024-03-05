@@ -1,5 +1,6 @@
 package net.digitalpear.pigsteel.common.blocks;
 
+import net.digitalpear.pigsteel.Pigsteel;
 import net.digitalpear.pigsteel.init.PigsteelBlocks;
 import net.digitalpear.pigsteel.init.tags.PigsteelBlockTags;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
@@ -13,10 +14,15 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.util.StringIdentifiable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public interface Zombifiable {
 
+
     float blockInfluence = 0.1F;
+
+    //Chance for a block to zombify, the smaller this number is the less the chance of zombification.
     float baseChance = 0.9F;
 
 
@@ -25,30 +31,32 @@ public interface Zombifiable {
     }
 
     default void tryZombify(World world, BlockState state, BlockPos pos){
+        if (!(canZombify(world, state) && world.getRandom().nextInt(9) < 2)) {
+            return;
+        }
+        
         float chance = baseChance;
-        if (canZombify(world, state) && world.getRandom().nextInt(9) < 2){
-            if (getZombificationLevel() == ZombificationLevel.UNAFFECTED){
-                chance -= 0.1F;
+        if (getZombificationLevel() == ZombificationLevel.UNAFFECTED){
+            chance -= 0.1F;
+        }
+        for (BlockPos blockPos : BlockPos.iterate(pos.add(-1, -1, -1), pos.add(1, 1, 1))) {
+            /*
+                Slow down or speed up zombification depending on adjacent blocks.
+             */
+            if (world.getBlockState(blockPos).isIn(PigsteelBlockTags.ZOMBIFICATION_DECELERATION)){
+                chance -= blockInfluence;
             }
-            for (BlockPos blockPos : BlockPos.iterate(pos.add(-1, -1, -1), pos.add(1, 1, 1))) {
-                /*
-                    Slow down or speed up zombification depending on adjacent blocks.
-                 */
-                if (world.getBlockState(blockPos).isIn(PigsteelBlockTags.ZOMBIFICATION_DECELERATION)){
-                    chance -= blockInfluence;
-                }
-                else if (world.getBlockState(blockPos).isIn(PigsteelBlockTags.ZOMBIFICATION_ACCELERATION)){
-                    chance += blockInfluence;
-                }
-                else if (isZombifiablePigsteelBlock(world.getBlockState(blockPos))){
-                        chance -= blockInfluence / 2;
-                }
+            else if (world.getBlockState(blockPos).isIn(PigsteelBlockTags.ZOMBIFICATION_ACCELERATION)){
+                chance += blockInfluence;
             }
-            chance -= (float) state.getLuminance() / 10;
-            if (world.getRandom().nextFloat() < chance){
-                world.setBlockState(pos, PigsteelBlocks.PIGSTEEL_ZOMBIFYING_MAP.get(state.getBlock()).getStateWithProperties(state), Block.NOTIFY_ALL);
+            else if (isZombifiablePigsteelBlock(world.getBlockState(blockPos))){
+                    chance -= blockInfluence / 2;
             }
         }
+        if (world.getRandom().nextFloat() < chance){
+            world.setBlockState(pos, PigsteelBlocks.PIGSTEEL_ZOMBIFYING_MAP.get(state.getBlock()).getStateWithProperties(state), Block.NOTIFY_LISTENERS);
+        }
+
     }
 
     default boolean isZombifiablePigsteelBlock(BlockState state){

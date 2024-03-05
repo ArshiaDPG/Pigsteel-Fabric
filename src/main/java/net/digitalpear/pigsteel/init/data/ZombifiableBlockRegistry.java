@@ -86,6 +86,7 @@ public class ZombifiableBlockRegistry {
         }
 
         Registry.register(Registries.ITEM, blockName, new BlockItem(block, new Item.Settings().fireproof()));
+        //Pigsteel.LOGGER.info("Registered waxed block " + blockName + " with zombification level " + level.asString() + ".");
         return Registry.register(Registries.BLOCK, blockName, block);
     }
     private Block registerBlock(Zombifiable.ZombificationLevel level){
@@ -103,8 +104,8 @@ public class ZombifiableBlockRegistry {
         else{
             block = createCustomBlock(level.getMapColor());
         }
-
         Registry.register(Registries.ITEM, blockName, new BlockItem(block, new Item.Settings().fireproof()));
+        //Pigsteel.LOGGER.info("Registered block " + blockName + " with zombification level " + level.asString() + ".");
         return Registry.register(Registries.BLOCK, blockName, block);
     }
     private Block createCustomWaxedBlock(MapColor mapColor) {

@@ -64,11 +64,9 @@ public class PigsteelLanternBlock extends Block implements Waterloggable{
         WorldView worldView = ctx.getWorld();
         BlockPos blockPos = ctx.getBlockPos();
         Direction[] directions = ctx.getPlacementDirections();
-        Direction[] var7 = directions;
         int var8 = directions.length;
 
-        for(int var9 = 0; var9 < var8; ++var9) {
-            Direction direction = var7[var9];
+        for (Direction direction : directions) {
             if (direction.getAxis().isHorizontal()) {
                 Direction direction2 = direction.getOpposite();
                 blockState = blockState.with(FACING, direction2);

@@ -5,6 +5,7 @@ import net.digitalpear.pigsteel.init.PigsteelBlocks;
 import net.digitalpear.pigsteel.init.PigsteelItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.minecraft.advancement.criterion.CriterionConditions;
 import net.minecraft.block.Block;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
 import net.minecraft.data.server.recipe.RecipeProvider;
@@ -38,8 +39,8 @@ public class PigsteelRecipeProvider extends FabricRecipeProvider {
         RecipeProvider.offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, cut, base, 4);
         RecipeProvider.createCutCopperRecipe(RecipeCategory.BUILDING_BLOCKS, cut, Ingredient.ofItems(base)).criterion(hasItem(base), conditionsFromItem(base)).offerTo(exporter);
 
-        RecipeProvider.createStairsRecipe(stairs, Ingredient.ofItems(cut));
-        RecipeProvider.createSlabRecipe(RecipeCategory.BUILDING_BLOCKS, slab, Ingredient.ofItems(cut));
+        RecipeProvider.createStairsRecipe(stairs, Ingredient.ofItems(cut)).criterion(hasItem(cut), conditionsFromItem(cut)).offerTo(exporter);
+        RecipeProvider.createSlabRecipe(RecipeCategory.BUILDING_BLOCKS, slab, Ingredient.ofItems(cut)).criterion(hasItem(cut), conditionsFromItem(cut)).offerTo(exporter);
 
         RecipeProvider.offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, stairs, base, 4);
         RecipeProvider.offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, slab, base, 8);
@@ -89,6 +90,12 @@ public class PigsteelRecipeProvider extends FabricRecipeProvider {
         makeCutRecipes(exporter, PigsteelBlocks.refinedPigsteel.getInfectedBlock(), PigsteelBlocks.cutPigsteel.getInfectedBlock(), PigsteelBlocks.INFECTED_CUT_PIGSTEEL_STAIRS, PigsteelBlocks.cutPigsteelSlabs.getInfectedBlock());
         makeCutRecipes(exporter, PigsteelBlocks.refinedPigsteel.getCorruptedBlock(), PigsteelBlocks.cutPigsteel.getCorruptedBlock(), PigsteelBlocks.CORRUPTED_CUT_PIGSTEEL_STAIRS, PigsteelBlocks.cutPigsteelSlabs.getCorruptedBlock());
         makeCutRecipes(exporter, PigsteelBlocks.refinedPigsteel.getZombifiedBlock(), PigsteelBlocks.cutPigsteel.getZombifiedBlock(), PigsteelBlocks.ZOMBIFIED_CUT_PIGSTEEL_STAIRS, PigsteelBlocks.cutPigsteelSlabs.getZombifiedBlock());
+
+        makeCutRecipes(exporter, PigsteelBlocks.refinedPigsteel.getWaxedUnaffectedBlock(), PigsteelBlocks.cutPigsteel.getWaxedUnaffectedBlock(), PigsteelBlocks.WAXED_CUT_PIGSTEEL_STAIRS, PigsteelBlocks.cutPigsteelSlabs.getWaxedUnaffectedBlock());
+        makeCutRecipes(exporter, PigsteelBlocks.refinedPigsteel.getWaxedInfectedBlock(), PigsteelBlocks.cutPigsteel.getWaxedInfectedBlock(), PigsteelBlocks.WAXED_INFECTED_CUT_PIGSTEEL_STAIRS, PigsteelBlocks.cutPigsteelSlabs.getWaxedInfectedBlock());
+        makeCutRecipes(exporter, PigsteelBlocks.refinedPigsteel.getWaxedCorruptedBlock(), PigsteelBlocks.cutPigsteel.getWaxedCorruptedBlock(), PigsteelBlocks.WAXED_CORRUPTED_CUT_PIGSTEEL_STAIRS, PigsteelBlocks.cutPigsteelSlabs.getWaxedCorruptedBlock());
+        makeCutRecipes(exporter, PigsteelBlocks.refinedPigsteel.getWaxedZombifiedBlock(), PigsteelBlocks.cutPigsteel.getWaxedZombifiedBlock(), PigsteelBlocks.WAXED_ZOMBIFIED_CUT_PIGSTEEL_STAIRS, PigsteelBlocks.cutPigsteelSlabs.getWaxedZombifiedBlock());
+
 
         makeLantern(exporter, PigsteelBlocks.pigsteelLanterns.getUnaffectedBlock(), Items.TORCH);
         makeLantern(exporter, PigsteelBlocks.pigsteelSoulLanterns.getUnaffectedBlock(), Items.SOUL_TORCH);

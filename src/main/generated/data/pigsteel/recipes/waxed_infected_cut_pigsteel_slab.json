@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "pigsteel:waxed_infected_cut_pigsteel"
+    }
+  },
+  "pattern": [
+    "###"
+  ],
+  "result": {
+    "count": 6,
+    "item": "pigsteel:waxed_infected_cut_pigsteel_slab"
+  },
+  "show_notification": true
+}

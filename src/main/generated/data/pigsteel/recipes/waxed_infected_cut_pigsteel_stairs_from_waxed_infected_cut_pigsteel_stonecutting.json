@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "item": "pigsteel:waxed_infected_cut_pigsteel"
+  },
+  "result": "pigsteel:waxed_infected_cut_pigsteel_stairs"
+}

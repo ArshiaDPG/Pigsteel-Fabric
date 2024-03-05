@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:waxed_zombified_cut_pigsteel_from_waxed_zombified_refined_pigsteel_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_waxed_zombified_refined_pigsteel": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "pigsteel:waxed_zombified_refined_pigsteel"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_waxed_zombified_refined_pigsteel",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:waxed_zombified_cut_pigsteel_from_waxed_zombified_refined_pigsteel_stonecutting"
+    ]
+  },
+  "sends_telemetry_event": false
+}

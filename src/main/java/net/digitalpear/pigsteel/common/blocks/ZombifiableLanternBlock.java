@@ -1,6 +1,7 @@
 package net.digitalpear.pigsteel.common.blocks;
 
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Waterloggable;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -13,12 +14,11 @@ public class ZombifiableLanternBlock extends PigsteelLanternBlock implements Zom
 
     public ZombifiableLanternBlock(Settings settings) {
         super(settings);
-        this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH).with(WATERLOGGED, false));
         this.zombificationLevel = ZombificationLevel.UNAFFECTED;
     }
+
     public ZombifiableLanternBlock(Zombifiable.ZombificationLevel zombificationLevel, Settings settings) {
         super(settings);
-        this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH).with(WATERLOGGED, false));
         this.zombificationLevel = zombificationLevel;
     }
 
@@ -28,7 +28,6 @@ public class ZombifiableLanternBlock extends PigsteelLanternBlock implements Zom
     }
     @Override
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        super.randomTick(state, world, pos, random);
         if (!world.isClient()){
             tryZombify(world, state, pos);
         }

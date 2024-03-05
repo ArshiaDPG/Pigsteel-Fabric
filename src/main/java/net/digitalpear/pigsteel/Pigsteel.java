@@ -8,6 +8,10 @@ import net.digitalpear.pigsteel.init.PigsteelItems;
 import net.digitalpear.pigsteel.init.worldgen.PigsteelConfiguredFeatures;
 import net.digitalpear.pigsteel.init.worldgen.PigsteelPlacedFeatures;
 import net.fabricmc.api.ModInitializer;
+import net.minecraft.advancement.AdvancementCriterion;
+import net.minecraft.advancement.criterion.Criteria;
+import net.minecraft.data.server.advancement.AdvancementTabGenerator;
+import net.minecraft.data.server.advancement.vanilla.VanillaAdvancementProviders;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
