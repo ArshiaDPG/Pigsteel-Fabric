@@ -41,7 +41,6 @@ public class PigsteelLanternBlock extends Block implements Waterloggable{
     public PigsteelLanternBlock(AbstractBlock.Settings settings) {
         super(settings);
         this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH).with(WATERLOGGED, false));
-
     }
 
     @Override

@@ -8,6 +8,8 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 
+import java.util.Optional;
+
 public class ZombifiableStairsBlock extends StairsBlock implements Zombifiable {
 
     private ZombificationLevel zombificationLevel;
@@ -22,7 +24,7 @@ public class ZombifiableStairsBlock extends StairsBlock implements Zombifiable {
     }
     @Override
     public MapColor getDefaultMapColor() {
-        return getZombificationLevel().getMapColor();
+        return getDegradationLevel().getMapColor();
     }
 
     @Override
@@ -35,12 +37,21 @@ public class ZombifiableStairsBlock extends StairsBlock implements Zombifiable {
 
     @Override
     public boolean hasRandomTicks(BlockState state) {
-        return getZombificationLevel() != ZombificationLevel.ZOMBIFIED;
+        return getDegradationLevel() != ZombificationLevel.ZOMBIFIED;
     }
 
     @Override
-    public ZombificationLevel getZombificationLevel() {
-        return zombificationLevel;
+    public Optional<BlockState> getDegradationResult(BlockState state) {
+        return Optional.of(PigsteelBlocks.PIGSTEEL_ZOMBIFYING_MAP.get(state.getBlock()).getStateWithProperties(state));
     }
 
+    @Override
+    public float getDegradationChanceMultiplier() {
+        return 0;
+    }
+
+    @Override
+    public ZombificationLevel getDegradationLevel() {
+        return zombificationLevel;
+    }
 }
