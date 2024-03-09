@@ -5,6 +5,9 @@ import net.digitalpear.pigsteel.common.blocks.*;
 import net.digitalpear.pigsteel.init.data.ZombifiableBlockRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
+import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
+import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.*;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.item.BlockItem;
@@ -89,6 +92,9 @@ public class PigsteelBlocks {
 
         PIGSTEEL_WAXING_MAP.forEach(OxidizableBlocksRegistry::registerWaxableBlockPair);
         PIGSTEEL_ZOMBIFYING_MAP.forEach(OxidizableBlocksRegistry::registerOxidizableBlockPair);
+
+        ResourceManagerHelper.registerBuiltinResourcePack(new Identifier(Pigsteel.MOD_ID, "pigsteel_ore"),
+                FabricLoader.getInstance().getModContainer(Pigsteel.MOD_ID).orElseThrow(), ResourcePackActivationType.NORMAL);
     }
 
     private static void mapWaxingAndAxing(ZombifiableBlockRegistry zombifiableBlockRegistry){
