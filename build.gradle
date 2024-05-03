@@ -50,7 +50,7 @@ processResources {
 
 tasks.withType(JavaCompile).configureEach {
 	// Minecraft 1.18 (1.18-pre2) upwards uses Java 17.
-	it.options.release = 17
+	it.options.release = 21
 }
 
 java {
@@ -112,10 +112,12 @@ unifiedPublishing {
 		displayName = "${project.minecraft_version}-${project.mod_version}" // Optional, name of the file
 		version = "${project.mod_version}" // Optional, Inferred from project by default
 		changelog = '''<ul>
-  <li>Added a built-in resourcepack that reverts Porkslag to Pigsteel Ore (only visually).</li>
+  <li>Updated to 1.20.5.</li>
+  <li>Added Pigsteel Mines, an experimental structure that does not generate by default, but you can add it by adding biomes to the has_pigsteel_mine biome tag.</li>
+  <li>Added has_pigsteel_mine biome tag.</li>
 </ul> '''
 		releaseType = "release" // Optional, use "release", "beta" or "alpha"
-		gameVersions = ["${project.minecraft_version}", "1.20"]
+		gameVersions = ["${project.minecraft_version}", "1.20.6"]
 		gameLoaders = ["fabric"]
 
 		mainPublication tasks.remapJar
