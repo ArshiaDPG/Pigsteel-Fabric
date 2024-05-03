@@ -12,7 +12,6 @@
   ],
   "result": {
     "count": 4,
-    "item": "pigsteel:infected_cut_pigsteel"
-  },
-  "show_notification": true
+    "id": "pigsteel:infected_cut_pigsteel"
+  }
 }

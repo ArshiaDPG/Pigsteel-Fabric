@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "pigsteel:pigsteel_chunk"
-            ]
+            "items": "pigsteel:pigsteel_chunk"
           }
         ]
       },
@@ -22,14 +20,13 @@
   },
   "requirements": [
     [
-      "has_pigsteel_chunk",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_pigsteel_chunk"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:iron_nugget_from_smelting_pigsteel_chunk"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

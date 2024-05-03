@@ -1,6 +1,13 @@
 {
-  "replace": false,
   "values": [
+    "pigsteel:refined_pigsteel",
+    "pigsteel:infected_refined_pigsteel",
+    "pigsteel:corrupted_refined_pigsteel",
+    "pigsteel:zombified_refined_pigsteel",
+    "pigsteel:waxed_refined_pigsteel",
+    "pigsteel:waxed_infected_refined_pigsteel",
+    "pigsteel:waxed_corrupted_refined_pigsteel",
+    "pigsteel:waxed_zombified_refined_pigsteel",
     "pigsteel:cut_pigsteel",
     "pigsteel:infected_cut_pigsteel",
     "pigsteel:corrupted_cut_pigsteel",

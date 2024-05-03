@@ -11,7 +11,7 @@
     "##"
   ],
   "result": {
-    "item": "pigsteel:refined_pigsteel"
-  },
-  "show_notification": true
+    "count": 1,
+    "id": "pigsteel:refined_pigsteel"
+  }
 }

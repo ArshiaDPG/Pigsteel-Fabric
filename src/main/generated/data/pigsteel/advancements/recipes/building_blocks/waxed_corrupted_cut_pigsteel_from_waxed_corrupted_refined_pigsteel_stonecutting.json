@@ -11,9 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "pigsteel:waxed_corrupted_refined_pigsteel"
-            ]
+            "items": "pigsteel:waxed_corrupted_refined_pigsteel"
           }
         ]
       },
@@ -22,14 +20,13 @@
   },
   "requirements": [
     [
-      "has_waxed_corrupted_refined_pigsteel",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_waxed_corrupted_refined_pigsteel"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:waxed_corrupted_cut_pigsteel_from_waxed_corrupted_refined_pigsteel_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

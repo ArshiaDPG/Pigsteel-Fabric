@@ -11,9 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "pigsteel:zombified_pigsteel_lantern"
-            ]
+            "items": "pigsteel:zombified_pigsteel_lantern"
           }
         ]
       },
@@ -22,14 +20,13 @@
   },
   "requirements": [
     [
-      "has_zombified_pigsteel_lantern",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_zombified_pigsteel_lantern"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:waxed_zombified_pigsteel_lantern_from_honeycomb"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

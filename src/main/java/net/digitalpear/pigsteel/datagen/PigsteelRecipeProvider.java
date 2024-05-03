@@ -5,9 +5,8 @@ import net.digitalpear.pigsteel.init.PigsteelBlocks;
 import net.digitalpear.pigsteel.init.PigsteelItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
-import net.minecraft.advancement.criterion.CriterionConditions;
 import net.minecraft.block.Block;
-import net.minecraft.data.server.recipe.RecipeJsonProvider;
+import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.RecipeProvider;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
@@ -17,24 +16,29 @@ import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.Registries;
+import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
-import java.util.function.Consumer;
+import java.util.concurrent.CompletableFuture;
 
 public class PigsteelRecipeProvider extends FabricRecipeProvider {
-    public PigsteelRecipeProvider(FabricDataOutput output) {
-        super(output);
+    public PigsteelRecipeProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
+        super(output, registriesFuture);
     }
 
-    public static void offerWaxingRecipes(Consumer<RecipeJsonProvider> exporter) {
-        PigsteelBlocks.PIGSTEEL_WAXING_MAP.forEach((input, output) -> {
-            ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, output).input(input).input(Items.HONEYCOMB).group(getItemPath(output)).criterion(hasItem(input), conditionsFromItem(input)).offerTo(exporter, convertBetween(output, Items.HONEYCOMB));
-        });
+    public static void offerWaxingRecipes(RecipeExporter exporter) {
+        PigsteelBlocks.PIGSTEEL_WAXING_MAP.forEach((input, output) ->
+                ShapelessRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, output)
+                        .input(input)
+                        .input(Items.HONEYCOMB)
+                        .group(getItemPath(output))
+                        .criterion(hasItem(input), conditionsFromItem(input))
+                        .offerTo(exporter, convertBetween(output, Items.HONEYCOMB)));
     }
 
-    public static void makeCutRecipes(Consumer<RecipeJsonProvider> exporter, Block base, Block cut, Block stairs, Block slab){
+    public static void makeCutRecipes(RecipeExporter exporter, Block base, Block cut, Block stairs, Block slab){
 
         RecipeProvider.offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, cut, base, 4);
         RecipeProvider.createCutCopperRecipe(RecipeCategory.BUILDING_BLOCKS, cut, Ingredient.ofItems(base)).criterion(hasItem(base), conditionsFromItem(base)).offerTo(exporter);
@@ -49,7 +53,7 @@ public class PigsteelRecipeProvider extends FabricRecipeProvider {
         RecipeProvider.offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, slab, cut, 2);
     }
 
-    public static void makeLantern(Consumer<RecipeJsonProvider> exporter, Block output, Item torch){
+    public static void makeLantern(RecipeExporter exporter, Block output, Item torch){
         ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, output)
                 .input('#', PigsteelItems.PIGSTEEL_CHUNK)
                 .input('X', torch)
@@ -59,7 +63,7 @@ public class PigsteelRecipeProvider extends FabricRecipeProvider {
                 .criterion("has_torch", conditionsFromItem(torch))
                 .offerTo(exporter);
     }
-    public static void offerReversibleCompactingIngotRecipes(Consumer<RecipeJsonProvider> exporter, RecipeCategory reverseCategory, ItemConvertible baseItem, RecipeCategory compactingCategory, ItemConvertible compactItem, @Nullable String compactingGroup, @Nullable String reverseGroup) {
+    public static void offerReversibleCompactingIngotRecipes(RecipeExporter exporter, RecipeCategory reverseCategory, ItemConvertible baseItem, RecipeCategory compactingCategory, ItemConvertible compactItem, @Nullable String compactingGroup, @Nullable String reverseGroup) {
         ShapelessRecipeJsonBuilder.create(reverseCategory, baseItem, 9).input(compactItem).group(reverseGroup).criterion(hasItem(compactItem),
                 conditionsFromItem(compactItem)).offerTo(exporter, new Identifier(Pigsteel.MOD_ID, Registries.ITEM.getId(baseItem.asItem()).getPath() +"_from_" + Registries.ITEM.getId(compactItem.asItem()).getPath()));
 
@@ -70,7 +74,7 @@ public class PigsteelRecipeProvider extends FabricRecipeProvider {
                 .pattern("###").group(compactingGroup)
                 .criterion(hasItem(baseItem), conditionsFromItem(baseItem)).offerTo(exporter, new Identifier(Pigsteel.MOD_ID, Registries.ITEM.getId(compactItem.asItem()).getPath() +"_from_" + Registries.ITEM.getId(baseItem.asItem()).getPath()));
     }
-    public static void makeSmeltnBlast(Consumer<RecipeJsonProvider> exporter, List<ItemConvertible> inputs, RecipeCategory category, ItemConvertible output, float experience, int cookingTime, String group){
+    public static void makeSmeltnBlast(RecipeExporter exporter, List<ItemConvertible> inputs, RecipeCategory category, ItemConvertible output, float experience, int cookingTime, String group){
         RecipeProvider.offerSmelting(exporter, inputs, category, output, experience, cookingTime, group);
         RecipeProvider.offerBlasting(exporter, inputs, category, output, experience, cookingTime/2, group);
     }
@@ -79,7 +83,7 @@ public class PigsteelRecipeProvider extends FabricRecipeProvider {
 
 
     @Override
-    public void generate(Consumer<RecipeJsonProvider> exporter) {
+    public void generate(RecipeExporter exporter) {
         offerReversibleCompactingIngotRecipes(exporter, RecipeCategory.MISC, PigsteelItems.PIGSTEEL_CHUNK, RecipeCategory.BUILDING_BLOCKS, PigsteelBlocks.PIGSTEEL_CHUNK_BLOCK, null, null);
 
         offerWaxingRecipes(exporter);
@@ -102,5 +106,6 @@ public class PigsteelRecipeProvider extends FabricRecipeProvider {
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, PigsteelBlocks.refinedPigsteel.getUnaffectedBlock()).pattern("##").pattern("##").input('#', PigsteelItems.PIGSTEEL_CHUNK).criterion(hasItem(PigsteelItems.PIGSTEEL_CHUNK), conditionsFromItem(PigsteelItems.PIGSTEEL_CHUNK)).offerTo(exporter);
     }
+
 
 }

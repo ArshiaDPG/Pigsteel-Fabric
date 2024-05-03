@@ -15,7 +15,7 @@
     "###"
   ],
   "result": {
-    "item": "pigsteel:pigsteel_soul_lantern"
-  },
-  "show_notification": true
+    "count": 1,
+    "id": "pigsteel:pigsteel_soul_lantern"
+  }
 }

@@ -11,9 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "pigsteel:waxed_cut_pigsteel"
-            ]
+            "items": "pigsteel:waxed_cut_pigsteel"
           }
         ]
       },
@@ -22,14 +20,13 @@
   },
   "requirements": [
     [
-      "has_waxed_cut_pigsteel",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_waxed_cut_pigsteel"
     ]
   ],
   "rewards": {
     "recipes": [
       "pigsteel:waxed_cut_pigsteel_slab"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

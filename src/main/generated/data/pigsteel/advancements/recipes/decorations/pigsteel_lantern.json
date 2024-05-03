@@ -11,9 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:torch"
-            ]
+            "items": "minecraft:torch"
           }
         ]
       },
@@ -22,14 +20,13 @@
   },
   "requirements": [
     [
-      "has_torch",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_torch"
     ]
   ],
   "rewards": {
     "recipes": [
       "pigsteel:pigsteel_lantern"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

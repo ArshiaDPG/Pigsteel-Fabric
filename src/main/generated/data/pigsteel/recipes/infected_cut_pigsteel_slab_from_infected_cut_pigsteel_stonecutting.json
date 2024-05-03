@@ -1,8 +1,10 @@
 {
   "type": "minecraft:stonecutting",
-  "count": 2,
   "ingredient": {
     "item": "pigsteel:infected_cut_pigsteel"
   },
-  "result": "pigsteel:infected_cut_pigsteel_slab"
+  "result": {
+    "count": 2,
+    "id": "pigsteel:infected_cut_pigsteel_slab"
+  }
 }

@@ -7,5 +7,7 @@
   "ingredient": {
     "item": "pigsteel:porkslag"
   },
-  "result": "minecraft:iron_ingot"
+  "result": {
+    "id": "minecraft:iron_ingot"
+  }
 }

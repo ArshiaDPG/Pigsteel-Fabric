@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "pigsteel:pigsteel_chunk_block"
-            ]
+            "items": "pigsteel:pigsteel_chunk_block"
           }
         ]
       },
@@ -22,14 +20,13 @@
   },
   "requirements": [
     [
-      "has_pigsteel_chunk_block",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_pigsteel_chunk_block"
     ]
   ],
   "rewards": {
     "recipes": [
       "pigsteel:pigsteel_chunk_from_pigsteel_chunk_block"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

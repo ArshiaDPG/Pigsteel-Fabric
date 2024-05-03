@@ -10,6 +10,7 @@ public class PigsteelBiomeTags {
 
     public static final TagKey<Biome> HAS_EXTRA_PIGSTEEL = of("has_extra_pigsteel");
     public static final TagKey<Biome> HAS_NO_PIGSTEEL = of("has_no_pigsteel");
+    public static final TagKey<Biome> HAS_PIGSTEEL_MINE = of("has_pigsteel_mine");
     private static TagKey<Biome> of(String id) {
         return TagKey.of(RegistryKeys.BIOME, new Identifier(Pigsteel.MOD_ID, id));
     }

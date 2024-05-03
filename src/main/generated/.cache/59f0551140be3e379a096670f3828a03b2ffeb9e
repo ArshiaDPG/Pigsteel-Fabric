@@ -1,10 +1,11 @@
-// 1.20.1	2024-03-05T11:31:29.1887222	Pigsteel/Tags for minecraft:block
-0492ca6573f802f0d147256e649d6f636ad0b8a8 data\pigsteel\tags\blocks\pigsteel_ores.json
-64375e3c623b53411937483ad50d92079793d3b6 data\minecraft\tags\blocks\needs_stone_tool.json
-41004184c38012c104655baf6358b06c4e6e2c01 data\minecraft\tags\blocks\piglin_repellents.json
-1983c31dec3ebe23aced3fd6a41e106cbc7d5443 data\c\tags\blocks\ores.json
-568377794ad79263e5339eab1eea2bb582335cf5 data\minecraft\tags\blocks\mineable\pickaxe.json
-7b3d4571b736a20e5d8181f75d52d6dd283ece96 data\pigsteel\tags\blocks\zombification_deceleration.json
-bec36f782469f8cc35df1fe6878d17360d5acf88 data\pigsteel\tags\blocks\zombification_acceleration.json
-437f9b5fb707c9bbf873f79aca1149182481022a data\pigsteel\tags\blocks\pigsteel_blocks.json
-cf3c2b2e35c770b3303be225447d8234b5cff518 data\minecraft\tags\blocks\beacon_base_blocks.json
+// 1.20.5	2024-05-03T10:36:41.6310175	Pigsteel/Tags for minecraft:block
+28719b0493721f4f12c053e04b881188b141a017 data\pigsteel\tags\blocks\pigsteel_ores.json
+a084939f098a713ae9e3a599d9a93a97a8053d77 data\pigsteel\tags\blocks\pigsteel_mine_replaceable.json
+e583da148a625e80c974c9b65a790e2b71b9156b data\minecraft\tags\blocks\needs_stone_tool.json
+ca565dc0dd6b2b9da55b2d574a7674b3602582ea data\minecraft\tags\blocks\piglin_repellents.json
+8cda6ae8b9a9d00efdfcae5e081db77d580b945f data\c\tags\blocks\ores.json
+90cd8b6183894b1d7650338c7f4ef4da98bf5984 data\minecraft\tags\blocks\mineable\pickaxe.json
+e968efb0aa45e2f3336a91fabb6d96399ad5f7e6 data\pigsteel\tags\blocks\zombification_deceleration.json
+8842622062e34f5234797206e3cbe8d28c665c7b data\pigsteel\tags\blocks\zombification_acceleration.json
+f7c0edc55a03d31c52113478a5f370945bb3b146 data\pigsteel\tags\blocks\pigsteel_blocks.json
+dd3bbf815b79a63ebf7d9257d089e68bfb3d3318 data\minecraft\tags\blocks\beacon_base_blocks.json

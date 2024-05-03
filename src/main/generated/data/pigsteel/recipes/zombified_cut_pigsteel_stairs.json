@@ -13,7 +13,6 @@
   ],
   "result": {
     "count": 4,
-    "item": "pigsteel:zombified_cut_pigsteel_stairs"
-  },
-  "show_notification": true
+    "id": "pigsteel:zombified_cut_pigsteel_stairs"
+  }
 }

@@ -11,9 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "pigsteel:zombified_cut_pigsteel_slab"
-            ]
+            "items": "pigsteel:zombified_cut_pigsteel_slab"
           }
         ]
       },
@@ -22,14 +20,13 @@
   },
   "requirements": [
     [
-      "has_zombified_cut_pigsteel_slab",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_zombified_cut_pigsteel_slab"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:waxed_zombified_cut_pigsteel_slab_from_honeycomb"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

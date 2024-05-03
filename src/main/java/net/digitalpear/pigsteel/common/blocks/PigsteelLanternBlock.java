@@ -109,8 +109,7 @@ public class PigsteelLanternBlock extends Block implements Waterloggable{
     }
 
     @Override
-    public boolean canPathfindThrough(BlockState state, BlockView world, BlockPos pos, NavigationType type) {
+    protected boolean canPathfindThrough(BlockState state, NavigationType type) {
         return false;
     }
-
 }

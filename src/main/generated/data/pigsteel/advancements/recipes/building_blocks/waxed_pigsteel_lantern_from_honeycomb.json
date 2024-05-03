@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "pigsteel:pigsteel_lantern"
-            ]
+            "items": "pigsteel:pigsteel_lantern"
           }
         ]
       },
@@ -22,14 +20,13 @@
   },
   "requirements": [
     [
-      "has_pigsteel_lantern",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_pigsteel_lantern"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:waxed_pigsteel_lantern_from_honeycomb"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

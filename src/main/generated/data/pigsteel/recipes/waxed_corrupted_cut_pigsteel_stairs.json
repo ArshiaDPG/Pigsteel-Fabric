@@ -13,7 +13,6 @@
   ],
   "result": {
     "count": 4,
-    "item": "pigsteel:waxed_corrupted_cut_pigsteel_stairs"
-  },
-  "show_notification": true
+    "id": "pigsteel:waxed_corrupted_cut_pigsteel_stairs"
+  }
 }

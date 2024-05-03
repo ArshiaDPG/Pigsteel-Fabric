@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "pigsteel:cut_pigsteel"
-            ]
+            "items": "pigsteel:cut_pigsteel"
           }
         ]
       },
@@ -22,14 +20,13 @@
   },
   "requirements": [
     [
-      "has_cut_pigsteel",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_cut_pigsteel"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:waxed_cut_pigsteel_from_honeycomb"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

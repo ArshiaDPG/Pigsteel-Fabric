@@ -11,9 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "pigsteel:waxed_zombified_refined_pigsteel"
-            ]
+            "items": "pigsteel:waxed_zombified_refined_pigsteel"
           }
         ]
       },
@@ -22,14 +20,13 @@
   },
   "requirements": [
     [
-      "has_waxed_zombified_refined_pigsteel",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_waxed_zombified_refined_pigsteel"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:waxed_zombified_cut_pigsteel_stairs_from_waxed_zombified_refined_pigsteel_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

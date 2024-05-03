@@ -10,6 +10,8 @@ public class PigsteelBlockTags {
     public static final TagKey<Block> PIGSTEEL_ORES = of("pigsteel_ores");
     public static final TagKey<Block> PIGSTEEL_BLOCKS = of("pigsteel_blocks");
 
+    public static final TagKey<Block> PIGSTEEL_MINE_REPLACEABLE = of("pigsteel_mine_replaceable");
+
     public static final TagKey<Block> ZOMBIFICATION_DECELERATION = of("zombification_deceleration");
     public static final TagKey<Block> ZOMBIFICATION_ACCELERATION = of("zombification_acceleration");
 

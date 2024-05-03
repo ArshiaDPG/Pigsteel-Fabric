@@ -1,0 +1,258 @@
+{
+  "processors": [
+    {
+      "processor_type": "minecraft:rule",
+      "rules": [
+        {
+          "input_predicate": {
+            "block": "minecraft:gravel",
+            "predicate_type": "minecraft:random_block_match",
+            "probability": 0.1
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "minecraft:netherrack"
+          }
+        },
+        {
+          "input_predicate": {
+            "block": "minecraft:lever",
+            "predicate_type": "minecraft:random_block_match",
+            "probability": 0.5
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "minecraft:netherrack"
+          }
+        },
+        {
+          "input_predicate": {
+            "block": "minecraft:lever",
+            "predicate_type": "minecraft:random_block_match",
+            "probability": 0.1
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "pigsteel:pigsteel_chunk_block"
+          }
+        },
+        {
+          "input_predicate": {
+            "block": "minecraft:gravel",
+            "predicate_type": "minecraft:random_block_match",
+            "probability": 0.05
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "pigsteel:porkslag"
+          }
+        },
+        {
+          "input_predicate": {
+            "block": "minecraft:nether_bricks",
+            "predicate_type": "minecraft:random_block_match",
+            "probability": 0.5
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "minecraft:cracked_nether_bricks"
+          }
+        },
+        {
+          "input_predicate": {
+            "block": "minecraft:crimson_planks",
+            "predicate_type": "minecraft:random_block_match",
+            "probability": 0.3
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "minecraft:gravel"
+          }
+        },
+        {
+          "input_predicate": {
+            "block": "minecraft:crimson_planks",
+            "predicate_type": "minecraft:random_block_match",
+            "probability": 0.3
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "minecraft:netherrack"
+          }
+        },
+        {
+          "input_predicate": {
+            "block": "minecraft:nether_bricks",
+            "predicate_type": "minecraft:random_block_match",
+            "probability": 0.5
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "minecraft:netherrack"
+          }
+        },
+        {
+          "input_predicate": {
+            "block": "minecraft:red_nether_bricks",
+            "predicate_type": "minecraft:random_block_match",
+            "probability": 0.5
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "minecraft:netherrack"
+          }
+        },
+        {
+          "input_predicate": {
+            "block": "minecraft:red_nether_brick_stairs",
+            "predicate_type": "minecraft:random_block_match",
+            "probability": 0.4
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "minecraft:netherrack"
+          }
+        },
+        {
+          "input_predicate": {
+            "block": "pigsteel:pigsteel_lantern",
+            "predicate_type": "minecraft:random_block_match",
+            "probability": 0.5
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "minecraft:netherrack"
+          }
+        },
+        {
+          "input_predicate": {
+            "block": "minecraft:rail",
+            "predicate_type": "minecraft:random_block_match",
+            "probability": 0.5
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "minecraft:netherrack"
+          }
+        },
+        {
+          "input_predicate": {
+            "block": "minecraft:netherrack",
+            "predicate_type": "minecraft:random_block_match",
+            "probability": 0.1
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "minecraft:gravel"
+          }
+        },
+        {
+          "input_predicate": {
+            "block": "minecraft:netherrack",
+            "predicate_type": "minecraft:random_block_match",
+            "probability": 0.01
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "pigsteel:pigsteel_chunk_block"
+          }
+        },
+        {
+          "input_predicate": {
+            "block": "pigsteel:pigsteel_chunk_block",
+            "predicate_type": "minecraft:random_block_match",
+            "probability": 0.4
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "minecraft:ancient_debris"
+          }
+        },
+        {
+          "input_predicate": {
+            "block": "pigsteel:pigsteel_chunk_block",
+            "predicate_type": "minecraft:random_block_match",
+            "probability": 0.2
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "pigsteel:porkslag"
+          }
+        },
+        {
+          "input_predicate": {
+            "block": "minecraft:netherrack",
+            "predicate_type": "minecraft:random_block_match",
+            "probability": 0.05
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "pigsteel:porkslag"
+          }
+        }
+      ]
+    },
+    {
+      "delegate": {
+        "processor_type": "minecraft:rule",
+        "rules": [
+          {
+            "block_entity_modifier": {
+              "type": "minecraft:append_loot",
+              "loot_table": "pigsteel:archeology/pigsteel_mine_archaeology"
+            },
+            "input_predicate": {
+              "predicate_type": "minecraft:tag_match",
+              "tag": "pigsteel:pigsteel_mine_replaceable"
+            },
+            "location_predicate": {
+              "predicate_type": "minecraft:always_true"
+            },
+            "output_state": {
+              "Name": "minecraft:suspicious_gravel",
+              "Properties": {
+                "dusted": "0"
+              }
+            }
+          }
+        ]
+      },
+      "limit": 64,
+      "processor_type": "minecraft:capped"
+    }
+  ]
+}

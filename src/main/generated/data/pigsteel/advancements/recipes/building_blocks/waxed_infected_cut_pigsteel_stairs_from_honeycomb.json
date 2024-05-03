@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "pigsteel:infected_cut_pigsteel_stairs"
-            ]
+            "items": "pigsteel:infected_cut_pigsteel_stairs"
           }
         ]
       },
@@ -22,14 +20,13 @@
   },
   "requirements": [
     [
-      "has_infected_cut_pigsteel_stairs",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_infected_cut_pigsteel_stairs"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:waxed_infected_cut_pigsteel_stairs_from_honeycomb"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

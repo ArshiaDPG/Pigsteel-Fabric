@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '1.2-SNAPSHOT'
+	id 'fabric-loom' version '1.6.+'
 	id 'maven-publish'
 	id "me.shedaniel.unified-publishing" version "0.1.+"
 }
@@ -35,9 +35,9 @@ dependencies {
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-	runtimeOnly("com.github.llamalad7.mixinextras:mixinextras-fabric:0.2.0-beta.9")
-	modRuntimeOnly("maven.modrinth:HIuqnQpi:AlRsvRjn")
-	modImplementation ("maven.modrinth:trimmed:${project.trimmed}")
+//	runtimeOnly("com.github.llamalad7.mixinextras:mixinextras-fabric:0.2.0-beta.9")
+//	modRuntimeOnly("maven.modrinth:HIuqnQpi:AlRsvRjn")
+//	modImplementation ("maven.modrinth:trimmed:${project.trimmed}")
 }
 
 processResources {

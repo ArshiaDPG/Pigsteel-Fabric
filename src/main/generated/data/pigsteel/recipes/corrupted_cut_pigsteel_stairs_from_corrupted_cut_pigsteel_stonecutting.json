@@ -1,8 +1,10 @@
 {
   "type": "minecraft:stonecutting",
-  "count": 1,
   "ingredient": {
     "item": "pigsteel:corrupted_cut_pigsteel"
   },
-  "result": "pigsteel:corrupted_cut_pigsteel_stairs"
+  "result": {
+    "count": 1,
+    "id": "pigsteel:corrupted_cut_pigsteel_stairs"
+  }
 }

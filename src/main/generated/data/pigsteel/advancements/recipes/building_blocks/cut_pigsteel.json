@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "pigsteel:refined_pigsteel"
-            ]
+            "items": "pigsteel:refined_pigsteel"
           }
         ]
       },
@@ -22,14 +20,13 @@
   },
   "requirements": [
     [
-      "has_refined_pigsteel",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_refined_pigsteel"
     ]
   ],
   "rewards": {
     "recipes": [
       "pigsteel:cut_pigsteel"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

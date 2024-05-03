@@ -5,14 +5,18 @@ import net.digitalpear.pigsteel.init.PigsteelItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.registry.Registries;
+import net.minecraft.registry.RegistryWrapper;
+
+import java.util.concurrent.CompletableFuture;
 
 public class PigsteelLanguageProvider extends FabricLanguageProvider {
-    public PigsteelLanguageProvider(FabricDataOutput dataOutput) {
-        super(dataOutput);
+
+    public PigsteelLanguageProvider(FabricDataOutput dataOutput, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
+        super(dataOutput, registryLookup);
     }
 
     @Override
-    public void generateTranslations(TranslationBuilder translationBuilder) {
+    public void generateTranslations(RegistryWrapper.WrapperLookup registryLookup, TranslationBuilder translationBuilder) {
 
         translationBuilder.add(PigsteelBlocks.PORKSLAG, "Porkslag");
 
@@ -60,4 +64,6 @@ public class PigsteelLanguageProvider extends FabricLanguageProvider {
 
         return result.toString().trim(); // Trim any leading/trailing spaces and return the formatted string
     }
+
+
 }

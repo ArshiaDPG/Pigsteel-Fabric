@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "pigsteel:corrupted_cut_pigsteel_slab"
-            ]
+            "items": "pigsteel:corrupted_cut_pigsteel_slab"
           }
         ]
       },
@@ -22,14 +20,13 @@
   },
   "requirements": [
     [
-      "has_corrupted_cut_pigsteel_slab",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_corrupted_cut_pigsteel_slab"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:waxed_corrupted_cut_pigsteel_slab_from_honeycomb"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "pigsteel:corrupted_refined_pigsteel"
-            ]
+            "items": "pigsteel:corrupted_refined_pigsteel"
           }
         ]
       },
@@ -22,14 +20,13 @@
   },
   "requirements": [
     [
-      "has_corrupted_refined_pigsteel",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_corrupted_refined_pigsteel"
     ]
   ],
   "rewards": {
     "recipes": [
       "minecraft:corrupted_cut_pigsteel_slab_from_corrupted_refined_pigsteel_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

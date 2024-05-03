@@ -18,6 +18,7 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class ZombifiableBlockRegistry {
 
@@ -203,10 +204,7 @@ public class ZombifiableBlockRegistry {
     }
     public void addToItemGroup(RegistryKey<ItemGroup> itemGroup, Item afterItem){
         ItemGroupEvents.modifyEntriesEvent(itemGroup).register(entries -> {
-            List<ItemStack> list = new ArrayList<>();
-            getAllBlocks().forEach(block -> {
-                list.add(new ItemStack(block));
-            });
+            List<ItemStack> list = getAllBlocks().stream().map(ItemStack::new).collect(Collectors.toList());
 
             entries.addAfter(afterItem, list);
         });

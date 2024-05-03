@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "pigsteel:infected_cut_pigsteel"
-            ]
+            "items": "pigsteel:infected_cut_pigsteel"
           }
         ]
       },
@@ -22,14 +20,13 @@
   },
   "requirements": [
     [
-      "has_infected_cut_pigsteel",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_infected_cut_pigsteel"
     ]
   ],
   "rewards": {
     "recipes": [
       "pigsteel:infected_cut_pigsteel_stairs"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

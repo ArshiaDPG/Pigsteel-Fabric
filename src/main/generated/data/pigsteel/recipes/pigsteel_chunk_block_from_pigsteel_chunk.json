@@ -12,7 +12,7 @@
     "###"
   ],
   "result": {
-    "item": "pigsteel:pigsteel_chunk_block"
-  },
-  "show_notification": true
+    "count": 1,
+    "id": "pigsteel:pigsteel_chunk_block"
+  }
 }

@@ -16,6 +16,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.intprovider.UniformIntProvider;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,15 +30,14 @@ public class PigsteelBlocks {
     public static BlockItem createBlockItem(String blockID, Block block) {
         return Registry.register(Registries.ITEM, new Identifier(Pigsteel.MOD_ID, blockID), new BlockItem(block, new Item.Settings().fireproof()));
     }
-    public static Block createOreBlock(String blockID, Block baseBlock) {
-        return createBlockWithItem(blockID, new ExperienceDroppingBlock(FabricBlockSettings.copy(baseBlock).mapColor(MapColor.PALE_PURPLE)));
-    }
 
     public static Block createBlockWithItem(String blockID, Block block) {
         createBlockItem(blockID, block);
         return Registry.register(Registries.BLOCK, new Identifier(Pigsteel.MOD_ID, blockID), block);
     }
-    public static final Block PORKSLAG = createBlockWithItem("porkslag", new ExperienceDroppingBlock(AbstractBlock.Settings.create()
+    public static final Block PORKSLAG = createBlockWithItem("porkslag",
+            new ExperienceDroppingBlock(UniformIntProvider.create(0, 0),
+            AbstractBlock.Settings.create()
             .sounds(BlockSoundGroup.POLISHED_DEEPSLATE)
             .strength(2.5f)
             .mapColor(MapColor.PURPLE)
@@ -92,9 +92,6 @@ public class PigsteelBlocks {
 
         PIGSTEEL_WAXING_MAP.forEach(OxidizableBlocksRegistry::registerWaxableBlockPair);
         PIGSTEEL_ZOMBIFYING_MAP.forEach(OxidizableBlocksRegistry::registerOxidizableBlockPair);
-
-        ResourceManagerHelper.registerBuiltinResourcePack(new Identifier(Pigsteel.MOD_ID, "pigsteel_ore"),
-                FabricLoader.getInstance().getModContainer(Pigsteel.MOD_ID).orElseThrow(), ResourcePackActivationType.NORMAL);
     }
 
     private static void mapWaxingAndAxing(ZombifiableBlockRegistry zombifiableBlockRegistry){
