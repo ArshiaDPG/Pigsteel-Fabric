@@ -2,10 +2,15 @@ package net.digitalpear.pigsteel.datagen;
 
 import net.digitalpear.pigsteel.init.PigsteelBlocks;
 import net.digitalpear.pigsteel.init.PigsteelItems;
+import net.digitalpear.pigsteel.init.tags.PigsteelBiomeTags;
+import net.digitalpear.pigsteel.init.tags.PigsteelBlockTags;
+import net.digitalpear.pigsteel.init.tags.PigsteelItemTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
+import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.TagKey;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -33,7 +38,20 @@ public class PigsteelLanguageProvider extends FabricLanguageProvider {
         translationBuilder.add(PigsteelBlocks.WAXED_ZOMBIFIED_CUT_PIGSTEEL_STAIRS, "Waxed Zombified Cut Pigsteel Stairs");
 
         translationBuilder.add(PigsteelItems.PIGSTEEL_CHUNK, "Pigsteel Chunk");
+        translationBuilder.add(PigsteelItems.MUSIC_DISC_MOLTEN, "Music Disc");
+        buildDiscFragment(translationBuilder, PigsteelItems.DISC_FRAGMENT_MOLTEN, "Molten");
 
+        makeTagTranslation(translationBuilder, PigsteelItemTags.PIGSTEEL_ORES);
+
+        makeTagTranslation(translationBuilder, PigsteelBlockTags.PIGSTEEL_BLOCKS);
+        makeTagTranslation(translationBuilder, PigsteelBlockTags.PIGSTEEL_ORES);
+        makeTagTranslation(translationBuilder, PigsteelBlockTags.PIGSTEEL_MINE_REPLACEABLE);
+        makeTagTranslation(translationBuilder, PigsteelBlockTags.ZOMBIFICATION_ACCELERATION);
+        makeTagTranslation(translationBuilder, PigsteelBlockTags.ZOMBIFICATION_DECELERATION);
+
+        makeTagTranslation(translationBuilder, PigsteelBiomeTags.HAS_EXTRA_PIGSTEEL);
+        makeTagTranslation(translationBuilder, PigsteelBiomeTags.HAS_NO_PIGSTEEL);
+        makeTagTranslation(translationBuilder, PigsteelBiomeTags.HAS_PIGSTEEL_MINE);
 
 
         PigsteelBlocks.refinedPigsteel.getAllBlocks().forEach(block -> translationBuilder.add(block, formatString(Registries.BLOCK.getId(block).getPath())));
@@ -43,6 +61,15 @@ public class PigsteelLanguageProvider extends FabricLanguageProvider {
         PigsteelBlocks.pigsteelSoulLanterns.getAllBlocks().forEach(block -> translationBuilder.add(block, formatString(Registries.BLOCK.getId(block).getPath())));
 
         translationBuilder.add("trim_material.pigsteel.pigsteel", "Pigsteel");
+    }
+
+    public static void makeTagTranslation(TranslationBuilder builder, TagKey<?> tagKey){
+        builder.add(tagKey, formatString(tagKey.id().getPath()));
+    }
+
+    public static void buildDiscFragment(TranslationBuilder builder, Item item, String songName){
+        builder.add(item, "Disc Fragment");
+        builder.add(item.getTranslationKey() + ".desc", "Music Disc - " + songName);
     }
 
 

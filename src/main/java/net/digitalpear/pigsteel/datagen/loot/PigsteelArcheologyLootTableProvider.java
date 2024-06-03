@@ -1,5 +1,6 @@
 package net.digitalpear.pigsteel.datagen.loot;
 
+import net.digitalpear.pigsteel.init.PigsteelItems;
 import net.digitalpear.pigsteel.init.data.PigsteelArcheologyLootTables;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.SimpleFabricLootTableProvider;
@@ -22,11 +23,12 @@ public class PigsteelArcheologyLootTableProvider extends SimpleFabricLootTablePr
     }
 
     @Override
-    public void accept(RegistryWrapper.WrapperLookup registryLookup, BiConsumer<RegistryKey<LootTable>, LootTable.Builder> consumer) {
-        consumer.accept(PigsteelArcheologyLootTables.PIGSTEEL_MINE_ARCHAEOLOGY, LootTable.builder().pool(LootPool.builder()
+    public void accept(BiConsumer<RegistryKey<LootTable>, LootTable.Builder> lootTableBiConsumer) {
+        lootTableBiConsumer.accept(PigsteelArcheologyLootTables.PIGSTEEL_MINE_ARCHAEOLOGY, LootTable.builder().pool(LootPool.builder()
 
-                .with(ItemEntry.builder(Items.GOLDEN_PICKAXE).weight(6).apply(SetDamageLootFunction.builder(UniformLootNumberProvider.create(0.15F, 0.5F))))
-                .with(ItemEntry.builder(Items.GOLDEN_AXE).weight(4).apply(SetDamageLootFunction.builder(UniformLootNumberProvider.create(0.15F, 0.5F))))
+                .with(ItemEntry.builder(Items.GOLDEN_PICKAXE).weight(6).apply(SetDamageLootFunction.builder(UniformLootNumberProvider.create(0.15F, 0.65F))))
+                .with(ItemEntry.builder(Items.GOLDEN_AXE).weight(4).apply(SetDamageLootFunction.builder(UniformLootNumberProvider.create(0.15F, 0.65F))))
+                .with(ItemEntry.builder(Items.GOLDEN_HELMET).weight(4).apply(SetDamageLootFunction.builder(UniformLootNumberProvider.create(0.15F, 0.65F))))
 
                 .with(ItemEntry.builder(Items.GOLD_INGOT).weight(5))
                 .with(ItemEntry.builder(Items.GOLD_NUGGET).weight(13))
@@ -38,7 +40,8 @@ public class PigsteelArcheologyLootTableProvider extends SimpleFabricLootTablePr
                 .with(ItemEntry.builder(Items.STRING).weight(13))
                 .with(ItemEntry.builder(Items.RAIL).weight(5))
 
-                .with(ItemEntry.builder(Items.MUSIC_DISC_BLOCKS).weight(2))
+
+                .with(ItemEntry.builder(PigsteelItems.DISC_FRAGMENT_MOLTEN).weight(4))
 
                 .build()));
     }

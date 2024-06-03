@@ -65,14 +65,14 @@ public class PigsteelRecipeProvider extends FabricRecipeProvider {
     }
     public static void offerReversibleCompactingIngotRecipes(RecipeExporter exporter, RecipeCategory reverseCategory, ItemConvertible baseItem, RecipeCategory compactingCategory, ItemConvertible compactItem, @Nullable String compactingGroup, @Nullable String reverseGroup) {
         ShapelessRecipeJsonBuilder.create(reverseCategory, baseItem, 9).input(compactItem).group(reverseGroup).criterion(hasItem(compactItem),
-                conditionsFromItem(compactItem)).offerTo(exporter, new Identifier(Pigsteel.MOD_ID, Registries.ITEM.getId(baseItem.asItem()).getPath() +"_from_" + Registries.ITEM.getId(compactItem.asItem()).getPath()));
+                conditionsFromItem(compactItem)).offerTo(exporter, Pigsteel.getModId(Registries.ITEM.getId(baseItem.asItem()).getPath() +"_from_" + Registries.ITEM.getId(compactItem.asItem()).getPath()));
 
         ShapedRecipeJsonBuilder.create(compactingCategory, compactItem)
                 .input('#', baseItem)
                 .pattern("###")
                 .pattern("###")
                 .pattern("###").group(compactingGroup)
-                .criterion(hasItem(baseItem), conditionsFromItem(baseItem)).offerTo(exporter, new Identifier(Pigsteel.MOD_ID, Registries.ITEM.getId(compactItem.asItem()).getPath() +"_from_" + Registries.ITEM.getId(baseItem.asItem()).getPath()));
+                .criterion(hasItem(baseItem), conditionsFromItem(baseItem)).offerTo(exporter, Pigsteel.getModId(Registries.ITEM.getId(compactItem.asItem()).getPath() +"_from_" + Registries.ITEM.getId(baseItem.asItem()).getPath()));
     }
     public static void makeSmeltnBlast(RecipeExporter exporter, List<ItemConvertible> inputs, RecipeCategory category, ItemConvertible output, float experience, int cookingTime, String group){
         RecipeProvider.offerSmelting(exporter, inputs, category, output, experience, cookingTime, group);
@@ -105,6 +105,8 @@ public class PigsteelRecipeProvider extends FabricRecipeProvider {
         makeLantern(exporter, PigsteelBlocks.pigsteelSoulLanterns.getUnaffectedBlock(), Items.SOUL_TORCH);
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, PigsteelBlocks.refinedPigsteel.getUnaffectedBlock()).pattern("##").pattern("##").input('#', PigsteelItems.PIGSTEEL_CHUNK).criterion(hasItem(PigsteelItems.PIGSTEEL_CHUNK), conditionsFromItem(PigsteelItems.PIGSTEEL_CHUNK)).offerTo(exporter);
+
+        offerCompactingRecipe(exporter, RecipeCategory.MISC, PigsteelItems.MUSIC_DISC_MOLTEN, PigsteelItems.DISC_FRAGMENT_MOLTEN);
     }
 
 

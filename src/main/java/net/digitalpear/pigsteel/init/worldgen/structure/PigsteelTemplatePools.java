@@ -22,7 +22,7 @@ public class PigsteelTemplatePools {
     public static List<RegistryKey<StructurePool>> templates = new ArrayList<>();
 
     public static RegistryKey<StructurePool> of(String id) {
-        return RegistryKey.of(RegistryKeys.TEMPLATE_POOL, new Identifier(Pigsteel.MOD_ID, id));
+        return RegistryKey.of(RegistryKeys.TEMPLATE_POOL, Pigsteel.getModId(id));
     }
     public static void register(Registerable<StructurePool> structurePoolsRegisterable, RegistryKey<StructurePool> id, StructurePool pool) {
         structurePoolsRegisterable.register(of(id.getValue().getPath()), pool);
@@ -60,6 +60,7 @@ public class PigsteelTemplatePools {
 
         templates.add(MINE_ENTRANCE);
         templates.add(MINE_RAILWAY);
+
     }
 
     public static String mineName(String name){

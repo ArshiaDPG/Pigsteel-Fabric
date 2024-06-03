@@ -32,8 +32,6 @@ public class PigsteelBlockTagProvider extends FabricTagProvider<Block> {
         getOrCreateTagBuilder(PigsteelBlockTags.PIGSTEEL_MINE_REPLACEABLE)
                 .add(Blocks.GRAVEL)
                 .addOptionalTag(BlockTags.NETHER_CARVER_REPLACEABLES)
-                .add(Blocks.NETHER_BRICKS).add(Blocks.CHISELED_NETHER_BRICKS).add(Blocks.NETHER_BRICK_STAIRS).add(Blocks.NETHER_BRICK_SLAB).add(Blocks.NETHER_BRICK_WALL)
-                .add(Blocks.RED_NETHER_BRICKS).add(Blocks.RED_NETHER_BRICK_STAIRS).add(Blocks.RED_NETHER_BRICK_SLAB).add(Blocks.RED_NETHER_BRICK_WALL)
                 .add(Blocks.RAIL)
                 .add(Blocks.LEVER)
                 .add(PigsteelBlocks.pigsteelLanterns.getUnaffectedBlock())

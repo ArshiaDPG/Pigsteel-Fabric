@@ -49,6 +49,18 @@
   "block.pigsteel.zombified_pigsteel_lantern": "Zombified Pigsteel Lantern",
   "block.pigsteel.zombified_pigsteel_soul_lantern": "Zombified Pigsteel Soul Lantern",
   "block.pigsteel.zombified_refined_pigsteel": "Zombified Refined Pigsteel",
+  "item.pigsteel.disc_fragment_molten": "Disc Fragment",
+  "item.pigsteel.disc_fragment_molten.desc": "Music Disc - Molten",
+  "item.pigsteel.music_disc_molten": "Music Disc",
   "item.pigsteel.pigsteel_chunk": "Pigsteel Chunk",
+  "tag.block.pigsteel.pigsteel_blocks": "Pigsteel Blocks",
+  "tag.block.pigsteel.pigsteel_mine_replaceable": "Pigsteel Mine Replaceable",
+  "tag.block.pigsteel.pigsteel_ores": "Pigsteel Ores",
+  "tag.block.pigsteel.zombification_acceleration": "Zombification Acceleration",
+  "tag.block.pigsteel.zombification_deceleration": "Zombification Deceleration",
+  "tag.item.pigsteel.pigsteel_ores": "Pigsteel Ores",
+  "tag.worldgen.biome.pigsteel.has_extra_pigsteel": "Has Extra Pigsteel",
+  "tag.worldgen.biome.pigsteel.has_no_pigsteel": "Has No Pigsteel",
+  "tag.worldgen.biome.pigsteel.has_pigsteel_mine": "Has Pigsteel Mine",
   "trim_material.pigsteel.pigsteel": "Pigsteel"
 }

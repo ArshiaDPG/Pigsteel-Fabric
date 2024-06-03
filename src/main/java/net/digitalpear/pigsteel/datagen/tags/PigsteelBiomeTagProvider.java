@@ -30,11 +30,7 @@ public class PigsteelBiomeTagProvider extends FabricTagProvider<Biome> {
         getOrCreateTagBuilder(PigsteelBiomeTags.HAS_EXTRA_PIGSTEEL).add(BiomeKeys.BASALT_DELTAS);
         getOrCreateTagBuilder(PigsteelBiomeTags.HAS_NO_PIGSTEEL);
 
-        getOrCreateTagBuilder(PigsteelBiomeTags.HAS_PIGSTEEL_MINE);
-//                .add(BiomeKeys.NETHER_WASTES)
-//                .add(BiomeKeys.CRIMSON_FOREST)
-//                .add(BiomeKeys.WARPED_FOREST)
-//                .add(BiomeKeys.BASALT_DELTAS)
-//                .add(BiomeKeys.SOUL_SAND_VALLEY);
+        getOrCreateTagBuilder(PigsteelBiomeTags.HAS_PIGSTEEL_MINE)
+                .addOptionalTag(BiomeTags.IS_NETHER);
     }
 }

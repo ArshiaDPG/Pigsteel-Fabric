@@ -3,11 +3,7 @@ package net.digitalpear.pigsteel.init;
 import net.digitalpear.pigsteel.Pigsteel;
 import net.digitalpear.pigsteel.common.blocks.*;
 import net.digitalpear.pigsteel.init.data.ZombifiableBlockRegistry;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
-import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
-import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
-import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.*;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.item.BlockItem;
@@ -15,7 +11,6 @@ import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 
 import java.util.HashMap;
@@ -28,20 +23,24 @@ public class PigsteelBlocks {
     public static Map<Block, Block> PIGSTEEL_ZOMBIFYING_MAP = new HashMap<>();
 
     public static BlockItem createBlockItem(String blockID, Block block) {
-        return Registry.register(Registries.ITEM, new Identifier(Pigsteel.MOD_ID, blockID), new BlockItem(block, new Item.Settings().fireproof()));
+        return Registry.register(Registries.ITEM, Pigsteel.getModId(blockID), new BlockItem(block, new Item.Settings().fireproof()));
     }
 
     public static Block createBlockWithItem(String blockID, Block block) {
         createBlockItem(blockID, block);
-        return Registry.register(Registries.BLOCK, new Identifier(Pigsteel.MOD_ID, blockID), block);
+        return Registry.register(Registries.BLOCK, Pigsteel.getModId(blockID), block);
     }
+
+
+
     public static final Block PORKSLAG = createBlockWithItem("porkslag",
             new ExperienceDroppingBlock(UniformIntProvider.create(0, 0),
             AbstractBlock.Settings.create()
-            .sounds(BlockSoundGroup.POLISHED_DEEPSLATE)
-            .strength(2.5f)
-            .mapColor(MapColor.PURPLE)
-            .requiresTool()));
+                .ticksRandomly()
+                .sounds(BlockSoundGroup.POLISHED_DEEPSLATE)
+                .strength(2.5f)
+                .mapColor(MapColor.PURPLE)
+                .requiresTool()));
 
 
     public static final Block PIGSTEEL_CHUNK_BLOCK = createBlockWithItem("pigsteel_chunk_block",
@@ -71,9 +70,7 @@ public class PigsteelBlocks {
     public static final Block WAXED_CORRUPTED_CUT_PIGSTEEL_STAIRS = createBlockWithItem("waxed_corrupted_cut_pigsteel_stairs", new StairsBlock(cutPigsteel.getWaxedCorruptedBlock().getDefaultState(), AbstractBlock.Settings.copy(cutPigsteel.getWaxedCorruptedBlock())));
     public static final Block WAXED_ZOMBIFIED_CUT_PIGSTEEL_STAIRS = createBlockWithItem("waxed_zombified_cut_pigsteel_stairs", new StairsBlock(cutPigsteel.getWaxedZombifiedBlock().getDefaultState(), AbstractBlock.Settings.copy(cutPigsteel.getWaxedZombifiedBlock())));
 
-
     public static void init(){
-
         PIGSTEEL_WAXING_MAP.put(CUT_PIGSTEEL_STAIRS, WAXED_CUT_PIGSTEEL_STAIRS);
         PIGSTEEL_WAXING_MAP.put(INFECTED_CUT_PIGSTEEL_STAIRS, WAXED_INFECTED_CUT_PIGSTEEL_STAIRS);
         PIGSTEEL_WAXING_MAP.put(CORRUPTED_CUT_PIGSTEEL_STAIRS, WAXED_CORRUPTED_CUT_PIGSTEEL_STAIRS);

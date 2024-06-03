@@ -8,7 +8,6 @@ import net.digitalpear.pigsteel.init.data.PigsteelData;
 import net.digitalpear.pigsteel.init.worldgen.PigsteelConfiguredFeatures;
 import net.digitalpear.pigsteel.init.worldgen.PigsteelPlacedFeatures;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.biome.v1.BiomeModification;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
 import net.fabricmc.loader.api.FabricLoader;
@@ -22,6 +21,9 @@ public class Pigsteel implements ModInitializer {
 	public static final String MOD_ID = "pigsteel";
 	public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
 
+	public static Identifier getModId(String id){
+		return Identifier.of(MOD_ID, id);
+	}
 
 	@Override
 	public void onInitialize() {
@@ -33,8 +35,10 @@ public class Pigsteel implements ModInitializer {
 		PigsteelData.init();
 		PigsteelArmorTrimMaterials.init();
 
-		ResourceManagerHelper.registerBuiltinResourcePack(new Identifier(MOD_ID, "pigsteel_ore"),
+
+		ResourceManagerHelper.registerBuiltinResourcePack(Identifier.of(MOD_ID, "pigsteel_ore"),
 				FabricLoader.getInstance().getModContainer(MOD_ID).orElseThrow(), ResourcePackActivationType.NORMAL);
+
 
 		LOGGER.info("Let there be pigsteel!");
 	}

@@ -18,9 +18,9 @@ public class PigsteelBlockTags {
     public static final TagKey<Block> C_ORES = of("c", "ores");
 
     private static TagKey<Block> of(String id) {
-        return TagKey.of(Registries.BLOCK.getKey(), new Identifier(Pigsteel.MOD_ID, id));
+        return of(Pigsteel.MOD_ID, id);
     }
     private static TagKey<Block> of(String modid,String id) {
-        return TagKey.of(Registries.BLOCK.getKey(), new Identifier(modid, id));
+        return TagKey.of(Registries.BLOCK.getKey(), Identifier.of(modid, id));
     }
 }

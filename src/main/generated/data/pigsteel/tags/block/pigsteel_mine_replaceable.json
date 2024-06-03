@@ -1,0 +1,12 @@
+{
+  "values": [
+    "minecraft:gravel",
+    {
+      "id": "#minecraft:nether_carver_replaceables",
+      "required": false
+    },
+    "minecraft:rail",
+    "minecraft:lever",
+    "pigsteel:pigsteel_lantern"
+  ]
+}

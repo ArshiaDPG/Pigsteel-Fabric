@@ -9,6 +9,7 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.entry.RegistryEntryList;
 import net.minecraft.registry.tag.BiomeTags;
+import net.minecraft.structure.StructureLiquidSettings;
 import net.minecraft.structure.pool.StructurePool;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.Pool;
@@ -28,7 +29,7 @@ public class PigsteelStructures {
 
     public static List<RegistryKey<Structure>> structures = new ArrayList<>();
     public static RegistryKey<Structure> of(String id) {
-        RegistryKey<Structure> poolRegistryKey = RegistryKey.of(RegistryKeys.STRUCTURE, new Identifier(Pigsteel.MOD_ID, id));
+        RegistryKey<Structure> poolRegistryKey = RegistryKey.of(RegistryKeys.STRUCTURE, Pigsteel.getModId(id));
         structures.add(poolRegistryKey);
         return poolRegistryKey;
     }
@@ -56,13 +57,15 @@ public class PigsteelStructures {
                         new StructureSpawns(StructureSpawns.BoundingBox.STRUCTURE, Pool.empty()))),
                 GenerationStep.Feature.UNDERGROUND_STRUCTURES, StructureTerrainAdaptation.BURY),
                 registryEntryLookup2.getOrThrow(PigsteelTemplatePools.MINE_ENTRANCE),
-                Optional.of(new Identifier(Pigsteel.MOD_ID, "pigsteel_mine_entrance")),
+                Optional.of(Identifier.of(Pigsteel.MOD_ID, "pigsteel_mine_entrance")),
                 16,
-                ConstantHeightProvider.create(YOffset.fixed(5)),
+                ConstantHeightProvider.create(YOffset.fixed(110)),
                 false,
                 Optional.empty(),
                 116,
-                List.of()));
+                List.of(),
+                JigsawStructure.DEFAULT_DIMENSION_PADDING,
+                JigsawStructure.DEFAULT_LIQUID_SETTINGS
+                ));
     }
-
 }

@@ -2,10 +2,8 @@ package net.digitalpear.pigsteel.common.blocks;
 
 import net.digitalpear.pigsteel.init.PigsteelBlocks;
 import net.digitalpear.pigsteel.init.tags.PigsteelBlockTags;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Degradable;
-import net.minecraft.block.MapColor;
+import net.minecraft.block.*;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.StringIdentifiable;
 import net.minecraft.util.math.BlockPos;
@@ -52,7 +50,7 @@ public interface Zombifiable extends Degradable<Zombifiable.ZombificationLevel> 
                 chance += blockInfluence;
             }
             else if (isZombifiablePigsteelBlock(world.getBlockState(blockPos))){
-                    chance -= blockInfluence / 2;
+                chance -= blockInfluence / 2;
             }
         }
         if (world.getRandom().nextFloat() < chance){
@@ -68,7 +66,6 @@ public interface Zombifiable extends Degradable<Zombifiable.ZombificationLevel> 
     default boolean isZombifiablePigsteelBlock(BlockState state){
         return state.getBlock() instanceof Zombifiable;
     }
-
 
     enum ZombificationLevel implements StringIdentifiable {
         UNAFFECTED("", MapColor.PURPLE),

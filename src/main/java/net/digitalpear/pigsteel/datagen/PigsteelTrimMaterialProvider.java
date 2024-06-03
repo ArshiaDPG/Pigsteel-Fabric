@@ -20,8 +20,6 @@ public class PigsteelTrimMaterialProvider extends FabricDynamicRegistryProvider 
         add(registries, entries, PigsteelArmorTrimMaterials.PIGSTEEL);
     }
 
-
-
     private void add(RegistryWrapper.WrapperLookup registries, Entries entries, RegistryKey<ArmorTrimMaterial> resourceKey) {
         RegistryWrapper.Impl<ArmorTrimMaterial> configuredFeatureRegistryLookup = registries.getWrapperOrThrow(RegistryKeys.TRIM_MATERIAL);
 

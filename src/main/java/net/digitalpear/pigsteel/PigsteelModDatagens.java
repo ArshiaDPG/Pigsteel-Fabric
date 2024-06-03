@@ -65,5 +65,6 @@ public class PigsteelModDatagens implements DataGeneratorEntrypoint {
         registryBuilder.addRegistry(RegistryKeys.TEMPLATE_POOL, PigsteelTemplatePools::bootstrap);
         registryBuilder.addRegistry(RegistryKeys.STRUCTURE_SET, PigsteelStructureSets::bootstrap);
         registryBuilder.addRegistry(RegistryKeys.PROCESSOR_LIST, PigsteelProcessorLists::bootstrap);
+
     }
 }

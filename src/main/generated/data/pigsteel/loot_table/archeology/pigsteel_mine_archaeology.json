@@ -11,7 +11,7 @@
               "add": false,
               "damage": {
                 "type": "minecraft:uniform",
-                "max": 0.5,
+                "max": 0.65,
                 "min": 0.15
               },
               "function": "minecraft:set_damage"
@@ -27,13 +27,29 @@
               "add": false,
               "damage": {
                 "type": "minecraft:uniform",
-                "max": 0.5,
+                "max": 0.65,
                 "min": 0.15
               },
               "function": "minecraft:set_damage"
             }
           ],
           "name": "minecraft:golden_axe",
+          "weight": 4
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "damage": {
+                "type": "minecraft:uniform",
+                "max": 0.65,
+                "min": 0.15
+              },
+              "function": "minecraft:set_damage"
+            }
+          ],
+          "name": "minecraft:golden_helmet",
           "weight": 4
         },
         {
@@ -73,8 +89,8 @@
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:music_disc_blocks",
-          "weight": 2
+          "name": "pigsteel:disc_fragment_molten",
+          "weight": 4
         }
       ],
       "rolls": 1.0

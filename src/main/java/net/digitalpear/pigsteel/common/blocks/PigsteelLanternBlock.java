@@ -19,8 +19,6 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 
-import java.util.Arrays;
-
 
 public class PigsteelLanternBlock extends Block implements Waterloggable{
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
@@ -63,7 +61,6 @@ public class PigsteelLanternBlock extends Block implements Waterloggable{
         WorldView worldView = ctx.getWorld();
         BlockPos blockPos = ctx.getBlockPos();
         Direction[] directions = ctx.getPlacementDirections();
-        int var8 = directions.length;
 
         for (Direction direction : directions) {
             if (direction.getAxis().isHorizontal()) {

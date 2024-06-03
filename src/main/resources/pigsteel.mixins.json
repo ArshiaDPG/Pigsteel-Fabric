@@ -3,7 +3,8 @@
   "minVersion": "0.8",
   "package": "net.digitalpear.pigsteel.mixin",
   "compatibilityLevel": "JAVA_16",
-  "mixins": [],
+  "mixins": [
+  ],
   "client": [
     
   ],

@@ -34,10 +34,6 @@ dependencies {
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-
-//	runtimeOnly("com.github.llamalad7.mixinextras:mixinextras-fabric:0.2.0-beta.9")
-//	modRuntimeOnly("maven.modrinth:HIuqnQpi:AlRsvRjn")
-//	modImplementation ("maven.modrinth:trimmed:${project.trimmed}")
 }
 
 processResources {
@@ -112,9 +108,9 @@ unifiedPublishing {
 		displayName = "${project.minecraft_version}-${project.mod_version}" // Optional, name of the file
 		version = "${project.mod_version}" // Optional, Inferred from project by default
 		changelog = '''<ul>
-  <li>Updated to 1.20.5.</li>
-  <li>Added Pigsteel Mines, an experimental structure that does not generate by default, but you can add it by adding biomes to the has_pigsteel_mine biome tag.</li>
-  <li>Added has_pigsteel_mine biome tag.</li>
+  <li>Updated to 1.21.</li>
+  <li>Added translations for all item tags.</li>
+  <li>Added Pigsteel Veins that spawn lower in the nether in clumps of basalt, porkslag and pigsteel chunk blocks.</li>
 </ul> '''
 		releaseType = "release" // Optional, use "release", "beta" or "alpha"
 		gameVersions = ["${project.minecraft_version}", "1.20.6"]

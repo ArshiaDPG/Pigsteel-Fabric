@@ -19,7 +19,6 @@ public class PigsteelModelProvider extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-
         blockStateModelGenerator.registerSingleton(PigsteelBlocks.PORKSLAG, TexturedModel.CUBE_COLUMN);
 
         blockStateModelGenerator.registerSimpleCubeAll(PigsteelBlocks.PIGSTEEL_CHUNK_BLOCK);
@@ -42,7 +41,6 @@ public class PigsteelModelProvider extends FabricModelProvider {
             createWaxableSlab(blockStateModelGenerator, PigsteelBlocks.cutPigsteel.getZombifiables().get(i), PigsteelBlocks.cutPigsteelSlabs.getZombifiables().get(i),PigsteelBlocks.cutPigsteelSlabs.getWaxed().get(i));
         }
 
-
         createWaxableStairs(blockStateModelGenerator, PigsteelBlocks.cutPigsteel.getUnaffectedBlock(), PigsteelBlocks.CUT_PIGSTEEL_STAIRS, PigsteelBlocks.WAXED_CUT_PIGSTEEL_STAIRS);
         createWaxableStairs(blockStateModelGenerator, PigsteelBlocks.cutPigsteel.getInfectedBlock(), PigsteelBlocks.INFECTED_CUT_PIGSTEEL_STAIRS, PigsteelBlocks.WAXED_INFECTED_CUT_PIGSTEEL_STAIRS);
         createWaxableStairs(blockStateModelGenerator, PigsteelBlocks.cutPigsteel.getCorruptedBlock(), PigsteelBlocks.CORRUPTED_CUT_PIGSTEEL_STAIRS, PigsteelBlocks.WAXED_CORRUPTED_CUT_PIGSTEEL_STAIRS);
@@ -52,11 +50,13 @@ public class PigsteelModelProvider extends FabricModelProvider {
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
         itemModelGenerator.register(PigsteelItems.PIGSTEEL_CHUNK, Models.GENERATED);
+        itemModelGenerator.register(PigsteelItems.MUSIC_DISC_MOLTEN, Models.GENERATED);
+        itemModelGenerator.register(PigsteelItems.DISC_FRAGMENT_MOLTEN, Models.GENERATED);
     }
 
 
     private static Model block(String parent, TextureKey... requiredTextureKeys) {
-        return new Model(Optional.of(new Identifier(Pigsteel.MOD_ID, "block/" + parent)), Optional.empty(), requiredTextureKeys);
+        return new Model(Optional.of(Pigsteel.getModId("block/" + parent)), Optional.empty(), requiredTextureKeys);
     }
     public final void createLantern(BlockStateModelGenerator blockStateModelGenerator, Block lantern) {
         Identifier identifier = block("template_pigsteel_lantern", TextureKey.ALL).upload(lantern, TextureMap.all(lantern), blockStateModelGenerator.modelCollector);
