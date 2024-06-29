@@ -19,10 +19,8 @@
     "slag_count_max": 2,
 
     "slag_width_max": 2,
-    "slag_width_min": 1,
 
     "slag_chance": 0.95,
-
 
     "slag_targets": [
       {
