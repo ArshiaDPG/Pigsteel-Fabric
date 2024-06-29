@@ -10,9 +10,9 @@ public class OreSlagFeatureConfig extends OreFeatureConfig {
     public static final Codec<OreSlagFeatureConfig> CODEC = RecordCodecBuilder.create((instance) -> instance.group(
             Codec.list(Target.CODEC).fieldOf("slag_targets").forGetter((config) -> config.slagTargets),
 
-            Codec.intRange(0, 64).fieldOf("slag_count_max").forGetter((config) -> config.slagCountMax),
+            Codec.intRange(1, 64).fieldOf("slag_count_max").forGetter((config) -> config.slagCountMax),
 
-            Codec.intRange(0, 64).fieldOf("slag_width_max").forGetter((config) -> config.slagWidthMax),
+            Codec.intRange(1, 64).fieldOf("slag_width_max").forGetter((config) -> config.slagWidthMax),
 
             Codec.floatRange(0.0F, 1.0F).fieldOf("slag_chance").forGetter((config) -> config.slagChance),
 

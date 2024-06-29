@@ -42,7 +42,7 @@ public class PigsteelPlacedFeatures {
         RegistryEntry<ConfiguredFeature<?, ?>> pigsteelOreExtra = registryEntryLookup.getOrThrow(PigsteelConfiguredFeatures.ORE_PIGSTEEL_EXTRA);
 
         PlacedFeatures.register(featureRegisterable, ORE_PIGSTEEL, pigsteelOre, modifiersWithCount(12, HeightRangePlacementModifier.uniform(YOffset.fixed(0), YOffset.fixed(128))));
-        PlacedFeatures.register(featureRegisterable, ORE_PIGSTEEL_EXTRA, pigsteelOreExtra, modifiersWithCount(12, HeightRangePlacementModifier.uniform(YOffset.fixed(0), YOffset.fixed(128))));
+        PlacedFeatures.register(featureRegisterable, ORE_PIGSTEEL_EXTRA, pigsteelOreExtra, modifiersWithCount(14, HeightRangePlacementModifier.uniform(YOffset.fixed(0), YOffset.fixed(128))));
     }
 
     private static List<PlacementModifier> modifiers(PlacementModifier countModifier, PlacementModifier heightModifier) {
