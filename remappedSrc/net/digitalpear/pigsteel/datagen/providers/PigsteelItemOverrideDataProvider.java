@@ -1,4 +1,4 @@
-package net.digitalpear.pigsteel.datagen.providers;
+package net.digitalpear.pigsteel.common.datagen.providers;
 
 import dhyces.trimmed.api.data.ItemOverrideDataProvider;
 import net.digitalpear.pigsteel.Pigsteel;

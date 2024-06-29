@@ -1,0 +1,39 @@
+{
+  "type": "pigsteel:scattered_slag_ore",
+  "config": {
+    "discard_chance_on_air_exposure": 1.0,
+    "size": 3,
+    "targets": [
+      {
+        "state": {
+          "Name": "minecraft:ancient_debris"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "minecraft:base_stone_nether"
+        }
+      }
+    ],
+
+    //Values unique to the custom feature.
+    "slag_count_max": 2,
+
+    "slag_width_max": 2,
+    "slag_width_min": 1,
+
+    "slag_chance": 0.95,
+
+
+    "slag_targets": [
+      {
+        "state": {
+          "Name": "pigsteel:porkslag"
+        },
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "minecraft:base_stone_nether"
+        }
+      }
+    ]
+  }
+}

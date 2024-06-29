@@ -110,8 +110,10 @@ unifiedPublishing {
 		changelog = '''<ul>
   <li>Updated to 1.21.</li>
   <li>Added translations for all item tags.</li>
-  <li>Added Pigsteel Veins that spawn lower in the nether in clumps of basalt, porkslag and pigsteel chunk blocks.</li>
+  <li>Ancient Debris now has a chance to be encased in Porkslag.</li>
+  <li>Buffed the amount of pigsteel that generates in biomes with extra pigsteel.</li>
 </ul> '''
+
 		releaseType = "release" // Optional, use "release", "beta" or "alpha"
 		gameVersions = ["${project.minecraft_version}", "1.20.6"]
 		gameLoaders = ["fabric"]

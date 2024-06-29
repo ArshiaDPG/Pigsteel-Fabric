@@ -2,8 +2,10 @@ package net.digitalpear.pigsteel.common.blocks;
 
 import net.digitalpear.pigsteel.init.PigsteelBlocks;
 import net.digitalpear.pigsteel.init.tags.PigsteelBlockTags;
-import net.minecraft.block.*;
-import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Degradable;
+import net.minecraft.block.MapColor;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.StringIdentifiable;
 import net.minecraft.util.math.BlockPos;
@@ -77,13 +79,13 @@ public interface Zombifiable extends Degradable<Zombifiable.ZombificationLevel> 
             this.name = name;
             this.mapColor = mapColor;
         }
+
         private String name;
         private MapColor mapColor;
 
         public MapColor getMapColor() {
             return mapColor;
         }
-
 
         @Override
         public String asString() {

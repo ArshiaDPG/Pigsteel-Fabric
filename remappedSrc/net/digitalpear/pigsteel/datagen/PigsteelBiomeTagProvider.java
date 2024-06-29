@@ -1,4 +1,4 @@
-package net.digitalpear.pigsteel.datagen;
+package net.digitalpear.pigsteel.common.datagen;
 
 import net.digitalpear.pigsteel.init.tags.PigsteelBiomeTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;

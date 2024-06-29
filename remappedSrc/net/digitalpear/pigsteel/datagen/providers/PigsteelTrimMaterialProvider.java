@@ -1,4 +1,4 @@
-package net.digitalpear.pigsteel.datagen.providers;
+package net.digitalpear.pigsteel.common.datagen.providers;
 
 import net.digitalpear.pigsteel.init.PigsteelArmorTrimMaterials;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;

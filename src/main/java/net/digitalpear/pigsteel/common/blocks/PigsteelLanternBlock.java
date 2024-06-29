@@ -20,10 +20,10 @@ import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 
 
-public class PigsteelLanternBlock extends Block implements Waterloggable{
+public class PigsteelLanternBlock extends Block implements Waterloggable {
+
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
-
 
     /*
     Shape for wall hanger (This will never be useful, but I got it right on the first try and didn't wanna get rid of it.)
@@ -71,7 +71,6 @@ public class PigsteelLanternBlock extends Block implements Waterloggable{
                 }
             }
         }
-
         return null;
     }
 
@@ -97,6 +96,7 @@ public class PigsteelLanternBlock extends Block implements Waterloggable{
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(FACING, WATERLOGGED);
     }
+
     @Override
     public FluidState getFluidState(BlockState state) {
         if (state.get(WATERLOGGED)) {
@@ -109,4 +109,5 @@ public class PigsteelLanternBlock extends Block implements Waterloggable{
     protected boolean canPathfindThrough(BlockState state, NavigationType type) {
         return false;
     }
+
 }

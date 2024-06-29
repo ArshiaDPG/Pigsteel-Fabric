@@ -1,6 +1,7 @@
 package net.digitalpear.pigsteel;
 
 
+import net.digitalpear.pigsteel.common.worldgen.PigsteelFeature;
 import net.digitalpear.pigsteel.init.PigsteelArmorTrimMaterials;
 import net.digitalpear.pigsteel.init.PigsteelBlocks;
 import net.digitalpear.pigsteel.init.PigsteelItems;
@@ -30,6 +31,7 @@ public class Pigsteel implements ModInitializer {
 
 		PigsteelBlocks.init();
 		PigsteelItems.init();
+		PigsteelFeature.init();
 		PigsteelConfiguredFeatures.init();
 		PigsteelPlacedFeatures.init();
 		PigsteelData.init();

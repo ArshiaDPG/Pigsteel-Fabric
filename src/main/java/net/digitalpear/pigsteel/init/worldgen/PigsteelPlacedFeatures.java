@@ -30,23 +30,19 @@ public class PigsteelPlacedFeatures {
         features.add(featureRegistryKey);
         return featureRegistryKey;
     }
-    public static final RegistryKey<PlacedFeature> PIGSTEEL_VEIN = of("pigsteel_vein");
     public static final RegistryKey<PlacedFeature> ORE_PIGSTEEL = of("ore_pigsteel");
     public static final RegistryKey<PlacedFeature> ORE_PIGSTEEL_EXTRA = of("ore_pigsteel_extra");
-
-
 
 
     public static void bootstrap(Registerable<PlacedFeature> featureRegisterable) {
         RegistryEntryLookup<ConfiguredFeature<?, ?>> registryEntryLookup = featureRegisterable.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
 
-        RegistryEntry<ConfiguredFeature<?, ?>> pigsteelVein = registryEntryLookup.getOrThrow(PigsteelConfiguredFeatures.PIGSTEEL_VEIN);
+
         RegistryEntry<ConfiguredFeature<?, ?>> pigsteelOre = registryEntryLookup.getOrThrow(PigsteelConfiguredFeatures.ORE_PIGSTEEL);
         RegistryEntry<ConfiguredFeature<?, ?>> pigsteelOreExtra = registryEntryLookup.getOrThrow(PigsteelConfiguredFeatures.ORE_PIGSTEEL_EXTRA);
 
-        PlacedFeatures.register(featureRegisterable, PIGSTEEL_VEIN, pigsteelVein, List.of(RarityFilterPlacementModifier.of(64), CountPlacementModifier.of(12), SquarePlacementModifier.of(), HeightRangePlacementModifier.uniform(YOffset.fixed(10), YOffset.fixed(30)), BiomePlacementModifier.of()));
         PlacedFeatures.register(featureRegisterable, ORE_PIGSTEEL, pigsteelOre, modifiersWithCount(12, HeightRangePlacementModifier.uniform(YOffset.fixed(0), YOffset.fixed(128))));
-        PlacedFeatures.register(featureRegisterable, ORE_PIGSTEEL_EXTRA, pigsteelOreExtra, modifiersWithCount(8, HeightRangePlacementModifier.uniform(YOffset.fixed(0), YOffset.fixed(128))));
+        PlacedFeatures.register(featureRegisterable, ORE_PIGSTEEL_EXTRA, pigsteelOreExtra, modifiersWithCount(12, HeightRangePlacementModifier.uniform(YOffset.fixed(0), YOffset.fixed(128))));
     }
 
     private static List<PlacementModifier> modifiers(PlacementModifier countModifier, PlacementModifier heightModifier) {
@@ -60,9 +56,6 @@ public class PigsteelPlacedFeatures {
         return BiomeSelectors.foundInTheNether().and(biomeSelectionContext -> !biomeSelectionContext.hasTag(PigsteelBiomeTags.HAS_NO_PIGSTEEL));
     }
     public static void init() {
-
-
-        BiomeModifications.addFeature(pigsteelBaseGeneration(), GenerationStep.Feature.UNDERGROUND_ORES, PIGSTEEL_VEIN);
         BiomeModifications.addFeature(pigsteelBaseGeneration(), GenerationStep.Feature.UNDERGROUND_ORES, ORE_PIGSTEEL);
         BiomeModifications.addFeature(BiomeSelectors.tag(PigsteelBiomeTags.HAS_EXTRA_PIGSTEEL).and(biomeSelectionContext -> !biomeSelectionContext.hasTag(PigsteelBiomeTags.HAS_NO_PIGSTEEL)), GenerationStep.Feature.UNDERGROUND_ORES, ORE_PIGSTEEL_EXTRA);
     }

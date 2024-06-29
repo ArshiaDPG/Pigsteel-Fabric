@@ -1,4 +1,4 @@
-package net.digitalpear.pigsteel.datagen;
+package net.digitalpear.pigsteel.common.datagen;
 
 import net.digitalpear.pigsteel.init.PigsteelBlocks;
 import net.digitalpear.pigsteel.init.PigsteelItems;

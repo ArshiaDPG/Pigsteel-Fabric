@@ -2,28 +2,22 @@ package net.digitalpear.pigsteel.init;
 
 import net.digitalpear.pigsteel.Pigsteel;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.minecraft.block.jukebox.JukeboxSongs;
-import net.minecraft.item.DiscFragmentItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.Rarity;
 
 
 public class PigsteelItems {
-    public static final String MOD_ID = Pigsteel.MOD_ID;
-
     public static Item registerItem(String id, Item item){
-        return Registry.register(Registries.ITEM, Identifier.of(MOD_ID, id), item);
+        return Registry.register(Registries.ITEM, Pigsteel.getModId(id), item);
     }
 
     public static final Item PIGSTEEL_CHUNK = registerItem("pigsteel_chunk", new Item(new Item.Settings().fireproof()));
 
-    public static final Item MUSIC_DISC_MOLTEN = registerItem("music_disc_molten", new Item(new Item.Settings().rarity(Rarity.RARE).jukeboxPlayable(JukeboxSongs.CREATOR_MUSIC_BOX).maxCount(1)));
-    public static final Item DISC_FRAGMENT_MOLTEN = registerItem("disc_fragment_molten", new DiscFragmentItem(new Item.Settings()));
+//    public static final Item MUSIC_DISC_MOLTEN = registerItem("music_disc_molten", new Item(new Item.Settings().rarity(Rarity.RARE).jukeboxPlayable(JukeboxSongs.CREATOR_MUSIC_BOX).maxCount(1)));
+//    public static final Item DISC_FRAGMENT_MOLTEN = registerItem("disc_fragment_molten", new DiscFragmentItem(new Item.Settings()));
 
 
     public static void init(){
@@ -34,11 +28,11 @@ public class PigsteelItems {
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> {
                 entries.addAfter(Items.RAW_IRON, PigsteelItems.PIGSTEEL_CHUNK);
-                entries.addAfter(Items.DISC_FRAGMENT_5, DISC_FRAGMENT_MOLTEN);
+//                entries.addAfter(Items.DISC_FRAGMENT_5, DISC_FRAGMENT_MOLTEN);
         });
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(entries -> {
-            entries.addAfter(Items.MUSIC_DISC_PIGSTEP, MUSIC_DISC_MOLTEN);
+//            entries.addAfter(Items.MUSIC_DISC_PIGSTEP, MUSIC_DISC_MOLTEN);
         });
 
         PigsteelBlocks.pigsteelSoulLanterns.addToItemGroup(ItemGroups.FUNCTIONAL, Items.SOUL_LANTERN);
