@@ -50,5 +50,12 @@
   "block.pigsteel.zombified_pigsteel_soul_lantern": "Zombified Pigsteel Soul Lantern",
   "block.pigsteel.zombified_refined_pigsteel": "Zombified Refined Pigsteel",
   "item.pigsteel.pigsteel_chunk": "Pigsteel Chunk",
+  "tag.block.pigsteel.pigsteel_blocks": "Pigsteel Blocks",
+  "tag.block.pigsteel.pigsteel_ores": "Pigsteel Ores",
+  "tag.block.pigsteel.zombification_acceleration": "Zombification Acceleration",
+  "tag.block.pigsteel.zombification_deceleration": "Zombification Deceleration",
+  "tag.item.pigsteel.pigsteel_ores": "Pigsteel Ores",
+  "tag.worldgen/biome.pigsteel.has_extra_pigsteel": "Has Extra Pigsteel",
+  "tag.worldgen/biome.pigsteel.has_no_pigsteel": "Has No Pigsteel",
   "trim_material.pigsteel.pigsteel": "Pigsteel"
 }

@@ -30,13 +30,11 @@ public class PigsteelConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> ORE_PIGSTEEL_EXTRA = of("ore_pigsteel_extra");
 
 
-
-
     public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> featureRegisterable) {
         RuleTest netherrackRule = new TagMatchRuleTest(BlockTags.BASE_STONE_NETHER);
 
         ConfiguredFeatures.register(featureRegisterable, ORE_PIGSTEEL, Feature.ORE, new OreFeatureConfig(netherrackRule, PigsteelBlocks.PORKSLAG.getDefaultState(), 5, 0.5f));
-        ConfiguredFeatures.register(featureRegisterable, ORE_PIGSTEEL_EXTRA, Feature.ORE, new OreFeatureConfig(netherrackRule, PigsteelBlocks.PORKSLAG.getDefaultState(), 7));
+        ConfiguredFeatures.register(featureRegisterable, ORE_PIGSTEEL_EXTRA, Feature.ORE, new OreFeatureConfig(netherrackRule, PigsteelBlocks.PORKSLAG.getDefaultState(), 9));
     }
 
     public static void init(){

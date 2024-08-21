@@ -18,13 +18,14 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class ZombifiableBlockRegistry {
 
-    private final Class<? extends Block> baseBlockClass;
-    private final Class<? extends Block> waxedBlockClass;
-    private final String baseName;
-    private AbstractBlock.Settings settings = null;
+    private Class<? extends Block> baseBlockClass;
+    private Class<? extends Block> waxedBlockClass;
+    private String baseName;
+    private AbstractBlock.Settings settings = AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.NETHERITE).ticksRandomly();
 
     private Block unaffectedBlock;
     private Block infectedBlock;
@@ -38,21 +39,12 @@ public class ZombifiableBlockRegistry {
 
     public ZombifiableBlockRegistry(String baseName, Class<? extends Block> baseBlockClass, Class<? extends Block> waxedBlockClass, AbstractBlock.Settings settings) {
         this.settings = settings;
-        this.baseName = baseName;
-        this.baseBlockClass = baseBlockClass;
-        this.waxedBlockClass = waxedBlockClass;
-
-        this.unaffectedBlock = registerBlock(Zombifiable.ZombificationLevel.UNAFFECTED);
-        this.infectedBlock = registerBlock(Zombifiable.ZombificationLevel.INFECTED);
-        this.corruptedBlock = registerBlock(Zombifiable.ZombificationLevel.CORRUPTED);
-        this.zombifiedBlock = registerBlock(Zombifiable.ZombificationLevel.ZOMBIFIED);
-
-        this.waxedUnaffectedBlock = registerWaxedBlock(Zombifiable.ZombificationLevel.UNAFFECTED);
-        this.waxedInfectedBlock = registerWaxedBlock(Zombifiable.ZombificationLevel.INFECTED);
-        this.waxedCorruptedBlock = registerWaxedBlock(Zombifiable.ZombificationLevel.CORRUPTED);
-        this.waxedZombifiedBlock = registerWaxedBlock(Zombifiable.ZombificationLevel.ZOMBIFIED);
+        defineBlocks(baseName, baseBlockClass, waxedBlockClass);
     }
     public ZombifiableBlockRegistry(String baseName, Class<? extends Block> baseBlockClass, Class<? extends Block> waxedBlockClass) {
+        defineBlocks(baseName, baseBlockClass, waxedBlockClass);
+    }
+    private void defineBlocks(String baseName, Class<? extends Block> baseBlockClass, Class<? extends Block> waxedBlockClass){
         this.baseName = baseName;
         this.baseBlockClass = baseBlockClass;
         this.waxedBlockClass = waxedBlockClass;
@@ -62,79 +54,34 @@ public class ZombifiableBlockRegistry {
         this.corruptedBlock = registerBlock(Zombifiable.ZombificationLevel.CORRUPTED);
         this.zombifiedBlock = registerBlock(Zombifiable.ZombificationLevel.ZOMBIFIED);
 
-        this.waxedUnaffectedBlock = registerWaxedBlock(Zombifiable.ZombificationLevel.UNAFFECTED);
-        this.waxedInfectedBlock = registerWaxedBlock(Zombifiable.ZombificationLevel.INFECTED);
-        this.waxedCorruptedBlock = registerWaxedBlock(Zombifiable.ZombificationLevel.CORRUPTED);
-        this.waxedZombifiedBlock = registerWaxedBlock(Zombifiable.ZombificationLevel.ZOMBIFIED);
-
+        this.waxedUnaffectedBlock = registerBlock(Zombifiable.ZombificationLevel.UNAFFECTED, true);
+        this.waxedInfectedBlock = registerBlock(Zombifiable.ZombificationLevel.INFECTED, true);
+        this.waxedCorruptedBlock = registerBlock(Zombifiable.ZombificationLevel.CORRUPTED, true);
+        this.waxedZombifiedBlock = registerBlock(Zombifiable.ZombificationLevel.ZOMBIFIED, true);
     }
-    private Block registerWaxedBlock(Zombifiable.ZombificationLevel level){
-        Identifier blockName;
-        if (level.equals(Zombifiable.ZombificationLevel.UNAFFECTED)){
-            blockName = new Identifier(Pigsteel.MOD_ID, baseName).withPrefixedPath("waxed_");
-        }
-        else{
-            blockName = new Identifier(Pigsteel.MOD_ID, level.asString() + "_" + baseName).withPrefixedPath("waxed_");
-        }
-        Block block;
-        if (this.settings == null){
-            block = createWaxedBlock(level.getMapColor());
 
-        }
-        else{
-            block = createCustomWaxedBlock(level.getMapColor());
-        }
-
-        Registry.register(Registries.ITEM, blockName, new BlockItem(block, new Item.Settings().fireproof()));
-        //Pigsteel.LOGGER.info("Registered waxed block " + blockName + " with zombification level " + level.asString() + ".");
-        return Registry.register(Registries.BLOCK, blockName, block);
-    }
     private Block registerBlock(Zombifiable.ZombificationLevel level){
+        return registerBlock(level, false);
+    }
+    private Block registerBlock(Zombifiable.ZombificationLevel level, boolean waxed){
         Identifier blockName;
         if (level.equals(Zombifiable.ZombificationLevel.UNAFFECTED)){
-            blockName = new Identifier(Pigsteel.MOD_ID, baseName);
+            blockName = Pigsteel.getModId(baseName);
         }
         else{
-            blockName = new Identifier(Pigsteel.MOD_ID, level.asString() + "_" + baseName);
+            blockName = Pigsteel.getModId(level.asString() + "_" + baseName);
         }
-        Block block;
-        if (this.settings == null){
-            block = createBlock(level.getMapColor());
+        if (waxed){
+            blockName = blockName.withPrefixedPath("waxed_");
         }
-        else{
-            block = createCustomBlock(level.getMapColor());
-        }
+        Block block = createBlock(level.getMapColor(), waxed);
         Registry.register(Registries.ITEM, blockName, new BlockItem(block, new Item.Settings().fireproof()));
-        //Pigsteel.LOGGER.info("Registered block " + blockName + " with zombification level " + level.asString() + ".");
         return Registry.register(Registries.BLOCK, blockName, block);
     }
-    private Block createCustomWaxedBlock(MapColor mapColor) {
+    private Block createBlock(MapColor mapColor, boolean waxed) {
+        Class<? extends Block> blockClass = waxed ? baseBlockClass : waxedBlockClass;
         try {
-            return waxedBlockClass.getConstructor(AbstractBlock.Settings.class).newInstance(settings.mapColor(mapColor));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-    private Block createCustomBlock(MapColor mapColor) {
-        try {
-            return baseBlockClass.getConstructor(AbstractBlock.Settings.class).newInstance(settings.mapColor(mapColor).ticksRandomly());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-    private Block createBlock(MapColor mapColor) {
-        try {
-            return baseBlockClass.getConstructor(AbstractBlock.Settings.class).newInstance(AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.NETHERITE).mapColor(mapColor).ticksRandomly());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-    private Block createWaxedBlock(MapColor mapColor) {
-        try {
-            return waxedBlockClass.getConstructor(AbstractBlock.Settings.class).newInstance(AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.NETHERITE).mapColor(mapColor));
+            return blockClass.getConstructor(AbstractBlock.Settings.class).newInstance(settings.mapColor(mapColor).ticksRandomly());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -203,10 +150,7 @@ public class ZombifiableBlockRegistry {
     }
     public void addToItemGroup(RegistryKey<ItemGroup> itemGroup, Item afterItem){
         ItemGroupEvents.modifyEntriesEvent(itemGroup).register(entries -> {
-            List<ItemStack> list = new ArrayList<>();
-            getAllBlocks().forEach(block -> {
-                list.add(new ItemStack(block));
-            });
+            List<ItemStack> list = getAllBlocks().stream().map(ItemStack::new).collect(Collectors.toList());
 
             entries.addAfter(afterItem, list);
         });
