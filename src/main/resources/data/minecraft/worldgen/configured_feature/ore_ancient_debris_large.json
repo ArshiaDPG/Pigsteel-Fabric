@@ -16,11 +16,11 @@
     ],
 
     //Values unique to the custom feature.
-    "slag_count_max": 2,
+    "slag_count_max": 2, //Min count is 1.
 
-    "slag_width_max": 2,
+    "slag_width_max": 2, //Min width is 1.
 
-    "slag_chance": 0.95,
+    "slag_chance": 0.65, //% chance for every ore block that generates.
 
     "slag_targets": [
       {

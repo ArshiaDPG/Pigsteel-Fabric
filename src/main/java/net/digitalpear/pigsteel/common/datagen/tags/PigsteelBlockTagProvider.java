@@ -29,14 +29,6 @@ public class PigsteelBlockTagProvider extends FabricTagProvider<Block> {
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
 
-        getOrCreateTagBuilder(PigsteelBlockTags.PIGSTEEL_MINE_REPLACEABLE)
-                .add(Blocks.GRAVEL)
-                .addOptionalTag(BlockTags.NETHER_CARVER_REPLACEABLES)
-                .add(Blocks.RAIL)
-                .add(Blocks.LEVER)
-                .add(PigsteelBlocks.pigsteelLanterns.getUnaffectedBlock())
-        ;
-
         getOrCreateTagBuilder(PigsteelBlockTags.PIGSTEEL_ORES)
                 .add(PigsteelBlocks.PORKSLAG);
 

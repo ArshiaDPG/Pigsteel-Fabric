@@ -45,7 +45,6 @@ public class PigsteelLanguageProvider extends FabricLanguageProvider {
 
         makeTagTranslation(translationBuilder, PigsteelBlockTags.PIGSTEEL_BLOCKS);
         makeTagTranslation(translationBuilder, PigsteelBlockTags.PIGSTEEL_ORES);
-        makeTagTranslation(translationBuilder, PigsteelBlockTags.PIGSTEEL_MINE_REPLACEABLE);
         makeTagTranslation(translationBuilder, PigsteelBlockTags.ZOMBIFICATION_ACCELERATION);
         makeTagTranslation(translationBuilder, PigsteelBlockTags.ZOMBIFICATION_DECELERATION);
 
