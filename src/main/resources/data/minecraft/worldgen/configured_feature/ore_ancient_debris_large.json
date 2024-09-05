@@ -20,7 +20,7 @@
 
     "slag_width_max": 2, //Min width is 1.
 
-    "slag_chance": 0.65, //% chance for every ore block that generates.
+    "slag_chance": 0.5, //% chance for every ore block that generates.
 
     "slag_targets": [
       {
