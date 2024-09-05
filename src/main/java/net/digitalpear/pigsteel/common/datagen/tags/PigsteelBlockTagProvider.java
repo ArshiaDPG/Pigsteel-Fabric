@@ -63,11 +63,9 @@ public class PigsteelBlockTagProvider extends FabricTagProvider<Block> {
                 .add(PigsteelBlocks.ZOMBIFIED_CUT_PIGSTEEL_STAIRS).add(PigsteelBlocks.WAXED_ZOMBIFIED_CUT_PIGSTEEL_STAIRS);
 
         PigsteelBlocks.refinedPigsteel.getAllBlocks().forEach(block -> {
-            getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL).add(block);
             getOrCreateTagBuilder(PigsteelBlockTags.PIGSTEEL_BLOCKS).add(block);
         });
         PigsteelBlocks.cutPigsteel.getAllBlocks().forEach(block -> {
-            getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL).add(block);
             getOrCreateTagBuilder(PigsteelBlockTags.PIGSTEEL_BLOCKS).add(block);
         });
         PigsteelBlocks.cutPigsteelSlabs.getAllBlocks().forEach(block -> {
@@ -85,9 +83,9 @@ public class PigsteelBlockTagProvider extends FabricTagProvider<Block> {
 
 
         getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
-                .add(PigsteelBlocks.PIGSTEEL_CHUNK_BLOCK)
-                .add(PigsteelBlocks.PORKSLAG)
                 .forceAddTag(PigsteelBlockTags.PIGSTEEL_BLOCKS)
+                .forceAddTag(PigsteelBlockTags.PIGSTEEL_ORES)
+                .add(PigsteelBlocks.PIGSTEEL_CHUNK_BLOCK)
                 .add(PigsteelBlocks.CUT_PIGSTEEL_STAIRS).add(PigsteelBlocks.WAXED_CUT_PIGSTEEL_STAIRS)
                 .add(PigsteelBlocks.INFECTED_CUT_PIGSTEEL_STAIRS).add(PigsteelBlocks.WAXED_INFECTED_CUT_PIGSTEEL_STAIRS)
                 .add(PigsteelBlocks.CORRUPTED_CUT_PIGSTEEL_STAIRS).add(PigsteelBlocks.WAXED_CORRUPTED_CUT_PIGSTEEL_STAIRS)

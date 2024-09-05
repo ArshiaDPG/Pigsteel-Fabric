@@ -109,10 +109,14 @@ unifiedPublishing {
 		version = "${project.mod_version}" // Optional, Inferred from project by default
 		changelog = '''<ul>
   <li>Ancient Debris now has a chance to be encased in Porkslag.</li>
+  <li>Updated gradle and Loom versions.</li>
+  <li>Changed how waxing and scraping are registered for majority of blocks.</li>
+  <li>Waxed blocks will no longer tick randomly.</li>
+  <li>Removed blocks that were in tags when not necessary.</li>
 </ul> '''
 
 		releaseType = "release" // Optional, use "release", "beta" or "alpha"
-		gameVersions = ["${project.minecraft_version}"]
+		gameVersions = ["${project.minecraft_version}", "1.21.1"]
 		gameLoaders = ["fabric"]
 
 		mainPublication tasks.remapJar

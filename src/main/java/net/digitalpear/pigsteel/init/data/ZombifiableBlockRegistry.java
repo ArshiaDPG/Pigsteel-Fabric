@@ -2,6 +2,7 @@ package net.digitalpear.pigsteel.init.data;
 
 import net.digitalpear.pigsteel.Pigsteel;
 import net.digitalpear.pigsteel.common.blocks.Zombifiable;
+import net.digitalpear.pigsteel.init.PigsteelBlocks;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -21,11 +22,11 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class ZombifiableBlockRegistry {
-
+    
     private Class<? extends Block> baseBlockClass;
     private Class<? extends Block> waxedBlockClass;
     private String baseName;
-    private AbstractBlock.Settings settings = AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.NETHERITE).ticksRandomly();
+    private AbstractBlock.Settings settings = AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.NETHERITE);
 
     private Block unaffectedBlock;
     private Block infectedBlock;
@@ -43,6 +44,7 @@ public class ZombifiableBlockRegistry {
     }
     public ZombifiableBlockRegistry(String baseName, Class<? extends Block> baseBlockClass, Class<? extends Block> waxedBlockClass) {
         defineBlocks(baseName, baseBlockClass, waxedBlockClass);
+        mapWaxingAndAxing();
     }
     private void defineBlocks(String baseName, Class<? extends Block> baseBlockClass, Class<? extends Block> waxedBlockClass){
         this.baseName = baseName;
@@ -81,8 +83,12 @@ public class ZombifiableBlockRegistry {
     private Block createBlock(MapColor mapColor, boolean waxed) {
         Class<? extends Block> blockClass = waxed ? baseBlockClass : waxedBlockClass;
         try {
+            if (waxed){
+                return blockClass.getConstructor(AbstractBlock.Settings.class).newInstance(settings.mapColor(mapColor));
+            }
             return blockClass.getConstructor(AbstractBlock.Settings.class).newInstance(settings.mapColor(mapColor).ticksRandomly());
         } catch (Exception e) {
+            Pigsteel.LOGGER.error("Block settings for " + getBaseName() + " could not be registered.");
             e.printStackTrace();
         }
         return null;
@@ -106,9 +112,6 @@ public class ZombifiableBlockRegistry {
 
     public String getBaseName() {
         return baseName;
-    }
-    public List<Block> getZombifiables(){
-        return List.of(unaffectedBlock, infectedBlock, corruptedBlock, zombifiedBlock);
     }
 
 
@@ -137,6 +140,9 @@ public class ZombifiableBlockRegistry {
 
         return map;
     }
+    public List<Block> getZombifiables(){
+        return List.of(unaffectedBlock, infectedBlock, corruptedBlock, zombifiedBlock);
+    }
     public List<Block> getWaxed(){
         return List.of(waxedUnaffectedBlock, waxedInfectedBlock, waxedCorruptedBlock, waxedZombifiedBlock);
     }
@@ -154,5 +160,11 @@ public class ZombifiableBlockRegistry {
 
             entries.addAfter(afterItem, list);
         });
+    }
+    private void mapWaxingAndAxing(){
+        PigsteelBlocks.PIGSTEEL_WAXING_MAP.putAll(this.getBlockToWaxedMap());
+        PigsteelBlocks.PIGSTEEL_ZOMBIFYING_MAP.put(this.getUnaffectedBlock(), this.getInfectedBlock());
+        PigsteelBlocks.PIGSTEEL_ZOMBIFYING_MAP.put(this.getInfectedBlock(), this.getCorruptedBlock());
+        PigsteelBlocks.PIGSTEEL_ZOMBIFYING_MAP.put(this.getCorruptedBlock(), this.getZombifiedBlock());
     }
 }

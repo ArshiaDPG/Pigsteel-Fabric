@@ -37,10 +37,8 @@ public class Pigsteel implements ModInitializer {
 		PigsteelData.init();
 		PigsteelArmorTrimMaterials.init();
 
-
 		ResourceManagerHelper.registerBuiltinResourcePack(getModId("pigsteel_ore"),
 				FabricLoader.getInstance().getModContainer(MOD_ID).orElseThrow(), ResourcePackActivationType.NORMAL);
-
 
 		LOGGER.info("Let there be pigsteel!");
 	}

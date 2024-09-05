@@ -80,21 +80,7 @@ public class PigsteelBlocks {
         PIGSTEEL_ZOMBIFYING_MAP.put(INFECTED_CUT_PIGSTEEL_STAIRS, CORRUPTED_CUT_PIGSTEEL_STAIRS);
         PIGSTEEL_ZOMBIFYING_MAP.put(CORRUPTED_CUT_PIGSTEEL_STAIRS, ZOMBIFIED_CUT_PIGSTEEL_STAIRS);
 
-
-        mapWaxingAndAxing(pigsteelLanterns);
-        mapWaxingAndAxing(pigsteelSoulLanterns);
-        mapWaxingAndAxing(refinedPigsteel);
-        mapWaxingAndAxing(cutPigsteel);
-        mapWaxingAndAxing(cutPigsteelSlabs);
-
         PIGSTEEL_WAXING_MAP.forEach(OxidizableBlocksRegistry::registerWaxableBlockPair);
         PIGSTEEL_ZOMBIFYING_MAP.forEach(OxidizableBlocksRegistry::registerOxidizableBlockPair);
-    }
-
-    private static void mapWaxingAndAxing(ZombifiableBlockRegistry zombifiableBlockRegistry){
-        PIGSTEEL_WAXING_MAP.putAll(zombifiableBlockRegistry.getBlockToWaxedMap());
-        PIGSTEEL_ZOMBIFYING_MAP.put(zombifiableBlockRegistry.getUnaffectedBlock(), zombifiableBlockRegistry.getInfectedBlock());
-        PIGSTEEL_ZOMBIFYING_MAP.put(zombifiableBlockRegistry.getInfectedBlock(), zombifiableBlockRegistry.getCorruptedBlock());
-        PIGSTEEL_ZOMBIFYING_MAP.put(zombifiableBlockRegistry.getCorruptedBlock(), zombifiableBlockRegistry.getZombifiedBlock());
     }
 }
