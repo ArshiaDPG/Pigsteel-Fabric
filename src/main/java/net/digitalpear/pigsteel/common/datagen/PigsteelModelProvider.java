@@ -41,10 +41,6 @@ public class PigsteelModelProvider extends FabricModelProvider {
             createWaxableSlab(blockStateModelGenerator, PigsteelBlocks.cutPigsteel.getZombifiables().get(i), PigsteelBlocks.cutPigsteelSlabs.getZombifiables().get(i),PigsteelBlocks.cutPigsteelSlabs.getWaxed().get(i));
             createWaxableStairs(blockStateModelGenerator, PigsteelBlocks.cutPigsteel.getZombifiables().get(i), PigsteelBlocks.cutPigsteelStairs.getZombifiables().get(i), PigsteelBlocks.cutPigsteelStairs.getWaxed().get(i));
         }
-
-//        createWaxableStairs(blockStateModelGenerator, PigsteelBlocks.cutPigsteel.getInfectedBlock(), PigsteelBlocks.cutPigsteelStairs.getInfectedBlock(), PigsteelBlocks.cutPigsteelStairs.getWaxedInfectedBlock());
-//        createWaxableStairs(blockStateModelGenerator, PigsteelBlocks.cutPigsteel.getCorruptedBlock(), PigsteelBlocks.cutPigsteelStairs.getCorruptedBlock(), PigsteelBlocks.cutPigsteelStairs.getWaxedCorruptedBlock());
-//        createWaxableStairs(blockStateModelGenerator, PigsteelBlocks.cutPigsteel.getZombifiedBlock(), PigsteelBlocks.cutPigsteelStairs.getZombifiedBlock(), PigsteelBlocks.cutPigsteelStairs.getWaxedZombifiedBlock());
     }
 
     @Override

@@ -37,7 +37,7 @@ public class ZombifiableBlockRegistry {
     private Function<AbstractBlock.Settings, Block> blockFunction;
     private Function<AbstractBlock.Settings, Block> waxedBlockFunction;
     private String baseName;
-    public AbstractBlock.Settings settings = AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.NETHERITE);
+    public AbstractBlock.Settings settings;
 
     private Block unaffectedBlock;
     private Block infectedBlock;
@@ -58,6 +58,7 @@ public class ZombifiableBlockRegistry {
     public ZombifiableBlockRegistry(String baseName, Function<AbstractBlock.Settings, Block> baseBlockClass, Function<AbstractBlock.Settings, Block> waxedBlockClass) {
         this(baseName, baseBlockClass, waxedBlockClass, basePigsteelSettings);
     }
+
     private void defineBlocks(String baseName, Function<AbstractBlock.Settings, Block> blockFunction, Function<AbstractBlock.Settings, Block> waxedBlockFunction){
         this.baseName = baseName;
         this.blockFunction = blockFunction;
