@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_cut_pigsteel": {
+    "has_refined_pigsteel": {
       "conditions": {
         "items": [
           {
-            "items": "pigsteel:cut_pigsteel"
+            "items": "pigsteel:refined_pigsteel"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_cut_pigsteel"
+      "has_refined_pigsteel"
     ]
   ],
   "rewards": {

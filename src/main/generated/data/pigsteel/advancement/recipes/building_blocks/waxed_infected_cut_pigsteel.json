@@ -7,11 +7,11 @@
       },
       "trigger": "minecraft:recipe_unlocked"
     },
-    "has_waxed_infected_cut_pigsteel": {
+    "has_waxed_infected_refined_pigsteel": {
       "conditions": {
         "items": [
           {
-            "items": "pigsteel:waxed_infected_cut_pigsteel"
+            "items": "pigsteel:waxed_infected_refined_pigsteel"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_waxed_infected_cut_pigsteel"
+      "has_waxed_infected_refined_pigsteel"
     ]
   ],
   "rewards": {

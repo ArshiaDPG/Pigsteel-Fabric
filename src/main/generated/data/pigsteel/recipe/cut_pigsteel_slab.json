@@ -2,7 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": "pigsteel:cut_pigsteel"
+    "#": {
+      "item": "pigsteel:cut_pigsteel"
+    }
   },
   "pattern": [
     "###"

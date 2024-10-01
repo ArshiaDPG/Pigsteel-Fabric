@@ -3,8 +3,12 @@
   "category": "building",
   "group": "waxed_zombified_pigsteel_soul_lantern",
   "ingredients": [
-    "pigsteel:zombified_pigsteel_soul_lantern",
-    "minecraft:honeycomb"
+    {
+      "item": "pigsteel:zombified_pigsteel_soul_lantern"
+    },
+    {
+      "item": "minecraft:honeycomb"
+    }
   ],
   "result": {
     "count": 1,

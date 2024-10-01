@@ -1,6 +1,8 @@
 {
   "type": "minecraft:stonecutting",
-  "ingredient": "pigsteel:waxed_cut_pigsteel",
+  "ingredient": {
+    "item": "pigsteel:waxed_cut_pigsteel"
+  },
   "result": {
     "count": 2,
     "id": "pigsteel:waxed_cut_pigsteel_slab"

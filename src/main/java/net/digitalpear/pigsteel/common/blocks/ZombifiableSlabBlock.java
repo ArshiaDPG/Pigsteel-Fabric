@@ -1,6 +1,6 @@
 package net.digitalpear.pigsteel.common.blocks;
 
-import net.digitalpear.pigsteel.init.data.ZombifiableBlockRegistry;
+import net.digitalpear.pigsteel.init.PigsteelBlocks;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.MapColor;
 import net.minecraft.block.SlabBlock;
@@ -32,7 +32,7 @@ public class ZombifiableSlabBlock extends SlabBlock implements Zombifiable {
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         super.randomTick(state, world, pos, random);
         if (!world.isClient()){
-            tickDegradation(state, world, pos, random);
+            tryZombify(world, state, pos);
         }
     }
 
@@ -43,7 +43,7 @@ public class ZombifiableSlabBlock extends SlabBlock implements Zombifiable {
 
     @Override
     public Optional<BlockState> getDegradationResult(BlockState state) {
-        return Optional.of(ZombifiableBlockRegistry.getPigsteelZombifyingMap().get(state.getBlock()).getStateWithProperties(state));
+        return Optional.of(PigsteelBlocks.PIGSTEEL_ZOMBIFYING_MAP.get(state.getBlock()).getStateWithProperties(state));
     }
 
     @Override

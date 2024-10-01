@@ -3,8 +3,12 @@
   "category": "building",
   "group": "waxed_infected_cut_pigsteel",
   "ingredients": [
-    "pigsteel:infected_cut_pigsteel",
-    "minecraft:honeycomb"
+    {
+      "item": "pigsteel:infected_cut_pigsteel"
+    },
+    {
+      "item": "minecraft:honeycomb"
+    }
   ],
   "result": {
     "count": 1,

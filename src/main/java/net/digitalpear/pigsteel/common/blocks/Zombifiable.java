@@ -1,6 +1,6 @@
 package net.digitalpear.pigsteel.common.blocks;
 
-import net.digitalpear.pigsteel.init.data.ZombifiableBlockRegistry;
+import net.digitalpear.pigsteel.init.PigsteelBlocks;
 import net.digitalpear.pigsteel.init.tags.PigsteelBlockTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -16,7 +16,7 @@ import java.util.Optional;
 
 public interface Zombifiable extends Degradable<Zombifiable.ZombificationLevel> {
 
-    //Base amount that a block can influence the speed of zombification.
+
     float blockInfluence = 0.1F;
 
     //Chance for a block to zombify, the smaller this number is the less the chance of zombification.
@@ -24,18 +24,19 @@ public interface Zombifiable extends Degradable<Zombifiable.ZombificationLevel> 
 
 
     default boolean canZombify(World world, BlockState state){
-        return !world.getDimension().ultrawarm() && getDegradationResult(state).isPresent();
+        return !world.getDimension().ultrawarm() && PigsteelBlocks.PIGSTEEL_ZOMBIFYING_MAP.containsKey(state.getBlock());
     }
 
     @Override
     default Optional<BlockState> tryDegrade(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if (!(canZombify(world, state) && random.nextInt(9) < 2)) {
-            return tryZombify(state, world, pos);
-        }
-        else return Optional.empty();
+        return tryZombify(world, state, pos);
     }
 
-    default Optional<BlockState> tryZombify(BlockState state, World world, BlockPos pos){
+    default Optional<BlockState> tryZombify(World world, BlockState state, BlockPos pos){
+        if (!(canZombify(world, state) && world.getRandom().nextInt(9) < 2)) {
+            return Optional.empty();
+        }
+
         float chance = baseChance;
         if (getDegradationLevel() == ZombificationLevel.UNAFFECTED){
             chance -= 0.1F;
@@ -55,7 +56,7 @@ public interface Zombifiable extends Degradable<Zombifiable.ZombificationLevel> 
             }
         }
         if (world.getRandom().nextFloat() < chance){
-            BlockState degradedState = ZombifiableBlockRegistry.getPigsteelZombifyingMap().get(state.getBlock()).getStateWithProperties(state);
+            BlockState degradedState = PigsteelBlocks.PIGSTEEL_ZOMBIFYING_MAP.get(state.getBlock()).getStateWithProperties(state);
             world.setBlockState(pos, degradedState, Block.NOTIFY_LISTENERS);
             return Optional.of(degradedState);
         }

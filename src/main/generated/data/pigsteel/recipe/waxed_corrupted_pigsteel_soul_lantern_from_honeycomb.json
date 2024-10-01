@@ -3,8 +3,12 @@
   "category": "building",
   "group": "waxed_corrupted_pigsteel_soul_lantern",
   "ingredients": [
-    "pigsteel:corrupted_pigsteel_soul_lantern",
-    "minecraft:honeycomb"
+    {
+      "item": "pigsteel:corrupted_pigsteel_soul_lantern"
+    },
+    {
+      "item": "minecraft:honeycomb"
+    }
   ],
   "result": {
     "count": 1,

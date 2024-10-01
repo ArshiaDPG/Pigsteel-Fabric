@@ -2,7 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": "pigsteel:zombified_cut_pigsteel"
+    "#": {
+      "item": "pigsteel:zombified_cut_pigsteel"
+    }
   },
   "pattern": [
     "#  ",

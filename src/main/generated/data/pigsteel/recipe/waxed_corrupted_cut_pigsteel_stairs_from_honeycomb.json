@@ -3,8 +3,12 @@
   "category": "building",
   "group": "waxed_corrupted_cut_pigsteel_stairs",
   "ingredients": [
-    "pigsteel:corrupted_cut_pigsteel_stairs",
-    "minecraft:honeycomb"
+    {
+      "item": "pigsteel:corrupted_cut_pigsteel_stairs"
+    },
+    {
+      "item": "minecraft:honeycomb"
+    }
   ],
   "result": {
     "count": 1,

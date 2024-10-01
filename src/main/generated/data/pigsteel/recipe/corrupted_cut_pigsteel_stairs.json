@@ -2,7 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": "pigsteel:corrupted_cut_pigsteel"
+    "#": {
+      "item": "pigsteel:corrupted_cut_pigsteel"
+    }
   },
   "pattern": [
     "#  ",

@@ -3,8 +3,12 @@
   "category": "building",
   "group": "waxed_cut_pigsteel_slab",
   "ingredients": [
-    "pigsteel:cut_pigsteel_slab",
-    "minecraft:honeycomb"
+    {
+      "item": "pigsteel:cut_pigsteel_slab"
+    },
+    {
+      "item": "minecraft:honeycomb"
+    }
   ],
   "result": {
     "count": 1,

@@ -3,8 +3,12 @@
   "category": "building",
   "group": "waxed_pigsteel_lantern",
   "ingredients": [
-    "pigsteel:pigsteel_lantern",
-    "minecraft:honeycomb"
+    {
+      "item": "pigsteel:pigsteel_lantern"
+    },
+    {
+      "item": "minecraft:honeycomb"
+    }
   ],
   "result": {
     "count": 1,

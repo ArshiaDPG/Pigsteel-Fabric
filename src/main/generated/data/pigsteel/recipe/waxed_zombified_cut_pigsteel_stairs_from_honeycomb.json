@@ -3,8 +3,12 @@
   "category": "building",
   "group": "waxed_zombified_cut_pigsteel_stairs",
   "ingredients": [
-    "pigsteel:zombified_cut_pigsteel_stairs",
-    "minecraft:honeycomb"
+    {
+      "item": "pigsteel:zombified_cut_pigsteel_stairs"
+    },
+    {
+      "item": "minecraft:honeycomb"
+    }
   ],
   "result": {
     "count": 1,
