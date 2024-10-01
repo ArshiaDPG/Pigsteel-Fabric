@@ -39,19 +39,17 @@ public class PigsteelModelProvider extends FabricModelProvider {
         for (int i = 0; i < 4; i++){
             createWaxable(blockStateModelGenerator, PigsteelBlocks.cutPigsteel.getZombifiables().get(i), PigsteelBlocks.cutPigsteel.getWaxed().get(i));
             createWaxableSlab(blockStateModelGenerator, PigsteelBlocks.cutPigsteel.getZombifiables().get(i), PigsteelBlocks.cutPigsteelSlabs.getZombifiables().get(i),PigsteelBlocks.cutPigsteelSlabs.getWaxed().get(i));
+            createWaxableStairs(blockStateModelGenerator, PigsteelBlocks.cutPigsteel.getZombifiables().get(i), PigsteelBlocks.cutPigsteelStairs.getZombifiables().get(i), PigsteelBlocks.cutPigsteelStairs.getWaxed().get(i));
         }
 
-        createWaxableStairs(blockStateModelGenerator, PigsteelBlocks.cutPigsteel.getUnaffectedBlock(), PigsteelBlocks.CUT_PIGSTEEL_STAIRS, PigsteelBlocks.WAXED_CUT_PIGSTEEL_STAIRS);
-        createWaxableStairs(blockStateModelGenerator, PigsteelBlocks.cutPigsteel.getInfectedBlock(), PigsteelBlocks.INFECTED_CUT_PIGSTEEL_STAIRS, PigsteelBlocks.WAXED_INFECTED_CUT_PIGSTEEL_STAIRS);
-        createWaxableStairs(blockStateModelGenerator, PigsteelBlocks.cutPigsteel.getCorruptedBlock(), PigsteelBlocks.CORRUPTED_CUT_PIGSTEEL_STAIRS, PigsteelBlocks.WAXED_CORRUPTED_CUT_PIGSTEEL_STAIRS);
-        createWaxableStairs(blockStateModelGenerator, PigsteelBlocks.cutPigsteel.getZombifiedBlock(), PigsteelBlocks.ZOMBIFIED_CUT_PIGSTEEL_STAIRS, PigsteelBlocks.WAXED_ZOMBIFIED_CUT_PIGSTEEL_STAIRS);
+//        createWaxableStairs(blockStateModelGenerator, PigsteelBlocks.cutPigsteel.getInfectedBlock(), PigsteelBlocks.cutPigsteelStairs.getInfectedBlock(), PigsteelBlocks.cutPigsteelStairs.getWaxedInfectedBlock());
+//        createWaxableStairs(blockStateModelGenerator, PigsteelBlocks.cutPigsteel.getCorruptedBlock(), PigsteelBlocks.cutPigsteelStairs.getCorruptedBlock(), PigsteelBlocks.cutPigsteelStairs.getWaxedCorruptedBlock());
+//        createWaxableStairs(blockStateModelGenerator, PigsteelBlocks.cutPigsteel.getZombifiedBlock(), PigsteelBlocks.cutPigsteelStairs.getZombifiedBlock(), PigsteelBlocks.cutPigsteelStairs.getWaxedZombifiedBlock());
     }
 
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
         itemModelGenerator.register(PigsteelItems.PIGSTEEL_CHUNK, Models.GENERATED);
-//        itemModelGenerator.register(PigsteelItems.MUSIC_DISC_MOLTEN, Models.GENERATED);
-//        itemModelGenerator.register(PigsteelItems.DISC_FRAGMENT_MOLTEN, Models.GENERATED);
     }
 
 
@@ -104,8 +102,6 @@ public class PigsteelModelProvider extends FabricModelProvider {
                 INNER_STAIRS, STAIRS, OUTER_STAIRS));
         blockStateModelGenerator.registerParentedItemModel(waxed, STAIRS);
     }
-
-
 
 
     public static void createSlab(BlockStateModelGenerator blockStateModelGenerator, Block textureBase, Block slab){

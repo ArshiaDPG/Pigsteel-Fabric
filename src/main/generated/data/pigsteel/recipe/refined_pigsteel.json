@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "item": "pigsteel:pigsteel_chunk"
-    }
+    "#": "pigsteel:pigsteel_chunk"
   },
   "pattern": [
     "##",

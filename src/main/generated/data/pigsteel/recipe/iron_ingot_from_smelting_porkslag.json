@@ -4,9 +4,7 @@
   "cookingtime": 200,
   "experience": 0.7,
   "group": "iron_ingot",
-  "ingredient": {
-    "item": "pigsteel:porkslag"
-  },
+  "ingredient": "pigsteel:porkslag",
   "result": {
     "id": "minecraft:iron_ingot"
   }

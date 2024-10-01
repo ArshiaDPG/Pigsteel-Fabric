@@ -2,12 +2,12 @@ package net.digitalpear.pigsteel.init.data;
 
 import net.digitalpear.pigsteel.Pigsteel;
 import net.digitalpear.pigsteel.common.blocks.Zombifiable;
-import net.digitalpear.pigsteel.init.PigsteelBlocks;
+import net.digitalpear.pigsteel.init.PigsteelItems;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.MapColor;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -15,18 +15,29 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.function.BiFunction;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class ZombifiableBlockRegistry {
-    
-    private Class<? extends Block> baseBlockClass;
-    private Class<? extends Block> waxedBlockClass;
+    public static Map<Block, Block> PIGSTEEL_WAXING_MAP = new HashMap<>();
+    public static Map<Block, Block> PIGSTEEL_ZOMBIFYING_MAP = new HashMap<>();
+
+    public static final AbstractBlock.Settings basePigsteelSettings = AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.NETHERITE);
+
+    public static final List<ZombifiableBlockRegistry> REGISTRIES = new ArrayList<>();
+    private Function<AbstractBlock.Settings, Block> blockFunction;
+    private Function<AbstractBlock.Settings, Block> waxedBlockFunction;
     private String baseName;
-    private AbstractBlock.Settings settings = AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.NETHERITE);
+    public AbstractBlock.Settings settings = AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.NETHERITE);
 
     private Block unaffectedBlock;
     private Block infectedBlock;
@@ -38,18 +49,19 @@ public class ZombifiableBlockRegistry {
     private Block waxedCorruptedBlock;
     private Block waxedZombifiedBlock;
 
-    public ZombifiableBlockRegistry(String baseName, Class<? extends Block> baseBlockClass, Class<? extends Block> waxedBlockClass, AbstractBlock.Settings settings) {
+    public ZombifiableBlockRegistry(String baseName, Function<AbstractBlock.Settings, Block> baseBlockClass, Function<AbstractBlock.Settings, Block> waxedBlockFunction, AbstractBlock.Settings settings) {
         this.settings = settings;
-        defineBlocks(baseName, baseBlockClass, waxedBlockClass);
-    }
-    public ZombifiableBlockRegistry(String baseName, Class<? extends Block> baseBlockClass, Class<? extends Block> waxedBlockClass) {
-        defineBlocks(baseName, baseBlockClass, waxedBlockClass);
+        defineBlocks(baseName, baseBlockClass, waxedBlockFunction);
         mapWaxingAndAxing();
+        REGISTRIES.add(this);
     }
-    private void defineBlocks(String baseName, Class<? extends Block> baseBlockClass, Class<? extends Block> waxedBlockClass){
+    public ZombifiableBlockRegistry(String baseName, Function<AbstractBlock.Settings, Block> baseBlockClass, Function<AbstractBlock.Settings, Block> waxedBlockClass) {
+        this(baseName, baseBlockClass, waxedBlockClass, basePigsteelSettings);
+    }
+    private void defineBlocks(String baseName, Function<AbstractBlock.Settings, Block> blockFunction, Function<AbstractBlock.Settings, Block> waxedBlockFunction){
         this.baseName = baseName;
-        this.baseBlockClass = baseBlockClass;
-        this.waxedBlockClass = waxedBlockClass;
+        this.blockFunction = blockFunction;
+        this.waxedBlockFunction = waxedBlockFunction;
 
         this.unaffectedBlock = registerBlock(Zombifiable.ZombificationLevel.UNAFFECTED);
         this.infectedBlock = registerBlock(Zombifiable.ZombificationLevel.INFECTED);
@@ -62,11 +74,20 @@ public class ZombifiableBlockRegistry {
         this.waxedZombifiedBlock = registerBlock(Zombifiable.ZombificationLevel.ZOMBIFIED, true);
     }
 
+    public static Item createBlockItem(String id, Block block, BiFunction<Block, Item.Settings, Item> factory) {
+        Item.Settings settings = new Item.Settings().fireproof();
+        return createBlockItem(id, block, factory, settings);
+    }
+    public static Item createBlockItem(String id, Block block, BiFunction<Block, Item.Settings, Item> factory, Item.Settings settings) {
+        Item item = factory.apply(block, settings.registryKey(PigsteelItems.keyOf(id)));
+        return Registry.register(Registries.ITEM, PigsteelItems.keyOf(id), item);
+    }
     private Block registerBlock(Zombifiable.ZombificationLevel level){
         return registerBlock(level, false);
     }
     private Block registerBlock(Zombifiable.ZombificationLevel level, boolean waxed){
         Identifier blockName;
+        Block block;
         if (level.equals(Zombifiable.ZombificationLevel.UNAFFECTED)){
             blockName = Pigsteel.getModId(baseName);
         }
@@ -75,23 +96,17 @@ public class ZombifiableBlockRegistry {
         }
         if (waxed){
             blockName = blockName.withPrefixedPath("waxed_");
+            block = blockFunction.apply(settings.mapColor(level.getMapColor()).registryKey(keyOf(blockName.getPath())));
         }
-        Block block = createBlock(level.getMapColor(), waxed);
-        Registry.register(Registries.ITEM, blockName, new BlockItem(block, new Item.Settings().fireproof()));
+        else {
+            block = waxedBlockFunction.apply(settings.mapColor(level.getMapColor()).registryKey(keyOf(blockName.getPath())));
+        }
+        
+        createBlockItem(blockName.getPath(), block, BlockItem::new);
         return Registry.register(Registries.BLOCK, blockName, block);
     }
-    private Block createBlock(MapColor mapColor, boolean waxed) {
-        Class<? extends Block> blockClass = waxed ? baseBlockClass : waxedBlockClass;
-        try {
-            if (waxed){
-                return blockClass.getConstructor(AbstractBlock.Settings.class).newInstance(settings.mapColor(mapColor));
-            }
-            return blockClass.getConstructor(AbstractBlock.Settings.class).newInstance(settings.mapColor(mapColor).ticksRandomly());
-        } catch (Exception e) {
-            Pigsteel.LOGGER.error("Block settings for " + getBaseName() + " could not be registered.");
-            e.printStackTrace();
-        }
-        return null;
+    private static RegistryKey<Block> keyOf(String id) {
+        return RegistryKey.of(RegistryKeys.BLOCK, Pigsteel.getModId(id));
     }
 
     public Block getUnaffectedBlock() {
@@ -113,7 +128,6 @@ public class ZombifiableBlockRegistry {
     public String getBaseName() {
         return baseName;
     }
-
 
     public Block getWaxedUnaffectedBlock() {
         return waxedUnaffectedBlock;
@@ -162,9 +176,28 @@ public class ZombifiableBlockRegistry {
         });
     }
     private void mapWaxingAndAxing(){
-        PigsteelBlocks.PIGSTEEL_WAXING_MAP.putAll(this.getBlockToWaxedMap());
-        PigsteelBlocks.PIGSTEEL_ZOMBIFYING_MAP.put(this.getUnaffectedBlock(), this.getInfectedBlock());
-        PigsteelBlocks.PIGSTEEL_ZOMBIFYING_MAP.put(this.getInfectedBlock(), this.getCorruptedBlock());
-        PigsteelBlocks.PIGSTEEL_ZOMBIFYING_MAP.put(this.getCorruptedBlock(), this.getZombifiedBlock());
+        PIGSTEEL_WAXING_MAP.putAll(this.getBlockToWaxedMap());
+        PIGSTEEL_ZOMBIFYING_MAP.put(this.getUnaffectedBlock(), this.getInfectedBlock());
+        PIGSTEEL_ZOMBIFYING_MAP.put(this.getInfectedBlock(), this.getCorruptedBlock());
+        PIGSTEEL_ZOMBIFYING_MAP.put(this.getCorruptedBlock(), this.getZombifiedBlock());
+    }
+    public static void addWaxableBlock(Block input ,Block result){
+        PIGSTEEL_WAXING_MAP.put(input, result);
+    }
+    public static void addZombifiableBlock(Block input, Block result){
+        PIGSTEEL_ZOMBIFYING_MAP.put(input, result);
+    }
+
+    public static Map<Block, Block> getPigsteelWaxingMap() {
+        return PIGSTEEL_WAXING_MAP;
+    }
+
+    public static Map<Block, Block> getPigsteelZombifyingMap() {
+        return PIGSTEEL_ZOMBIFYING_MAP;
+    }
+
+    public static void registerWaxingAndZombifications(){
+        PIGSTEEL_WAXING_MAP.forEach(OxidizableBlocksRegistry::registerWaxableBlockPair);
+        PIGSTEEL_ZOMBIFYING_MAP.forEach(OxidizableBlocksRegistry::registerOxidizableBlockPair);
     }
 }

@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "pigsteel:pigsteel_chunk_block"
-    }
+    "pigsteel:pigsteel_chunk_block"
   ],
   "result": {
     "count": 9,

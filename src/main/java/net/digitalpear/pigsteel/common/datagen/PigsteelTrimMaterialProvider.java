@@ -3,7 +3,7 @@ package net.digitalpear.pigsteel.common.datagen;
 import net.digitalpear.pigsteel.init.PigsteelArmorTrimMaterials;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider;
-import net.minecraft.item.trim.ArmorTrimMaterial;
+import net.minecraft.item.equipment.trim.ArmorTrimMaterial;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
@@ -21,7 +21,7 @@ public class PigsteelTrimMaterialProvider extends FabricDynamicRegistryProvider 
     }
 
     private void add(RegistryWrapper.WrapperLookup registries, Entries entries, RegistryKey<ArmorTrimMaterial> resourceKey) {
-        RegistryWrapper.Impl<ArmorTrimMaterial> configuredFeatureRegistryLookup = registries.getWrapperOrThrow(RegistryKeys.TRIM_MATERIAL);
+        RegistryWrapper.Impl<ArmorTrimMaterial> configuredFeatureRegistryLookup = registries.getOrThrow(RegistryKeys.TRIM_MATERIAL);
 
         entries.add(resourceKey, configuredFeatureRegistryLookup.getOrThrow(resourceKey).value());
     }

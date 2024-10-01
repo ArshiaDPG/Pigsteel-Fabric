@@ -7,11 +7,11 @@
       },
       "trigger": "minecraft:recipe_unlocked"
     },
-    "has_zombified_refined_pigsteel": {
+    "has_zombified_cut_pigsteel": {
       "conditions": {
         "items": [
           {
-            "items": "pigsteel:zombified_refined_pigsteel"
+            "items": "pigsteel:zombified_cut_pigsteel"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_zombified_refined_pigsteel"
+      "has_zombified_cut_pigsteel"
     ]
   ],
   "rewards": {

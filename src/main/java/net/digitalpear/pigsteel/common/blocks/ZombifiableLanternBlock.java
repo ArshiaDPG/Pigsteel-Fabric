@@ -1,11 +1,9 @@
 package net.digitalpear.pigsteel.common.blocks;
 
-import net.digitalpear.pigsteel.init.PigsteelBlocks;
+import net.digitalpear.pigsteel.init.data.ZombifiableBlockRegistry;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Waterloggable;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 
 import java.util.Optional;
@@ -38,7 +36,7 @@ public class ZombifiableLanternBlock extends PigsteelLanternBlock implements Zom
 
     @Override
     public Optional<BlockState> getDegradationResult(BlockState state) {
-        return Optional.of(PigsteelBlocks.PIGSTEEL_ZOMBIFYING_MAP.get(state.getBlock()).getStateWithProperties(state));
+        return Optional.of(ZombifiableBlockRegistry.getPigsteelZombifyingMap().get(state.getBlock()).getStateWithProperties(state));
     }
 
     @Override

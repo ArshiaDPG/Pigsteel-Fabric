@@ -1,6 +1,8 @@
 package net.digitalpear.pigsteel.common.blocks;
 
 import net.digitalpear.pigsteel.init.PigsteelBlocks;
+import net.digitalpear.pigsteel.init.data.ZombifiableBlockRegistry;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.MapColor;
 import net.minecraft.block.StairsBlock;
@@ -8,18 +10,24 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 
+import java.util.Map;
 import java.util.Optional;
 
 public class ZombifiableStairsBlock extends StairsBlock implements Zombifiable {
 
     private ZombificationLevel zombificationLevel;
-
-    public ZombifiableStairsBlock(BlockState baseBlockState, Settings settings) {
-        super(baseBlockState, settings);
+    private static final Map<ZombificationLevel, Block> levelToBlockMap = Map.of(
+            ZombificationLevel.UNAFFECTED, PigsteelBlocks.cutPigsteel.getUnaffectedBlock(),
+            ZombificationLevel.INFECTED, PigsteelBlocks.cutPigsteel.getInfectedBlock(),
+            ZombificationLevel.CORRUPTED, PigsteelBlocks.cutPigsteel.getCorruptedBlock(),
+            ZombificationLevel.ZOMBIFIED, PigsteelBlocks.cutPigsteel.getZombifiedBlock()
+    );
+    public ZombifiableStairsBlock(Settings settings) {
+        super(levelToBlockMap.get(ZombificationLevel.UNAFFECTED).getDefaultState(), settings);
         this.zombificationLevel = ZombificationLevel.UNAFFECTED;
     }
-    public ZombifiableStairsBlock(ZombificationLevel zombificationLevel, BlockState baseBlockState, Settings settings) {
-        super(baseBlockState, settings);
+    public ZombifiableStairsBlock(ZombificationLevel zombificationLevel, Settings settings) {
+        super(levelToBlockMap.get(zombificationLevel).getDefaultState(), settings);
         this.zombificationLevel = zombificationLevel;
     }
     @Override
@@ -31,7 +39,7 @@ public class ZombifiableStairsBlock extends StairsBlock implements Zombifiable {
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         super.randomTick(state, world, pos, random);
         if (!world.isClient()){
-            tryZombify(world, state, pos);
+            tickDegradation(state, world, pos, random);
         }
     }
 
@@ -42,7 +50,7 @@ public class ZombifiableStairsBlock extends StairsBlock implements Zombifiable {
 
     @Override
     public Optional<BlockState> getDegradationResult(BlockState state) {
-        return Optional.of(PigsteelBlocks.PIGSTEEL_ZOMBIFYING_MAP.get(state.getBlock()).getStateWithProperties(state));
+        return Optional.of(ZombifiableBlockRegistry.getPigsteelZombifyingMap().get(state.getBlock()).getStateWithProperties(state));
     }
 
     @Override

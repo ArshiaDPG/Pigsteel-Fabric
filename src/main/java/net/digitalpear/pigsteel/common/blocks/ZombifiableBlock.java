@@ -1,6 +1,6 @@
 package net.digitalpear.pigsteel.common.blocks;
 
-import net.digitalpear.pigsteel.init.PigsteelBlocks;
+import net.digitalpear.pigsteel.init.data.ZombifiableBlockRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.MapColor;
@@ -44,7 +44,7 @@ public class ZombifiableBlock extends Block implements Zombifiable {
 
     @Override
     public Optional<BlockState> getDegradationResult(BlockState state) {
-        return Optional.of(PigsteelBlocks.PIGSTEEL_ZOMBIFYING_MAP.get(state.getBlock()).getStateWithProperties(state));
+        return Optional.of(ZombifiableBlockRegistry.getPigsteelZombifyingMap().get(state.getBlock()).getStateWithProperties(state));
     }
 
     @Override

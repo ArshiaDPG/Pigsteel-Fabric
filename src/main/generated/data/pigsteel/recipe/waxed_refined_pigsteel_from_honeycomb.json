@@ -3,12 +3,8 @@
   "category": "building",
   "group": "waxed_refined_pigsteel",
   "ingredients": [
-    {
-      "item": "pigsteel:refined_pigsteel"
-    },
-    {
-      "item": "minecraft:honeycomb"
-    }
+    "pigsteel:refined_pigsteel",
+    "minecraft:honeycomb"
   ],
   "result": {
     "count": 1,

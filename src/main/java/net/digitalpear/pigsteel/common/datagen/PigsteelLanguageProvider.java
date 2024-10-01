@@ -2,6 +2,7 @@ package net.digitalpear.pigsteel.common.datagen;
 
 import net.digitalpear.pigsteel.init.PigsteelBlocks;
 import net.digitalpear.pigsteel.init.PigsteelItems;
+import net.digitalpear.pigsteel.init.data.ZombifiableBlockRegistry;
 import net.digitalpear.pigsteel.init.tags.PigsteelBiomeTags;
 import net.digitalpear.pigsteel.init.tags.PigsteelBlockTags;
 import net.digitalpear.pigsteel.init.tags.PigsteelItemTags;
@@ -12,10 +13,19 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.TagKey;
 
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 public class PigsteelLanguageProvider extends FabricLanguageProvider {
 
+    public static List<ZombifiableBlockRegistry> registryList = List.of(
+            PigsteelBlocks.cutPigsteel,
+            PigsteelBlocks.cutPigsteelStairs,
+            PigsteelBlocks.cutPigsteelSlabs,
+            PigsteelBlocks.refinedPigsteel,
+            PigsteelBlocks.pigsteelLanterns,
+            PigsteelBlocks.pigsteelSoulLanterns
+    );
     public PigsteelLanguageProvider(FabricDataOutput dataOutput, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
         super(dataOutput, registryLookup);
     }
@@ -24,18 +34,17 @@ public class PigsteelLanguageProvider extends FabricLanguageProvider {
     public void generateTranslations(RegistryWrapper.WrapperLookup registryLookup, TranslationBuilder translationBuilder) {
 
         translationBuilder.add(PigsteelBlocks.PORKSLAG, "Porkslag");
+        translationBuilder.add(PigsteelBlocks.PORKSLAG.asItem(), "Porkslag");
 
         translationBuilder.add(PigsteelBlocks.PIGSTEEL_CHUNK_BLOCK, "Block of Pigsteel Chunks");
+        translationBuilder.add(PigsteelBlocks.PIGSTEEL_CHUNK_BLOCK.asItem(), "Block of Pigsteel Chunks");
 
-        translationBuilder.add(PigsteelBlocks.CUT_PIGSTEEL_STAIRS, "Cut Pigsteel Stairs");
-        translationBuilder.add(PigsteelBlocks.INFECTED_CUT_PIGSTEEL_STAIRS, "Infected Cut Pigsteel Stairs");
-        translationBuilder.add(PigsteelBlocks.CORRUPTED_CUT_PIGSTEEL_STAIRS, "Corrupted Cut Pigsteel Stairs");
-        translationBuilder.add(PigsteelBlocks.ZOMBIFIED_CUT_PIGSTEEL_STAIRS, "Zombified Cut Pigsteel Stairs");
-
-        translationBuilder.add(PigsteelBlocks.WAXED_CUT_PIGSTEEL_STAIRS, "Waxed Cut Pigsteel Stairs");
-        translationBuilder.add(PigsteelBlocks.WAXED_INFECTED_CUT_PIGSTEEL_STAIRS, "Waxed Infected Cut Pigsteel Stairs");
-        translationBuilder.add(PigsteelBlocks.WAXED_CORRUPTED_CUT_PIGSTEEL_STAIRS, "Waxed Corrupted Cut Pigsteel Stairs");
-        translationBuilder.add(PigsteelBlocks.WAXED_ZOMBIFIED_CUT_PIGSTEEL_STAIRS, "Waxed Zombified Cut Pigsteel Stairs");
+        registryList.forEach(zombifiableBlockRegistry -> {
+            zombifiableBlockRegistry.getAllBlocks().forEach(block -> {
+                translationBuilder.add(block, formatString(Registries.BLOCK.getId(block).getPath()));
+                translationBuilder.add(block.asItem(), formatString(Registries.ITEM.getId(block.asItem()).getPath()));
+            });
+        });
 
         translationBuilder.add(PigsteelItems.PIGSTEEL_CHUNK, "Pigsteel Chunk");
 //        translationBuilder.add(PigsteelItems.MUSIC_DISC_MOLTEN, "Music Disc");
@@ -53,11 +62,6 @@ public class PigsteelLanguageProvider extends FabricLanguageProvider {
         makeTagTranslation(translationBuilder, PigsteelBiomeTags.HAS_PIGSTEEL_MINE);
 
 
-        PigsteelBlocks.refinedPigsteel.getAllBlocks().forEach(block -> translationBuilder.add(block, formatString(Registries.BLOCK.getId(block).getPath())));
-        PigsteelBlocks.cutPigsteel.getAllBlocks().forEach(block -> translationBuilder.add(block, formatString(Registries.BLOCK.getId(block).getPath())));
-        PigsteelBlocks.cutPigsteelSlabs.getAllBlocks().forEach(block -> translationBuilder.add(block, formatString(Registries.BLOCK.getId(block).getPath())));
-        PigsteelBlocks.pigsteelLanterns.getAllBlocks().forEach(block -> translationBuilder.add(block, formatString(Registries.BLOCK.getId(block).getPath())));
-        PigsteelBlocks.pigsteelSoulLanterns.getAllBlocks().forEach(block -> translationBuilder.add(block, formatString(Registries.BLOCK.getId(block).getPath())));
 
         translationBuilder.add("trim_material.pigsteel.pigsteel", "Pigsteel");
     }
