@@ -46,9 +46,9 @@ public class PigsteelLanguageProvider extends FabricLanguageProvider {
             });
         });
 
-
         translationBuilder.add(PigsteelItems.PIGSTEEL_CHUNK, "Pigsteel Chunk");
-
+//        translationBuilder.add(PigsteelItems.MUSIC_DISC_MOLTEN, "Music Disc");
+//        buildDiscFragment(translationBuilder, PigsteelItems.DISC_FRAGMENT_MOLTEN, "Molten");
 
         makeTagTranslation(translationBuilder, PigsteelItemTags.PIGSTEEL_ORES);
 
@@ -59,6 +59,8 @@ public class PigsteelLanguageProvider extends FabricLanguageProvider {
 
         makeTagTranslation(translationBuilder, PigsteelBiomeTags.HAS_EXTRA_PIGSTEEL);
         makeTagTranslation(translationBuilder, PigsteelBiomeTags.HAS_NO_PIGSTEEL);
+        makeTagTranslation(translationBuilder, PigsteelBiomeTags.HAS_PIGSTEEL_MINE);
+
 
 
         translationBuilder.add("trim_material.pigsteel.pigsteel", "Pigsteel");
