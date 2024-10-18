@@ -15,6 +15,7 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.util.Identifier;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
 
 
 @SuppressWarnings({"unused"})
@@ -22,7 +23,8 @@ public class Pigsteel implements ModInitializer {
 	public static final String MOD_ID = "pigsteel";
 	public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
 
-	public static Identifier getModId(String id){
+
+	public static @NotNull Identifier getModId(String id){
 		return Identifier.of(MOD_ID, id);
 	}
 

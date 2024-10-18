@@ -26,7 +26,7 @@ import java.util.Map;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.stream.Collectors;
-
+@SuppressWarnings("unused")
 public class ZombifiableBlockRegistry {
     public static Map<Block, Block> PIGSTEEL_WAXING_MAP = new HashMap<>();
     public static Map<Block, Block> PIGSTEEL_ZOMBIFYING_MAP = new HashMap<>();

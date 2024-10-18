@@ -25,7 +25,7 @@ public class PigsteelRecipeGenerator extends RecipeGenerator {
     }
     public void offerWaxingRecipes(RecipeExporter exporter) {
         ZombifiableBlockRegistry.getPigsteelWaxingMap().forEach((unwaxed, waxed) -> {
-            createShapeless(RecipeCategory.BUILDING_BLOCKS, waxed).input(unwaxed).input(Items.HONEYCOMB).group(getItemPath(waxed)).criterion(hasItem(unwaxed), this.conditionsFromItem(unwaxed)).offerTo(exporter, convertBetween(waxed, Items.HONEYCOMB));
+            createShapeless(RecipeCategory.BUILDING_BLOCKS, waxed).input(unwaxed).input(Items.HONEYCOMB).group(getItemPath(waxed)).criterion(hasItem(unwaxed), this.conditionsFromItem(unwaxed)).offerTo(exporter, Pigsteel.MOD_ID + ":" + convertBetween(waxed, Items.HONEYCOMB));
         });
     }
 
@@ -55,14 +55,14 @@ public class PigsteelRecipeGenerator extends RecipeGenerator {
     }
     public void offerReversibleCompactingIngotRecipes(RecipeExporter exporter, RecipeCategory reverseCategory, ItemConvertible baseItem, RecipeCategory compactingCategory, ItemConvertible compactItem, @Nullable String compactingGroup, @Nullable String reverseGroup) {
         createShapeless(reverseCategory, baseItem, 9).input(compactItem).group(reverseGroup).criterion(hasItem(compactItem),
-                conditionsFromItem(compactItem)).offerTo(exporter, Pigsteel.getModId(Registries.ITEM.getId(baseItem.asItem()).getPath() +"_from_" + Registries.ITEM.getId(compactItem.asItem()).getPath()));
+                conditionsFromItem(compactItem)).offerTo(exporter, Registries.ITEM.getId(baseItem.asItem()).getPath() +"_from_" + Registries.ITEM.getId(compactItem.asItem()).getPath());
 
         createShaped(compactingCategory, compactItem)
                 .input('#', baseItem)
                 .pattern("###")
                 .pattern("###")
                 .pattern("###").group(compactingGroup)
-                .criterion(hasItem(baseItem), this.conditionsFromItem(baseItem)).offerTo(exporter, Pigsteel.getModId(Registries.ITEM.getId(compactItem.asItem()).getPath() +"_from_" + Registries.ITEM.getId(baseItem.asItem()).getPath()));
+                .criterion(hasItem(baseItem), this.conditionsFromItem(baseItem)).offerTo(exporter, Registries.ITEM.getId(compactItem.asItem()).getPath() +"_from_" + Registries.ITEM.getId(baseItem.asItem()).getPath());
     }
     public void makeSmeltnBlast(RecipeExporter exporter, List<ItemConvertible> inputs, RecipeCategory category, ItemConvertible output, float experience, int cookingTime, String group){
         for (ItemConvertible item : inputs){

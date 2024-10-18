@@ -40,9 +40,9 @@ public class PigsteelBlocks {
         return createBlockWithItem(blockID, Block::new, settings);
     }
     public static Block createBlockWithItem(String blockID, Function<AbstractBlock.Settings, Block> factory, AbstractBlock.Settings settings) {
-        Block block = factory.apply(settings.registryKey(keyOf(blockID)));
+        Block block = Blocks.register(keyOf(blockID), factory, settings);
         createBlockItem(blockID, block, BlockItem::new);
-        return Registry.register(Registries.BLOCK, Pigsteel.getModId(blockID), block);
+        return block;
     }
 
 

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "pigsteel:pigsteel_chunk_from_pigsteel_chunk_block"
+        "recipe": "minecraft:pigsteel_chunk_from_pigsteel_chunk_block"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "pigsteel:pigsteel_chunk_from_pigsteel_chunk_block"
+      "minecraft:pigsteel_chunk_from_pigsteel_chunk_block"
     ]
   }
 }
