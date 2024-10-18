@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:waxed_infected_refined_pigsteel_from_honeycomb"
+        "recipe": "pigsteel:waxed_infected_refined_pigsteel_from_honeycomb"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:waxed_infected_refined_pigsteel_from_honeycomb"
+      "pigsteel:waxed_infected_refined_pigsteel_from_honeycomb"
     ]
   }
 }

@@ -55,19 +55,19 @@ public class PigsteelRecipeGenerator extends RecipeGenerator {
     }
     public void offerReversibleCompactingIngotRecipes(RecipeExporter exporter, RecipeCategory reverseCategory, ItemConvertible baseItem, RecipeCategory compactingCategory, ItemConvertible compactItem, @Nullable String compactingGroup, @Nullable String reverseGroup) {
         createShapeless(reverseCategory, baseItem, 9).input(compactItem).group(reverseGroup).criterion(hasItem(compactItem),
-                conditionsFromItem(compactItem)).offerTo(exporter, Registries.ITEM.getId(baseItem.asItem()).getPath() +"_from_" + Registries.ITEM.getId(compactItem.asItem()).getPath());
+                conditionsFromItem(compactItem)).offerTo(exporter, Pigsteel.MOD_ID + ":" + Registries.ITEM.getId(baseItem.asItem()).getPath() +"_from_" + Registries.ITEM.getId(compactItem.asItem()).getPath());
 
         createShaped(compactingCategory, compactItem)
                 .input('#', baseItem)
                 .pattern("###")
                 .pattern("###")
                 .pattern("###").group(compactingGroup)
-                .criterion(hasItem(baseItem), this.conditionsFromItem(baseItem)).offerTo(exporter, Registries.ITEM.getId(compactItem.asItem()).getPath() +"_from_" + Registries.ITEM.getId(baseItem.asItem()).getPath());
+                .criterion(hasItem(baseItem), this.conditionsFromItem(baseItem)).offerTo(exporter, Pigsteel.MOD_ID + ":" + Registries.ITEM.getId(compactItem.asItem()).getPath() +"_from_" + Registries.ITEM.getId(baseItem.asItem()).getPath());
     }
     public void makeSmeltnBlast(RecipeExporter exporter, List<ItemConvertible> inputs, RecipeCategory category, ItemConvertible output, float experience, int cookingTime, String group){
         for (ItemConvertible item : inputs){
-            CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItem(item), category, output, experience, cookingTime).group(group).criterion(hasItem(item), conditionsFromItem(item)).offerTo(exporter, getSmeltingItemPath(output) + "_" + getItemPath(item));
-            CookingRecipeJsonBuilder.createBlasting(Ingredient.ofItem(item), category, output, experience, cookingTime/2).group(group).criterion(hasItem(item), conditionsFromItem(item)).offerTo(exporter, getBlastingItemPath(output) + "_" + getItemPath(item));
+            CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItem(item), category, output, experience, cookingTime).group(group).criterion(hasItem(item), conditionsFromItem(item)).offerTo(exporter, Pigsteel.MOD_ID + ":" + getSmeltingItemPath(output) + "_" + getItemPath(item));
+            CookingRecipeJsonBuilder.createBlasting(Ingredient.ofItem(item), category, output, experience, cookingTime/2).group(group).criterion(hasItem(item), conditionsFromItem(item)).offerTo(exporter, Pigsteel.MOD_ID + ":" + getBlastingItemPath(output) + "_" + getItemPath(item));
         }
     }
 

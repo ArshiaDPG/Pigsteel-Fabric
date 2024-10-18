@@ -1,10 +1,10 @@
-// 1.21.2 Pre-Release 1	2024-10-08T17:55:54.1911737	Pigsteel/Tags for minecraft:block
+// 1.21.2 Release Candidate 1	2024-10-18T14:54:41.2775004	Pigsteel/Tags for minecraft:block
 28719b0493721f4f12c053e04b881188b141a017 data\pigsteel\tags\block\pigsteel_ores.json
 fa5ac2773d64ffc251f500b4084c65f2eb62e91c data\minecraft\tags\block\mineable\pickaxe.json
 f7c0edc55a03d31c52113478a5f370945bb3b146 data\pigsteel\tags\block\pigsteel_blocks.json
 e968efb0aa45e2f3336a91fabb6d96399ad5f7e6 data\pigsteel\tags\block\zombification_deceleration.json
-a986f3189178a240bca74c9f9d0710d8893c8ebb data\minecraft\tags\block\needs_stone_tool.json
 8cda6ae8b9a9d00efdfcae5e081db77d580b945f data\c\tags\block\ores.json
+a986f3189178a240bca74c9f9d0710d8893c8ebb data\minecraft\tags\block\needs_stone_tool.json
 8842622062e34f5234797206e3cbe8d28c665c7b data\pigsteel\tags\block\zombification_acceleration.json
 ca565dc0dd6b2b9da55b2d574a7674b3602582ea data\minecraft\tags\block\piglin_repellents.json
 dd3bbf815b79a63ebf7d9257d089e68bfb3d3318 data\minecraft\tags\block\beacon_base_blocks.json
