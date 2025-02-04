@@ -5,15 +5,18 @@ import net.digitalpear.pigsteel.init.PigsteelBlocks;
 import net.digitalpear.pigsteel.init.PigsteelItems;
 import net.digitalpear.pigsteel.init.data.ZombifiableBlockRegistry;
 import net.minecraft.block.Block;
-import net.minecraft.data.server.recipe.CookingRecipeJsonBuilder;
-import net.minecraft.data.server.recipe.RecipeExporter;
-import net.minecraft.data.server.recipe.RecipeGenerator;
+
+import net.minecraft.data.recipe.CookingRecipeJsonBuilder;
+import net.minecraft.data.recipe.RecipeExporter;
+import net.minecraft.data.recipe.RecipeGenerator;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
+import net.minecraft.recipe.Recipe;
 import net.minecraft.recipe.book.RecipeCategory;
-import net.minecraft.registry.Registries;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import org.jetbrains.annotations.Nullable;
 
@@ -55,20 +58,24 @@ public class PigsteelRecipeGenerator extends RecipeGenerator {
     }
     public void offerReversibleCompactingIngotRecipes(RecipeExporter exporter, RecipeCategory reverseCategory, ItemConvertible baseItem, RecipeCategory compactingCategory, ItemConvertible compactItem, @Nullable String compactingGroup, @Nullable String reverseGroup) {
         createShapeless(reverseCategory, baseItem, 9).input(compactItem).group(reverseGroup).criterion(hasItem(compactItem),
-                conditionsFromItem(compactItem)).offerTo(exporter, Pigsteel.MOD_ID + ":" + Registries.ITEM.getId(baseItem.asItem()).getPath() +"_from_" + Registries.ITEM.getId(compactItem.asItem()).getPath());
+                conditionsFromItem(compactItem)).offerTo(exporter, keyOf(getItemPath(baseItem) +"_from_" + getItemPath(compactItem)));
 
         createShaped(compactingCategory, compactItem)
                 .input('#', baseItem)
                 .pattern("###")
                 .pattern("###")
                 .pattern("###").group(compactingGroup)
-                .criterion(hasItem(baseItem), this.conditionsFromItem(baseItem)).offerTo(exporter, Pigsteel.MOD_ID + ":" + Registries.ITEM.getId(compactItem.asItem()).getPath() +"_from_" + Registries.ITEM.getId(baseItem.asItem()).getPath());
+                .criterion(hasItem(baseItem), this.conditionsFromItem(baseItem)).offerTo(exporter, keyOf(getItemPath(compactItem) +"_from_" + getItemPath(baseItem)));
     }
     public void makeSmeltnBlast(RecipeExporter exporter, List<ItemConvertible> inputs, RecipeCategory category, ItemConvertible output, float experience, int cookingTime, String group){
         for (ItemConvertible item : inputs){
-            CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItem(item), category, output, experience, cookingTime).group(group).criterion(hasItem(item), conditionsFromItem(item)).offerTo(exporter, Pigsteel.MOD_ID + ":" + getSmeltingItemPath(output) + "_" + getItemPath(item));
-            CookingRecipeJsonBuilder.createBlasting(Ingredient.ofItem(item), category, output, experience, cookingTime/2).group(group).criterion(hasItem(item), conditionsFromItem(item)).offerTo(exporter, Pigsteel.MOD_ID + ":" + getBlastingItemPath(output) + "_" + getItemPath(item));
+            CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItem(item), category, output, experience, cookingTime).group(group).criterion(hasItem(item), conditionsFromItem(item)).offerTo(exporter, keyOf(getSmeltingItemPath(output) + "_" + getItemPath(item)));
+            CookingRecipeJsonBuilder.createBlasting(Ingredient.ofItem(item), category, output, experience, cookingTime/2).group(group).criterion(hasItem(item), conditionsFromItem(item)).offerTo(exporter, keyOf(getBlastingItemPath(output) + "_" + getItemPath(item)));
         }
+    }
+
+    public RegistryKey<Recipe<?>> keyOf(String name){
+        return RegistryKey.of(RegistryKeys.RECIPE, Pigsteel.getModId(name));
     }
 
     @Override
@@ -79,19 +86,19 @@ public class PigsteelRecipeGenerator extends RecipeGenerator {
         makeSmeltnBlast(exporter, List.of(PigsteelItems.PIGSTEEL_CHUNK), RecipeCategory.MISC, Items.IRON_NUGGET, 0.7f, 200, "iron_nugget");
         makeSmeltnBlast(exporter, List.of(PigsteelBlocks.PORKSLAG), RecipeCategory.MISC, Items.IRON_INGOT, 0.7f, 200, "iron_ingot");
 
-        makeCutRecipes(exporter, PigsteelBlocks.refinedPigsteel.getUnaffectedBlock(), PigsteelBlocks.cutPigsteel.getUnaffectedBlock(), PigsteelBlocks.cutPigsteelStairs.getUnaffectedBlock(), PigsteelBlocks.cutPigsteelSlabs.getUnaffectedBlock());
-        makeCutRecipes(exporter, PigsteelBlocks.refinedPigsteel.getInfectedBlock(), PigsteelBlocks.cutPigsteel.getInfectedBlock(), PigsteelBlocks.cutPigsteelStairs.getInfectedBlock(), PigsteelBlocks.cutPigsteelSlabs.getInfectedBlock());
-        makeCutRecipes(exporter, PigsteelBlocks.refinedPigsteel.getCorruptedBlock(), PigsteelBlocks.cutPigsteel.getCorruptedBlock(), PigsteelBlocks.cutPigsteelStairs.getCorruptedBlock(), PigsteelBlocks.cutPigsteelSlabs.getCorruptedBlock());
-        makeCutRecipes(exporter, PigsteelBlocks.refinedPigsteel.getZombifiedBlock(), PigsteelBlocks.cutPigsteel.getZombifiedBlock(), PigsteelBlocks.cutPigsteelStairs.getZombifiedBlock(), PigsteelBlocks.cutPigsteelSlabs.getZombifiedBlock());
+        makeCutRecipes(exporter, PigsteelBlocks.REFINED_PIGSTEEL.getUnaffectedBlock(), PigsteelBlocks.CUT_PIGSTEEL.getUnaffectedBlock(), PigsteelBlocks.CUT_PIGSTEEL_STAIRS.getUnaffectedBlock(), PigsteelBlocks.CUT_PIGSTEEL_SLABS.getUnaffectedBlock());
+        makeCutRecipes(exporter, PigsteelBlocks.REFINED_PIGSTEEL.getInfectedBlock(), PigsteelBlocks.CUT_PIGSTEEL.getInfectedBlock(), PigsteelBlocks.CUT_PIGSTEEL_STAIRS.getInfectedBlock(), PigsteelBlocks.CUT_PIGSTEEL_SLABS.getInfectedBlock());
+        makeCutRecipes(exporter, PigsteelBlocks.REFINED_PIGSTEEL.getCorruptedBlock(), PigsteelBlocks.CUT_PIGSTEEL.getCorruptedBlock(), PigsteelBlocks.CUT_PIGSTEEL_STAIRS.getCorruptedBlock(), PigsteelBlocks.CUT_PIGSTEEL_SLABS.getCorruptedBlock());
+        makeCutRecipes(exporter, PigsteelBlocks.REFINED_PIGSTEEL.getZombifiedBlock(), PigsteelBlocks.CUT_PIGSTEEL.getZombifiedBlock(), PigsteelBlocks.CUT_PIGSTEEL_STAIRS.getZombifiedBlock(), PigsteelBlocks.CUT_PIGSTEEL_SLABS.getZombifiedBlock());
 
-        makeCutRecipes(exporter, PigsteelBlocks.refinedPigsteel.getWaxedUnaffectedBlock(), PigsteelBlocks.cutPigsteel.getWaxedUnaffectedBlock(), PigsteelBlocks.cutPigsteelStairs.getWaxedUnaffectedBlock(), PigsteelBlocks.cutPigsteelSlabs.getWaxedUnaffectedBlock());
-        makeCutRecipes(exporter, PigsteelBlocks.refinedPigsteel.getWaxedInfectedBlock(), PigsteelBlocks.cutPigsteel.getWaxedInfectedBlock(), PigsteelBlocks.cutPigsteelStairs.getWaxedInfectedBlock(), PigsteelBlocks.cutPigsteelSlabs.getWaxedInfectedBlock());
-        makeCutRecipes(exporter, PigsteelBlocks.refinedPigsteel.getWaxedCorruptedBlock(), PigsteelBlocks.cutPigsteel.getWaxedCorruptedBlock(), PigsteelBlocks.cutPigsteelStairs.getWaxedCorruptedBlock(), PigsteelBlocks.cutPigsteelSlabs.getWaxedCorruptedBlock());
-        makeCutRecipes(exporter, PigsteelBlocks.refinedPigsteel.getWaxedZombifiedBlock(), PigsteelBlocks.cutPigsteel.getWaxedZombifiedBlock(), PigsteelBlocks.cutPigsteelStairs.getWaxedZombifiedBlock(), PigsteelBlocks.cutPigsteelSlabs.getWaxedZombifiedBlock());
+        makeCutRecipes(exporter, PigsteelBlocks.REFINED_PIGSTEEL.getWaxedUnaffectedBlock(), PigsteelBlocks.CUT_PIGSTEEL.getWaxedUnaffectedBlock(), PigsteelBlocks.CUT_PIGSTEEL_STAIRS.getWaxedUnaffectedBlock(), PigsteelBlocks.CUT_PIGSTEEL_SLABS.getWaxedUnaffectedBlock());
+        makeCutRecipes(exporter, PigsteelBlocks.REFINED_PIGSTEEL.getWaxedInfectedBlock(), PigsteelBlocks.CUT_PIGSTEEL.getWaxedInfectedBlock(), PigsteelBlocks.CUT_PIGSTEEL_STAIRS.getWaxedInfectedBlock(), PigsteelBlocks.CUT_PIGSTEEL_SLABS.getWaxedInfectedBlock());
+        makeCutRecipes(exporter, PigsteelBlocks.REFINED_PIGSTEEL.getWaxedCorruptedBlock(), PigsteelBlocks.CUT_PIGSTEEL.getWaxedCorruptedBlock(), PigsteelBlocks.CUT_PIGSTEEL_STAIRS.getWaxedCorruptedBlock(), PigsteelBlocks.CUT_PIGSTEEL_SLABS.getWaxedCorruptedBlock());
+        makeCutRecipes(exporter, PigsteelBlocks.REFINED_PIGSTEEL.getWaxedZombifiedBlock(), PigsteelBlocks.CUT_PIGSTEEL.getWaxedZombifiedBlock(), PigsteelBlocks.CUT_PIGSTEEL_STAIRS.getWaxedZombifiedBlock(), PigsteelBlocks.CUT_PIGSTEEL_SLABS.getWaxedZombifiedBlock());
 
 
-        makeLantern(exporter, PigsteelBlocks.pigsteelLanterns.getUnaffectedBlock(), Items.TORCH);
-        makeLantern(exporter, PigsteelBlocks.pigsteelSoulLanterns.getUnaffectedBlock(), Items.SOUL_TORCH);
-        createShaped(RecipeCategory.MISC, PigsteelBlocks.refinedPigsteel.getUnaffectedBlock()).pattern("##").pattern("##").input('#', PigsteelItems.PIGSTEEL_CHUNK).criterion(hasItem(PigsteelItems.PIGSTEEL_CHUNK), conditionsFromItem(PigsteelItems.PIGSTEEL_CHUNK)).offerTo(exporter);
+        makeLantern(exporter, PigsteelBlocks.PIGSTEEL_LANTERNS.getUnaffectedBlock(), Items.TORCH);
+        makeLantern(exporter, PigsteelBlocks.PIGSTEEL_SOUL_LANTERNS.getUnaffectedBlock(), Items.SOUL_TORCH);
+        createShaped(RecipeCategory.MISC, PigsteelBlocks.REFINED_PIGSTEEL.getUnaffectedBlock()).pattern("##").pattern("##").input('#', PigsteelItems.PIGSTEEL_CHUNK).criterion(hasItem(PigsteelItems.PIGSTEEL_CHUNK), conditionsFromItem(PigsteelItems.PIGSTEEL_CHUNK)).offerTo(exporter);
     }
 }

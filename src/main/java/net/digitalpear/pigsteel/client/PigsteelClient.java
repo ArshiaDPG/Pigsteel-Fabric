@@ -13,7 +13,7 @@ public class PigsteelClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        PigsteelBlocks.pigsteelLanterns.getAllBlocks().forEach(block -> BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getCutout()));
-        PigsteelBlocks.pigsteelSoulLanterns.getAllBlocks().forEach(block -> BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getCutout()));
+        PigsteelBlocks.PIGSTEEL_LANTERNS.getAllBlocks().forEach(block -> BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getCutout()));
+        PigsteelBlocks.PIGSTEEL_SOUL_LANTERNS.getAllBlocks().forEach(block -> BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getCutout()));
     }
 }

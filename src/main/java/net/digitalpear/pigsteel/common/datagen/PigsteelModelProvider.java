@@ -3,10 +3,10 @@ package net.digitalpear.pigsteel.common.datagen;
 import net.digitalpear.pigsteel.Pigsteel;
 import net.digitalpear.pigsteel.init.PigsteelBlocks;
 import net.digitalpear.pigsteel.init.PigsteelItems;
+import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.block.Block;
-import net.minecraft.data.client.*;
+import net.minecraft.client.data.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
 
@@ -23,29 +23,33 @@ public class PigsteelModelProvider extends FabricModelProvider {
 
         blockStateModelGenerator.registerSimpleCubeAll(PigsteelBlocks.PIGSTEEL_CHUNK_BLOCK);
 
-        PigsteelBlocks.refinedPigsteel.getBlockToWaxedMap().forEach((block, waxed) -> {
+        PigsteelBlocks.REFINED_PIGSTEEL.getBlockToWaxedMap().forEach((block, waxed) -> {
             blockStateModelGenerator.registerSimpleCubeAll(block);
             blockStateModelGenerator.registerParented(block, waxed);
         });
-        PigsteelBlocks.pigsteelLanterns.getBlockToWaxedMap().forEach((block, waxed) -> {
+        PigsteelBlocks.PIGSTEEL_LANTERNS.getBlockToWaxedMap().forEach((block, waxed) -> {
             createLantern(blockStateModelGenerator, block);
             createLantern(blockStateModelGenerator, waxed, block);
         });
-        PigsteelBlocks.pigsteelSoulLanterns.getBlockToWaxedMap().forEach((block, waxed) -> {
+        PigsteelBlocks.PIGSTEEL_SOUL_LANTERNS.getBlockToWaxedMap().forEach((block, waxed) -> {
             createLantern(blockStateModelGenerator, block);
             createLantern(blockStateModelGenerator, waxed, block);
         });
 
         for (int i = 0; i < 4; i++){
-            createWaxable(blockStateModelGenerator, PigsteelBlocks.cutPigsteel.getZombifiables().get(i), PigsteelBlocks.cutPigsteel.getWaxed().get(i));
-            createWaxableSlab(blockStateModelGenerator, PigsteelBlocks.cutPigsteel.getZombifiables().get(i), PigsteelBlocks.cutPigsteelSlabs.getZombifiables().get(i),PigsteelBlocks.cutPigsteelSlabs.getWaxed().get(i));
-            createWaxableStairs(blockStateModelGenerator, PigsteelBlocks.cutPigsteel.getZombifiables().get(i), PigsteelBlocks.cutPigsteelStairs.getZombifiables().get(i), PigsteelBlocks.cutPigsteelStairs.getWaxed().get(i));
+            createWaxable(blockStateModelGenerator, PigsteelBlocks.CUT_PIGSTEEL.getZombifiables().get(i), PigsteelBlocks.CUT_PIGSTEEL.getWaxed().get(i));
+            createWaxableSlab(blockStateModelGenerator, PigsteelBlocks.CUT_PIGSTEEL.getZombifiables().get(i), PigsteelBlocks.CUT_PIGSTEEL_SLABS.getZombifiables().get(i),PigsteelBlocks.CUT_PIGSTEEL_SLABS.getWaxed().get(i));
+            createWaxableStairs(blockStateModelGenerator, PigsteelBlocks.CUT_PIGSTEEL.getZombifiables().get(i), PigsteelBlocks.CUT_PIGSTEEL_STAIRS.getZombifiables().get(i), PigsteelBlocks.CUT_PIGSTEEL_STAIRS.getWaxed().get(i));
         }
     }
 
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
         itemModelGenerator.register(PigsteelItems.PIGSTEEL_CHUNK, Models.GENERATED);
+
+//        for (Item armor : Registries.ITEM.stream().filter(item -> item.getDefaultStack().isIn(ItemTags.TRIMMABLE_ARMOR)).toList()){
+//            itemModelGenerator.register();
+//        }
     }
 
 
@@ -60,7 +64,7 @@ public class PigsteelModelProvider extends FabricModelProvider {
     }
     public final void createLantern(BlockStateModelGenerator blockStateModelGenerator, Block lantern, Block baseModel) {
         Identifier identifier = getId(baseModel);
-        blockStateModelGenerator.registerParentedItemModel(lantern.asItem(), getItemId(baseModel));
+        blockStateModelGenerator.registerParentedItemModel(lantern, getItemId(baseModel));
         blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(lantern, BlockStateVariant.create().put(VariantSettings.MODEL, identifier))
                 .coordinate(BlockStateModelGenerator.createNorthDefaultHorizontalRotationStates()));
     }

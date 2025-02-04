@@ -19,12 +19,12 @@ import java.util.concurrent.CompletableFuture;
 public class PigsteelLanguageProvider extends FabricLanguageProvider {
 
     public static List<ZombifiableBlockRegistry> registryList = List.of(
-            PigsteelBlocks.cutPigsteel,
-            PigsteelBlocks.cutPigsteelStairs,
-            PigsteelBlocks.cutPigsteelSlabs,
-            PigsteelBlocks.refinedPigsteel,
-            PigsteelBlocks.pigsteelLanterns,
-            PigsteelBlocks.pigsteelSoulLanterns
+            PigsteelBlocks.CUT_PIGSTEEL,
+            PigsteelBlocks.CUT_PIGSTEEL_STAIRS,
+            PigsteelBlocks.CUT_PIGSTEEL_SLABS,
+            PigsteelBlocks.REFINED_PIGSTEEL,
+            PigsteelBlocks.PIGSTEEL_LANTERNS,
+            PigsteelBlocks.PIGSTEEL_SOUL_LANTERNS
     );
     public PigsteelLanguageProvider(FabricDataOutput dataOutput, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
         super(dataOutput, registryLookup);

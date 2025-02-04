@@ -1,9 +1,6 @@
 package net.digitalpear.pigsteel;
 
-import net.digitalpear.pigsteel.common.datagen.PigsteelLanguageProvider;
-import net.digitalpear.pigsteel.common.datagen.PigsteelModelProvider;
-import net.digitalpear.pigsteel.common.datagen.PigsteelRecipeProvider;
-import net.digitalpear.pigsteel.common.datagen.PigsteelTrimMaterialProvider;
+import net.digitalpear.pigsteel.common.datagen.*;
 import net.digitalpear.pigsteel.common.datagen.loot.PigsteelArcheologyLootTableProvider;
 import net.digitalpear.pigsteel.common.datagen.loot.PigsteelBlockLootTableProvider;
 import net.digitalpear.pigsteel.common.datagen.tags.PigsteelBiomeTagProvider;

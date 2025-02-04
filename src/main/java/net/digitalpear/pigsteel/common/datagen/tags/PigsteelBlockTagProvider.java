@@ -58,25 +58,25 @@ public class PigsteelBlockTagProvider extends FabricTagProvider<Block> {
                 .add(PigsteelBlocks.PORKSLAG)
                 .add(PigsteelBlocks.PIGSTEEL_CHUNK_BLOCK);
 
-        PigsteelBlocks.refinedPigsteel.getAllBlocks().forEach(block -> {
+        PigsteelBlocks.REFINED_PIGSTEEL.getAllBlocks().forEach(block -> {
             getOrCreateTagBuilder(PigsteelBlockTags.PIGSTEEL_BLOCKS).add(block);
         });
-        PigsteelBlocks.cutPigsteel.getAllBlocks().forEach(block -> {
+        PigsteelBlocks.CUT_PIGSTEEL.getAllBlocks().forEach(block -> {
             getOrCreateTagBuilder(PigsteelBlockTags.PIGSTEEL_BLOCKS).add(block);
         });
-        PigsteelBlocks.cutPigsteelSlabs.getAllBlocks().forEach(block -> {
+        PigsteelBlocks.CUT_PIGSTEEL_SLABS.getAllBlocks().forEach(block -> {
             getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(block);
             getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL).add(block);
         });
 
-        PigsteelBlocks.pigsteelLanterns.getAllBlocks().forEach(block -> {
+        PigsteelBlocks.PIGSTEEL_LANTERNS.getAllBlocks().forEach(block -> {
             getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(block);
         });
-        PigsteelBlocks.pigsteelSoulLanterns.getAllBlocks().forEach(block -> {
+        PigsteelBlocks.PIGSTEEL_SOUL_LANTERNS.getAllBlocks().forEach(block -> {
             getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(block);
             getOrCreateTagBuilder(BlockTags.PIGLIN_REPELLENTS).add(block);
         });
-        PigsteelBlocks.cutPigsteelStairs.getAllBlocks().forEach(block -> {
+        PigsteelBlocks.CUT_PIGSTEEL_STAIRS.getAllBlocks().forEach(block -> {
             getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(block);
             getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL).add(block);
         });

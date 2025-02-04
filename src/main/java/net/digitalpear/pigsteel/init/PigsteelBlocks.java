@@ -67,12 +67,12 @@ public class PigsteelBlocks {
     }
 
 
-    public static final ZombifiableBlockRegistry refinedPigsteel = new ZombifiableBlockRegistry("refined_pigsteel", ZombifiableBlock::new, Block::new);
-    public static final ZombifiableBlockRegistry cutPigsteel = new ZombifiableBlockRegistry("cut_pigsteel", ZombifiableBlock::new, Block::new);
-    public static final ZombifiableBlockRegistry cutPigsteelSlabs = new ZombifiableBlockRegistry("cut_pigsteel_slab", ZombifiableSlabBlock::new, SlabBlock::new);
-    public static final ZombifiableBlockRegistry pigsteelLanterns = new ZombifiableBlockRegistry("pigsteel_lantern", ZombifiableLanternBlock::new, PigsteelLanternBlock::new, lanternsSettings(15));
-    public static final ZombifiableBlockRegistry pigsteelSoulLanterns = new ZombifiableBlockRegistry("pigsteel_soul_lantern", ZombifiableLanternBlock::new, PigsteelLanternBlock::new, lanternsSettings(10));
-    public static final ZombifiableBlockRegistry cutPigsteelStairs = new ZombifiableBlockRegistry("cut_pigsteel_stairs", ZombifiableStairsBlock::new, settings -> new StairsBlock(cutPigsteel.getWaxedUnaffectedBlock().getDefaultState(), settings));
+    public static final ZombifiableBlockRegistry REFINED_PIGSTEEL = new ZombifiableBlockRegistry("refined_pigsteel", ZombifiableBlock::new, Block::new);
+    public static final ZombifiableBlockRegistry CUT_PIGSTEEL = new ZombifiableBlockRegistry("cut_pigsteel", ZombifiableBlock::new, Block::new);
+    public static final ZombifiableBlockRegistry CUT_PIGSTEEL_STAIRS = new ZombifiableBlockRegistry("cut_pigsteel_stairs", ZombifiableStairsBlock::new, settings -> new StairsBlock(CUT_PIGSTEEL.getWaxedUnaffectedBlock().getDefaultState(), settings));
+    public static final ZombifiableBlockRegistry CUT_PIGSTEEL_SLABS = new ZombifiableBlockRegistry("cut_pigsteel_slab", ZombifiableSlabBlock::new, SlabBlock::new);
+    public static final ZombifiableBlockRegistry PIGSTEEL_LANTERNS = new ZombifiableBlockRegistry("pigsteel_lantern", ZombifiableLanternBlock::new, PigsteelLanternBlock::new, lanternsSettings(15));
+    public static final ZombifiableBlockRegistry PIGSTEEL_SOUL_LANTERNS = new ZombifiableBlockRegistry("pigsteel_soul_lantern", ZombifiableLanternBlock::new, PigsteelLanternBlock::new, lanternsSettings(10));
 
     public static void init(){
         ZombifiableBlockRegistry.registerWaxingAndZombifications();

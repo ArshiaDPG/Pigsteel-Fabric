@@ -49,49 +49,49 @@ public class PigsteelItems {
 //            entries.addAfter(Items.MUSIC_DISC_PIGSTEP, MUSIC_DISC_MOLTEN);
         });
 
-        PigsteelBlocks.pigsteelSoulLanterns.addToItemGroup(ItemGroups.FUNCTIONAL, Items.SOUL_LANTERN);
-        PigsteelBlocks.pigsteelLanterns.addToItemGroup(ItemGroups.FUNCTIONAL, Items.SOUL_LANTERN);
+        PigsteelBlocks.PIGSTEEL_SOUL_LANTERNS.addToItemGroup(ItemGroups.FUNCTIONAL, Items.SOUL_LANTERN);
+        PigsteelBlocks.PIGSTEEL_LANTERNS.addToItemGroup(ItemGroups.FUNCTIONAL, Items.SOUL_LANTERN);
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> {
-                entries.add(PigsteelBlocks.refinedPigsteel.getUnaffectedBlock());
-                entries.add(PigsteelBlocks.cutPigsteel.getUnaffectedBlock());
-                entries.add(PigsteelBlocks.cutPigsteelStairs.getUnaffectedBlock());
-                entries.add(PigsteelBlocks.cutPigsteelSlabs.getUnaffectedBlock());
+                entries.add(PigsteelBlocks.REFINED_PIGSTEEL.getUnaffectedBlock());
+                entries.add(PigsteelBlocks.CUT_PIGSTEEL.getUnaffectedBlock());
+                entries.add(PigsteelBlocks.CUT_PIGSTEEL_STAIRS.getUnaffectedBlock());
+                entries.add(PigsteelBlocks.CUT_PIGSTEEL_SLABS.getUnaffectedBlock());
 
-                entries.add(PigsteelBlocks.refinedPigsteel.getInfectedBlock());
-                entries.add(PigsteelBlocks.cutPigsteel.getInfectedBlock());
-                entries.add(PigsteelBlocks.cutPigsteelStairs.getInfectedBlock());
-                entries.add(PigsteelBlocks.cutPigsteelSlabs.getInfectedBlock());
+                entries.add(PigsteelBlocks.REFINED_PIGSTEEL.getInfectedBlock());
+                entries.add(PigsteelBlocks.CUT_PIGSTEEL.getInfectedBlock());
+                entries.add(PigsteelBlocks.CUT_PIGSTEEL_STAIRS.getInfectedBlock());
+                entries.add(PigsteelBlocks.CUT_PIGSTEEL_SLABS.getInfectedBlock());
 
-                entries.add(PigsteelBlocks.refinedPigsteel.getCorruptedBlock());
-                entries.add(PigsteelBlocks.cutPigsteel.getCorruptedBlock());
-                entries.add(PigsteelBlocks.cutPigsteelStairs.getCorruptedBlock());
-                entries.add(PigsteelBlocks.cutPigsteelSlabs.getCorruptedBlock());
+                entries.add(PigsteelBlocks.REFINED_PIGSTEEL.getCorruptedBlock());
+                entries.add(PigsteelBlocks.CUT_PIGSTEEL.getCorruptedBlock());
+                entries.add(PigsteelBlocks.CUT_PIGSTEEL_STAIRS.getCorruptedBlock());
+                entries.add(PigsteelBlocks.CUT_PIGSTEEL_SLABS.getCorruptedBlock());
 
-                entries.add(PigsteelBlocks.refinedPigsteel.getZombifiedBlock());
-                entries.add(PigsteelBlocks.cutPigsteel.getZombifiedBlock());
-                entries.add(PigsteelBlocks.cutPigsteelStairs.getZombifiedBlock());
-                entries.add(PigsteelBlocks.cutPigsteelSlabs.getZombifiedBlock());
+                entries.add(PigsteelBlocks.REFINED_PIGSTEEL.getZombifiedBlock());
+                entries.add(PigsteelBlocks.CUT_PIGSTEEL.getZombifiedBlock());
+                entries.add(PigsteelBlocks.CUT_PIGSTEEL_STAIRS.getZombifiedBlock());
+                entries.add(PigsteelBlocks.CUT_PIGSTEEL_SLABS.getZombifiedBlock());
 
-                entries.add(PigsteelBlocks.refinedPigsteel.getWaxedUnaffectedBlock());
-                entries.add(PigsteelBlocks.cutPigsteel.getWaxedUnaffectedBlock());
-                entries.add(PigsteelBlocks.cutPigsteelStairs.getWaxedUnaffectedBlock());
-                entries.add(PigsteelBlocks.cutPigsteelSlabs.getWaxedUnaffectedBlock());
+                entries.add(PigsteelBlocks.REFINED_PIGSTEEL.getWaxedUnaffectedBlock());
+                entries.add(PigsteelBlocks.CUT_PIGSTEEL.getWaxedUnaffectedBlock());
+                entries.add(PigsteelBlocks.CUT_PIGSTEEL_STAIRS.getWaxedUnaffectedBlock());
+                entries.add(PigsteelBlocks.CUT_PIGSTEEL_SLABS.getWaxedUnaffectedBlock());
 
-                entries.add(PigsteelBlocks.refinedPigsteel.getWaxedInfectedBlock());
-                entries.add(PigsteelBlocks.cutPigsteel.getWaxedInfectedBlock());
-                entries.add(PigsteelBlocks.cutPigsteelStairs.getWaxedInfectedBlock());
-                entries.add(PigsteelBlocks.cutPigsteelSlabs.getWaxedInfectedBlock());
+                entries.add(PigsteelBlocks.REFINED_PIGSTEEL.getWaxedInfectedBlock());
+                entries.add(PigsteelBlocks.CUT_PIGSTEEL.getWaxedInfectedBlock());
+                entries.add(PigsteelBlocks.CUT_PIGSTEEL_STAIRS.getWaxedInfectedBlock());
+                entries.add(PigsteelBlocks.CUT_PIGSTEEL_SLABS.getWaxedInfectedBlock());
 
-                entries.add(PigsteelBlocks.refinedPigsteel.getWaxedCorruptedBlock());
-                entries.add(PigsteelBlocks.cutPigsteel.getWaxedCorruptedBlock());
-                entries.add(PigsteelBlocks.cutPigsteelStairs.getWaxedCorruptedBlock());
-                entries.add(PigsteelBlocks.cutPigsteelSlabs.getWaxedCorruptedBlock());
+                entries.add(PigsteelBlocks.REFINED_PIGSTEEL.getWaxedCorruptedBlock());
+                entries.add(PigsteelBlocks.CUT_PIGSTEEL.getWaxedCorruptedBlock());
+                entries.add(PigsteelBlocks.CUT_PIGSTEEL_STAIRS.getWaxedCorruptedBlock());
+                entries.add(PigsteelBlocks.CUT_PIGSTEEL_SLABS.getWaxedCorruptedBlock());
 
-                entries.add(PigsteelBlocks.refinedPigsteel.getWaxedZombifiedBlock());
-                entries.add(PigsteelBlocks.cutPigsteel.getWaxedZombifiedBlock());
-                entries.add(PigsteelBlocks.cutPigsteelStairs.getWaxedZombifiedBlock());
-                entries.add(PigsteelBlocks.cutPigsteelSlabs.getWaxedZombifiedBlock());
+                entries.add(PigsteelBlocks.REFINED_PIGSTEEL.getWaxedZombifiedBlock());
+                entries.add(PigsteelBlocks.CUT_PIGSTEEL.getWaxedZombifiedBlock());
+                entries.add(PigsteelBlocks.CUT_PIGSTEEL_STAIRS.getWaxedZombifiedBlock());
+                entries.add(PigsteelBlocks.CUT_PIGSTEEL_SLABS.getWaxedZombifiedBlock());
         });
     }
 }

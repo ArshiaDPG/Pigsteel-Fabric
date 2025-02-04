@@ -17,10 +17,10 @@ public class ZombifiableStairsBlock extends StairsBlock implements Zombifiable {
 
     private ZombificationLevel zombificationLevel;
     private static final Map<ZombificationLevel, Block> levelToBlockMap = Map.of(
-            ZombificationLevel.UNAFFECTED, PigsteelBlocks.cutPigsteel.getUnaffectedBlock(),
-            ZombificationLevel.INFECTED, PigsteelBlocks.cutPigsteel.getInfectedBlock(),
-            ZombificationLevel.CORRUPTED, PigsteelBlocks.cutPigsteel.getCorruptedBlock(),
-            ZombificationLevel.ZOMBIFIED, PigsteelBlocks.cutPigsteel.getZombifiedBlock()
+            ZombificationLevel.UNAFFECTED, PigsteelBlocks.CUT_PIGSTEEL.getUnaffectedBlock(),
+            ZombificationLevel.INFECTED, PigsteelBlocks.CUT_PIGSTEEL.getInfectedBlock(),
+            ZombificationLevel.CORRUPTED, PigsteelBlocks.CUT_PIGSTEEL.getCorruptedBlock(),
+            ZombificationLevel.ZOMBIFIED, PigsteelBlocks.CUT_PIGSTEEL.getZombifiedBlock()
     );
     public ZombifiableStairsBlock(Settings settings) {
         super(levelToBlockMap.get(ZombificationLevel.UNAFFECTED).getDefaultState(), settings);

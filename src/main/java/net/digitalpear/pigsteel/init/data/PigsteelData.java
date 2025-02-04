@@ -28,7 +28,7 @@ public class PigsteelData {
                 } else if (key == LootTables.NETHER_BRIDGE_CHEST) {
                     tableBuilder.modifyPools(builder -> {
                         builder.with(ItemEntry.builder(PigsteelItems.PIGSTEEL_CHUNK).weight(4)).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(6.0f, 16.0f)));
-                        builder.with(ItemEntry.builder(PigsteelBlocks.pigsteelLanterns.getUnaffectedBlock()).weight(5)).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f)));
+                        builder.with(ItemEntry.builder(PigsteelBlocks.PIGSTEEL_LANTERNS.getUnaffectedBlock()).weight(5)).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f)));
                     });
                 }
             }

@@ -6,6 +6,7 @@ import net.digitalpear.pigsteel.init.PigsteelArmorTrimMaterials;
 import net.digitalpear.pigsteel.init.PigsteelBlocks;
 import net.digitalpear.pigsteel.init.PigsteelItems;
 import net.digitalpear.pigsteel.init.data.PigsteelData;
+import net.digitalpear.pigsteel.init.data.ZombifiableBlockRegistry;
 import net.digitalpear.pigsteel.init.worldgen.PigsteelConfiguredFeatures;
 import net.digitalpear.pigsteel.init.worldgen.PigsteelPlacedFeatures;
 import net.fabricmc.api.ModInitializer;
