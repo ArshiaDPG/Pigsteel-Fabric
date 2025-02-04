@@ -19,12 +19,10 @@ public class PigsteelArmorTrimMaterials {
 
 
     public static void bootstrap(Registerable<ArmorTrimMaterial> registry) {
-        register(registry, PIGSTEEL, PigsteelItems.PIGSTEEL_CHUNK, Style.EMPTY.withColor(11898803), 1.0F);
+        register(registry, PIGSTEEL, PigsteelItems.PIGSTEEL_CHUNK, Style.EMPTY.withColor(11898803));
     }
 
-    private static void register(Registerable<ArmorTrimMaterial> registry, RegistryKey<ArmorTrimMaterial> key, Item ingredient, Style style, float itemModelIndex) {
-        register(registry, key, ingredient, style, Map.of());
-    }
+
     private static void register(Registerable<ArmorTrimMaterial> registry, RegistryKey<ArmorTrimMaterial> key, Item ingredient, Style style) {
         register(registry, key, ingredient, style, Map.of());
     }
