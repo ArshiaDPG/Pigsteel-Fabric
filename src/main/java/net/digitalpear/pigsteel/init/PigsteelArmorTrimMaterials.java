@@ -30,7 +30,7 @@ public class PigsteelArmorTrimMaterials {
         registry.register(key, armorTrimMaterial);
     }
     private static RegistryKey<ArmorTrimMaterial> of(String id) {
-        return RegistryKey.of(RegistryKeys.TRIM_MATERIAL, new Identifier(Pigsteel.MOD_ID, id));
+        return RegistryKey.of(RegistryKeys.TRIM_MATERIAL, Pigsteel.getModId(id));
     }
 
     public static void init(){

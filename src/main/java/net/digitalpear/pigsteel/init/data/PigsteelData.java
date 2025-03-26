@@ -12,7 +12,7 @@ public class PigsteelData {
     public static void init(){
 
         LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
-            if (source.isBuiltin() && id == LootTables.PIGLIN_BARTERING_GAMEPLAY){
+            if (source.isBuiltin() && id.equals(LootTables.PIGLIN_BARTERING_GAMEPLAY)){
                 tableBuilder.modifyPools(builder -> {
                     builder.with(ItemEntry.builder(PigsteelItems.PIGSTEEL_CHUNK).weight(16)).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(3.0f, 6.0f)));
                 });

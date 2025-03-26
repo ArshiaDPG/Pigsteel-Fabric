@@ -111,7 +111,6 @@ public class ZombifiableBlockRegistry {
         return List.of(unaffectedBlock, infectedBlock, corruptedBlock, zombifiedBlock);
     }
 
-
     public Block getWaxedUnaffectedBlock() {
         return waxedUnaffectedBlock;
     }
