@@ -3,6 +3,7 @@ package net.digitalpear.pigsteel.common.datagen.tags;
 import net.digitalpear.pigsteel.init.tags.PigsteelBiomeTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBiomeTags;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.world.biome.Biome;
@@ -25,7 +26,6 @@ public class PigsteelBiomeTagProvider extends FabricTagProvider<Biome> {
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
-
         getOrCreateTagBuilder(PigsteelBiomeTags.HAS_EXTRA_PIGSTEEL).add(BiomeKeys.BASALT_DELTAS);
         getOrCreateTagBuilder(PigsteelBiomeTags.HAS_NO_PIGSTEEL);
     }

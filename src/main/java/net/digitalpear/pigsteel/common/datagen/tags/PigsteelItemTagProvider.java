@@ -5,6 +5,7 @@ import net.digitalpear.pigsteel.init.PigsteelItems;
 import net.digitalpear.pigsteel.init.tags.PigsteelItemTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
@@ -31,9 +32,7 @@ public class PigsteelItemTagProvider extends FabricTagProvider<Item> {
         getOrCreateTagBuilder(PigsteelItemTags.PIGSTEEL_ORES)
                 .add(PigsteelBlocks.PORKSLAG.asItem());
 
-        getOrCreateTagBuilder(ItemTags.TRIM_MATERIALS).add(PigsteelItems.PIGSTEEL_CHUNK);
-
-        getOrCreateTagBuilder(PigsteelItemTags.C_ORES)
+        getOrCreateTagBuilder(ConventionalItemTags.ORES)
                 .forceAddTag(PigsteelItemTags.PIGSTEEL_ORES);
 
     }

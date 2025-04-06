@@ -2,11 +2,9 @@ package net.digitalpear.pigsteel;
 
 
 import net.digitalpear.pigsteel.common.worldgen.PigsteelFeature;
-import net.digitalpear.pigsteel.init.PigsteelArmorTrimMaterials;
 import net.digitalpear.pigsteel.init.PigsteelBlocks;
 import net.digitalpear.pigsteel.init.PigsteelItems;
 import net.digitalpear.pigsteel.init.data.PigsteelData;
-import net.digitalpear.pigsteel.init.data.ZombifiableBlockRegistry;
 import net.digitalpear.pigsteel.init.worldgen.PigsteelConfiguredFeatures;
 import net.digitalpear.pigsteel.init.worldgen.PigsteelPlacedFeatures;
 import net.fabricmc.api.ModInitializer;
@@ -25,7 +23,7 @@ public class Pigsteel implements ModInitializer {
 	public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
 
 
-	public static @NotNull Identifier getModId(String id){
+	public static @NotNull Identifier id(String id){
 		return Identifier.of(MOD_ID, id);
 	}
 
@@ -38,9 +36,8 @@ public class Pigsteel implements ModInitializer {
 		PigsteelConfiguredFeatures.init();
 		PigsteelPlacedFeatures.init();
 		PigsteelData.init();
-		PigsteelArmorTrimMaterials.init();
 
-		ResourceManagerHelper.registerBuiltinResourcePack(getModId("pigsteel_ore"),
+		ResourceManagerHelper.registerBuiltinResourcePack(id("pigsteel_ore"),
 				FabricLoader.getInstance().getModContainer(MOD_ID).orElseThrow(), ResourcePackActivationType.NORMAL);
 
 		LOGGER.info("Let there be pigsteel!");

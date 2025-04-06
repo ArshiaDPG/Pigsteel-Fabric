@@ -14,6 +14,7 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 
+import java.util.List;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
@@ -31,7 +32,7 @@ public class PigsteelBlocks {
     }
 
     private static RegistryKey<Block> keyOf(String id) {
-        return RegistryKey.of(RegistryKeys.BLOCK, Pigsteel.getModId(id));
+        return RegistryKey.of(RegistryKeys.BLOCK, Pigsteel.id(id));
     }
     public static Block createBlockWithItem(String blockID, Function<AbstractBlock.Settings, Block> factory) {
         return createBlockWithItem(blockID, factory, AbstractBlock.Settings.create());
@@ -66,7 +67,6 @@ public class PigsteelBlocks {
         return AbstractBlock.Settings.create().solid().requiresTool().strength(3.5F).sounds(BlockSoundGroup.LANTERN).nonOpaque().pistonBehavior(PistonBehavior.DESTROY).luminance(state -> lightValue);
     }
 
-
     public static final ZombifiableBlockRegistry REFINED_PIGSTEEL = new ZombifiableBlockRegistry("refined_pigsteel", ZombifiableBlock::new, Block::new);
     public static final ZombifiableBlockRegistry CUT_PIGSTEEL = new ZombifiableBlockRegistry("cut_pigsteel", ZombifiableBlock::new, Block::new);
     public static final ZombifiableBlockRegistry CUT_PIGSTEEL_STAIRS = new ZombifiableBlockRegistry("cut_pigsteel_stairs", ZombifiableStairsBlock::new, settings -> new StairsBlock(CUT_PIGSTEEL.getWaxedUnaffectedBlock().getDefaultState(), settings));
@@ -76,5 +76,16 @@ public class PigsteelBlocks {
 
     public static void init(){
         ZombifiableBlockRegistry.registerWaxingAndZombifications();
+
+        List<String> ORE_NAMES = List.of(
+                "pigsteel_ore",
+                "stone_pigsteel_ore",
+                "deepslate_pigsteel_ore",
+                "blue_pigsteel_ore"
+        );
+        ORE_NAMES.forEach(s -> {
+            Registries.BLOCK.addAlias(Pigsteel.id(s), Registries.BLOCK.getId(PORKSLAG));
+        });
+        Registries.BLOCK.addAlias(Pigsteel.id("pigsteel_block"), Registries.BLOCK.getId(PIGSTEEL_CHUNK_BLOCK));
     }
 }

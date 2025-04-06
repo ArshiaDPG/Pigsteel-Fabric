@@ -10,7 +10,7 @@ public class PigsteelFeature {
     public static final Feature<OreSlagFeatureConfig> SCATTERED_SLAG_ORE = register("scattered_slag_ore", new ScatteredSlagOreFeature(OreSlagFeatureConfig.CODEC));
 
     private static <C extends FeatureConfig, F extends Feature<C>> F register(String name, F feature) {
-        return Registry.register(Registries.FEATURE, Pigsteel.getModId(name), feature);
+        return Registry.register(Registries.FEATURE, Pigsteel.id(name), feature);
     }
 
     public static void init(){}

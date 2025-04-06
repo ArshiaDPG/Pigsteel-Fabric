@@ -2,7 +2,6 @@ package net.digitalpear.pigsteel.init;
 
 import net.digitalpear.pigsteel.Pigsteel;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.item.Items;
@@ -15,21 +14,15 @@ import java.util.function.Function;
 
 
 public class PigsteelItems {
-    public static RegistryKey<Item> keyOf(RegistryKey<Block> blockKey) {
-        return RegistryKey.of(RegistryKeys.ITEM, blockKey.getValue());
-    }
     public static RegistryKey<Item> keyOf(String id) {
-        return RegistryKey.of(RegistryKeys.ITEM, Pigsteel.getModId(id));
-    }
-    public static Item registerItem(String id){
-        return registerItem(id, new Item.Settings());
+        return RegistryKey.of(RegistryKeys.ITEM, Pigsteel.id(id));
     }
     public static Item registerItem(String id, Item.Settings settings){
         return registerItem(id, Item::new, settings);
     }
     public static Item registerItem(String id, Function<Item.Settings, Item> factory, Item.Settings settings){
         Item item = factory.apply(settings.registryKey(keyOf(id)));
-        return Registry.register(Registries.ITEM, Pigsteel.getModId(id), item);
+        return Registry.register(Registries.ITEM, Pigsteel.id(id), item);
     }
 
     public static final Item PIGSTEEL_CHUNK = registerItem("pigsteel_chunk", new Item.Settings().fireproof());
@@ -42,11 +35,6 @@ public class PigsteelItems {
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> {
                 entries.addAfter(Items.RAW_IRON, PigsteelItems.PIGSTEEL_CHUNK);
-//                entries.addAfter(Items.DISC_FRAGMENT_5, DISC_FRAGMENT_MOLTEN);
-        });
-
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(entries -> {
-//            entries.addAfter(Items.MUSIC_DISC_PIGSTEP, MUSIC_DISC_MOLTEN);
         });
 
         PigsteelBlocks.PIGSTEEL_SOUL_LANTERNS.addToItemGroup(ItemGroups.FUNCTIONAL, Items.SOUL_LANTERN);

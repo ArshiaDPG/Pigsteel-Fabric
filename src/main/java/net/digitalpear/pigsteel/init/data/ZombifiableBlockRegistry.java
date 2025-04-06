@@ -90,10 +90,10 @@ public class ZombifiableBlockRegistry {
         Identifier blockName;
         Block block;
         if (level.equals(Zombifiable.ZombificationLevel.UNAFFECTED)){
-            blockName = Pigsteel.getModId(baseName);
+            blockName = Pigsteel.id(baseName);
         }
         else{
-            blockName = Pigsteel.getModId(level.asString() + "_" + baseName);
+            blockName = Pigsteel.id(level.asString() + "_" + baseName);
         }
         if (waxed){
             blockName = blockName.withPrefixedPath("waxed_");
@@ -107,7 +107,7 @@ public class ZombifiableBlockRegistry {
         return Registry.register(Registries.BLOCK, blockName, block);
     }
     private static RegistryKey<Block> keyOf(String id) {
-        return RegistryKey.of(RegistryKeys.BLOCK, Pigsteel.getModId(id));
+        return RegistryKey.of(RegistryKeys.BLOCK, Pigsteel.id(id));
     }
 
     public Block getUnaffectedBlock() {

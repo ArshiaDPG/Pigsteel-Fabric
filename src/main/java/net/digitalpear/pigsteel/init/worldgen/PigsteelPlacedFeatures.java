@@ -26,7 +26,7 @@ public class PigsteelPlacedFeatures {
     public static List<RegistryKey<PlacedFeature>> features = new ArrayList<>();
 
     public static RegistryKey<PlacedFeature> of(String id) {
-        RegistryKey<PlacedFeature> featureRegistryKey = RegistryKey.of(RegistryKeys.PLACED_FEATURE, Pigsteel.getModId(id));
+        RegistryKey<PlacedFeature> featureRegistryKey = RegistryKey.of(RegistryKeys.PLACED_FEATURE, Pigsteel.id(id));
         features.add(featureRegistryKey);
         return featureRegistryKey;
     }
@@ -52,11 +52,11 @@ public class PigsteelPlacedFeatures {
     private static List<PlacementModifier> modifiersWithCount(int count, PlacementModifier heightModifier) {
         return modifiers(CountPlacementModifier.of(count), heightModifier);
     }
-    public static Predicate<BiomeSelectionContext> pigsteelBaseGeneration(){
+    public static Predicate<BiomeSelectionContext> notInBlacklist(){
         return BiomeSelectors.foundInTheNether().and(biomeSelectionContext -> !biomeSelectionContext.hasTag(PigsteelBiomeTags.HAS_NO_PIGSTEEL));
     }
     public static void init() {
-        BiomeModifications.addFeature(pigsteelBaseGeneration(), GenerationStep.Feature.UNDERGROUND_ORES, ORE_PIGSTEEL);
-        BiomeModifications.addFeature(BiomeSelectors.tag(PigsteelBiomeTags.HAS_EXTRA_PIGSTEEL).and(biomeSelectionContext -> !biomeSelectionContext.hasTag(PigsteelBiomeTags.HAS_NO_PIGSTEEL)), GenerationStep.Feature.UNDERGROUND_ORES, ORE_PIGSTEEL_EXTRA);
+        BiomeModifications.addFeature(BiomeSelectors.foundInTheNether().and(notInBlacklist()), GenerationStep.Feature.UNDERGROUND_ORES, ORE_PIGSTEEL);
+        BiomeModifications.addFeature(BiomeSelectors.tag(PigsteelBiomeTags.HAS_EXTRA_PIGSTEEL).and(notInBlacklist()), GenerationStep.Feature.UNDERGROUND_ORES, ORE_PIGSTEEL_EXTRA);
     }
 }
