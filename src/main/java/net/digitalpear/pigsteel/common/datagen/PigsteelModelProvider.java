@@ -3,15 +3,25 @@ package net.digitalpear.pigsteel.common.datagen;
 import net.digitalpear.pigsteel.Pigsteel;
 import net.digitalpear.pigsteel.init.PigsteelBlocks;
 import net.digitalpear.pigsteel.init.PigsteelItems;
+import net.digitalpear.pigsteel.init.data.PigsteelBlockFamilies;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.block.Block;
 import net.minecraft.client.data.*;
-import net.minecraft.util.Identifier;
+import net.minecraft.client.render.model.json.ModelVariantOperator;
+import net.minecraft.client.render.model.json.WeightedVariant;
+import net.minecraft.state.property.Properties;
+import net.minecraft.util.math.Direction;
 
 import java.util.Optional;
 
 public class PigsteelModelProvider extends FabricModelProvider {
+    private static final BlockStateVariantMap<ModelVariantOperator> NORTH_DEFAULT_HORIZONTAL_ROTATION_OPERATIONS = BlockStateVariantMap.operations(Properties.HORIZONTAL_FACING)
+            .register(Direction.EAST, BlockStateModelGenerator.ROTATE_Y_90)
+            .register(Direction.SOUTH, BlockStateModelGenerator.ROTATE_Y_180)
+            .register(Direction.WEST, BlockStateModelGenerator.ROTATE_Y_270)
+            .register(Direction.NORTH, BlockStateModelGenerator.NO_OP);
+
     public PigsteelModelProvider(FabricDataOutput output) {
         super(output);
     }
@@ -34,15 +44,27 @@ public class PigsteelModelProvider extends FabricModelProvider {
             createLantern(blockStateModelGenerator, block);
             createLantern(blockStateModelGenerator, waxed, block);
         });
-        PigsteelBlocks.CUT_PIGSTEEL.getBlockToWaxedMap().forEach((block, waxed) -> {
-            blockStateModelGenerator.registerSimpleCubeAll(block);
-            blockStateModelGenerator.registerParented(block, waxed);
-        });
 
-        for (int i = 0; i < 4; i++){
-            createWaxableSlab(blockStateModelGenerator, PigsteelBlocks.CUT_PIGSTEEL.getZombifiables().get(i), PigsteelBlocks.CUT_PIGSTEEL_SLABS.getZombifiables().get(i),PigsteelBlocks.CUT_PIGSTEEL_SLABS.getWaxed().get(i));
-            createWaxableStairs(blockStateModelGenerator, PigsteelBlocks.CUT_PIGSTEEL.getZombifiables().get(i), PigsteelBlocks.CUT_PIGSTEEL_STAIRS.getZombifiables().get(i), PigsteelBlocks.CUT_PIGSTEEL_STAIRS.getWaxed().get(i));
-        }
+        blockStateModelGenerator.registerCubeAllModelTexturePool(PigsteelBlocks.CUT_PIGSTEEL.getUnaffectedBlock())
+                .family(PigsteelBlockFamilies.CUT_PIGSTEEL)
+                .family(PigsteelBlockFamilies.WAXED_CUT_PIGSTEEL)
+                .parented(PigsteelBlocks.CUT_PIGSTEEL.getUnaffectedBlock(), PigsteelBlocks.CUT_PIGSTEEL.getWaxedUnaffectedBlock());
+
+        blockStateModelGenerator.registerCubeAllModelTexturePool(PigsteelBlocks.CUT_PIGSTEEL.getInfectedBlock())
+                .family(PigsteelBlockFamilies.INFECTED_CUT_PIGSTEEL)
+                .family(PigsteelBlockFamilies.WAXED_INFECTED_CUT_PIGSTEEL)
+                .parented(PigsteelBlocks.CUT_PIGSTEEL.getInfectedBlock(), PigsteelBlocks.CUT_PIGSTEEL.getWaxedInfectedBlock());
+
+        blockStateModelGenerator.registerCubeAllModelTexturePool(PigsteelBlocks.CUT_PIGSTEEL.getCorruptedBlock())
+                .family(PigsteelBlockFamilies.CORRUPTED_CUT_PIGSTEEL)
+                .family(PigsteelBlockFamilies.WAXED_CORRUPTED_CUT_PIGSTEEL)
+                .parented(PigsteelBlocks.CUT_PIGSTEEL.getCorruptedBlock(), PigsteelBlocks.CUT_PIGSTEEL.getWaxedCorruptedBlock());
+
+        blockStateModelGenerator.registerCubeAllModelTexturePool(PigsteelBlocks.CUT_PIGSTEEL.getZombifiedBlock())
+                .family(PigsteelBlockFamilies.ZOMBIFIED_CUT_PIGSTEEL)
+                .family(PigsteelBlockFamilies.WAXED_ZOMBIFIED_CUT_PIGSTEEL)
+                .parented(PigsteelBlocks.CUT_PIGSTEEL.getZombifiedBlock(), PigsteelBlocks.CUT_PIGSTEEL.getWaxedZombifiedBlock());
+
     }
 
     @Override
@@ -55,57 +77,12 @@ public class PigsteelModelProvider extends FabricModelProvider {
         return new Model(Optional.of(Pigsteel.id("block/" + parent)), Optional.empty(), requiredTextureKeys);
     }
     public final void createLantern(BlockStateModelGenerator blockStateModelGenerator, Block lantern) {
-        Identifier identifier = block("template_pigsteel_lantern", TextureKey.ALL).upload(lantern, TextureMap.all(lantern), blockStateModelGenerator.modelCollector);
+        WeightedVariant weightedVariant = BlockStateModelGenerator.createWeightedVariant(block("template_pigsteel_lantern", TextureKey.ALL).upload(lantern, TextureMap.all(lantern), blockStateModelGenerator.modelCollector));
         blockStateModelGenerator.registerItemModel(lantern.asItem());
-        blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(lantern, BlockStateVariant.create().put(VariantSettings.MODEL, identifier))
-                .coordinate(BlockStateModelGenerator.createNorthDefaultHorizontalRotationStates()));
+        blockStateModelGenerator.blockStateCollector.accept(VariantsBlockModelDefinitionCreator.of(lantern, weightedVariant).coordinate(NORTH_DEFAULT_HORIZONTAL_ROTATION_OPERATIONS));
     }
     public final void createLantern(BlockStateModelGenerator blockStateModelGenerator, Block lantern, Block baseModel) {
-        Identifier identifier = TextureMap.getId(baseModel);
         blockStateModelGenerator.registerParentedItemModel(lantern, TextureMap.getId(baseModel.asItem()));
-        blockStateModelGenerator.blockStateCollector.accept(VariantsBlockStateSupplier.create(lantern, BlockStateVariant.create().put(VariantSettings.MODEL, identifier))
-                .coordinate(BlockStateModelGenerator.createNorthDefaultHorizontalRotationStates()));
-    }
-
-    public static void createWaxableStairs(BlockStateModelGenerator blockStateModelGenerator, Block textureBase, Block stairs, Block waxed) {
-        createStairs(blockStateModelGenerator, textureBase, stairs);
-        createWaxedStairs(blockStateModelGenerator, stairs, waxed);
-    }
-    public static void createWaxableSlab(BlockStateModelGenerator blockStateModelGenerator, Block textureBase, Block slab, Block waxed){
-        createSlab(blockStateModelGenerator, textureBase, slab);
-        createWaxedSlab(blockStateModelGenerator, textureBase, slab, waxed);
-    }
-
-
-
-    public static void createStairs(BlockStateModelGenerator blockStateModelGenerator, Block textureBase, Block stairs){
-        Identifier STAIRS = Models.STAIRS.upload(stairs, TextureMap.all(textureBase), blockStateModelGenerator.modelCollector);
-        Identifier INNER_STAIRS = Models.INNER_STAIRS.upload(stairs, TextureMap.all(textureBase), blockStateModelGenerator.modelCollector);
-        Identifier OUTER_STAIRS = Models.OUTER_STAIRS.upload(stairs, TextureMap.all(textureBase), blockStateModelGenerator.modelCollector);
-        blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createStairsBlockState(stairs,
-                INNER_STAIRS, STAIRS, OUTER_STAIRS));
-    }
-    public static void createWaxedStairs(BlockStateModelGenerator blockStateModelGenerator, Block stairs, Block waxed){
-        Identifier STAIRS = TextureMap.getId(stairs);
-        Identifier INNER_STAIRS = TextureMap.getSubId(stairs, "_inner");
-        Identifier OUTER_STAIRS = TextureMap.getSubId(stairs, "_outer");
-        blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createStairsBlockState(waxed,
-                INNER_STAIRS, STAIRS, OUTER_STAIRS));
-        blockStateModelGenerator.registerParentedItemModel(waxed, STAIRS);
-    }
-
-
-    public static void createSlab(BlockStateModelGenerator blockStateModelGenerator, Block textureBase, Block slab){
-        Identifier SLAB = Models.SLAB.upload(slab, TextureMap.all(textureBase), blockStateModelGenerator.modelCollector);
-        Identifier SLAB_TOP = Models.SLAB_TOP.upload(slab, TextureMap.all(textureBase), blockStateModelGenerator.modelCollector);
-        blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createSlabBlockState(slab,
-                SLAB, SLAB_TOP, TextureMap.getId(textureBase)));
-    }
-    public static void createWaxedSlab(BlockStateModelGenerator blockStateModelGenerator, Block textureBase, Block slab, Block waxed){
-        Identifier SLAB = TextureMap.getId(slab);
-        Identifier SLAB_TOP = TextureMap.getSubId(slab, "_top");
-        blockStateModelGenerator.blockStateCollector.accept(BlockStateModelGenerator.createSlabBlockState(waxed,
-                SLAB, SLAB_TOP, TextureMap.getId(textureBase)));
-        blockStateModelGenerator.registerParentedItemModel(waxed, SLAB);
+        blockStateModelGenerator.blockStateCollector.accept(VariantsBlockModelDefinitionCreator.of(lantern, BlockStateModelGenerator.createWeightedVariant(TextureMap.getId(baseModel))).coordinate(NORTH_DEFAULT_HORIZONTAL_ROTATION_OPERATIONS));
     }
 }
