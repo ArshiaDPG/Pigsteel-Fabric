@@ -111,7 +111,8 @@ unifiedPublishing {
   <li>Updated to 1.21.4.</li>
   <li>Removed Pigsteel as an armor trim material.</li>
   <li>Fixed incorrect conventional tag entries.</li>
-  <li>Updating from pre-2.0 worlds will now convert all pigsteel ore blocks to their .</li>
+  <li>Updating from pre-2.0 worlds will now convert all pigsteel ore blocks into Porkslag.</li>
+  <li>Updating from pre-2.0 worlds will now convert all pigsteel blocks to Pigsteel Chunk blocks.</li>
 </ul> '''
 
 		releaseType = "release" // Optional, use "release", "beta" or "alpha"
