@@ -10,7 +10,9 @@ import net.minecraft.block.Blocks;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.util.Identifier;
 
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 public class PigsteelBlockTagProvider extends FabricTagProvider<Block> {

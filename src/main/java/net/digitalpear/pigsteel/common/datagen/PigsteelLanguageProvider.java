@@ -48,18 +48,16 @@ public class PigsteelLanguageProvider extends FabricLanguageProvider {
 
         translationBuilder.add(PigsteelItems.PIGSTEEL_CHUNK, "Pigsteel Chunk");
 
-
         makeTagTranslation(translationBuilder, PigsteelItemTags.PIGSTEEL_ORES);
 
         makeTagTranslation(translationBuilder, PigsteelBlockTags.PIGSTEEL_BLOCKS);
         makeTagTranslation(translationBuilder, PigsteelBlockTags.PIGSTEEL_ORES);
-        makeTagTranslation(translationBuilder, PigsteelBlockTags.ZOMBIFICATION_ACCELERATION);
-        makeTagTranslation(translationBuilder, PigsteelBlockTags.ZOMBIFICATION_DECELERATION);
+
+        translationBuilder.add(PigsteelBlockTags.ZOMBIFICATION_ACCELERATION, "Accelerates Zombification");
+        translationBuilder.add(PigsteelBlockTags.ZOMBIFICATION_DECELERATION, "Decelerates Zombification");
 
         makeTagTranslation(translationBuilder, PigsteelBiomeTags.HAS_EXTRA_PIGSTEEL);
         makeTagTranslation(translationBuilder, PigsteelBiomeTags.HAS_NO_PIGSTEEL);
-
-        translationBuilder.add("trim_material.pigsteel.pigsteel", "Pigsteel");
     }
 
     public static void makeTagTranslation(TranslationBuilder builder, TagKey<?> tagKey){

@@ -34,7 +34,6 @@ public class PigsteelBlockLootTableProvider extends FabricBlockLootTableProvider
             if (normal instanceof SlabBlock){
                 addDrop(normal, slabDrops(normal));
                 addDrop(waxed, slabDrops(waxed));
-
             }
             else{
                 addDrop(normal);
@@ -43,7 +42,7 @@ public class PigsteelBlockLootTableProvider extends FabricBlockLootTableProvider
         }));
         RegistryWrapper.Impl<Enchantment> impl = this.registryLookup.getOrThrow(RegistryKeys.ENCHANTMENT);
 
-        addDrop(PigsteelBlocks.PORKSLAG, dropsWithSilkTouch(PigsteelBlocks.PORKSLAG, (LootPoolEntry.Builder)this.applyExplosionDecay(PigsteelBlocks.PORKSLAG, ((LeafEntry.Builder)ItemEntry.builder(PigsteelItems.PIGSTEEL_CHUNK).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(2.0f, 6.0f)))).apply(ApplyBonusLootFunction.oreDrops(impl.getOrThrow(Enchantments.FORTUNE))))));
+        addDrop(PigsteelBlocks.PORKSLAG, dropsWithSilkTouch(PigsteelBlocks.PORKSLAG, this.applyExplosionDecay(PigsteelBlocks.PORKSLAG, ItemEntry.builder(PigsteelItems.PIGSTEEL_CHUNK).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(2.0f, 6.0f))).apply(ApplyBonusLootFunction.oreDrops(impl.getOrThrow(Enchantments.FORTUNE))))));
         addDrop(PigsteelBlocks.PIGSTEEL_CHUNK_BLOCK);
     }
 }

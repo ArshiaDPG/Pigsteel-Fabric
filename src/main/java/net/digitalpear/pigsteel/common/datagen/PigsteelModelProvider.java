@@ -37,12 +37,12 @@ public class PigsteelModelProvider extends FabricModelProvider {
             blockStateModelGenerator.registerParented(block, waxed);
         });
         PigsteelBlocks.PIGSTEEL_LANTERNS.getBlockToWaxedMap().forEach((block, waxed) -> {
-            createLantern(blockStateModelGenerator, block);
-            createLantern(blockStateModelGenerator, waxed, block);
+            registerLantern(blockStateModelGenerator, block);
+            registerParentedLantern(blockStateModelGenerator, waxed, block);
         });
         PigsteelBlocks.PIGSTEEL_SOUL_LANTERNS.getBlockToWaxedMap().forEach((block, waxed) -> {
-            createLantern(blockStateModelGenerator, block);
-            createLantern(blockStateModelGenerator, waxed, block);
+            registerLantern(blockStateModelGenerator, block);
+            registerParentedLantern(blockStateModelGenerator, waxed, block);
         });
 
         blockStateModelGenerator.registerCubeAllModelTexturePool(PigsteelBlocks.CUT_PIGSTEEL.getUnaffectedBlock())
@@ -64,7 +64,6 @@ public class PigsteelModelProvider extends FabricModelProvider {
                 .family(PigsteelBlockFamilies.ZOMBIFIED_CUT_PIGSTEEL)
                 .family(PigsteelBlockFamilies.WAXED_ZOMBIFIED_CUT_PIGSTEEL)
                 .parented(PigsteelBlocks.CUT_PIGSTEEL.getZombifiedBlock(), PigsteelBlocks.CUT_PIGSTEEL.getWaxedZombifiedBlock());
-
     }
 
     @Override
@@ -76,12 +75,12 @@ public class PigsteelModelProvider extends FabricModelProvider {
     private static Model block(String parent, TextureKey... requiredTextureKeys) {
         return new Model(Optional.of(Pigsteel.id("block/" + parent)), Optional.empty(), requiredTextureKeys);
     }
-    public final void createLantern(BlockStateModelGenerator blockStateModelGenerator, Block lantern) {
+    public static void registerLantern(BlockStateModelGenerator blockStateModelGenerator, Block lantern) {
         WeightedVariant weightedVariant = BlockStateModelGenerator.createWeightedVariant(block("template_pigsteel_lantern", TextureKey.ALL).upload(lantern, TextureMap.all(lantern), blockStateModelGenerator.modelCollector));
         blockStateModelGenerator.registerItemModel(lantern.asItem());
         blockStateModelGenerator.blockStateCollector.accept(VariantsBlockModelDefinitionCreator.of(lantern, weightedVariant).coordinate(NORTH_DEFAULT_HORIZONTAL_ROTATION_OPERATIONS));
     }
-    public final void createLantern(BlockStateModelGenerator blockStateModelGenerator, Block lantern, Block baseModel) {
+    public static void registerParentedLantern(BlockStateModelGenerator blockStateModelGenerator, Block lantern, Block baseModel) {
         blockStateModelGenerator.registerParentedItemModel(lantern, TextureMap.getId(baseModel.asItem()));
         blockStateModelGenerator.blockStateCollector.accept(VariantsBlockModelDefinitionCreator.of(lantern, BlockStateModelGenerator.createWeightedVariant(TextureMap.getId(baseModel))).coordinate(NORTH_DEFAULT_HORIZONTAL_ROTATION_OPERATIONS));
     }
