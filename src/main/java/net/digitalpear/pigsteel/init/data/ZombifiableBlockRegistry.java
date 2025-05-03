@@ -97,10 +97,10 @@ public class ZombifiableBlockRegistry {
         }
         if (waxed){
             blockName = blockName.withPrefixedPath("waxed_");
-            block = blockFunction.apply(settings.mapColor(level.getMapColor()).registryKey(keyOf(blockName.getPath())));
+            block = waxedBlockFunction.apply(settings.mapColor(level.getMapColor()).registryKey(keyOf(blockName.getPath())));
         }
         else {
-            block = waxedBlockFunction.apply(settings.mapColor(level.getMapColor()).registryKey(keyOf(blockName.getPath())));
+            block = blockFunction.apply(settings.mapColor(level.getMapColor()).registryKey(keyOf(blockName.getPath())));
         }
         
         createBlockItem(blockName.getPath(), block, BlockItem::new);
