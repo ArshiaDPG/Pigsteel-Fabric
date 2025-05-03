@@ -109,6 +109,7 @@ unifiedPublishing {
 		version = "${project.mod_version}" // Optional, Inferred from project by default
 		changelog = '''<ul>
   <li>Fixed pigsteel blocks not zombifying.</li>
+  <li>Ukrainian translation by unroman.</li>
 </ul> '''
 
 		releaseType = "release" // Optional, use "release", "beta" or "alpha"
