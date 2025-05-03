@@ -108,11 +108,9 @@ unifiedPublishing {
 		displayName = "${project.minecraft_version}-${project.mod_version}" // Optional, name of the file
 		version = "${project.mod_version}" // Optional, Inferred from project by default
 		changelog = '''<ul>
-  <li>Updated to 1.21.4.</li>
-  <li>Removed Pigsteel as an armor trim material.</li>
-  <li>Fixed incorrect conventional tag entries.</li>
-  <li>Updating from pre-2.0 worlds will now convert all pigsteel ore blocks into Porkslag.</li>
-  <li>Updating from pre-2.0 worlds will now convert all pigsteel blocks to Pigsteel Chunk blocks.</li>
+  <li>Fixed pigsteel blocks not zombifying.</li>
+  <li>Removed redundant trim material translation.</li>
+  <li>Changed translation of some tags.</li>
 </ul> '''
 
 		releaseType = "release" // Optional, use "release", "beta" or "alpha"
