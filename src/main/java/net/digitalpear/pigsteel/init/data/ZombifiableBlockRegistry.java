@@ -81,7 +81,7 @@ public class ZombifiableBlockRegistry {
         return Registry.register(Registries.BLOCK, blockName, block);
     }
     private Block createBlock(MapColor mapColor, boolean waxed) {
-        Class<? extends Block> blockClass = waxed ? baseBlockClass : waxedBlockClass;
+        Class<? extends Block> blockClass = waxed ? waxedBlockClass : baseBlockClass;
         try {
             if (waxed){
                 return blockClass.getConstructor(AbstractBlock.Settings.class).newInstance(settings.mapColor(mapColor));
