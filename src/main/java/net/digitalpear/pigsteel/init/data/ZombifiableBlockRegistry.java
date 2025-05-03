@@ -1,5 +1,6 @@
 package net.digitalpear.pigsteel.init.data;
 
+import com.google.common.collect.ImmutableMap;
 import net.digitalpear.pigsteel.Pigsteel;
 import net.digitalpear.pigsteel.common.blocks.Zombifiable;
 import net.digitalpear.pigsteel.init.PigsteelItems;
@@ -24,7 +25,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.BiFunction;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 @SuppressWarnings("unused")
 public class ZombifiableBlockRegistry {
@@ -34,8 +34,8 @@ public class ZombifiableBlockRegistry {
     public static final AbstractBlock.Settings basePigsteelSettings = AbstractBlock.Settings.copy(Blocks.IRON_BLOCK).sounds(BlockSoundGroup.NETHERITE);
 
     public static final List<ZombifiableBlockRegistry> REGISTRIES = new ArrayList<>();
-    private Function<AbstractBlock.Settings, Block> blockFunction;
-    private Function<AbstractBlock.Settings, Block> waxedBlockFunction;
+    private BiFunction<Zombifiable.ZombificationLevel, AbstractBlock.Settings, Block> blockFunction;
+    private BiFunction<Zombifiable.ZombificationLevel, AbstractBlock.Settings, Block> waxedBlockFunction;
     private String baseName;
     public AbstractBlock.Settings settings;
 
@@ -49,17 +49,17 @@ public class ZombifiableBlockRegistry {
     private Block waxedCorruptedBlock;
     private Block waxedZombifiedBlock;
 
-    public ZombifiableBlockRegistry(String baseName, Function<AbstractBlock.Settings, Block> baseBlockClass, Function<AbstractBlock.Settings, Block> waxedBlockFunction, AbstractBlock.Settings settings) {
+    public ZombifiableBlockRegistry(String baseName, BiFunction<Zombifiable.ZombificationLevel, AbstractBlock.Settings, Block> baseBlockClass, BiFunction<Zombifiable.ZombificationLevel, AbstractBlock.Settings, Block> waxedBlockFunction, AbstractBlock.Settings settings) {
         this.settings = settings;
         defineBlocks(baseName, baseBlockClass, waxedBlockFunction);
         mapWaxingAndAxing();
         REGISTRIES.add(this);
     }
-    public ZombifiableBlockRegistry(String baseName, Function<AbstractBlock.Settings, Block> baseBlockClass, Function<AbstractBlock.Settings, Block> waxedBlockClass) {
+    public ZombifiableBlockRegistry(String baseName, BiFunction<Zombifiable.ZombificationLevel, AbstractBlock.Settings, Block> baseBlockClass, BiFunction<Zombifiable.ZombificationLevel, AbstractBlock.Settings, Block> waxedBlockClass) {
         this(baseName, baseBlockClass, waxedBlockClass, basePigsteelSettings);
     }
 
-    private void defineBlocks(String baseName, Function<AbstractBlock.Settings, Block> blockFunction, Function<AbstractBlock.Settings, Block> waxedBlockFunction){
+    private void defineBlocks(String baseName, BiFunction<Zombifiable.ZombificationLevel, AbstractBlock.Settings, Block> blockFunction, BiFunction<Zombifiable.ZombificationLevel, AbstractBlock.Settings, Block> waxedBlockFunction){
         this.baseName = baseName;
         this.blockFunction = blockFunction;
         this.waxedBlockFunction = waxedBlockFunction;
@@ -97,10 +97,10 @@ public class ZombifiableBlockRegistry {
         }
         if (waxed){
             blockName = blockName.withPrefixedPath("waxed_");
-            block = waxedBlockFunction.apply(settings.mapColor(level.getMapColor()).registryKey(keyOf(blockName.getPath())));
+            block = waxedBlockFunction.apply(level, settings.mapColor(level.getMapColor()).registryKey(keyOf(blockName.getPath())));
         }
         else {
-            block = blockFunction.apply(settings.mapColor(level.getMapColor()).registryKey(keyOf(blockName.getPath())));
+            block = blockFunction.apply(level, settings.mapColor(level.getMapColor()).registryKey(keyOf(blockName.getPath())));
         }
         
         createBlockItem(blockName.getPath(), block, BlockItem::new);
@@ -144,6 +144,25 @@ public class ZombifiableBlockRegistry {
 
     public Block getWaxedZombifiedBlock() {
         return waxedZombifiedBlock;
+    }
+
+    public Block getBlockFromLevel(Zombifiable.ZombificationLevel level){
+        ImmutableMap<Zombifiable.ZombificationLevel, Block> map = ImmutableMap.<Zombifiable.ZombificationLevel, Block>builderWithExpectedSize(4)
+                .put(Zombifiable.ZombificationLevel.UNAFFECTED, getUnaffectedBlock())
+                .put(Zombifiable.ZombificationLevel.INFECTED, getInfectedBlock())
+                .put(Zombifiable.ZombificationLevel.CORRUPTED, getCorruptedBlock())
+                .put(Zombifiable.ZombificationLevel.ZOMBIFIED, getZombifiedBlock())
+                .build();
+        return map.get(level);
+    }
+    public Block getWaxedBlockFromLevel(Zombifiable.ZombificationLevel level){
+        ImmutableMap<Zombifiable.ZombificationLevel, Block> map = ImmutableMap.<Zombifiable.ZombificationLevel, Block>builderWithExpectedSize(4)
+                .put(Zombifiable.ZombificationLevel.UNAFFECTED, getWaxedUnaffectedBlock())
+                .put(Zombifiable.ZombificationLevel.INFECTED, getWaxedInfectedBlock())
+                .put(Zombifiable.ZombificationLevel.CORRUPTED, getWaxedCorruptedBlock())
+                .put(Zombifiable.ZombificationLevel.ZOMBIFIED, getWaxedZombifiedBlock())
+                .build();
+        return map.get(level);
     }
 
     public Map<Block, Block> getBlockToWaxedMap(){

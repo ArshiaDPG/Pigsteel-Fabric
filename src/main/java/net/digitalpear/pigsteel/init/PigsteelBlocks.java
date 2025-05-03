@@ -22,6 +22,7 @@ import java.util.function.Function;
 @SuppressWarnings("unused")
 public class PigsteelBlocks {
 
+    @SuppressWarnings("all")
     public static Item createBlockItem(String id, Block block, BiFunction<Block, Item.Settings, Item> factory) {
         Item.Settings settings = new Item.Settings().fireproof();
         return createBlockItem(id, block, factory, settings);
@@ -67,12 +68,12 @@ public class PigsteelBlocks {
         return AbstractBlock.Settings.create().solid().requiresTool().strength(3.5F).sounds(BlockSoundGroup.LANTERN).nonOpaque().pistonBehavior(PistonBehavior.DESTROY).luminance(state -> lightValue);
     }
 
-    public static final ZombifiableBlockRegistry REFINED_PIGSTEEL = new ZombifiableBlockRegistry("refined_pigsteel", ZombifiableBlock::new, Block::new);
-    public static final ZombifiableBlockRegistry CUT_PIGSTEEL = new ZombifiableBlockRegistry("cut_pigsteel", ZombifiableBlock::new, Block::new);
-    public static final ZombifiableBlockRegistry CUT_PIGSTEEL_STAIRS = new ZombifiableBlockRegistry("cut_pigsteel_stairs", ZombifiableStairsBlock::new, settings -> new StairsBlock(CUT_PIGSTEEL.getWaxedUnaffectedBlock().getDefaultState(), settings));
-    public static final ZombifiableBlockRegistry CUT_PIGSTEEL_SLABS = new ZombifiableBlockRegistry("cut_pigsteel_slab", ZombifiableSlabBlock::new, SlabBlock::new);
-    public static final ZombifiableBlockRegistry PIGSTEEL_LANTERNS = new ZombifiableBlockRegistry("pigsteel_lantern", ZombifiableLanternBlock::new, PigsteelLanternBlock::new, lanternsSettings(15));
-    public static final ZombifiableBlockRegistry PIGSTEEL_SOUL_LANTERNS = new ZombifiableBlockRegistry("pigsteel_soul_lantern", ZombifiableLanternBlock::new, PigsteelLanternBlock::new, lanternsSettings(10));
+    public static final ZombifiableBlockRegistry REFINED_PIGSTEEL = new ZombifiableBlockRegistry("refined_pigsteel", ZombifiableBlock::new, (level, settings) -> new Block(settings));
+    public static final ZombifiableBlockRegistry CUT_PIGSTEEL = new ZombifiableBlockRegistry("cut_pigsteel", ZombifiableBlock::new, (level, settings) -> new Block(settings));
+    public static final ZombifiableBlockRegistry CUT_PIGSTEEL_STAIRS = new ZombifiableBlockRegistry("cut_pigsteel_stairs", (level, settings) -> new ZombifiableStairsBlock(level, CUT_PIGSTEEL.getBlockFromLevel(level).getDefaultState(), settings), (level, settings) -> new StairsBlock(CUT_PIGSTEEL.getWaxedBlockFromLevel(level).getDefaultState(), settings));
+    public static final ZombifiableBlockRegistry CUT_PIGSTEEL_SLABS = new ZombifiableBlockRegistry("cut_pigsteel_slab", ZombifiableSlabBlock::new, (level, settings) -> new SlabBlock(settings));
+    public static final ZombifiableBlockRegistry PIGSTEEL_LANTERNS = new ZombifiableBlockRegistry("pigsteel_lantern", ZombifiableLanternBlock::new, (level, settings) -> new PigsteelLanternBlock(settings), lanternsSettings(15));
+    public static final ZombifiableBlockRegistry PIGSTEEL_SOUL_LANTERNS = new ZombifiableBlockRegistry("pigsteel_soul_lantern", ZombifiableLanternBlock::new, (level, settings) -> new PigsteelLanternBlock(settings), lanternsSettings(10));
 
     public static void init(){
         ZombifiableBlockRegistry.registerWaxingAndZombifications();
@@ -83,9 +84,7 @@ public class PigsteelBlocks {
                 "deepslate_pigsteel_ore",
                 "blue_pigsteel_ore"
         );
-        ORE_NAMES.forEach(s -> {
-            Registries.BLOCK.addAlias(Pigsteel.id(s), Registries.BLOCK.getId(PORKSLAG));
-        });
+        ORE_NAMES.forEach(s -> Registries.BLOCK.addAlias(Pigsteel.id(s), Registries.BLOCK.getId(PORKSLAG)));
         Registries.BLOCK.addAlias(Pigsteel.id("pigsteel_block"), Registries.BLOCK.getId(PIGSTEEL_CHUNK_BLOCK));
     }
 }

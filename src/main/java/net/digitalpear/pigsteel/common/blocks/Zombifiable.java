@@ -2,10 +2,7 @@ package net.digitalpear.pigsteel.common.blocks;
 
 import net.digitalpear.pigsteel.init.data.ZombifiableBlockRegistry;
 import net.digitalpear.pigsteel.init.tags.PigsteelBlockTags;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Degradable;
-import net.minecraft.block.MapColor;
+import net.minecraft.block.*;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.StringIdentifiable;
 import net.minecraft.util.math.BlockPos;

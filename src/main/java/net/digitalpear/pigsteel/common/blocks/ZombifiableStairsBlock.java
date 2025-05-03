@@ -16,18 +16,12 @@ import java.util.Optional;
 public class ZombifiableStairsBlock extends StairsBlock implements Zombifiable {
 
     private ZombificationLevel zombificationLevel;
-    private static final Map<ZombificationLevel, Block> levelToBlockMap = Map.of(
-            ZombificationLevel.UNAFFECTED, PigsteelBlocks.CUT_PIGSTEEL.getUnaffectedBlock(),
-            ZombificationLevel.INFECTED, PigsteelBlocks.CUT_PIGSTEEL.getInfectedBlock(),
-            ZombificationLevel.CORRUPTED, PigsteelBlocks.CUT_PIGSTEEL.getCorruptedBlock(),
-            ZombificationLevel.ZOMBIFIED, PigsteelBlocks.CUT_PIGSTEEL.getZombifiedBlock()
-    );
-    public ZombifiableStairsBlock(Settings settings) {
-        super(levelToBlockMap.get(ZombificationLevel.UNAFFECTED).getDefaultState(), settings);
+    public ZombifiableStairsBlock(BlockState state, Settings settings) {
+        super(state, settings);
         this.zombificationLevel = ZombificationLevel.UNAFFECTED;
     }
-    public ZombifiableStairsBlock(ZombificationLevel zombificationLevel, Settings settings) {
-        super(levelToBlockMap.get(zombificationLevel).getDefaultState(), settings);
+    public ZombifiableStairsBlock(ZombificationLevel zombificationLevel, BlockState state, Settings settings) {
+        super(state, settings);
         this.zombificationLevel = zombificationLevel;
     }
     @Override
