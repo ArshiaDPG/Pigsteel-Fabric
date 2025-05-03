@@ -42,5 +42,7 @@ public class PigsteelItemOverrideProvider extends ItemOverrideDataProvider{
         addTrimOverride(Items.NETHERITE_CHESTPLATE, PigsteelArmorTrimMaterials.PIGSTEEL);
         addTrimOverride(Items.NETHERITE_LEGGINGS, PigsteelArmorTrimMaterials.PIGSTEEL);
         addTrimOverride(Items.NETHERITE_BOOTS, PigsteelArmorTrimMaterials.PIGSTEEL);
+
+        addTrimOverride(Items.TURTLE_HELMET, PigsteelArmorTrimMaterials.PIGSTEEL);
     }
 }

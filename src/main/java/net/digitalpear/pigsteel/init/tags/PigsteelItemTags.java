@@ -10,8 +10,6 @@ public class PigsteelItemTags {
 
     public static final TagKey<Item> PIGSTEEL_ORES = of("pigsteel_ores");
 
-    public static final TagKey<Item> C_ORES = of("c","ores");
-
     private static TagKey<Item> of(String id) {
         return TagKey.of(Registries.ITEM.getKey(), new Identifier(Pigsteel.MOD_ID, id));
     }

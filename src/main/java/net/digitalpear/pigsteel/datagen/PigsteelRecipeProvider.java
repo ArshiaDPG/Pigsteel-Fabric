@@ -86,15 +86,15 @@ public class PigsteelRecipeProvider extends FabricRecipeProvider {
         makeSmeltnBlast(exporter, List.of(PigsteelItems.PIGSTEEL_CHUNK), RecipeCategory.MISC, Items.IRON_NUGGET, 0.7f, 200, "iron_nugget");
         makeSmeltnBlast(exporter, List.of(PigsteelBlocks.PORKSLAG), RecipeCategory.MISC, Items.IRON_INGOT, 0.7f, 200, "iron_ingot");
 
-        makeCutRecipes(exporter, PigsteelBlocks.refinedPigsteel.getUnaffectedBlock(), PigsteelBlocks.cutPigsteel.getUnaffectedBlock(), PigsteelBlocks.CUT_PIGSTEEL_STAIRS, PigsteelBlocks.cutPigsteelSlabs.getUnaffectedBlock());
-        makeCutRecipes(exporter, PigsteelBlocks.refinedPigsteel.getInfectedBlock(), PigsteelBlocks.cutPigsteel.getInfectedBlock(), PigsteelBlocks.INFECTED_CUT_PIGSTEEL_STAIRS, PigsteelBlocks.cutPigsteelSlabs.getInfectedBlock());
-        makeCutRecipes(exporter, PigsteelBlocks.refinedPigsteel.getCorruptedBlock(), PigsteelBlocks.cutPigsteel.getCorruptedBlock(), PigsteelBlocks.CORRUPTED_CUT_PIGSTEEL_STAIRS, PigsteelBlocks.cutPigsteelSlabs.getCorruptedBlock());
-        makeCutRecipes(exporter, PigsteelBlocks.refinedPigsteel.getZombifiedBlock(), PigsteelBlocks.cutPigsteel.getZombifiedBlock(), PigsteelBlocks.ZOMBIFIED_CUT_PIGSTEEL_STAIRS, PigsteelBlocks.cutPigsteelSlabs.getZombifiedBlock());
+        makeCutRecipes(exporter, PigsteelBlocks.refinedPigsteel.getUnaffectedBlock(), PigsteelBlocks.cutPigsteel.getUnaffectedBlock(), PigsteelBlocks.cutPigsteelStairs.getUnaffectedBlock(), PigsteelBlocks.cutPigsteelSlabs.getUnaffectedBlock());
+        makeCutRecipes(exporter, PigsteelBlocks.refinedPigsteel.getInfectedBlock(), PigsteelBlocks.cutPigsteel.getInfectedBlock(), PigsteelBlocks.cutPigsteelStairs.getInfectedBlock(), PigsteelBlocks.cutPigsteelSlabs.getInfectedBlock());
+        makeCutRecipes(exporter, PigsteelBlocks.refinedPigsteel.getCorruptedBlock(), PigsteelBlocks.cutPigsteel.getCorruptedBlock(), PigsteelBlocks.cutPigsteelStairs.getCorruptedBlock(), PigsteelBlocks.cutPigsteelSlabs.getCorruptedBlock());
+        makeCutRecipes(exporter, PigsteelBlocks.refinedPigsteel.getZombifiedBlock(), PigsteelBlocks.cutPigsteel.getZombifiedBlock(), PigsteelBlocks.cutPigsteelStairs.getZombifiedBlock(), PigsteelBlocks.cutPigsteelSlabs.getZombifiedBlock());
 
-        makeCutRecipes(exporter, PigsteelBlocks.refinedPigsteel.getWaxedUnaffectedBlock(), PigsteelBlocks.cutPigsteel.getWaxedUnaffectedBlock(), PigsteelBlocks.WAXED_CUT_PIGSTEEL_STAIRS, PigsteelBlocks.cutPigsteelSlabs.getWaxedUnaffectedBlock());
-        makeCutRecipes(exporter, PigsteelBlocks.refinedPigsteel.getWaxedInfectedBlock(), PigsteelBlocks.cutPigsteel.getWaxedInfectedBlock(), PigsteelBlocks.WAXED_INFECTED_CUT_PIGSTEEL_STAIRS, PigsteelBlocks.cutPigsteelSlabs.getWaxedInfectedBlock());
-        makeCutRecipes(exporter, PigsteelBlocks.refinedPigsteel.getWaxedCorruptedBlock(), PigsteelBlocks.cutPigsteel.getWaxedCorruptedBlock(), PigsteelBlocks.WAXED_CORRUPTED_CUT_PIGSTEEL_STAIRS, PigsteelBlocks.cutPigsteelSlabs.getWaxedCorruptedBlock());
-        makeCutRecipes(exporter, PigsteelBlocks.refinedPigsteel.getWaxedZombifiedBlock(), PigsteelBlocks.cutPigsteel.getWaxedZombifiedBlock(), PigsteelBlocks.WAXED_ZOMBIFIED_CUT_PIGSTEEL_STAIRS, PigsteelBlocks.cutPigsteelSlabs.getWaxedZombifiedBlock());
+        makeCutRecipes(exporter, PigsteelBlocks.refinedPigsteel.getWaxedUnaffectedBlock(), PigsteelBlocks.cutPigsteel.getWaxedUnaffectedBlock(), PigsteelBlocks.cutPigsteelStairs.getWaxedUnaffectedBlock(), PigsteelBlocks.cutPigsteelSlabs.getWaxedUnaffectedBlock());
+        makeCutRecipes(exporter, PigsteelBlocks.refinedPigsteel.getWaxedInfectedBlock(), PigsteelBlocks.cutPigsteel.getWaxedInfectedBlock(), PigsteelBlocks.cutPigsteelStairs.getWaxedInfectedBlock(), PigsteelBlocks.cutPigsteelSlabs.getWaxedInfectedBlock());
+        makeCutRecipes(exporter, PigsteelBlocks.refinedPigsteel.getWaxedCorruptedBlock(), PigsteelBlocks.cutPigsteel.getWaxedCorruptedBlock(), PigsteelBlocks.cutPigsteelStairs.getWaxedCorruptedBlock(), PigsteelBlocks.cutPigsteelSlabs.getWaxedCorruptedBlock());
+        makeCutRecipes(exporter, PigsteelBlocks.refinedPigsteel.getWaxedZombifiedBlock(), PigsteelBlocks.cutPigsteel.getWaxedZombifiedBlock(), PigsteelBlocks.cutPigsteelStairs.getWaxedZombifiedBlock(), PigsteelBlocks.cutPigsteelSlabs.getWaxedZombifiedBlock());
 
 
         makeLantern(exporter, PigsteelBlocks.pigsteelLanterns.getUnaffectedBlock(), Items.TORCH);
