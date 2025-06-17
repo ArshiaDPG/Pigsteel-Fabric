@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:cut_pigsteel_stairs_from_cut_pigsteel_stonecutting"
+        "recipe": "pigsteel:cut_pigsteel_stairs_from_cut_pigsteel_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:cut_pigsteel_stairs_from_cut_pigsteel_stonecutting"
+      "pigsteel:cut_pigsteel_stairs_from_cut_pigsteel_stonecutting"
     ]
   }
 }

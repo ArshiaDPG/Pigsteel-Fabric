@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:waxed_cut_pigsteel_slab_from_waxed_refined_pigsteel_stonecutting"
+        "recipe": "pigsteel:waxed_cut_pigsteel_slab_from_waxed_refined_pigsteel_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:waxed_cut_pigsteel_slab_from_waxed_refined_pigsteel_stonecutting"
+      "pigsteel:waxed_cut_pigsteel_slab_from_waxed_refined_pigsteel_stonecutting"
     ]
   }
 }

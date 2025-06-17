@@ -26,7 +26,7 @@ public class PigsteelBiomeTagProvider extends FabricTagProvider<Biome> {
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
-        getOrCreateTagBuilder(PigsteelBiomeTags.HAS_EXTRA_PIGSTEEL).add(BiomeKeys.BASALT_DELTAS);
-        getOrCreateTagBuilder(PigsteelBiomeTags.HAS_NO_PIGSTEEL);
+        getTagBuilder(PigsteelBiomeTags.HAS_EXTRA_PIGSTEEL).add(BiomeKeys.BASALT_DELTAS.getValue());
+        getTagBuilder(PigsteelBiomeTags.HAS_NO_PIGSTEEL);
     }
 }

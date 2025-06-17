@@ -15,83 +15,79 @@ import net.minecraft.util.Identifier;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
-public class PigsteelBlockTagProvider extends FabricTagProvider<Block> {
+public class PigsteelBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
-    /**
-     * Constructs a new {@link FabricTagProvider} with the default computed path.
-     *
-     * <p>Common implementations of this class are provided.
-     *
-     * @param output           the {@link FabricDataOutput} instance
-     * @param registriesFuture the backing registry for the tag type
-     */
     public PigsteelBlockTagProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
-        super(output, Registries.BLOCK.getKey(), registriesFuture);
+        super(output, registriesFuture);
     }
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
 
-        getOrCreateTagBuilder(PigsteelBlockTags.PIGSTEEL_ORES)
-                .add(PigsteelBlocks.PORKSLAG);
+        getTagBuilder(PigsteelBlockTags.PIGSTEEL_ORES)
+                .add(getId(PigsteelBlocks.PORKSLAG));
 
 
-        getOrCreateTagBuilder(PigsteelBlockTags.ZOMBIFICATION_DECELERATION)
-                .add(Blocks.FIRE)
-                .add(Blocks.SOUL_FIRE)
-                .add(Blocks.CRIMSON_NYLIUM)
-                .add(Blocks.CRIMSON_ROOTS)
-                .add(Blocks.CRIMSON_FUNGUS)
-                .add(Blocks.POTTED_CRIMSON_FUNGUS)
-                .add(Blocks.POTTED_CRIMSON_ROOTS);
+        getTagBuilder(PigsteelBlockTags.ZOMBIFICATION_DECELERATION)
+                .add(getId(Blocks.FIRE))
+                .add(getId(Blocks.SOUL_FIRE))
+                .add(getId(Blocks.CRIMSON_NYLIUM))
+                .add(getId(Blocks.CRIMSON_ROOTS))
+                .add(getId(Blocks.CRIMSON_FUNGUS))
+                .add(getId(Blocks.POTTED_CRIMSON_FUNGUS))
+                .add(getId(Blocks.POTTED_CRIMSON_ROOTS));
 
 
-        getOrCreateTagBuilder(PigsteelBlockTags.ZOMBIFICATION_ACCELERATION)
-                .add(Blocks.WARPED_NYLIUM)
-                .add(Blocks.WARPED_ROOTS)
-                .add(Blocks.WARPED_FUNGUS)
-                .add(Blocks.POTTED_WARPED_FUNGUS)
-                .add(Blocks.POTTED_WARPED_ROOTS);
+        getTagBuilder(PigsteelBlockTags.ZOMBIFICATION_ACCELERATION)
+                .add(getId(Blocks.WARPED_NYLIUM))
+                .add(getId(Blocks.WARPED_ROOTS))
+                .add(getId(Blocks.WARPED_FUNGUS))
+                .add(getId(Blocks.POTTED_WARPED_FUNGUS))
+                .add(getId(Blocks.POTTED_WARPED_ROOTS));
 
 
 
-        getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
-                .forceAddTag(PigsteelBlockTags.PIGSTEEL_ORES)
-                .forceAddTag(PigsteelBlockTags.PIGSTEEL_BLOCKS)
-                .add(PigsteelBlocks.PORKSLAG)
-                .add(PigsteelBlocks.PIGSTEEL_CHUNK_BLOCK);
+        getTagBuilder(BlockTags.PICKAXE_MINEABLE)
+                .addTag(PigsteelBlockTags.PIGSTEEL_ORES.id())
+                .addTag(PigsteelBlockTags.PIGSTEEL_BLOCKS.id())
+                .add(getId(PigsteelBlocks.PORKSLAG))
+                .add(getId(PigsteelBlocks.PIGSTEEL_CHUNK_BLOCK));
 
         PigsteelBlocks.REFINED_PIGSTEEL.getAllBlocks().forEach(block -> {
-            getOrCreateTagBuilder(PigsteelBlockTags.PIGSTEEL_BLOCKS).add(block);
+            getTagBuilder(PigsteelBlockTags.PIGSTEEL_BLOCKS).add(getId(block));
         });
         PigsteelBlocks.CUT_PIGSTEEL.getAllBlocks().forEach(block -> {
-            getOrCreateTagBuilder(PigsteelBlockTags.PIGSTEEL_BLOCKS).add(block);
+            getTagBuilder(PigsteelBlockTags.PIGSTEEL_BLOCKS).add(getId(block));
         });
         PigsteelBlocks.CUT_PIGSTEEL_SLABS.getAllBlocks().forEach(block -> {
-            getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(block);
-            getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL).add(block);
+            getTagBuilder(BlockTags.PICKAXE_MINEABLE).add(getId(block));
+            getTagBuilder(BlockTags.NEEDS_STONE_TOOL).add(getId(block));
         });
 
         PigsteelBlocks.PIGSTEEL_LANTERNS.getAllBlocks().forEach(block -> {
-            getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(block);
+            getTagBuilder(BlockTags.PICKAXE_MINEABLE).add(getId(block));
         });
         PigsteelBlocks.PIGSTEEL_SOUL_LANTERNS.getAllBlocks().forEach(block -> {
-            getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(block);
-            getOrCreateTagBuilder(BlockTags.PIGLIN_REPELLENTS).add(block);
+            getTagBuilder(BlockTags.PICKAXE_MINEABLE).add(getId(block));
+            getTagBuilder(BlockTags.PIGLIN_REPELLENTS).add(getId(block));
         });
         PigsteelBlocks.CUT_PIGSTEEL_STAIRS.getAllBlocks().forEach(block -> {
-            getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(block);
-            getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL).add(block);
+            getTagBuilder(BlockTags.PICKAXE_MINEABLE).add(getId(block));
+            getTagBuilder(BlockTags.NEEDS_STONE_TOOL).add(getId(block));
         });
 
 
-        getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
-                .forceAddTag(PigsteelBlockTags.PIGSTEEL_BLOCKS)
-                .forceAddTag(PigsteelBlockTags.PIGSTEEL_ORES)
-                .add(PigsteelBlocks.PIGSTEEL_CHUNK_BLOCK);
+        getTagBuilder(BlockTags.NEEDS_STONE_TOOL)
+                .addTag(PigsteelBlockTags.PIGSTEEL_BLOCKS.id())
+                .addTag(PigsteelBlockTags.PIGSTEEL_ORES.id())
+                .add(getId(PigsteelBlocks.PIGSTEEL_CHUNK_BLOCK));
 
-        getOrCreateTagBuilder(BlockTags.BEACON_BASE_BLOCKS).forceAddTag(PigsteelBlockTags.PIGSTEEL_BLOCKS);
+        getTagBuilder(BlockTags.BEACON_BASE_BLOCKS).addTag(PigsteelBlockTags.PIGSTEEL_BLOCKS.id());
 
-        getOrCreateTagBuilder(ConventionalBlockTags.ORES).forceAddTag(PigsteelBlockTags.PIGSTEEL_ORES);
+        getTagBuilder(ConventionalBlockTags.ORES).addTag(PigsteelBlockTags.PIGSTEEL_ORES.id());
+    }
+
+    public static Identifier getId(Block block){
+        return Registries.BLOCK.getId(block);
     }
 }

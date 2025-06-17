@@ -74,7 +74,6 @@ public class PigsteelBlocks {
     public static final ZombifiableBlockRegistry CUT_PIGSTEEL_SLABS = new ZombifiableBlockRegistry("cut_pigsteel_slab", ZombifiableSlabBlock::new, (level, settings) -> new SlabBlock(settings));
     public static final ZombifiableBlockRegistry PIGSTEEL_LANTERNS = new ZombifiableBlockRegistry("pigsteel_lantern", ZombifiableLanternBlock::new, (level, settings) -> new PigsteelLanternBlock(settings), lanternsSettings(15));
     public static final ZombifiableBlockRegistry PIGSTEEL_SOUL_LANTERNS = new ZombifiableBlockRegistry("pigsteel_soul_lantern", ZombifiableLanternBlock::new, (level, settings) -> new PigsteelLanternBlock(settings), lanternsSettings(10));
-
     public static void init(){
         ZombifiableBlockRegistry.registerWaxingAndZombifications();
 

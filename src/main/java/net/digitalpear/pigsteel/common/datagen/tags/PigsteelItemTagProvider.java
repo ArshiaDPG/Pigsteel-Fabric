@@ -6,10 +6,12 @@ import net.digitalpear.pigsteel.init.tags.PigsteelItemTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
+import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
+import net.minecraft.util.Identifier;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -29,11 +31,13 @@ public class PigsteelItemTagProvider extends FabricTagProvider<Item> {
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
-        getOrCreateTagBuilder(PigsteelItemTags.PIGSTEEL_ORES)
-                .add(PigsteelBlocks.PORKSLAG.asItem());
+        getTagBuilder(PigsteelItemTags.PIGSTEEL_ORES)
+                .add(getId(PigsteelBlocks.PORKSLAG.asItem()));
 
-        getOrCreateTagBuilder(ConventionalItemTags.ORES)
-                .forceAddTag(PigsteelItemTags.PIGSTEEL_ORES);
-
+        getTagBuilder(ConventionalItemTags.ORES)
+                .addTag(PigsteelItemTags.PIGSTEEL_ORES.id());
+    }
+    public static Identifier getId(Item block){
+        return Registries.ITEM.getId(block);
     }
 }

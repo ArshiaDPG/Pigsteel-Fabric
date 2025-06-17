@@ -1,4 +1,4 @@
-// 1.21.5	-999999999-01-01T00:00:00	Pigsteel/Block Loot Tables
+// 1.21.6	-999999999-01-01T00:00:00	Pigsteel/Block Loot Tables
 c2537c33f3556965debd02276268bfb3e8385f86 data/pigsteel/loot_table/blocks/corrupted_cut_pigsteel.json
 b9a833a77a2c0e00209f952e87cfbb41ca4aeaad data/pigsteel/loot_table/blocks/corrupted_cut_pigsteel_slab.json
 771d138ca9bb32d19abf7beaf3e972c0068e7274 data/pigsteel/loot_table/blocks/corrupted_cut_pigsteel_stairs.json

@@ -2,6 +2,7 @@ package net.digitalpear.pigsteel.init;
 
 import net.digitalpear.pigsteel.Pigsteel;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.minecraft.client.particle.EmotionParticle;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.item.Items;
