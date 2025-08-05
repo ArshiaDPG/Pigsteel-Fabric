@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_orientable_trapdoor_top",
+  "textures": {
+    "texture": "pigsteel:block/waxed_pigsteel_trapdoor"
+  }
+}

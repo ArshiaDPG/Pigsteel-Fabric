@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "pigsteel:waxed_corrupted_pigsteel_trapdoor"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_waxed_corrupted_refined_pigsteel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pigsteel:waxed_corrupted_refined_pigsteel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_waxed_corrupted_refined_pigsteel"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "pigsteel:waxed_corrupted_pigsteel_trapdoor"
+    ]
+  }
+}

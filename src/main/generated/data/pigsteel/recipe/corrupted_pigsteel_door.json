@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "group": "corrupted_cut_pigsteel_door",
+  "key": {
+    "#": "pigsteel:corrupted_refined_pigsteel"
+  },
+  "pattern": [
+    "##",
+    "##",
+    "##"
+  ],
+  "result": {
+    "count": 3,
+    "id": "pigsteel:corrupted_pigsteel_door"
+  }
+}

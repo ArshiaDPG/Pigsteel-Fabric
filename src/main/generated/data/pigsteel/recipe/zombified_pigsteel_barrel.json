@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "c": "pigsteel:zombified_cut_pigsteel",
+    "s": "pigsteel:zombified_cut_pigsteel_slab"
+  },
+  "pattern": [
+    "csc",
+    "c c",
+    "csc"
+  ],
+  "result": {
+    "count": 1,
+    "id": "pigsteel:zombified_pigsteel_barrel"
+  }
+}

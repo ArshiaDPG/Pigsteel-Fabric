@@ -14,10 +14,6 @@ public class ZombifiableBlock extends Block implements Zombifiable {
 
     private ZombificationLevel zombificationLevel;
 
-    public ZombifiableBlock(Settings settings) {
-        super(settings);
-        this.zombificationLevel = ZombificationLevel.UNAFFECTED;
-    }
     public ZombifiableBlock(ZombificationLevel zombificationLevel, Settings settings) {
         super(settings);
         this.zombificationLevel = zombificationLevel;

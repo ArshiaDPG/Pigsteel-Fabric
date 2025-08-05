@@ -4,12 +4,13 @@
   "version": "${version}",
 
   "name": "Pigsteel",
-  "description": "Adds a nether counterpart to iron.",
+  "description": "A source of iron in the nether.",
   "authors": [
     "DigitalPear",
     "Tamakii",
     "Uraneptus",
-    "KingRolly"
+    "KingRolly",
+    "JadenXGamer"
   ],
   "contact": {
     "homepage": "https://github.com/ArshiaDPG/Pigsteel-Fabric",
@@ -38,7 +39,7 @@
 
 
   "depends": {
-    "fabricloader": ">=0.15.0",
+    "fabricloader": ">=0.17.0",
     "fabric": "*",
     "minecraft": ">=1.21.5",
     "java": ">=21"

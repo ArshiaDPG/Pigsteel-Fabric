@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "pigsteel:zombified_cut_pigsteel",
+  "result": {
+    "count": 1,
+    "id": "pigsteel:waxed_zombified_chiseled_pigsteel"
+  }
+}

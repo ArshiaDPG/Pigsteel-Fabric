@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "pigsteel:waxed_zombified_pigsteel_barrel"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_waxed_zombified_cut_pigsteel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pigsteel:waxed_zombified_cut_pigsteel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_waxed_zombified_cut_pigsteel"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "pigsteel:waxed_zombified_pigsteel_barrel"
+    ]
+  }
+}

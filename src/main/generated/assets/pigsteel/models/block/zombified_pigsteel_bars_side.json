@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_bars_side",
+  "textures": {
+    "bars": "pigsteel:block/zombified_pigsteel_bars",
+    "edge": "pigsteel:block/zombified_pigsteel_bars"
+  }
+}

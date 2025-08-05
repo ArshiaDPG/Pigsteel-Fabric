@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "c": "pigsteel:cut_pigsteel",
+    "s": "pigsteel:cut_pigsteel_slab"
+  },
+  "pattern": [
+    "csc",
+    "c c",
+    "csc"
+  ],
+  "result": {
+    "count": 1,
+    "id": "pigsteel:pigsteel_barrel"
+  }
+}

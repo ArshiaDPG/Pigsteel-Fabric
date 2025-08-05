@@ -10,23 +10,18 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.util.Identifier;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
 
-public class PigsteelItemTagProvider extends FabricTagProvider<Item> {
+public class PigsteelItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
-    /**
-     * Constructs a new {@link FabricTagProvider} with the default computed path.
-     *
-     * <p>Common implementations of this class are provided.
-     *
-     * @param output           the {@link FabricDataOutput} instance
-     * @param registriesFuture the backing registry for the tag type
-     */
+
     public PigsteelItemTagProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
-        super(output, Registries.ITEM.getKey(), registriesFuture);
+        super(output, registriesFuture, new PigsteelBlockTagProvider(output, registriesFuture));
     }
 
     @Override
@@ -36,6 +31,13 @@ public class PigsteelItemTagProvider extends FabricTagProvider<Item> {
 
         getTagBuilder(ConventionalItemTags.ORES)
                 .addTag(PigsteelItemTags.PIGSTEEL_ORES.id());
+
+        PigsteelBlocks.PIGSTEEL_LANTERNS.getAllBlocks().forEach(block -> {
+            valueLookupBuilder(ItemTags.LANTERNS).add(block.asItem());
+        });
+        PigsteelBlocks.PIGSTEEL_SOUL_LANTERNS.getAllBlocks().forEach(block -> {
+            valueLookupBuilder(ItemTags.LANTERNS).add(block.asItem());
+        });
     }
     public static Identifier getId(Item block){
         return Registries.ITEM.getId(block);

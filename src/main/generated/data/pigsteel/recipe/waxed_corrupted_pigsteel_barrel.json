@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "c": "pigsteel:waxed_corrupted_cut_pigsteel",
+    "s": "pigsteel:waxed_corrupted_cut_pigsteel_slab"
+  },
+  "pattern": [
+    "csc",
+    "c c",
+    "csc"
+  ],
+  "result": {
+    "count": 1,
+    "id": "pigsteel:waxed_corrupted_pigsteel_barrel"
+  }
+}

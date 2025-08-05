@@ -1,6 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "building",
+  "group": "cut_pigsteel",
   "key": {
     "#": "pigsteel:refined_pigsteel"
   },

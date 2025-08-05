@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "pigsteel:waxed_zombified_chiseled_pigsteel_from_zombified_cut_pigsteel_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_zombified_cut_pigsteel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "pigsteel:zombified_cut_pigsteel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_zombified_cut_pigsteel"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "pigsteel:waxed_zombified_chiseled_pigsteel_from_zombified_cut_pigsteel_stonecutting"
+    ]
+  }
+}

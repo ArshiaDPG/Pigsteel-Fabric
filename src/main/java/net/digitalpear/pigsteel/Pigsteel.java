@@ -33,6 +33,14 @@ public class Pigsteel implements ModInitializer {
 		return Identifier.of(MOD_ID, id);
 	}
 
+	/*
+		2.5 Changelog:
+			- Added Pigsteel Doors.
+			- Added Pigsteel Trapdoors.
+			- Added Chiseled Pigsteel.
+			- Porkslag will now drop more pigsteel chunks on average.
+	 */
+
 	@Override
 	public void onInitialize() {
 

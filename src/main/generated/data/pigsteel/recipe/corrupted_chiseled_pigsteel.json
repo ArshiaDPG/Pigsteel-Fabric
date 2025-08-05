@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "corrupted_cut_pigsteel_chiseled",
+  "key": {
+    "#": "pigsteel:corrupted_cut_pigsteel_slab"
+  },
+  "pattern": [
+    "#",
+    "#"
+  ],
+  "result": {
+    "count": 1,
+    "id": "pigsteel:corrupted_chiseled_pigsteel"
+  }
+}

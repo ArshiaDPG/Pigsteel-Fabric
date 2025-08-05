@@ -1,8 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "building",
+  "group": "corrupted_cut_pigsteel_slab",
   "key": {
-    "#": "pigsteel:corrupted_cut_pigsteel"
+    "#": "pigsteel:corrupted_refined_pigsteel"
   },
   "pattern": [
     "###"

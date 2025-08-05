@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "waxed_pigsteel_bars",
+  "ingredients": [
+    "pigsteel:pigsteel_bars",
+    "minecraft:honeycomb"
+  ],
+  "result": {
+    "count": 1,
+    "id": "pigsteel:waxed_pigsteel_bars"
+  }
+}

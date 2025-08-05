@@ -7,12 +7,9 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalBlockTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
-import net.minecraft.util.Identifier;
 
-import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 public class PigsteelBlockTagProvider extends FabricTagProvider.BlockTagProvider {
@@ -24,11 +21,11 @@ public class PigsteelBlockTagProvider extends FabricTagProvider.BlockTagProvider
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
 
-        getTagBuilder(PigsteelBlockTags.PIGSTEEL_ORES)
+        valueLookupBuilder(PigsteelBlockTags.PIGSTEEL_ORES)
                 .add(getId(PigsteelBlocks.PORKSLAG));
 
 
-        getTagBuilder(PigsteelBlockTags.ZOMBIFICATION_DECELERATION)
+        valueLookupBuilder(PigsteelBlockTags.ZOMBIFICATION_DECELERATION)
                 .add(getId(Blocks.FIRE))
                 .add(getId(Blocks.SOUL_FIRE))
                 .add(getId(Blocks.CRIMSON_NYLIUM))
@@ -38,7 +35,7 @@ public class PigsteelBlockTagProvider extends FabricTagProvider.BlockTagProvider
                 .add(getId(Blocks.POTTED_CRIMSON_ROOTS));
 
 
-        getTagBuilder(PigsteelBlockTags.ZOMBIFICATION_ACCELERATION)
+        valueLookupBuilder(PigsteelBlockTags.ZOMBIFICATION_ACCELERATION)
                 .add(getId(Blocks.WARPED_NYLIUM))
                 .add(getId(Blocks.WARPED_ROOTS))
                 .add(getId(Blocks.WARPED_FUNGUS))
@@ -47,47 +44,71 @@ public class PigsteelBlockTagProvider extends FabricTagProvider.BlockTagProvider
 
 
 
-        getTagBuilder(BlockTags.PICKAXE_MINEABLE)
-                .addTag(PigsteelBlockTags.PIGSTEEL_ORES.id())
-                .addTag(PigsteelBlockTags.PIGSTEEL_BLOCKS.id())
-                .add(getId(PigsteelBlocks.PORKSLAG))
-                .add(getId(PigsteelBlocks.PIGSTEEL_CHUNK_BLOCK));
+        valueLookupBuilder(BlockTags.PICKAXE_MINEABLE)
+                .forceAddTag(PigsteelBlockTags.PIGSTEEL_ORES)
+                .forceAddTag(PigsteelBlockTags.PIGSTEEL_BLOCKS)
+                .add(PigsteelBlocks.PORKSLAG)
+                .add(PigsteelBlocks.PIGSTEEL_CHUNK_BLOCK);
 
         PigsteelBlocks.REFINED_PIGSTEEL.getAllBlocks().forEach(block -> {
-            getTagBuilder(PigsteelBlockTags.PIGSTEEL_BLOCKS).add(getId(block));
+            valueLookupBuilder(PigsteelBlockTags.PIGSTEEL_BLOCKS).add(block);
         });
         PigsteelBlocks.CUT_PIGSTEEL.getAllBlocks().forEach(block -> {
-            getTagBuilder(PigsteelBlockTags.PIGSTEEL_BLOCKS).add(getId(block));
+            valueLookupBuilder(PigsteelBlockTags.PIGSTEEL_BLOCKS).add(block);
         });
         PigsteelBlocks.CUT_PIGSTEEL_SLABS.getAllBlocks().forEach(block -> {
-            getTagBuilder(BlockTags.PICKAXE_MINEABLE).add(getId(block));
-            getTagBuilder(BlockTags.NEEDS_STONE_TOOL).add(getId(block));
+            valueLookupBuilder(BlockTags.PICKAXE_MINEABLE).add(block);
+            valueLookupBuilder(BlockTags.NEEDS_STONE_TOOL).add(block);
         });
 
         PigsteelBlocks.PIGSTEEL_LANTERNS.getAllBlocks().forEach(block -> {
-            getTagBuilder(BlockTags.PICKAXE_MINEABLE).add(getId(block));
+            valueLookupBuilder(BlockTags.PICKAXE_MINEABLE).add(block);
+            valueLookupBuilder(BlockTags.LANTERNS).add(block);
         });
         PigsteelBlocks.PIGSTEEL_SOUL_LANTERNS.getAllBlocks().forEach(block -> {
-            getTagBuilder(BlockTags.PICKAXE_MINEABLE).add(getId(block));
-            getTagBuilder(BlockTags.PIGLIN_REPELLENTS).add(getId(block));
+            valueLookupBuilder(BlockTags.PICKAXE_MINEABLE).add(block);
+            valueLookupBuilder(BlockTags.PIGLIN_REPELLENTS).add(block);
+            valueLookupBuilder(BlockTags.LANTERNS).add(block);
         });
         PigsteelBlocks.CUT_PIGSTEEL_STAIRS.getAllBlocks().forEach(block -> {
-            getTagBuilder(BlockTags.PICKAXE_MINEABLE).add(getId(block));
-            getTagBuilder(BlockTags.NEEDS_STONE_TOOL).add(getId(block));
+            valueLookupBuilder(BlockTags.PICKAXE_MINEABLE).add(block);
+            valueLookupBuilder(BlockTags.NEEDS_STONE_TOOL).add(block);
         });
 
 
-        getTagBuilder(BlockTags.NEEDS_STONE_TOOL)
-                .addTag(PigsteelBlockTags.PIGSTEEL_BLOCKS.id())
-                .addTag(PigsteelBlockTags.PIGSTEEL_ORES.id())
-                .add(getId(PigsteelBlocks.PIGSTEEL_CHUNK_BLOCK));
+        PigsteelBlocks.CHISELED_PIGSTEEL.getAllBlocks().forEach(block -> {
+            valueLookupBuilder(BlockTags.PICKAXE_MINEABLE).add(block);
+            valueLookupBuilder(BlockTags.NEEDS_STONE_TOOL).add(block);
+        });
+        PigsteelBlocks.PIGSTEEL_DOORS.getAllBlocks().forEach(block -> {
+            valueLookupBuilder(BlockTags.PICKAXE_MINEABLE).add(block);
+            valueLookupBuilder(BlockTags.NEEDS_STONE_TOOL).add(block);
+        });
+        PigsteelBlocks.PIGSTEEL_TRAPDOORS.getAllBlocks().forEach(block -> {
+            valueLookupBuilder(BlockTags.PICKAXE_MINEABLE).add(block);
+            valueLookupBuilder(BlockTags.NEEDS_STONE_TOOL).add(block);
+        });
+        PigsteelBlocks.PIGSTEEL_BARRELS.getAllBlocks().forEach(block -> {
+            valueLookupBuilder(BlockTags.PICKAXE_MINEABLE).add(block);
+            valueLookupBuilder(BlockTags.NEEDS_STONE_TOOL).add(block);
+        });
+        PigsteelBlocks.PIGSTEEL_BARS.getAllBlocks().forEach(block -> {
+            valueLookupBuilder(BlockTags.PICKAXE_MINEABLE).add(block);
+            valueLookupBuilder(BlockTags.NEEDS_STONE_TOOL).add(block);
+            valueLookupBuilder(BlockTags.BARS).add(block);
+        });
 
-        getTagBuilder(BlockTags.BEACON_BASE_BLOCKS).addTag(PigsteelBlockTags.PIGSTEEL_BLOCKS.id());
+        valueLookupBuilder(BlockTags.NEEDS_STONE_TOOL)
+                .forceAddTag(PigsteelBlockTags.PIGSTEEL_BLOCKS)
+                .forceAddTag(PigsteelBlockTags.PIGSTEEL_ORES)
+                .add(PigsteelBlocks.PIGSTEEL_CHUNK_BLOCK);
 
-        getTagBuilder(ConventionalBlockTags.ORES).addTag(PigsteelBlockTags.PIGSTEEL_ORES.id());
+        valueLookupBuilder(BlockTags.BEACON_BASE_BLOCKS).forceAddTag(PigsteelBlockTags.PIGSTEEL_BLOCKS);
+
+        valueLookupBuilder(ConventionalBlockTags.ORES).forceAddTag(PigsteelBlockTags.PIGSTEEL_ORES);
     }
 
-    public static Identifier getId(Block block){
-        return Registries.BLOCK.getId(block);
+    public static Block getId(Block block){
+        return block;
     }
 }

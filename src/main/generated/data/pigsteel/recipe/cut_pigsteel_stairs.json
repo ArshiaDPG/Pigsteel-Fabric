@@ -1,8 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "building",
+  "group": "cut_pigsteel_stairs",
   "key": {
-    "#": "pigsteel:cut_pigsteel"
+    "#": "pigsteel:refined_pigsteel"
   },
   "pattern": [
     "#  ",

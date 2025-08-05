@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "waxed_corrupted_chiseled_pigsteel",
+  "ingredients": [
+    "pigsteel:corrupted_chiseled_pigsteel",
+    "minecraft:honeycomb"
+  ],
+  "result": {
+    "count": 1,
+    "id": "pigsteel:waxed_corrupted_chiseled_pigsteel"
+  }
+}

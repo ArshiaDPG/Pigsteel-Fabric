@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "waxed_pigsteel_door",
+  "ingredients": [
+    "pigsteel:pigsteel_door",
+    "minecraft:honeycomb"
+  ],
+  "result": {
+    "count": 1,
+    "id": "pigsteel:waxed_pigsteel_door"
+  }
+}

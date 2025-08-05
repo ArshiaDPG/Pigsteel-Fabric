@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "waxed_zombified_pigsteel_trapdoor",
+  "ingredients": [
+    "pigsteel:zombified_pigsteel_trapdoor",
+    "minecraft:honeycomb"
+  ],
+  "result": {
+    "count": 1,
+    "id": "pigsteel:waxed_zombified_pigsteel_trapdoor"
+  }
+}

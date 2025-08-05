@@ -1,0 +1,12 @@
+{
+  "values": [
+    "pigsteel:pigsteel_bars",
+    "pigsteel:infected_pigsteel_bars",
+    "pigsteel:corrupted_pigsteel_bars",
+    "pigsteel:zombified_pigsteel_bars",
+    "pigsteel:waxed_pigsteel_bars",
+    "pigsteel:waxed_infected_pigsteel_bars",
+    "pigsteel:waxed_corrupted_pigsteel_bars",
+    "pigsteel:waxed_zombified_pigsteel_bars"
+  ]
+}

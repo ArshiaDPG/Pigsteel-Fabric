@@ -16,5 +16,9 @@ public class PigsteelClient implements ClientModInitializer {
 
         PigsteelBlocks.PIGSTEEL_LANTERNS.getAllBlocks().forEach(block -> BlockRenderLayerMap.putBlock(block, BlockRenderLayer.CUTOUT));
         PigsteelBlocks.PIGSTEEL_SOUL_LANTERNS.getAllBlocks().forEach(block -> BlockRenderLayerMap.putBlock(block, BlockRenderLayer.CUTOUT));
+        PigsteelBlocks.PIGSTEEL_DOORS.getAllBlocks().forEach(block -> BlockRenderLayerMap.putBlock(block, BlockRenderLayer.CUTOUT));
+        PigsteelBlocks.PIGSTEEL_TRAPDOORS.getAllBlocks().forEach(block -> BlockRenderLayerMap.putBlock(block, BlockRenderLayer.CUTOUT));
+        PigsteelBlocks.PIGSTEEL_BARS.getAllBlocks().forEach(block -> BlockRenderLayerMap.putBlock(block, BlockRenderLayer.CUTOUT));
+        PigsteelBlocks.PIGSTEEL_GRATE.getAllBlocks().forEach(block -> BlockRenderLayerMap.putBlock(block, BlockRenderLayer.CUTOUT));
     }
 }

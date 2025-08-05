@@ -5,6 +5,7 @@ import net.digitalpear.pigsteel.init.PigsteelItems;
 import net.digitalpear.pigsteel.init.data.ZombifiableBlockRegistry;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
+import net.minecraft.block.DoorBlock;
 import net.minecraft.block.SlabBlock;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantments;
@@ -34,15 +35,17 @@ public class PigsteelBlockLootTableProvider extends FabricBlockLootTableProvider
             if (normal instanceof SlabBlock){
                 addDrop(normal, slabDrops(normal));
                 addDrop(waxed, slabDrops(waxed));
-            }
-            else{
+            } else if (normal instanceof DoorBlock) {
+                addDrop(normal, doorDrops(normal));
+                addDrop(waxed, doorDrops(waxed));
+            } else{
                 addDrop(normal);
                 addDrop(waxed);
             }
         }));
         RegistryWrapper.Impl<Enchantment> impl = this.registryLookup.getOrThrow(RegistryKeys.ENCHANTMENT);
 
-        addDrop(PigsteelBlocks.PORKSLAG, dropsWithSilkTouch(PigsteelBlocks.PORKSLAG, this.applyExplosionDecay(PigsteelBlocks.PORKSLAG, ItemEntry.builder(PigsteelItems.PIGSTEEL_CHUNK).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(2.0f, 6.0f))).apply(ApplyBonusLootFunction.oreDrops(impl.getOrThrow(Enchantments.FORTUNE))))));
+        addDrop(PigsteelBlocks.PORKSLAG, dropsWithSilkTouch(PigsteelBlocks.PORKSLAG, this.applyExplosionDecay(PigsteelBlocks.PORKSLAG, ItemEntry.builder(PigsteelItems.PIGSTEEL_CHUNK).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(3.0f, 7.0f))).apply(ApplyBonusLootFunction.oreDrops(impl.getOrThrow(Enchantments.FORTUNE))))));
         addDrop(PigsteelBlocks.PIGSTEEL_CHUNK_BLOCK);
     }
 }

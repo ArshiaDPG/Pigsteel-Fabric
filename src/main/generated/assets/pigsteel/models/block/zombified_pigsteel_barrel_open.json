@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "pigsteel:block/zombified_pigsteel_barrel_bottom",
+    "side": "pigsteel:block/zombified_pigsteel_barrel_side",
+    "top": "pigsteel:block/zombified_pigsteel_barrel_top_open"
+  }
+}

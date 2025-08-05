@@ -1,6 +1,12 @@
 {
 	"pack": {
-		"pack_format": 42,
-		"description": "(Texture by KingRolly) Reverts porkslag back to pigsteel ore"
+		"pack_format": 81.0,
+		"description": "(Texture by KingRolly) Reverts porkslag back to pigsteel ore",
+		"min_format": 42.0,
+		"max_format": 81.0,
+		"supported_formats": [
+			42,
+			81
+		]
 	}
 }

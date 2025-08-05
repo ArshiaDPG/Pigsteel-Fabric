@@ -1,8 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "building",
+  "group": "waxed_cut_pigsteel_slab",
   "key": {
-    "#": "pigsteel:waxed_cut_pigsteel"
+    "#": "pigsteel:waxed_refined_pigsteel"
   },
   "pattern": [
     "###"

@@ -1,8 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "building",
+  "group": "zombified_cut_pigsteel_slab",
   "key": {
-    "#": "pigsteel:zombified_cut_pigsteel"
+    "#": "pigsteel:zombified_refined_pigsteel"
   },
   "pattern": [
     "###"

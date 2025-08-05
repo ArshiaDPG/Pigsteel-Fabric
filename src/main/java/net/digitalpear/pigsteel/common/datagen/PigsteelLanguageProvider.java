@@ -24,7 +24,13 @@ public class PigsteelLanguageProvider extends FabricLanguageProvider {
             PigsteelBlocks.CUT_PIGSTEEL_SLABS,
             PigsteelBlocks.REFINED_PIGSTEEL,
             PigsteelBlocks.PIGSTEEL_LANTERNS,
-            PigsteelBlocks.PIGSTEEL_SOUL_LANTERNS
+            PigsteelBlocks.PIGSTEEL_SOUL_LANTERNS,
+            PigsteelBlocks.PIGSTEEL_DOORS,
+            PigsteelBlocks.PIGSTEEL_TRAPDOORS,
+            PigsteelBlocks.CHISELED_PIGSTEEL,
+            PigsteelBlocks.PIGSTEEL_BARRELS,
+            PigsteelBlocks.PIGSTEEL_BARS,
+            PigsteelBlocks.PIGSTEEL_GRATE
     );
     public PigsteelLanguageProvider(FabricDataOutput dataOutput, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
         super(dataOutput, registryLookup);
@@ -34,15 +40,12 @@ public class PigsteelLanguageProvider extends FabricLanguageProvider {
     public void generateTranslations(RegistryWrapper.WrapperLookup registryLookup, TranslationBuilder translationBuilder) {
 
         translationBuilder.add(PigsteelBlocks.PORKSLAG, "Porkslag");
-        translationBuilder.add(PigsteelBlocks.PORKSLAG.asItem(), "Porkslag");
 
         translationBuilder.add(PigsteelBlocks.PIGSTEEL_CHUNK_BLOCK, "Block of Pigsteel Chunks");
-        translationBuilder.add(PigsteelBlocks.PIGSTEEL_CHUNK_BLOCK.asItem(), "Block of Pigsteel Chunks");
 
         registryList.forEach(zombifiableBlockRegistry -> {
             zombifiableBlockRegistry.getAllBlocks().forEach(block -> {
                 translationBuilder.add(block, formatString(Registries.BLOCK.getId(block).getPath()));
-                translationBuilder.add(block.asItem(), formatString(Registries.ITEM.getId(block.asItem()).getPath()));
             });
         });
 

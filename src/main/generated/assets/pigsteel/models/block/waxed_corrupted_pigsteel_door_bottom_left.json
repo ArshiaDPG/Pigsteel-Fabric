@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_bottom_left",
+  "textures": {
+    "bottom": "pigsteel:block/waxed_corrupted_pigsteel_door_bottom",
+    "top": "pigsteel:block/waxed_corrupted_pigsteel_door_top"
+  }
+}

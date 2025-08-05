@@ -1,6 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "building",
+  "group": "waxed_infected_cut_pigsteel",
   "key": {
     "#": "pigsteel:waxed_infected_refined_pigsteel"
   },

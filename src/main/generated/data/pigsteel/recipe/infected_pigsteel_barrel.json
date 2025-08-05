@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "c": "pigsteel:infected_cut_pigsteel",
+    "s": "pigsteel:infected_cut_pigsteel_slab"
+  },
+  "pattern": [
+    "csc",
+    "c c",
+    "csc"
+  ],
+  "result": {
+    "count": 1,
+    "id": "pigsteel:infected_pigsteel_barrel"
+  }
+}

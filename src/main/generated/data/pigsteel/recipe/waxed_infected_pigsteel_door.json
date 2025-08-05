@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "group": "waxed_infected_cut_pigsteel_door",
+  "key": {
+    "#": "pigsteel:waxed_infected_refined_pigsteel"
+  },
+  "pattern": [
+    "##",
+    "##",
+    "##"
+  ],
+  "result": {
+    "count": 3,
+    "id": "pigsteel:waxed_infected_pigsteel_door"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "group": "infected_cut_pigsteel_trapdoor",
+  "key": {
+    "#": "pigsteel:infected_refined_pigsteel"
+  },
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 2,
+    "id": "pigsteel:infected_pigsteel_trapdoor"
+  }
+}
